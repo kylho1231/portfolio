@@ -1,0 +1,10 @@
+# Keep local ECC development tooling out of the published portfolio repository.
+/.github/agents/
+/.github/ecc/
+/.github/prompts/
+/.github/skills/
+/.github/copilot-instructions.md
+/.github/ecc-install-state.json
+/.github/visual-evidence/
+/.vscode/
+/picture/jhonkylhoestrabopic.png
