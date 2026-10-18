@@ -25,6 +25,8 @@ html {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   margin: 0;
   background: var(--paper);
   color: var(--ink);
@@ -35,6 +37,195 @@ body {
 }
 
 ::selection { background: var(--forest); color: #fff; }
+
+.reading-scene {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 34% 47% at 83% 38%, var(--scene-glow, rgb(52 93 78 / 8%)), transparent 100%),
+    linear-gradient(120deg, var(--paper), #f6f4ee 62%, var(--paper-deep));
+  transition: background 720ms ease;
+}
+
+.reading-scene::before {
+  position: absolute;
+  top: 15vh;
+  right: clamp(16px, 4vw, 68px);
+  width: clamp(220px, 27vw, 390px);
+  height: min(62vh, 650px);
+  border: 1px solid rgb(52 93 78 / 11%);
+  background:
+    linear-gradient(90deg, rgb(52 93 78 / 4%), transparent 16%),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgb(52 93 78 / 4%) 32px 33px);
+  box-shadow: 9px 12px 0 -7px rgb(52 93 78 / 5%), 18px 22px 0 -15px rgb(52 93 78 / 5%);
+  content: "";
+  opacity: 0.48;
+  transform: translate3d(0, var(--scene-shift, 0px), 0) rotate(1deg);
+  transition: transform 520ms ease, border-color 720ms ease;
+}
+
+.reading-scene::after {
+  position: absolute;
+  right: clamp(36px, 6vw, 92px);
+  bottom: 17vh;
+  width: clamp(46px, 7vw, 92px);
+  height: 1px;
+  background: var(--forest);
+  box-shadow: 0 7px 0 rgb(52 93 78 / 30%), 0 14px 0 rgb(52 93 78 / 18%);
+  content: "";
+  opacity: 0.22;
+  transform: translate3d(0, var(--scene-shift, 0px), 0);
+  transition: transform 520ms ease, background-color 720ms ease;
+}
+
+.reading-scene[data-reading-scene="work"] { --scene-glow: rgb(159 70 42 / 10%); }
+.reading-scene[data-reading-scene="about"] { --scene-glow: rgb(52 93 78 / 10%); }
+.reading-scene[data-reading-scene="approach"] { --scene-glow: rgb(159 70 42 / 7%); }
+.reading-scene[data-reading-scene="contact"] { --scene-glow: rgb(52 93 78 / 13%); }
+
+.reading-guide {
+  position: fixed;
+  z-index: 12;
+  right: clamp(14px, 3vw, 40px);
+  bottom: max(14px, env(safe-area-inset-bottom));
+  width: min(284px, calc(100vw - 28px));
+  padding: 10px 12px 9px;
+  border: 1px solid rgb(29 41 37 / 14%);
+  border-radius: 3px;
+  background: rgb(251 250 247 / 94%);
+  box-shadow: 0 5px 20px rgb(29 41 37 / 8%);
+  backdrop-filter: blur(12px);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+}
+
+.reading-guide__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 7px;
+}
+
+.reading-guide__chapter {
+  overflow: hidden;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.reading-guide__next {
+  display: inline-flex;
+  min-height: 28px;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 7px;
+  color: var(--forest);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.reading-guide__next span:last-child {
+  display: grid;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  border: 1px solid rgb(52 93 78 / 24%);
+  border-radius: 50%;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.reading-guide__next:hover span:last-child {
+  transform: translateY(2px);
+  background: rgb(52 93 78 / 8%);
+}
+
+.reading-guide__progress {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border: 0;
+  background: var(--paper-deep);
+  color: var(--forest);
+  appearance: none;
+}
+
+.reading-guide__progress::-webkit-progress-bar { background: var(--paper-deep); }
+.reading-guide__progress::-webkit-progress-value { background: var(--forest); transition: width 180ms ease; }
+.reading-guide__progress::-moz-progress-bar { background: var(--forest); }
+
+@media (max-width: 1439px) {
+  .reading-guide {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .reading-guide__top { display: block; margin: 0; }
+  .reading-guide__chapter {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .reading-guide__next { display: none; }
+  .reading-guide__progress { height: 3px; background: transparent; }
+  .reading-guide__progress::-webkit-progress-bar { background: transparent; }
+}
+
+@media (min-width: 1440px) {
+  .reading-guide {
+    right: auto;
+    bottom: 24px;
+    left: 8px;
+    width: 122px;
+    padding-inline: 10px;
+  }
+
+  .reading-guide__top {
+    display: grid;
+    justify-content: start;
+    gap: 7px;
+  }
+
+  .reading-guide__next { gap: 6px; }
+  .reading-guide__next span:first-child { display: none; }
+  .reading-guide__next span:last-child { width: 28px; height: 28px; }
+
+  .reading-scene[data-reading-scene="profile"] ~ .reading-guide {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(6px);
+  }
+}
+
+[data-reveal] { transition: opacity 650ms ease, transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+[data-scroll-motion="enabled"] [data-reveal][data-reveal-state="hidden"] {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+}
+
+.project-card:nth-child(2) { transition-delay: 70ms; }
+.project-card:nth-child(3) { transition-delay: 130ms; }
 
 a { color: inherit; text-decoration: none; }
 button { color: inherit; font: inherit; }
@@ -84,6 +275,9 @@ img { display: block; max-width: 100%; }
   background: rgb(244 242 236 / 94%);
   backdrop-filter: blur(14px);
 }
+
+.site-footer { position: relative; z-index: 1; }
+.site-header, main { position: relative; z-index: 1; }
 
 .header-inner {
   display: flex;
@@ -867,7 +1061,13 @@ img { display: block; max-width: 100%; }
   html { scroll-padding-top: 76px; }
   .container { width: calc(100% - 40px); }
   .header-inner { min-height: 68px; }
-
+  .reading-scene::before {
+    top: 18vh;
+    right: 11px;
+    width: 42vw;
+    height: 47vh;
+  }
+  .reading-scene::after { right: 24px; bottom: 20vh; }
   .menu-toggle {
     display: flex;
     width: 46px;
@@ -966,4 +1166,10 @@ img { display: block; max-width: 100%; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .reading-scene, .reading-scene::before, .reading-scene::after {
+    transition: none !important;
+  }
+
+  .reading-scene::before, .reading-scene::after { transform: none !important; }
 }

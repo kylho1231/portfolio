@@ -14,6 +14,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-scene" data-reading-scene="profile" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -35,10 +36,20 @@
     </div>
   </header>
 
+  <nav class="reading-guide" aria-label="Portfolio chapters">
+    <div class="reading-guide__top">
+      <span class="reading-guide__chapter" data-reading-chapter aria-live="polite" aria-atomic="true">01 / Profile</span>
+      <a class="reading-guide__next" href="#work" data-reading-next aria-label="Continue reading: Selected work">
+        <span>Next chapter</span><span aria-hidden="true">↓</span>
+      </a>
+    </div>
+    <progress class="reading-guide__progress" max="100" value="0" data-reading-progress aria-label="Portfolio reading progress"></progress>
+  </nav>
+
   <main id="main">
-    <section class="hero section-wrap" id="top" aria-labelledby="hero-title">
+    <section class="hero section-wrap" id="top" aria-labelledby="hero-title" data-reading-page data-reading-scene="profile" data-reading-chapter="01 / Profile">
       <div class="container hero-grid">
-        <div class="hero-copy">
+        <div class="hero-copy" data-reveal>
           <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> IT student · San Jose, Antique</p>
           <h1 id="hero-title">Jhon Kylho<br><span>Estrabo.</span></h1>
           <p class="hero-role">Software development <span aria-hidden="true">/</span> security-minded design</p>
@@ -51,7 +62,7 @@
           </div>
           <p class="hero-note"><span aria-hidden="true">01</span> A portfolio of selected academic and community projects</p>
         </div>
-        <figure class="hero-portrait">
+        <figure class="hero-portrait" data-reveal>
           <div class="portrait-frame">
             <img src="picture/newpic.jpg" alt="Portrait of Jhon Kylho Estrabo" width="960" height="959" fetchpriority="high">
             <span class="portrait-index" aria-hidden="true">ANTIQUE, PH</span>
@@ -65,9 +76,9 @@
       <div class="hero-rule container" aria-hidden="true"><span>01 / PROFILE</span><span>SOFTWARE · SECURITY · DESIGN</span></div>
     </section>
 
-    <section class="work section-wrap" id="work" aria-labelledby="work-title">
+    <section class="work section-wrap" id="work" aria-labelledby="work-title" data-reading-page data-reading-scene="work" data-reading-chapter="02 / Selected work">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading" data-reveal>
           <div>
             <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Selected work</p>
             <h2 id="work-title">Built for real needs.</h2>
@@ -76,7 +87,7 @@
         </div>
 
         <div class="project-list">
-          <article class="project-card">
+          <article class="project-card" data-reveal>
             <div class="project-art project-art-transport" aria-hidden="true">
               <span class="art-caption">MOBILITY / 01</span>
               <span class="art-route art-route-one"></span>
@@ -100,7 +111,7 @@
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card" data-reveal>
             <div class="project-art project-art-motorcycle" aria-hidden="true">
               <span class="art-caption">CUSTOMER SERVICE / 02</span>
               <span class="art-ticket">OR / CR <span>RELEASE TRACKING</span></span>
@@ -122,7 +133,7 @@
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card" data-reveal>
             <div class="project-art project-art-scholarship" aria-hidden="true">
               <span class="art-caption">EDUCATION / 03</span>
               <span class="art-paper art-paper-back"></span>
@@ -148,16 +159,16 @@
       </div>
     </section>
 
-    <section class="about section-wrap" id="about" aria-labelledby="about-title">
+    <section class="about section-wrap" id="about" aria-labelledby="about-title" data-reading-page data-reading-scene="about" data-reading-chapter="03 / About & skills">
       <div class="container about-grid">
-        <div class="about-main">
+        <div class="about-main" data-reveal>
           <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> A little about me</p>
           <h2 id="about-title">Technology is better when it works for people.</h2>
           <p>I’m pursuing a Bachelor of Science in Information Technology at St. Anthony’s College. Based in San Jose, Antique, I’m drawn to projects that make everyday processes more organized and easier to use.</p>
           <p>My interests span application development, interface design, and practical security. I’m currently exploring NIST guidance and MITRE ATT&amp;CK as references for thinking more carefully about software and systems.</p>
           <a class="text-link about-link" href="#contact">More about my work <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="about-details">
+        <div class="about-details" data-reveal>
           <div class="detail-block">
             <p class="detail-label">Education</p>
             <div class="education-item">
@@ -182,16 +193,16 @@
       </div>
     </section>
 
-    <section class="approach section-wrap" id="approach" aria-labelledby="approach-title">
+    <section class="approach section-wrap" id="approach" aria-labelledby="approach-title" data-reading-page data-reading-scene="approach" data-reading-chapter="04 / My approach">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading" data-reveal>
           <div>
             <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> How I approach a project</p>
             <h2 id="approach-title">Thoughtful from the start.</h2>
           </div>
           <p class="section-intro">A practical process keeps the work grounded in people’s needs, not just the technology.</p>
         </div>
-        <ol class="approach-list">
+        <ol class="approach-list" data-reveal>
           <li><span>01</span><div><h3>Understand</h3><p>Learn who the product is for and what needs to improve.</p></div></li>
           <li><span>02</span><div><h3>Plan &amp; design</h3><p>Map the important flows, information, and interface.</p></div></li>
           <li><span>03</span><div><h3>Build</h3><p>Develop in small steps with a focus on clarity and maintainability.</p></div></li>
@@ -200,8 +211,8 @@
       </div>
     </section>
 
-    <section class="contact section-wrap" id="contact" aria-labelledby="contact-title">
-      <div class="container contact-inner">
+    <section class="contact section-wrap" id="contact" aria-labelledby="contact-title" data-reading-page data-reading-scene="contact" data-reading-chapter="05 / Say hello">
+      <div class="container contact-inner" data-reveal>
         <div>
           <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Say hello</p>
           <h2 id="contact-title">Have a project<br>in mind?</h2>
