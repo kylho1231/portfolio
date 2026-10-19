@@ -15,6 +15,27 @@
   --mono: "IBM Plex Mono", Consolas, monospace;
   --content: 1160px;
   --focus: #9b462b;
+  --header-surface: rgb(244 242 236 / 94%);
+  --guide-surface: rgb(251 250 247 / 96%);
+  --scene-mid: #f6f4ee;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #101915;
+  --paper-deep: #23332b;
+  --surface: #17231d;
+  --ink: #f0f3ec;
+  --ink-soft: #d1dbd2;
+  --muted: #bac8bd;
+  --line: #3b4c41;
+  --forest: #a9d2b6;
+  --forest-dark: #0b1410;
+  --copper: #f1b188;
+  --focus: #f5bd92;
+  --header-surface: rgb(16 25 21 / 96%);
+  --guide-surface: rgb(23 35 29 / 97%);
+  --scene-mid: #152019;
 }
 
 * { box-sizing: border-box; }
@@ -37,6 +58,7 @@ body {
 }
 
 ::selection { background: var(--forest); color: #fff; }
+html[data-theme="dark"] ::selection { background: var(--forest); color: #101915; }
 
 .reading-scene {
   position: fixed;
@@ -46,7 +68,7 @@ body {
   pointer-events: none;
   background:
     radial-gradient(ellipse 34% 47% at 83% 38%, var(--scene-glow, rgb(52 93 78 / 8%)), transparent 100%),
-    linear-gradient(120deg, var(--paper), #f6f4ee 62%, var(--paper-deep));
+    linear-gradient(120deg, var(--paper), var(--scene-mid) 62%, var(--paper-deep));
   transition: background 720ms ease;
 }
 
@@ -95,7 +117,7 @@ body {
   padding: 10px 12px 9px;
   border: 1px solid rgb(29 41 37 / 14%);
   border-radius: 3px;
-  background: rgb(251 250 247 / 94%);
+  background: var(--guide-surface);
   box-shadow: 0 5px 20px rgb(29 41 37 / 8%);
   backdrop-filter: blur(12px);
   transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
@@ -272,7 +294,7 @@ img { display: block; max-width: 100%; }
   z-index: 10;
   top: 0;
   border-bottom: 1px solid rgb(29 41 37 / 9%);
-  background: rgb(244 242 236 / 94%);
+  background: var(--header-surface);
   backdrop-filter: blur(14px);
 }
 
@@ -342,6 +364,32 @@ main { position: relative; z-index: 1; }
   border-radius: 3px;
   color: var(--ink);
 }
+
+.nav-links .theme-toggle {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 9px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.theme-toggle__sun,
+.theme-toggle[aria-pressed="true"] .theme-toggle__moon { display: none; }
+.theme-toggle[aria-pressed="true"] .theme-toggle__sun { display: block; }
 
 .nav-contact span, .text-link span { transition: transform 160ms ease; }
 .nav-contact:hover span, .text-link:hover span { transform: translate(2px, -2px); }
@@ -620,7 +668,34 @@ main { position: relative; z-index: 1; }
   line-height: 1.8;
 }
 
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 24px;
+}
+
+.project-filter {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.project-filter:hover { transform: translateY(-1px); border-color: var(--forest); }
+.project-filter[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: var(--paper); }
+.project-filter span { font-family: var(--mono); font-size: 10px; opacity: 0.8; }
 .project-list { border-top: 1px solid var(--line); }
+.project-card[hidden] { display: none; }
 
 .project-card {
   display: grid;
@@ -1178,6 +1253,7 @@ main { position: relative; z-index: 1; }
   .nav-links li:last-child { border-bottom: 0; }
   .nav-links a { width: 100%; min-height: 49px; font-size: 14px; }
   .nav-links .nav-contact { justify-content: space-between; margin-top: 10px; padding-inline: 13px; }
+  .nav-links .theme-toggle { width: 100%; min-height: 49px; padding-inline: 13px; }
 
   .section-wrap { padding-block: 76px; }
   .hero { padding-top: 33px; padding-bottom: 26px; }

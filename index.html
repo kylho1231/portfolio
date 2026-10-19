@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,6 +31,18 @@
           <li><a href="#about">About</a></li>
           <li><a href="#approach">Approach</a></li>
           <li><a class="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></li>
+          <li>
+            <button class="theme-toggle" type="button" aria-pressed="false">
+              <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M20.4 15.4A8.5 8.5 0 0 1 8.6 3.6 8.5 8.5 0 1 0 20.4 15.4Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+              </svg>
+              <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"/>
+              </svg>
+              <span>Dark mode</span>
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -104,8 +116,14 @@
           <p class="section-intro">A small selection of projects exploring digital services for transportation, customer support, and education.</p>
         </div>
 
-        <div class="project-list">
-          <article class="project-card" data-reveal>
+        <div class="project-filters" role="group" aria-label="Filter projects by platform">
+          <button class="project-filter" type="button" data-project-filter="all" aria-controls="project-list" aria-pressed="true">All projects <span>03</span></button>
+          <button class="project-filter" type="button" data-project-filter="android" aria-controls="project-list" aria-pressed="false">Android <span>01</span></button>
+          <button class="project-filter" type="button" data-project-filter="web" aria-controls="project-list" aria-pressed="false">Web <span>02</span></button>
+        </div>
+        <p class="project-filter-status visually-hidden" role="status" aria-live="polite" aria-atomic="true">Showing 3 projects.</p>
+        <div class="project-list" id="project-list">
+          <article class="project-card" data-project-type="android" data-reveal>
             <div class="project-art project-art-transport" aria-hidden="true">
               <span class="art-caption">MOBILITY / 01</span>
               <span class="art-route art-route-one"></span>
@@ -129,7 +147,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-reveal>
+          <article class="project-card" data-project-type="web" data-reveal>
             <div class="project-art project-art-motorcycle" aria-hidden="true">
               <span class="art-caption">CUSTOMER SERVICE / 02</span>
               <span class="art-ticket">OR / CR <span>RELEASE TRACKING</span></span>
@@ -151,7 +169,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-reveal>
+          <article class="project-card" data-project-type="web" data-reveal>
             <div class="project-art project-art-scholarship" aria-hidden="true">
               <span class="art-caption">EDUCATION / 03</span>
               <span class="art-paper art-paper-back"></span>

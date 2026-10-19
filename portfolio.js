@@ -3,6 +3,38 @@
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#primary-links");
 const mobileViewport = window.matchMedia("(max-width: 640px)");
+const themeToggle = document.querySelector(".theme-toggle");
+const themeColor = document.querySelector('meta[name="theme-color"]');
+
+themeToggle.addEventListener("click", () => {
+  const isDark = document.documentElement.dataset.theme !== "dark";
+  document.documentElement.dataset.theme = isDark ? "dark" : "light";
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeColor.setAttribute("content", isDark ? "#101915" : "#f4f2ec");
+});
+
+const projectFilters = [...document.querySelectorAll("[data-project-filter]")];
+const projectCards = [...document.querySelectorAll("[data-project-type]")];
+const projectFilterStatus = document.querySelector(".project-filter-status");
+
+function filterProjects(filter) {
+  let visibleCount = 0;
+
+  projectCards.forEach(card => {
+    const isVisible = filter === "all" || card.dataset.projectType === filter;
+    card.hidden = !isVisible;
+    if (isVisible) visibleCount += 1;
+  });
+
+  projectFilters.forEach(button => {
+    button.setAttribute("aria-pressed", String(button.dataset.projectFilter === filter));
+  });
+  projectFilterStatus.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? "project" : "projects"}.`;
+}
+
+projectFilters.forEach(button => {
+  button.addEventListener("click", () => filterProjects(button.dataset.projectFilter));
+});
 
 function onMediaQueryChange(mediaQuery, callback) {
   if (typeof mediaQuery.addEventListener === "function") {
