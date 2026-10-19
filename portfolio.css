@@ -499,6 +499,12 @@ img { display: block; max-width: 100%; }
 .ai-orbit__rotor {
   position: absolute;
   inset: 0;
+  animation: ai-orbit-rotate 36s linear infinite;
+}
+
+.ai-orbit__track {
+  position: absolute;
+  inset: 0;
   transform: rotate(var(--ai-carousel-angle, 0deg));
   transition: transform 520ms cubic-bezier(0.2, 0.75, 0.25, 1);
 }
@@ -563,12 +569,33 @@ img { display: block; max-width: 100%; }
   transform: translate(-50%, -50%);
 }
 
+.ai-orbit__counter {
+  display: grid;
+  place-items: center;
+  animation: ai-orbit-counter 36s linear infinite;
+}
+
 .ai-orbit__logo {
   width: 22px;
   height: 22px;
   fill: currentColor;
   transform: rotate(var(--ai-counter-angle, 0deg));
   transition: transform 520ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.hero-portrait:hover .ai-orbit__rotor,
+.hero-portrait:hover .ai-orbit__counter,
+.hero-portrait:focus-within .ai-orbit__rotor,
+.hero-portrait:focus-within .ai-orbit__counter {
+  animation-play-state: paused;
+}
+
+@keyframes ai-orbit-rotate {
+  to { transform: rotate(1turn); }
+}
+
+@keyframes ai-orbit-counter {
+  to { transform: rotate(-1turn); }
 }
 
 .ai-carousel-controls {
@@ -615,7 +642,8 @@ img { display: block; max-width: 100%; }
 .portrait-frame {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 0.78;
+  aspect-ratio: 1;
+  border-radius: 50%;
   background: var(--paper-deep);
 }
 
@@ -1252,7 +1280,6 @@ img { display: block; max-width: 100%; }
   .hero-copy { order: 2; }
   .hero-portrait { width: min(100%, 420px); justify-self: start; }
   .ai-orbit__item { width: 44px; height: 44px; }
-  .portrait-frame { aspect-ratio: 1.15; }
   .portrait-frame img { object-position: 50% 32%; }
   .portrait-caption { font-size: 8px; }
   .hero h1 { font-size: clamp(68px, 15vw, 94px); }
@@ -1317,5 +1344,8 @@ img { display: block; max-width: 100%; }
   }
 
   .reading-scene::before, .reading-scene::after { transform: none !important; }
-  .ai-orbit__rotor, .ai-orbit__logo { transition: none !important; }
+  .ai-orbit__rotor,
+  .ai-orbit__counter,
+  .ai-orbit__track,
+  .ai-orbit__logo { animation: none !important; transition: none !important; }
 }
