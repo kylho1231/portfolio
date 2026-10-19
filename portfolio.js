@@ -38,37 +38,6 @@ document.addEventListener("keydown", event => {
 
 onMediaQueryChange(mobileViewport, () => setMenuOpen(false));
 
-const aiCarousel = document.querySelector("[data-ai-carousel]");
-const aiRotor = aiCarousel.querySelector("[data-ai-rotor]");
-const aiTrack = aiRotor.querySelector("[data-ai-track]");
-const aiAssistants = [...aiTrack.querySelectorAll(".ai-orbit__item")];
-const aiCarouselStatus = document.querySelector("[data-ai-status]");
-const previousAssistantButton = document.querySelector("[data-ai-previous]");
-const nextAssistantButton = document.querySelector("[data-ai-next]");
-let selectedAssistantIndex = 0;
-
-function selectAssistant(index) {
-  selectedAssistantIndex = (index + aiAssistants.length) % aiAssistants.length;
-  aiTrack.style.setProperty("--ai-carousel-angle", `${selectedAssistantIndex * -90}deg`);
-  aiCarousel.style.setProperty("--ai-counter-angle", `${selectedAssistantIndex * 90}deg`);
-
-  aiAssistants.forEach((assistant, assistantIndex) => {
-    assistant.dataset.aiActive = String(assistantIndex === selectedAssistantIndex);
-  });
-
-  aiCarouselStatus.textContent = `Featured: ${aiAssistants[selectedAssistantIndex].dataset.assistantName}`;
-}
-
-previousAssistantButton.addEventListener("click", () => selectAssistant(selectedAssistantIndex - 1));
-nextAssistantButton.addEventListener("click", () => selectAssistant(selectedAssistantIndex + 1));
-aiCarousel.closest(".hero-portrait").addEventListener("keydown", event => {
-  if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-
-  event.preventDefault();
-  selectAssistant(selectedAssistantIndex + (event.key === "ArrowRight" ? 1 : -1));
-});
-selectAssistant(selectedAssistantIndex);
-
 document.querySelector("#current-year").textContent = new Date().getFullYear();
 
 const readingPages = [...document.querySelectorAll("[data-reading-page]")];
