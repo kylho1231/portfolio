@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark" data-accent="lime">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f4ef">
-  <meta name="description" content="Jhon Kylho Estrabo — IT student and developer in Antique, Philippines. Explore software, web, and Android projects built around everyday needs.">
+  <meta name="theme-color" content="#111915">
+  <meta name="description" content="Jhon Kylho Estrabo — IT student and developer in Antique, Philippines. Explore software, web, and Android projects built around everyday needs, including AquaFlow, TODA Verify, and more.">
   <title>Jhon Estrabo — Thoughtful software, useful experiences.</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' rx='20' fill='%232b493d'/%3E%3Ctext x='40' y='52' text-anchor='middle' font-family='Arial' font-size='34' fill='%23f5f4ef'%3Eje.%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700;750;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="portfolio.css">
   <script src="portfolio.js" defer></script>
 </head>
@@ -22,12 +22,19 @@
       <nav aria-label="Main navigation">
         <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Open navigation"><span></span><span></span></button>
         <ul class="nav-links" id="primary-links">
-          <li><a href="#work">Selected work</a></li><li><a href="#about">About me</a></li><li><a href="#approach">My process</a></li><li><a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></li>
+          <li><a href="#work">Selected work</a></li><li><a href="#playground">Playground</a></li><li><a href="#about">About</a></li><li><a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></li>
         </ul>
       </nav>
       <div class="header-tools">
+        <a class="icon-button" href="https://github.com/kylho1231" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in new tab)" title="GitHub: @kylho1231">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <button class="sound-toggle icon-button" type="button" aria-label="Toggle UI sound effects" aria-pressed="false" title="Toggle audio feedback">
+          <svg class="sound-off" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          <svg class="sound-on" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        </button>
         <button class="command-trigger icon-button" type="button" aria-label="Open quick navigation" aria-haspopup="dialog" title="Quick navigation (Ctrl or Command K)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><kbd>⌘ K</kbd></button>
-        <button class="theme-toggle icon-button" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch color theme"><svg class="moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.4 15.4A8.5 8.5 0 0 1 8.6 3.6 8.5 8.5 0 1 0 20.4 15.4Z"/></svg><svg class="sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
+        <button class="theme-toggle icon-button" type="button" aria-label="Dark mode" aria-pressed="true" title="Switch color theme"><svg class="moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.4 15.4A8.5 8.5 0 0 1 8.6 3.6 8.5 8.5 0 1 0 20.4 15.4Z"/></svg><svg class="sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
       </div>
     </div>
   </header>
@@ -35,86 +42,330 @@
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="container hero-stage">
         <div class="hero-topline">
-          <span><i class="status-dot" aria-hidden="true"></i> IT student. Curious builder. Always learning.</span>
-          <span class="mono">BASED IN ANTIQUE, PH <span aria-hidden="true">&#8599;</span></span>
+          <span><i class="status-dot pulse" aria-hidden="true"></i> Open to software projects &amp; collaborations</span>
+          <span class="mono">ANTIQUE, PH <time data-local-time>UTC+8</time></span>
         </div>
         <div class="hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow"><span class="hero-hello" aria-hidden="true">&#10035;</span> HELLO, I'M JHON KYLHO ESTRABO</p>
-            <h1 id="hero-title">Good ideas.<br>Thoughtful code.<br><em>Real possibility.</em></h1>
-            <p class="hero-intro">I build software around everyday needs. From the first idea to the smallest interface detail, I like making things useful, clear, and a little more human.</p>
+            <p class="eyebrow">JHON KYLHO ESTRABO / DEVELOPER &amp; IT STUDENT</p>
+            <h1 id="hero-title">Ideas into<br>interfaces.<br><em>Code into<br>possibility.</em></h1>
+            <div class="hero-description"><span class="hero-hello" aria-hidden="true">↳</span><p class="hero-intro">I build thoughtful digital experiences for everyday needs. A little curiosity, a lot of intention, and people at the heart of it all.</p></div>
             <div class="hero-actions">
-              <a class="button button-primary" href="#work">Discover my work <span aria-hidden="true">&#8599;</span></a>
-              <a class="text-link" href="#about">Meet the person behind it <span aria-hidden="true">&#8594;</span></a>
+              <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a>
+              <a class="button button-secondary" href="https://github.com/kylho1231" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub Profile <span aria-hidden="true">↗</span></a>
+              <a class="text-link" href="#playground">Take a look around <span aria-hidden="true">↓</span></a>
             </div>
-            <div class="hero-disciplines"><span>SOFTWARE</span><span>WEB</span><span>ANDROID</span><span>ALWAYS PEOPLE FIRST</span></div>
           </div>
           <div class="hero-studio">
-            <div class="studio-orbit orbit-one" aria-hidden="true"></div>
-            <div class="studio-orbit orbit-two" aria-hidden="true"></div>
-            <span class="studio-spark" aria-hidden="true">&#10035;</span>
-            <span class="studio-coordinate mono" aria-hidden="true">10.75 N / 121.94 E</span>
+            <div class="studio-index mono"><span>THE PERSON BEHIND THE PIXELS</span><span>001 / JE</span></div>
             <figure class="portrait" data-tilt>
-              <div class="portrait-top"><span class="mono">THE HUMAN BEHIND THE CODE</span><span aria-hidden="true">&#8599;</span></div>
               <div class="portrait-image">
                 <img src="picture/newpic.jpg" width="960" height="959" alt="Jhon Kylho Estrabo smiling" fetchpriority="high">
-                <span class="portrait-sticker">A curious<br>work in progress.<span aria-hidden="true">&#10035;</span></span>
+                <span class="portrait-sticker">Hello from<br>the Philippines.<span aria-hidden="true">↗</span></span>
               </div>
-              <figcaption><div><strong>Jhon Kylho Estrabo</strong><span>IT student / St. Anthony's College</span></div><span class="portrait-signature" aria-hidden="true">Jhon.</span></figcaption>
+              <figcaption><div><strong>Jhon Kylho Estrabo</strong><span>Building. Learning. Figuring it out.</span></div><span class="portrait-signature" aria-hidden="true">je.</span></figcaption>
             </figure>
-            <div class="studio-caption"><span class="status-dot" aria-hidden="true"></span><span>Learning with intention.<br><strong>Building with a purpose.</strong></span><span aria-hidden="true">&#8627;</span></div>
+            <div class="studio-caption"><span class="mono">CURRENTLY EXPLORING</span><p>Useful software.<br>Meaningful interactions.</p><a href="#about" aria-label="More about Jhon">↗</a></div>
           </div>
         </div>
-        <div class="hero-bottom"><a href="#work"><span class="scroll-icon" aria-hidden="true">&#8595;</span> A FEW THINGS I'VE BEEN BUILDING</a><span>From a real need to a useful experience.</span><span class="mono">SELECTED WORK / <span data-year>2026</span></span></div>
+        <div class="hero-bottom"><a href="#work"><span class="scroll-icon" aria-hidden="true">↓</span> SCROLL TO EXPLORE</a><div class="hero-disciplines"><span>PWA</span><span>REACT</span><span>FIREBASE</span><span>ANDROID</span><span>WEB</span></div><span class="mono">A PERSONAL PORTFOLIO / <span data-year>2026</span></span></div>
       </div>
     </section>
-    <div class="craft-strip container" aria-label="Areas of interest">
-      <div><span class="craft-icon" aria-hidden="true">&lt;/&gt;</span><span><strong>Thoughtful development</strong><small>Clear logic. Practical software.</small></span></div>
-      <div><span class="craft-icon" aria-hidden="true">&#9638;</span><span><strong>Interfaces with intention</strong><small>Easy to follow. Built for people.</small></span></div>
-      <div><span class="craft-icon" aria-hidden="true">&#10035;</span><span><strong>Curiosity, put to work</strong><small>Learn something. Make it better.</small></span></div>
-    </div>
     <section class="work section" id="work" aria-labelledby="work-title"><div class="container">
-      <div class="section-topline"><p class="eyebrow"><span>01 /</span> SELECTED WORK</p><span class="section-count mono">THREE PROJECTS. REAL-WORLD CONTEXT.</span></div>
-      <div class="section-heading" data-reveal><h2 id="work-title">A little code.<br><em>A lot of intention.</em></h2><p>Exploring better ways to move, stay informed, and access opportunities. A selection of academic and community projects.</p></div>
-      <div class="project-tabs" role="tablist" aria-label="Explore selected projects">
-        <button class="project-tab" id="tab-toda" type="button" role="tab" aria-selected="true" aria-controls="panel-toda" data-project="toda"><span class="tab-number">01</span><span><strong>TODA Verify</strong><small>Transportation · Android</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
-        <button class="project-tab" id="tab-motorcycle" type="button" role="tab" aria-selected="false" aria-controls="panel-motorcycle" tabindex="-1" data-project="motorcycle"><span class="tab-number">02</span><span><strong>The next mile</strong><small>Customer service · Web</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
-        <button class="project-tab" id="tab-scholarship" type="button" role="tab" aria-selected="false" aria-controls="panel-scholarship" tabindex="-1" data-project="scholarship"><span class="tab-number">03</span><span><strong>A clearer path</strong><small>Education · Web</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+      <div class="section-topline"><p class="eyebrow"><span>01 /</span> SELECTED WORK</p><span class="section-count mono">FOUR PROJECTS. REAL-WORLD CONTEXT.</span></div>
+      <div class="section-heading" data-reveal><h2 id="work-title">Small details.<br><em>Real-world purpose.</em></h2><p>Exploring better ways to move, stay informed, and access clean water &amp; opportunities. A selection of full-stack PWA, mobile, and web applications.</p></div>
+
+      <!-- Quick Category Filter Bar -->
+      <div class="work-filter-bar">
+        <span class="mono">CATEGORIES:</span>
+        <div class="work-filters" role="group" aria-label="Filter projects by category">
+          <button type="button" class="work-filter-btn" data-filter="all" aria-pressed="true">All (4)</button>
+          <button type="button" class="work-filter-btn" data-filter="pwa" aria-pressed="false">PWA &amp; Cloud (1)</button>
+          <button type="button" class="work-filter-btn" data-filter="android" aria-pressed="false">Android (1)</button>
+          <button type="button" class="work-filter-btn" data-filter="web" aria-pressed="false">Web Systems (2)</button>
+        </div>
       </div>
-      <article class="project-panel" id="panel-toda" role="tabpanel" aria-labelledby="tab-toda" tabindex="0">
-        <div class="project-copy"><div class="project-label"><span class="mini-dot"></span> MOBILITY &amp; VERIFICATION</div><h3>Less paperwork.<br>More moving forward.</h3><p class="project-name">TODA Membership &amp; Franchise Verification</p><p>A centralized Android tool for membership and franchise verification, designed around the Municipal Transportation Franchising Desk in San Jose de Buenavista.</p><ul class="tags" aria-label="Project technologies"><li>Java</li><li>Android Studio</li><li>MySQL</li><li>Firebase</li></ul><button class="text-link project-open" type="button" data-open-project="toda">Explore the project <span aria-hidden="true">↗</span></button><span class="project-platform mono">01 — ANDROID APPLICATION</span></div>
+
+      <!-- 4 Project Tabs -->
+      <div class="project-tabs" role="tablist" aria-label="Explore selected projects">
+        <button class="project-tab" id="tab-aquaflow" type="button" role="tab" aria-selected="true" aria-controls="panel-aquaflow" data-project="aquaflow" data-category="pwa"><span class="tab-number">01</span><span><strong>AquaFlow</strong><small>Water Refill · PWA &amp; Vercel</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+        <button class="project-tab" id="tab-toda" type="button" role="tab" aria-selected="false" aria-controls="panel-toda" tabindex="-1" data-project="toda" data-category="android"><span class="tab-number">02</span><span><strong>TODA Verify</strong><small>Transportation · Android</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+        <button class="project-tab" id="tab-motorcycle" type="button" role="tab" aria-selected="false" aria-controls="panel-motorcycle" tabindex="-1" data-project="motorcycle" data-category="web"><span class="tab-number">03</span><span><strong>The next mile</strong><small>Customer service · Web</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+        <button class="project-tab" id="tab-scholarship" type="button" role="tab" aria-selected="false" aria-controls="panel-scholarship" tabindex="-1" data-project="scholarship" data-category="web"><span class="tab-number">04</span><span><strong>A clearer path</strong><small>Education · Web</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+      </div>
+
+      <!-- Panel 1: AquaFlow -->
+      <article class="project-panel" id="panel-aquaflow" role="tabpanel" aria-labelledby="tab-aquaflow" tabindex="0">
+        <div class="project-copy">
+          <div class="project-label"><span class="mini-dot"></span> PWA &amp; LOGISTICS · LIVE PRODUCTION</div>
+          <h3>Clean water delivery,<br>streamlined flow.</h3>
+          <p class="project-name">AquaFlow — Water Refill &amp; Station Operations PWA</p>
+          <p>A mobile-first Progressive Web App built for water refill stations and customers. Features multi-tenant station isolation, Firebase Firestore transactions, biometric WebAuthn passkey authentication, inventory monitoring, and live order dispatch.</p>
+          <ul class="tags" aria-label="Project technologies">
+            <li>React 18</li>
+            <li>TypeScript</li>
+            <li>Firebase Firestore</li>
+            <li>Node.js &amp; Express</li>
+            <li>Tailwind CSS</li>
+            <li>WebAuthn / Passkeys</li>
+            <li>PWA</li>
+            <li>Vercel</li>
+          </ul>
+          <div class="project-actions-group">
+            <a class="button button-primary" href="https://aqua-flow-ochre.vercel.app" target="_blank" rel="noopener noreferrer">Launch Vercel App <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="button button-secondary" href="https://github.com/kylho1231/AquaFlow" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub Repo <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+            <button class="text-link project-open" type="button" data-open-project="aquaflow">Architecture details <span aria-hidden="true">↗</span></button>
+          </div>
+          <span class="project-platform mono">01 — PRODUCTION PWA &amp; BACKEND (VERCEL + FIREBASE)</span>
+        </div>
+        <div class="project-visual visual-aquaflow">
+          <span class="visual-label mono">INTERACTIVE REFILL &amp; DISPATCH DEMO</span>
+          <div class="water-waves-bg" aria-hidden="true"></div>
+          <div class="aquaflow-phone">
+            <div class="aquaflow-notch" aria-hidden="true"></div>
+            <div class="aquaflow-header">
+              <img src="picture/aquaflow-icon.png" class="aquaflow-logo-icon" width="26" height="26" alt="AquaFlow icon">
+              <div class="aquaflow-title-wrap">
+                <strong>AquaFlow</strong>
+                <small>Express Refill Service</small>
+              </div>
+              <div class="pwa-pill"><span class="pulse-dot"></span> VERCEL LIVE</div>
+            </div>
+            <div class="aquaflow-body">
+              <div class="af-instruction"><span class="mono">SELECT CONTAINER TYPE:</span></div>
+              <div class="af-product-selector" role="radiogroup" aria-label="Select container type">
+                <button type="button" class="af-product-btn active" data-af-type="slim" data-price="35" role="radio" aria-checked="true">
+                  <img src="picture/slim-gallon.png" class="af-product-img" alt="5 Gallon Slim container">
+                  <span class="af-product-name">5-Gal Slim</span>
+                  <span class="af-product-price">₱35.00</span>
+                </button>
+                <button type="button" class="af-product-btn" data-af-type="round" data-price="30" role="radio" aria-checked="false">
+                  <img src="picture/round-gallon.png" class="af-product-img" alt="5 Gallon Round container">
+                  <span class="af-product-name">5-Gal Round</span>
+                  <span class="af-product-price">₱30.00</span>
+                </button>
+              </div>
+              <div class="af-controls">
+                <div class="af-row">
+                  <span>Quantity:</span>
+                  <div class="af-stepper">
+                    <button type="button" class="af-step-btn" id="af-minus" aria-label="Decrease quantity">−</button>
+                    <span class="af-qty-num" id="af-qty">2</span>
+                    <button type="button" class="af-step-btn" id="af-plus" aria-label="Increase quantity">+</button>
+                  </div>
+                </div>
+                <div class="af-row" style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #dbeafe;">
+                  <span>Total Amount:</span>
+                  <strong style="color: #0284c7; font-size: 14px;" id="af-total">₱70.00</strong>
+                </div>
+              </div>
+              <button class="af-order-btn" type="button" id="af-order-trigger">
+                <span>Place Refill Order</span>
+                <span aria-hidden="true">💧</span>
+              </button>
+              <div class="af-status-box" id="af-status-box">
+                <div class="af-status-header">
+                  <strong id="af-status-title">Ready to order</strong>
+                  <small id="af-status-desc">Cash on delivery · Standard refill queue</small>
+                </div>
+                <ol class="af-status-steps">
+                  <li class="af-status-step" id="af-step-1"><span class="af-status-dot">1</span><span>Placed</span></li>
+                  <li class="af-status-step" id="af-step-2"><span class="af-status-dot">2</span><span>Station</span></li>
+                  <li class="af-status-step" id="af-step-3"><span class="af-status-dot">3</span><span>Rider</span></li>
+                  <li class="af-status-step" id="af-step-4"><span class="af-status-dot">4</span><span>Delivered</span></li>
+                </ol>
+                <button type="button" class="af-reset-btn" id="af-reset-demo" hidden>Reset simulator</button>
+              </div>
+              <a href="https://aqua-flow-ochre.vercel.app" target="_blank" rel="noopener noreferrer" class="aquaflow-live-chip">Open Production App <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <span class="visual-note">Interactive PWA preview · Production live on Vercel</span>
+          <span class="visual-corner" aria-hidden="true">↗</span>
+        </div>
+      </article>
+
+      <!-- Panel 2: TODA Verify -->
+      <article class="project-panel" id="panel-toda" role="tabpanel" aria-labelledby="tab-toda" tabindex="0" hidden>
+        <div class="project-copy"><div class="project-label"><span class="mini-dot"></span> MOBILITY &amp; VERIFICATION</div><h3>Less paperwork.<br>More moving forward.</h3><p class="project-name">TODA Membership &amp; Franchise Verification</p><p>A centralized Android tool for membership and franchise verification, designed around the Municipal Transportation Franchising Desk in San Jose de Buenavista.</p><ul class="tags" aria-label="Project technologies"><li>Java</li><li>Android Studio</li><li>MySQL</li><li>Firebase</li></ul>
+          <div class="project-actions-group">
+            <a class="button button-secondary" href="https://github.com/kylho1231" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub Profile <span aria-hidden="true">↗</span></a>
+            <button class="text-link project-open" type="button" data-open-project="toda">Explore the project <span aria-hidden="true">↗</span></button>
+          </div>
+          <span class="project-platform mono">02 — ANDROID APPLICATION</span>
+        </div>
         <div class="project-visual visual-toda"><span class="visual-label mono">A CLEARER WAY TO VERIFY.</span><div class="map-grid" aria-hidden="true"><svg viewBox="0 0 540 420"><path d="M-20 310 130 310 130 210 310 210 310 90 560 90"/><path class="map-route" d="M80 330 180 330 180 165 350 165 350 70"/><circle cx="80" cy="330" r="8"/><circle cx="350" cy="70" r="8"/></svg></div><div class="phone-demo"><div class="phone-notch" aria-hidden="true"></div><div class="phone-header"><span class="demo-logo">t.</span><strong>TODA Verify</strong><span aria-hidden="true">☰</span></div><div class="phone-body"><span class="demo-eyebrow">FRANCHISE CHECK</span><h4>A little clarity.<br>A smoother journey.</h4><div class="qr-art" aria-hidden="true"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M5 5h28v28H5zm7 7v14h14V12zM67 5h28v28H67zm7 7v14h14V12zM5 67h28v28H5zm7 7v14h14V74z" fill-rule="evenodd"/><path d="M42 5h9v15h10v9H42zm0 32h18v9h-9v11H38v-9h4zM5 42h25v9H16v9H5zm59 0h11v11h20v9H64zm-22 25h9v9h12v19h-9V84H42zm33 5h20v9H84v14h-9zM87 42h8v9h-8zM37 87h8v8h-8z"/></svg></div><div class="verification-result" id="verification-result" role="status"><span class="verify-icon" aria-hidden="true">✓</span><div><strong>Franchise verified</strong><small>Sample record · SJ-2026-001</small></div></div><button class="demo-button" type="button" data-verify aria-describedby="toda-demo-note">Try another sample <span aria-hidden="true">↻</span></button></div><div class="phone-bottom" aria-hidden="true"></div></div><span class="visual-note" id="toda-demo-note">Interactive concept · Sample data only</span><span class="visual-corner" aria-hidden="true">↗</span></div>
       </article>
+
+      <!-- Panel 3: Motorcycle tracker -->
       <article class="project-panel" id="panel-motorcycle" role="tabpanel" aria-labelledby="tab-motorcycle" tabindex="0" hidden>
-        <div class="project-copy"><div class="project-label"><span class="mini-dot"></span> CUSTOMER SERVICE &amp; TRACKING</div><h3>The next mile,<br>without the guesswork.</h3><p class="project-name">Motorcycle Plate &amp; OR/CR Monitoring</p><p>A customer-facing way to follow plate and registration document release status. Designed for Yamaha customers in San Jose, Antique.</p><ul class="tags" aria-label="Project technologies"><li>PHP</li><li>JavaScript</li><li>MySQL</li><li>Bootstrap</li></ul><button class="text-link project-open" type="button" data-open-project="motorcycle">Explore the project <span aria-hidden="true">↗</span></button><span class="project-platform mono">02 — WEB APPLICATION</span></div>
+        <div class="project-copy"><div class="project-label"><span class="mini-dot"></span> CUSTOMER SERVICE &amp; TRACKING</div><h3>The next mile,<br>without the guesswork.</h3><p class="project-name">Motorcycle Plate &amp; OR/CR Monitoring</p><p>A customer-facing way to follow plate and registration document release status. Designed for Yamaha customers in San Jose, Antique.</p><ul class="tags" aria-label="Project technologies"><li>PHP</li><li>JavaScript</li><li>MySQL</li><li>Bootstrap</li></ul>
+          <div class="project-actions-group">
+            <a class="button button-secondary" href="https://github.com/kylho1231/project1" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub Repo <span aria-hidden="true">↗</span></a>
+            <button class="text-link project-open" type="button" data-open-project="motorcycle">Explore the project <span aria-hidden="true">↗</span></button>
+          </div>
+          <span class="project-platform mono">03 — WEB APPLICATION</span>
+        </div>
         <div class="project-visual visual-motorcycle"><span class="visual-label mono">KNOW WHERE THINGS STAND.</span><div class="browser-demo"><div class="browser-chrome"><span aria-hidden="true">● ● ●</span><span>Release tracker / Concept</span><span aria-hidden="true">↗</span></div><div class="tracker-body"><div class="demo-eyebrow">THE NEXT MILE</div><h4>Your documents.<br>One clear update.</h4><p>Explore a sample release journey.</p><label for="release-stage">Preview a release stage</label><select id="release-stage"><option value="0">Processing</option><option value="1">Documents ready</option><option value="2">Ready for collection</option></select><ol class="tracker-steps"><li class="is-complete"><span>1</span>Submitted</li><li class="is-current" aria-current="step"><span>2</span>Processing</li><li><span>3</span>Collect</li></ol><div class="tracker-result" role="status"><span class="status-dot" aria-hidden="true"></span><span id="release-result">Your sample documents are being processed.</span></div></div></div><span class="visual-note">Interactive concept · Sample data only</span><span class="visual-corner" aria-hidden="true">↗</span></div>
       </article>
+
+      <!-- Panel 4: Scholarship Portal -->
       <article class="project-panel" id="panel-scholarship" role="tabpanel" aria-labelledby="tab-scholarship" tabindex="0" hidden>
-        <div class="project-copy"><div class="project-label"><span class="mini-dot"></span> EDUCATION &amp; OPPORTUNITY</div><h3>A clearer path to<br>the next chapter.</h3><p class="project-name">ISPSO Scholarship Monitoring System</p><p>A scholarship management tool for organizing applicant information, reviewing documents, and keeping application progress in view.</p><ul class="tags" aria-label="Project technologies"><li>Python</li><li>Django</li><li>PostgreSQL</li><li>HTML &amp; CSS</li></ul><button class="text-link project-open" type="button" data-open-project="scholarship">Explore the project <span aria-hidden="true">↗</span></button><span class="project-platform mono">03 — WEB APPLICATION</span></div>
+        <div class="project-copy"><div class="project-label"><span class="mini-dot"></span> EDUCATION &amp; OPPORTUNITY</div><h3>A clearer path to<br>the next chapter.</h3><p class="project-name">ISPSO Scholarship Monitoring System</p><p>A scholarship management tool for organizing applicant information, reviewing documents, and keeping application progress in view.</p><ul class="tags" aria-label="Project technologies"><li>Python</li><li>Django</li><li>PostgreSQL</li><li>HTML &amp; CSS</li></ul>
+          <div class="project-actions-group">
+            <a class="button button-secondary" href="https://github.com/kylho1231" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub Profile <span aria-hidden="true">↗</span></a>
+            <button class="text-link project-open" type="button" data-open-project="scholarship">Explore the project <span aria-hidden="true">↗</span></button>
+          </div>
+          <span class="project-platform mono">04 — WEB APPLICATION</span>
+        </div>
         <div class="project-visual visual-scholarship"><span class="visual-label mono">MORE POSSIBILITY. LESS COMPLEXITY.</span><div class="scholar-demo"><div class="scholar-heading"><span class="demo-logo">i.</span><span>ISPSO <small>Scholarship portal</small></span><span class="sample-badge">SAMPLE</span></div><div class="demo-eyebrow">YOUR NEXT CHAPTER</div><h4>Big dreams.<br>One step at a time.</h4><p>Try the document checklist.</p><div class="document-checklist"><label><input type="checkbox" checked><span>Application form</span><small>01</small></label><label><input type="checkbox" checked><span>School records</span><small>02</small></label><label><input type="checkbox"><span>Proof of enrollment</span><small>03</small></label></div><div class="checklist-summary"><span id="checklist-status" role="status">2 of 3 documents prepared</span><span aria-hidden="true">↗</span></div><progress id="checklist-progress" value="2" max="3" aria-label="Sample documents prepared"></progress></div><span class="visual-note">Interactive concept · Sample data only</span><span class="visual-corner" aria-hidden="true">↗</span></div>
       </article>
+
       <div class="work-bottom">
-        <span><i class="mini-dot"></i> Interactive concepts. Real-world thinking.</span>
+        <span><i class="mini-dot"></i> Interactive concepts &amp; production deployments.</span>
         <div class="project-pagination" role="group" aria-label="Browse projects">
           <button class="project-step" data-project-step="-1" type="button" aria-label="Previous project">&#8592;</button>
-          <span class="mono" id="project-position" role="status" aria-live="polite">01 / 03</span>
+          <span class="mono" id="project-position" role="status" aria-live="polite">01 / 04</span>
           <button class="project-step" data-project-step="1" type="button" aria-label="Next project">&#8594;</button>
         </div>
       </div>
-      <noscript><p>Enable JavaScript to switch projects and try the interactive concepts.</p><h3>More selected work</h3><p><strong>Motorcycle Plate &amp; OR/CR Monitoring:</strong> A PHP, JavaScript, MySQL, and Bootstrap application for release status updates and SMS notifications.</p><p><strong>ISPSO Scholarship Monitoring System:</strong> A Python, Django, and PostgreSQL application for applicant records, document review, and scholarship reporting.</p></noscript>
     </div></section>
+
+    <!-- Playground Section -->
+    <section class="playground section" id="playground" aria-labelledby="playground-title"><div class="container">
+      <div class="section-topline"><p class="eyebrow"><span>02 /</span> A LITTLE INTERACTION</p><span class="mono section-count">GO AHEAD. MAKE IT YOURS.</span></div>
+      <div class="lab-grid">
+        <div class="lab-copy" data-reveal>
+          <h2 id="playground-title">Make yourself<br><em>at home.</em></h2>
+          <p>A portfolio should be more than something you scroll through. Pick a color accent, explore how I build and engineer, and see how the details respond.</p>
+          <fieldset class="accent-picker"><legend class="mono">01 — PICK YOUR ACCENT</legend><div class="accent-options">
+            <button type="button" data-accent="lime" aria-pressed="true"><span class="swatch swatch-lime" aria-hidden="true"></span>Lime</button>
+            <button type="button" data-accent="coral" aria-pressed="false"><span class="swatch swatch-coral" aria-hidden="true"></span>Coral</button>
+            <button type="button" data-accent="sky" aria-pressed="false"><span class="swatch swatch-sky" aria-hidden="true"></span>Sky</button>
+          </div></fieldset>
+          <div class="lab-selector"><p class="mono" id="lab-mode-label">02 — EXPLORE MY MINDSET</p><div class="lab-modes" role="group" aria-labelledby="lab-mode-label"><button type="button" data-lab-mode="build" aria-pressed="true">I build <span aria-hidden="true">↗</span></button><button type="button" data-lab-mode="design" aria-pressed="false">I design <span aria-hidden="true">↗</span></button><button type="button" data-lab-mode="pwa" aria-pressed="false">I engineer <span aria-hidden="true">↗</span></button><button type="button" data-lab-mode="learn" aria-pressed="false">I learn <span aria-hidden="true">↗</span></button></div></div>
+        </div>
+        <div class="lab-window" data-reveal>
+          <div class="lab-window-bar">
+            <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="mono">a-look-inside / jhon</span>
+            <button class="lab-copy-btn icon-button" type="button" id="lab-copy-btn" title="Copy code snippet to clipboard" aria-label="Copy code snippet to clipboard">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span class="mono" style="font-size: 10px; margin-left: 3px;">COPY</span>
+            </button>
+          </div>
+          <div id="lab-output" role="status" aria-live="polite" aria-atomic="true">
+            <div class="lab-art" aria-hidden="true"><span class="lab-bracket">{</span><span class="lab-asterisk">✳</span><span class="lab-bracket">}</span><span class="lab-art-caption mono">CURIOUS BY DEFAULT.</span></div>
+            <div class="lab-output-copy"><p class="eyebrow">A WORK IN PROGRESS, BY DESIGN</p><h3 id="lab-title">Useful things, thoughtfully built.</h3><p id="lab-description">From AquaFlow's water logistics PWA to an Android verification tool, I enjoy turning real needs into clear, practical software.</p><pre id="lab-code">const approach = ["understand", "build", "refine"];</pre></div>
+          </div>
+          <div class="lab-window-footer mono"><span><i class="status-dot" aria-hidden="true"></i> ALWAYS ITERATING</span><span>BUILT WITH INTENTION ↗</span></div>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- About Section with Interactive Skills Explorer -->
     <section class="about section container" id="about" aria-labelledby="about-title">
-      <div class="section-topline"><p class="eyebrow"><span>02 /</span> BEHIND THE CODE</p><span class="mono section-count">ALWAYS A WORK IN PROGRESS.</span></div>
-      <div class="about-grid"><div class="about-copy" data-reveal><h2 id="about-title">A curious mind.<br><em>A practical approach.</em></h2><p class="large-copy">I like making complicated things feel a little more human.</p><p>I’m pursuing a Bachelor of Science in Information Technology at St. Anthony’s College. Based in San Jose, Antique, I’m drawn to projects that make everyday processes more organized and easier to use.</p><p>From application logic to the small details of an interface, I enjoy figuring out how things work — and how they could work better.</p><a class="text-link" href="#contact">Let’s make something useful <span aria-hidden="true">↗</span></a><div class="personal-note"><span aria-hidden="true">✳</span><p>Still learning.<br><strong>Always making progress.</strong></p></div></div>
-      <div class="about-sidebar" data-reveal><div class="education-card"><span class="detail-label mono">THE LEARNING JOURNEY</span><div class="education-row"><span class="education-dot" aria-hidden="true"></span><div><span class="education-year mono">2022 — PRESENT</span><h3>BS Information Technology</h3><p>St. Anthony’s College</p><span class="education-tag">Currently studying</span></div></div><div class="education-row"><span class="education-dot" aria-hidden="true"></span><div><span class="education-year mono">2020 — 2022</span><h3>Senior High School · HUMSS</h3><p>St. Anthony’s College</p></div></div></div><div class="toolkit"><div class="toolkit-heading"><span class="detail-label mono">MY GROWING TOOLKIT</span><span aria-hidden="true">↗</span></div><div class="skill-filters" role="group" aria-label="Filter toolkit"><button type="button" data-skill-filter="all" aria-pressed="true">All</button><button type="button" data-skill-filter="code" aria-pressed="false">Code</button><button type="button" data-skill-filter="data" aria-pressed="false">Data</button><button type="button" data-skill-filter="tools" aria-pressed="false">Tools</button></div><ul class="skills-list"><li data-skill="code">Java</li><li data-skill="code">Python</li><li data-skill="code">JavaScript</li><li data-skill="code">HTML &amp; CSS</li><li data-skill="code">Django</li><li data-skill="code">PHP</li><li data-skill="data">MySQL</li><li data-skill="data">PostgreSQL</li><li data-skill="data">Firebase</li><li data-skill="tools">Android Studio</li><li data-skill="tools">Git</li><li data-skill="tools">Figma</li></ul><p id="skill-status" class="sr-only" role="status">Showing all 12 tools.</p></div></div></div>
+      <div class="section-topline"><p class="eyebrow"><span>03 /</span> BEHIND THE CODE</p><span class="mono section-count">ALWAYS A WORK IN PROGRESS.</span></div>
+      <div class="about-grid"><div class="about-copy" data-reveal><h2 id="about-title">A curious mind.<br><em>A practical approach.</em></h2><p class="large-copy">I like making complicated things feel a little more human.</p><p>I’m pursuing a Bachelor of Science in Information Technology at St. Anthony’s College. Based in San Jose, Antique, I’m drawn to projects that make everyday processes more organized and easier to use.</p><p>From application logic, PWA service workers, and Cloud databases to the small details of an interface, I enjoy figuring out how things work — and how they could work better.</p><a class="text-link" href="#contact">Let’s make something useful <span aria-hidden="true">↗</span></a><div class="personal-note"><span aria-hidden="true">✳</span><p>Still learning.<br><strong>Always making progress.</strong></p></div></div>
+      <div class="about-sidebar" data-reveal><div class="education-card"><span class="detail-label mono">THE LEARNING JOURNEY</span><div class="education-row"><span class="education-dot" aria-hidden="true"></span><div><span class="education-year mono">2022 — PRESENT</span><h3>BS Information Technology</h3><p>St. Anthony’s College</p><span class="education-tag">Currently studying</span></div></div><div class="education-row"><span class="education-dot" aria-hidden="true"></span><div><span class="education-year mono">2020 — 2022</span><h3>Senior High School · HUMSS</h3><p>St. Anthony’s College</p></div></div></div>
+      <div class="toolkit">
+        <div class="toolkit-heading"><span class="detail-label mono">MY GROWING TOOLKIT</span><span class="mono" style="font-size: 10px; color: var(--accent);">CLICK TO EXPLORE ↗</span></div>
+        <div class="skill-filters" role="group" aria-label="Filter toolkit"><button type="button" data-skill-filter="all" aria-pressed="true">All</button><button type="button" data-skill-filter="code" aria-pressed="false">Code</button><button type="button" data-skill-filter="data" aria-pressed="false">Data</button><button type="button" data-skill-filter="tools" aria-pressed="false">Tools</button></div>
+        <ul class="skills-list" id="skills-list">
+          <li data-skill="code" data-tech="react">React 18</li>
+          <li data-skill="code" data-tech="typescript">TypeScript</li>
+          <li data-skill="code" data-tech="javascript">JavaScript</li>
+          <li data-skill="code" data-tech="tailwind">Tailwind CSS</li>
+          <li data-skill="code" data-tech="htmlcss">HTML &amp; CSS</li>
+          <li data-skill="code" data-tech="java">Java</li>
+          <li data-skill="code" data-tech="python">Python</li>
+          <li data-skill="code" data-tech="django">Django</li>
+          <li data-skill="code" data-tech="php">PHP</li>
+          <li data-skill="data" data-tech="firebase">Firebase Firestore</li>
+          <li data-skill="data" data-tech="mysql">MySQL</li>
+          <li data-skill="data" data-tech="postgresql">PostgreSQL</li>
+          <li data-skill="tools" data-tech="passkeys">WebAuthn / Passkeys</li>
+          <li data-skill="tools" data-tech="vercel">Vercel</li>
+          <li data-skill="tools" data-tech="android">Android Studio</li>
+          <li data-skill="tools" data-tech="git">Git &amp; GitHub</li>
+          <li data-skill="tools" data-tech="figma">Figma</li>
+        </ul>
+        <p id="skill-status" class="sr-only" role="status">Showing all tools.</p>
+        
+        <!-- Interactive Skill Insight Card -->
+        <div class="skill-insight" id="skill-insight" aria-live="polite">
+          <div class="skill-insight-badge mono">INTERACTIVE SKILL MAP</div>
+          <p id="skill-insight-text">Click any tool or technology above to see how I've applied it in real-world projects like AquaFlow, TODA Verify, or scholarship systems.</p>
+          <button type="button" class="text-link" id="skill-insight-link" hidden>Jump to project <span aria-hidden="true">↗</span></button>
+        </div>
+      </div></div></div>
       <div class="ai-toolbox"><div><span class="mono">A LITTLE HELP ALONG THE WAY</span><p>AI tools I explore while learning and building.</p></div><div class="ai-links"><a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Google Gemini (opens in a new tab)"><img src="picture/ai-icons/gemini.svg" width="22" height="22" alt="">Gemini <span aria-hidden="true">↗</span></a><a href="https://claude.ai/" target="_blank" rel="noopener noreferrer" aria-label="Claude (opens in a new tab)"><img src="picture/ai-icons/claude.svg" width="22" height="22" alt="">Claude <span aria-hidden="true">↗</span></a><a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="ChatGPT (opens in a new tab)"><img src="picture/ai-icons/openai.svg" width="22" height="22" alt="">ChatGPT <span aria-hidden="true">↗</span></a><a href="https://grok.com/" target="_blank" rel="noopener noreferrer" aria-label="Grok (opens in a new tab)"><img src="picture/ai-icons/grok.svg" width="22" height="22" alt="">Grok <span aria-hidden="true">↗</span></a></div></div>
     </section>
-    <section class="approach section" id="approach" aria-labelledby="approach-title"><div class="container"><div class="section-topline"><p class="eyebrow"><span>03 /</span> THE WAY I WORK</p><span class="mono section-count">INTENTION BEFORE IMPLEMENTATION.</span></div><div class="process-grid"><div data-reveal><h2 id="approach-title">Think it through.<br>Build it well.<br><em>Make it better.</em></h2><p class="process-intro">A practical process, with people at the center.<br>Open a step to see how I approach it.</p><span class="process-spark" aria-hidden="true">✳</span></div><div class="process-list" data-reveal><details name="process" open><summary><span class="mono">01</span><h3>Understand the need</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Start with the people using the product. Understand the everyday task, the friction, and what a useful result would look like.</p></details><details name="process"><summary><span class="mono">02</span><h3>Give the idea a shape</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Map the important flows and information. Explore the interface before committing to code, with clear navigation and simple decisions.</p></details><details name="process"><summary><span class="mono">03</span><h3>Build with intention</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Develop in small, manageable steps. Connect the interface and application logic, keeping clarity and maintainability in mind.</p></details><details name="process"><summary><span class="mono">04</span><h3>Review, refine, repeat</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Walk through the experience, test the important interactions, and address what gets in the way. Small refinements make a difference.</p></details></div></div></div></section>
-    <section class="contact section container" id="contact" aria-labelledby="contact-title"><div class="section-topline"><p class="eyebrow"><span>04 /</span> SOMETHING STARTS WITH HELLO</p><span class="mono section-count"><span class="status-dot"></span> SAN JOSE, ANTIQUE</span></div><div class="contact-grid" data-reveal><div><h2 id="contact-title">Something in mind?<br><em>Let’s make it happen.</em><span aria-hidden="true">↗</span></h2><p>For thoughtful software, community projects,<br>or a good conversation about what’s possible.</p></div><div class="contact-actions"><a class="button button-primary" href="https://www.linkedin.com/in/jhon-kylho-estrabo-108a95268/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a><button class="copy-link text-link" type="button">Copy portfolio link <span aria-hidden="true">⧉</span></button><div class="local-time"><span class="status-dot" aria-hidden="true"></span><span>My local time <time id="local-clock">Philippines · UTC+8</time></span></div></div></div></section>
+
+    <!-- Approach Section -->
+    <section class="approach section" id="approach" aria-labelledby="approach-title"><div class="container"><div class="section-topline"><p class="eyebrow"><span>04 /</span> THE WAY I WORK</p><span class="mono section-count">INTENTION BEFORE IMPLEMENTATION.</span></div><div class="process-grid"><div data-reveal><h2 id="approach-title">Think it through.<br>Build it well.<br><em>Make it better.</em></h2><p class="process-intro">A practical process, with people at the center.<br>Open a step to see how I approach it.</p><span class="process-spark" aria-hidden="true">✳</span></div><div class="process-list" data-reveal><details name="process" open><summary><span class="mono">01</span><h3>Understand the need</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Start with the people using the product. Understand the everyday task, the friction, and what a useful result would look like.</p></details><details name="process"><summary><span class="mono">02</span><h3>Give the idea a shape</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Map the important flows and information. Explore the interface before committing to code, with clear navigation and simple decisions.</p></details><details name="process"><summary><span class="mono">03</span><h3>Build with intention</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Develop in small, manageable steps. Connect the interface and application logic, keeping clarity and maintainability in mind.</p></details><details name="process"><summary><span class="mono">04</span><h3>Review, refine, repeat</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Walk through the experience, test the important interactions, and address what gets in the way. Small refinements make a difference.</p></details></div></div></div></section>
+
+    <!-- Contact Section with Interactive Topic Selector -->
+    <section class="contact section container" id="contact" aria-labelledby="contact-title"><div class="section-topline"><p class="eyebrow"><span>05 /</span> SOMETHING STARTS WITH HELLO</p><span class="mono section-count"><span class="status-dot pulse"></span> SAN JOSE, ANTIQUE</span></div><div class="contact-grid" data-reveal><div><h2 id="contact-title">Something in mind?<br><em>Let’s make it happen.</em><span aria-hidden="true">↗</span></h2><p>For thoughtful software, community projects,<br>or a good conversation about what’s possible.</p></div>
+      <div class="contact-actions">
+        <!-- Quick Inquiry Topic Selector -->
+        <div class="quick-inquiry-box">
+          <span class="mono">CHOOSE AN INQUIRY TOPIC:</span>
+          <div class="quick-topic-pills" role="group" aria-label="Select inquiry topic">
+            <button type="button" class="topic-pill active" data-topic="collab">💼 Project Collaboration</button>
+            <button type="button" class="topic-pill" data-topic="hiring">🚀 Job / Internship</button>
+            <button type="button" class="topic-pill" data-topic="hello">👋 Saying Hello</button>
+          </div>
+        </div>
+        <div class="contact-buttons-row">
+          <a class="button button-primary" id="contact-email-btn" href="mailto:jhonkylhoestraboofficial@gmail.com?subject=Project%20Collaboration%20Inquiry%20%E2%80%94%20Jhon%20Estrabo">Email Jhon <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="https://github.com/kylho1231" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/jhon-kylho-estrabo-108a95268/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+        <div class="contact-links-row">
+          <button class="copy-email-btn text-link" type="button" id="copy-email-btn">Copy email address <span aria-hidden="true">⧉</span></button>
+          <button class="copy-link text-link" type="button">Copy portfolio link <span aria-hidden="true">⧉</span></button>
+        </div>
+        <div class="local-time"><span class="status-dot pulse" aria-hidden="true"></span><span>My local time <time id="local-clock">Philippines · UTC+8</time></span></div>
+      </div></div></section>
   </main>
   <footer class="site-footer container"><a class="footer-brand" href="#top">je<span>.</span></a><p>Made with intention. Always evolving.<span>© <span data-year>2026</span> Jhon Kylho Estrabo</span></p><button class="footer-shortcuts text-link command-trigger" type="button" aria-haspopup="dialog">Quick navigation <kbd>⌘ K</kbd></button><a class="back-top" href="#top" aria-label="Back to top">↑</a></footer>
-  <dialog class="project-dialog" aria-labelledby="project-dialog-title"><div class="dialog-topbar"><span class="mono">A CLOSER LOOK</span><button class="icon-button dialog-close" type="button" aria-label="Close project details">×</button></div><div class="dialog-content"><p class="eyebrow" id="project-dialog-category"></p><h2 id="project-dialog-title"></h2><p id="project-dialog-intro" class="large-copy"></p><div class="project-dialog-grid"><div><h3>The need</h3><p id="project-dialog-need"></p></div><div><h3>The approach</h3><p id="project-dialog-approach"></p></div></div><h3>Tools &amp; technologies</h3><ul class="tags" id="project-dialog-tags"></ul><p class="dialog-note">The interactive preview is an illustrative concept with sample data. It is not connected to a live project system.</p><button class="button button-primary dialog-close" type="button">Back to exploring <span aria-hidden="true">↗</span></button></div></dialog>
-  <dialog class="command-dialog" aria-labelledby="command-title"><div class="dialog-topbar"><h2 id="command-title">Go somewhere.</h2><button class="icon-button command-close" type="button" aria-label="Close quick navigation">×</button></div><label class="sr-only" for="command-search">Search sections and actions</label><input id="command-search" type="search" placeholder="Search sections, projects, or actions…" autocomplete="off"><div class="command-list"><button type="button" data-command="work"><span>01</span> Selected work <span>↗</span></button><button type="button" data-command="toda"><span>↳</span> TODA Verify <span>↗</span></button><button type="button" data-command="motorcycle"><span>↳</span> Motorcycle release tracker <span>↗</span></button><button type="button" data-command="scholarship"><span>↳</span> Scholarship monitoring <span>↗</span></button><button type="button" data-command="about"><span>02</span> About &amp; toolkit <span>↗</span></button><button type="button" data-command="approach"><span>03</span> My process <span>↗</span></button><button type="button" data-command="contact"><span>04</span> Get in touch <span>↗</span></button><button type="button" data-command="theme"><span>◐</span> Switch color theme <span>↗</span></button><button type="button" data-command="copy"><span>⧉</span> Copy portfolio link <span>↗</span></button></div><p class="command-empty" hidden>No matches. Try “work”, “about”, or “theme”.</p><p class="command-hint mono">↑ ↓ TO NAVIGATE <span>ESC TO CLOSE</span></p></dialog>
+  
+  <!-- Project Architecture Modal Dialog -->
+  <dialog class="project-dialog" aria-labelledby="project-dialog-title">
+    <div class="dialog-topbar"><span class="mono">A CLOSER LOOK</span><button class="icon-button dialog-close" type="button" aria-label="Close project details">×</button></div>
+    <div class="dialog-content">
+      <p class="eyebrow" id="project-dialog-category"></p>
+      <h2 id="project-dialog-title"></h2>
+      <p id="project-dialog-intro" class="large-copy"></p>
+      <div class="project-dialog-grid"><div><h3>The need</h3><p id="project-dialog-need"></p></div><div><h3>The approach</h3><p id="project-dialog-approach"></p></div></div>
+      <h3>Tools &amp; technologies</h3>
+      <ul class="tags" id="project-dialog-tags"></ul>
+      <div class="dialog-links" id="project-dialog-links">
+        <a class="button button-primary" id="project-dialog-live" href="#" target="_blank" rel="noopener noreferrer">Launch Live App <span aria-hidden="true">↗</span></a>
+        <a class="button button-secondary" id="project-dialog-repo" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>View Repository <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="dialog-note">Interactive previews in the studio demonstrate architectural flow and state machines without exposing live production customer records.</p>
+      <button class="button button-primary dialog-close" type="button">Back to exploring <span aria-hidden="true">↗</span></button>
+    </div>
+  </dialog>
+
+  <!-- Quick Command Palette Modal Dialog -->
+  <dialog class="command-dialog" aria-labelledby="command-title"><div class="dialog-topbar"><h2 id="command-title">Go somewhere.</h2><button class="icon-button command-close" type="button" aria-label="Close quick navigation">×</button></div><label class="sr-only" for="command-search">Search sections and actions</label><input id="command-search" type="search" placeholder="Search sections, projects, or actions…" autocomplete="off"><div class="command-list">
+    <button type="button" data-command="work"><span>01</span> Selected work <span>↗</span></button>
+    <button type="button" data-command="aquaflow"><span>💧</span> AquaFlow (Water Refill PWA) <span>↗</span></button>
+    <button type="button" data-command="toda"><span>↳</span> TODA Verify (Android) <span>↗</span></button>
+    <button type="button" data-command="motorcycle"><span>↳</span> Motorcycle release tracker <span>↗</span></button>
+    <button type="button" data-command="scholarship"><span>↳</span> Scholarship monitoring <span>↗</span></button>
+    <button type="button" data-command="playground"><span>02</span> Interactive playground <span>↗</span></button>
+    <button type="button" data-command="about"><span>03</span> About &amp; toolkit <span>↗</span></button>
+    <button type="button" data-command="approach"><span>04</span> My process <span>↗</span></button>
+    <button type="button" data-command="contact"><span>05</span> Get in touch <span>↗</span></button>
+    <button type="button" data-command="github"><span>⌘</span> Open GitHub Profile (@kylho1231) <span>↗</span></button>
+    <button type="button" data-command="sound"><span>🔊</span> Toggle Sound FX <span>↗</span></button>
+    <button type="button" data-command="random-accent"><span>🎨</span> Surprise accent color <span>↗</span></button>
+    <button type="button" data-command="theme"><span>◐</span> Switch color theme <span>↗</span></button>
+    <button type="button" data-command="copy"><span>⧉</span> Copy portfolio link <span>↗</span></button>
+  </div><p class="sr-only" id="command-status" role="status" aria-live="polite"></p><p class="command-empty" hidden>No matches. Try “AquaFlow”, “work”, “about”, or “theme”.</p><p class="command-hint mono">↑ ↓ TO NAVIGATE <span>ESC TO CLOSE</span></p></dialog>
   <div class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
