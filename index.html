@@ -11,7 +11,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700;750;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="motion-lab.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="portfolio.js" defer></script>
+  <script src="motion-lab.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -22,7 +25,7 @@
       <nav aria-label="Main navigation">
         <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Open navigation"><span></span><span></span></button>
         <ul class="nav-links" id="primary-links">
-          <li><a href="#work">Selected work</a></li><li><a href="#playground">Playground</a></li><li><a href="#about">About</a></li><li><a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></li>
+          <li><a href="#motion-lab">Motion lab</a></li><li><a href="#work">Selected work</a></li><li><a href="#playground">Playground</a></li><li><a href="#about">About</a></li><li><a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></li>
         </ul>
       </nav>
       <div class="header-tools">
@@ -57,6 +60,14 @@
             </div>
           </div>
           <div class="hero-studio">
+            <div class="motion-orbit" aria-label="Decorative interactive orbital 3D illustration">
+              <div class="motion-orbit-glow" aria-hidden="true"></div>
+              <canvas class="motion-canvas" aria-hidden="true"></canvas>
+              <div class="motion-fallback" aria-hidden="true"><span class="orbit-ring orbit-ring--one"></span><span class="orbit-ring orbit-ring--two"></span><span class="orbit-ring orbit-ring--three"></span><span class="orbit-core">je<span>.</span></span></div>
+              <span class="motion-cross motion-cross--one" aria-hidden="true">+</span><span class="motion-cross motion-cross--two" aria-hidden="true">+</span>
+              <span class="orbit-coordinate" aria-hidden="true">36.1988° N / IDEAS IN MOTION</span>
+              <div class="motion-hint"><span class="mini-led"></span> INTERACTIVE PORTFOLIO OBJECT <b>Move your cursor.<br>Explore the dimension.</b></div>
+            </div>
             <div class="studio-index mono"><span>THE PERSON BEHIND THE PIXELS</span><span>001 / JE</span></div>
             <figure class="portrait" data-tilt>
               <div class="portrait-image">
@@ -71,6 +82,17 @@
         <div class="hero-bottom"><a href="#work"><span class="scroll-icon" aria-hidden="true">↓</span> SCROLL TO EXPLORE</a><div class="hero-disciplines"><span>NEXT.JS 14</span><span>REACT</span><span>KOTLIN</span><span>FIREBASE</span><span>PWA</span></div><span class="mono">A PERSONAL PORTFOLIO / <span data-year>2026</span></span></div>
       </div>
     </section>
+    <section class="motion-lab section" id="motion-lab" aria-labelledby="motion-lab-title"><div class="container">
+      <div class="section-topline"><p class="eyebrow"><span>+</span> DIGITAL MOTION LAB</p><span class="section-count mono">HOVER / MOVE / EXPLORE</span></div>
+      <div class="section-heading" data-reveal><h2 id="motion-lab-title">Made to move.<br><em>Built to feel.</em></h2><p>Good interactions are more than decoration. Explore three small studies in depth, responsiveness, and kinetic typography. Move your mouse across each card.</p></div>
+      <div class="motion-section-actions"><p class="motion-info">003 / EXPERIMENTS IN HUMAN-CENTERED INTERACTION</p><button type="button" id="motion-toggle" class="motion-control" aria-pressed="true"><span class="switch-track" aria-hidden="true"><span class="switch-knob"></span></span><span class="motion-control-label">Motion on</span></button></div>
+      <div class="motion-showcase-grid">
+        <article class="motion-showcase" data-reveal><div class="motion-showcase-head"><span>SPATIAL INTERFACE / 01</span><span class="index">↗ 3D</span></div><div class="motion-showcase-scene"><div class="depth-stage"><div class="depth-stack" aria-hidden="true"><div class="depth-plane depth-plane--back"></div><div class="depth-plane depth-plane--middle"></div><div class="depth-plane depth-plane--front"><span>PORTFOLIO_2026</span><strong>je.</strong><span>IDEAS / INTERFACES / IMPACT</span></div></div></div></div><div class="motion-showcase-foot"><h3>Layers of depth.</h3><p>Stacked surfaces react to cursor position to create tangible dimensionality.</p></div></article>
+        <article class="motion-showcase" data-reveal><div class="motion-showcase-head"><span>TACTILE INTERACTION / 02</span><span class="index">↗ FEEL</span></div><div class="motion-showcase-scene"><div class="magnetic-stage"><button type="button" class="magnetic-button">Explore work <span aria-hidden="true">↗</span></button></div></div><div class="motion-showcase-foot"><h3>A little attraction.</h3><p>A responsive magnetic action that leads to the projects behind the pixels.</p></div></article>
+        <article class="motion-showcase" data-reveal><div class="motion-showcase-head"><span>KINETIC TYPE / 03</span><span class="index">↗ TYPE</span></div><div class="motion-showcase-scene"><div class="kinetic-stage" aria-hidden="true"><div class="motion-grid-line"></div><span class="kinetic-word">MOVE.</span></div></div><div class="motion-showcase-foot"><h3>Type in motion.</h3><p>Expressive typography with subtle 3D perspective and dynamic shadows.</p></div></article>
+      </div>
+      <div class="motion-lab-notes"><span><i class="status-dot" aria-hidden="true"></i> ALL DEMOS RUN LOCALLY IN YOUR BROWSER</span><span>PERFORMANCE-MINDED / REDUCED-MOTION FRIENDLY</span></div>
+    </div></section>
     <section class="work section" id="work" aria-labelledby="work-title"><div class="container">
       <div class="section-topline"><p class="eyebrow"><span>01 /</span> SELECTED WORK</p><span class="section-count mono">SEVEN PROJECTS. REAL-WORLD CONTEXT.</span></div>
       <div class="section-heading" data-reveal><h2 id="work-title">Small details.<br><em>Real-world purpose.</em></h2><p>Exploring better ways to move, book authorized municipal tricycles, stay informed, access clean water, release vehicular documents, coordinate municipal solid waste, and connect local provincial producers with commercial buyers. A portfolio of production PWAs, native Android, and full-stack architectures.</p></div>
@@ -839,6 +861,7 @@
 
   <!-- Quick Command Palette Modal Dialog -->
   <dialog class="command-dialog" aria-labelledby="command-title"><div class="dialog-topbar"><h2 id="command-title">Go somewhere.</h2><button class="icon-button command-close" type="button" aria-label="Close quick navigation">×</button></div><label class="sr-only" for="command-search">Search sections and actions</label><input id="command-search" type="search" placeholder="Search sections, projects, or actions…" autocomplete="off"><div class="command-list">
+    <button type="button" data-command="motion-lab"><span>✳</span> Motion lab <span>↗</span></button>
     <button type="button" data-command="work"><span>01</span> Selected work <span>↗</span></button>
     <button type="button" data-command="aquaflow"><span>💧</span> AquaFlow (Water Refill PWA) <span>↗</span></button>
     <button type="button" data-command="toda"><span>🛵</span> San Jose TODA (Android App) <span>↗</span></button>
