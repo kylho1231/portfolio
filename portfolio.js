@@ -541,7 +541,8 @@ const projects = {
     need: "Commuters, students, and tricycle operators frequently face disputes over unregulated fares, confusing per-kilometer increments, and unauthorized special trip rates across San Jose de Buenavista barangays.",
     approach: "Engineered a native Kotlin Android application (target API 37) utilizing Material Design 3 and ViewBinding. Features real-time route calculations, automatic 20% statutory discounts for students, senior citizens, and PWDs, transparent pakyaw/solo ride rates, offline fare matrices, and direct reporting channels to San Jose Traffic Management Office (TMO) and PNP.",
     tools: ["Kotlin", "Android Studio (API 37)", "Material Design 3", "ViewBinding", "MO 2022-18", "MO 2024-01", "Municipal Ordinances"],
-    repo: "https://github.com/kylho1231"
+    live: "https://kylho1231.github.io/TODA/",
+    repo: "https://github.com/kylho1231/TODA"
   },
   scholarship: {
     title: "SAC ISPSO ScholarLink — Scholarship Portal & Stipend Manager",

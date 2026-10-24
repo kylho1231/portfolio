@@ -17,8 +17,10 @@ A personal portfolio highlighting full-stack engineering, Progressive Web Apps (
    - **Interactive Preview:** In-browser refill ordering simulator with real container selection, live price calculations, and simulated dispatch status transitions.
 
 2. **San Jose TODA — Municipal Fare Calculator & Matrix**
-   - **Platform:** Native Kotlin Android Application (API 37)
-   - **GitHub Profile:** [https://github.com/kylho1231](https://github.com/kylho1231)
+   - **Live Web Portal & Calculator:** [https://kylho1231.github.io/TODA/](https://kylho1231.github.io/TODA/)
+   - **GitHub Repository:** [https://github.com/kylho1231/TODA](https://github.com/kylho1231/TODA)
+   - **APK Download:** [https://github.com/kylho1231/TODA/releases/latest](https://github.com/kylho1231/TODA/releases/latest)
+   - **Platform:** Native Kotlin Android Application (API 37) + PWA Web App
    - **Tech Stack:** Kotlin, Android Studio (API 37), Material Design 3, ViewBinding, Municipal Ordinances 2022-18 & 2024-01
    - **Summary:** Official San Jose de Buenavista TODA Fare Matrix and Fare Calculator app with real-time distance calculations, statutory 20% discounts for students, seniors, and PWDs, pakyaw/solo ride rates, offline matrices, and direct reporting hotlines to San Jose Traffic Management Office (TMO) and PNP.
    - **Interactive Preview:** In-browser Android fare calculator simulation with live route selection, passenger discount chips, pakyaw toggle, regulated fare display, and emergency incident reporting simulation.
