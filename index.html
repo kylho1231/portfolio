@@ -72,27 +72,28 @@
       </div>
     </section>
     <section class="work section" id="work" aria-labelledby="work-title"><div class="container">
-      <div class="section-topline"><p class="eyebrow"><span>01 /</span> SELECTED WORK</p><span class="section-count mono">FIVE PROJECTS. REAL-WORLD CONTEXT.</span></div>
-      <div class="section-heading" data-reveal><h2 id="work-title">Small details.<br><em>Real-world purpose.</em></h2><p>Exploring better ways to move, stay informed, access clean water, release vehicular documents, and coordinate municipal solid waste. A portfolio of production PWAs, native Android, and Laravel architectures.</p></div>
+      <div class="section-topline"><p class="eyebrow"><span>01 /</span> SELECTED WORK</p><span class="section-count mono">SIX PROJECTS. REAL-WORLD CONTEXT.</span></div>
+      <div class="section-heading" data-reveal><h2 id="work-title">Small details.<br><em>Real-world purpose.</em></h2><p>Exploring better ways to move, stay informed, access clean water, release vehicular documents, coordinate municipal solid waste, and connect local provincial producers with commercial buyers. A portfolio of production PWAs, native Android, and full-stack architectures.</p></div>
 
       <!-- Quick Category Filter Bar -->
       <div class="work-filter-bar">
         <span class="mono">CATEGORIES:</span>
         <div class="work-filters" role="group" aria-label="Filter projects by category">
-          <button type="button" class="work-filter-btn" data-filter="all" aria-pressed="true">All (5)</button>
-          <button type="button" class="work-filter-btn" data-filter="pwa" aria-pressed="false">PWA &amp; Cloud (3)</button>
-          <button type="button" class="work-filter-btn" data-filter="android" aria-pressed="false">Android (2)</button>
-          <button type="button" class="work-filter-btn" data-filter="civic" aria-pressed="false">Civic &amp; Community (3)</button>
+          <button type="button" class="work-filter-btn" data-filter="all" aria-pressed="true">All (6)</button>
+          <button type="button" class="work-filter-btn" data-filter="pwa" aria-pressed="false">PWA &amp; Cloud (4)</button>
+          <button type="button" class="work-filter-btn" data-filter="android" aria-pressed="false">Android (3)</button>
+          <button type="button" class="work-filter-btn" data-filter="civic" aria-pressed="false">Civic &amp; Community (4)</button>
         </div>
       </div>
 
-      <!-- 5 Project Tabs -->
+      <!-- 6 Project Tabs -->
       <div class="project-tabs" role="tablist" aria-label="Explore selected projects">
         <button class="project-tab" id="tab-aquaflow" type="button" role="tab" aria-selected="true" aria-controls="panel-aquaflow" data-project="aquaflow" data-category="pwa"><span class="tab-number">01</span><span><strong>AquaFlow</strong><small>Water Refill · PWA &amp; Vercel</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
         <button class="project-tab" id="tab-toda" type="button" role="tab" aria-selected="false" aria-controls="panel-toda" tabindex="-1" data-project="toda" data-category="android civic"><span class="tab-number">02</span><span><strong>San Jose TODA</strong><small>Municipal Guide · Android</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
         <button class="project-tab" id="tab-scholarship" type="button" role="tab" aria-selected="false" aria-controls="panel-scholarship" tabindex="-1" data-project="scholarship" data-category="pwa civic"><span class="tab-number">03</span><span><strong>SAC ISPSO</strong><small>ScholarLink · Next.js 14</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
         <button class="project-tab" id="tab-motorelease" type="button" role="tab" aria-selected="false" aria-controls="panel-motorelease" tabindex="-1" data-project="motorelease" data-category="pwa"><span class="tab-number">04</span><span><strong>MotoRelease</strong><small>Yamaha OR/CR · Laravel</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
         <button class="project-tab" id="tab-ecocollect" type="button" role="tab" aria-selected="false" aria-controls="panel-ecocollect" tabindex="-1" data-project="ecocollect" data-category="android civic"><span class="tab-number">05</span><span><strong>EcoCollect SJ</strong><small>Solid Waste · Android/Web</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+        <button class="project-tab" id="tab-antiquesupply" type="button" role="tab" aria-selected="false" aria-controls="panel-antiquesupply" tabindex="-1" data-project="antiquesupply" data-category="pwa android civic"><span class="tab-number">06</span><span><strong>AntiqueSupply</strong><small>B2B Market · Supabase</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
       </div>
 
       <!-- Panel 1: AquaFlow -->
@@ -493,11 +494,127 @@
         </div>
       </article>
 
+      <!-- Panel 6: AntiqueSupply (B2B Regional Marketplace & Supplier Hub) -->
+      <article class="project-panel" id="panel-antiquesupply" role="tabpanel" aria-labelledby="tab-antiquesupply" tabindex="0" hidden>
+        <div class="project-copy">
+          <div class="project-label"><span class="mini-dot"></span> B2B COMMERCE &amp; LOGISTICS · LIVE PRODUCTION</div>
+          <h3>Local products,<br>bigger markets.</h3>
+          <p class="project-name">AntiqueSupply — B2B Marketplace &amp; Supplier Operations Platform</p>
+          <p>A full-stack regional B2B procurement marketplace engineered to connect local agricultural cooperatives and artisanal producers across Antique Province with commercial buyers, resorts in Boracay Island, and Panay restaurants. Features atomic row-level inventory locking in PostgreSQL/Supabase, multi-item Request for Quotation (RFQ) pipelines, order fulfillment state machines, and a companion native Android application with offline Room draft caching.</p>
+          <ul class="tags" aria-label="Project technologies">
+            <li>Next.js 15</li>
+            <li>React 19</li>
+            <li>Kotlin (Compose)</li>
+            <li>Supabase / PostgreSQL</li>
+            <li>TypeScript</li>
+            <li>Tailwind CSS</li>
+            <li>Room Database</li>
+            <li>Vercel</li>
+          </ul>
+          <div class="project-actions-group">
+            <a class="button button-primary" href="https://antiquesupply.vercel.app" target="_blank" rel="noopener noreferrer">Launch Marketplace <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="button button-secondary" href="https://github.com/kylho1231/antiquesupply" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub Repo <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://antiquesupply.vercel.app/suppliers" target="_blank" rel="noopener noreferrer">Cooperative Hub <span aria-hidden="true">↗</span></a>
+            <button class="text-link project-open" type="button" data-open-project="antiquesupply">Architecture details <span aria-hidden="true">↗</span></button>
+          </div>
+          <span class="project-platform mono">06 — FULL-STACK NEXT.JS 15, SUPABASE &amp; ANDROID (VERCEL)</span>
+        </div>
+        <div class="project-visual visual-antiquesupply" style="background: radial-gradient(circle at 50% 50%, #0d3835 0%, #051a18 100%);">
+          <span class="visual-label mono">INTERACTIVE B2B PROCUREMENT &amp; PIPELINE SIMULATOR</span>
+          <div class="antiquesupply-demo">
+            <div class="as-header">
+              <div class="as-branding">
+                <span style="font-size: 20px;">📦</span>
+                <div>
+                  <strong>AntiqueSupply B2B</strong>
+                  <small>Panay &amp; Boracay Island Procurement</small>
+                </div>
+              </div>
+              <span class="as-pill">VERCEL LIVE</span>
+            </div>
+
+            <label for="as-buyer-select" style="font-size: 11px; font-weight: 600; color: #2dd4bf; display: block; margin-bottom: 4px;">Commercial Buyer Entity:</label>
+            <select id="as-buyer-select" class="as-buyer-select">
+              <option value="boracay">Boracay Palms Beach Resort (Station 1, Boracay Island)</option>
+              <option value="bistro">Panay Heritage Bistro &amp; Cafe (San Jose de Buenavista)</option>
+              <option value="supermart">Panay Merchant Wholesale &amp; Grocers (Kalibo, Aklan)</option>
+            </select>
+
+            <div class="as-products-label">Select Antique Cooperative Product:</div>
+            <div class="as-products-grid" role="radiogroup" aria-label="Select wholesale product">
+              <button type="button" class="as-prod-btn active" data-prod="muscovado" data-price="4250" data-unit="50kg Sack" data-coop="Laua-an Organic Farmers Coop" data-moq="2">
+                <strong>Muscovado Sugar</strong>
+                <small>₱4,250 · 50kg Sack (Laua-an)</small>
+              </button>
+              <button type="button" class="as-prod-btn" data-prod="patadyong" data-price="1850" data-unit="Runner Set" data-coop="Bagtason Loom Weavers (Bugasong)" data-moq="5">
+                <strong>Hablon Patadyong</strong>
+                <small>₱1,850 · Bed Runner (Bugasong)</small>
+              </button>
+              <button type="button" class="as-prod-btn" data-prod="vco" data-price="6800" data-unit="20L Drum" data-coop="Tibiao Eco-Farm &amp; Agro Coop" data-moq="1">
+                <strong>Virgin Coconut Oil</strong>
+                <small>₱6,800 · 20L Drum (Tibiao)</small>
+              </button>
+              <button type="button" class="as-prod-btn" data-prod="bariw" data-price="3800" data-unit="Pack of 20" data-coop="Pandan Bariw Crafts Federation" data-moq="1">
+                <strong>Bariw Resort Bags</strong>
+                <small>₱3,800 · 20 Bags (Pandan)</small>
+              </button>
+            </div>
+
+            <div class="as-order-summary">
+              <div class="as-summary-row">
+                <span id="as-coop-name" style="color: #5eead4; font-size: 10px;">Laua-an Organic Farmers Coop</span>
+                <span id="as-prod-unit-price" class="mono" style="color: #94a3b8;">₱4,250.00 / 50kg Sack</span>
+              </div>
+              <div class="as-summary-row">
+                <span>Wholesale Quantity:</span>
+                <div class="as-qty-control">
+                  <button type="button" class="as-qty-btn" id="as-qty-minus" aria-label="Decrease wholesale quantity">−</button>
+                  <strong id="as-qty-val" class="mono" style="min-width: 24px; text-align: center; color: #fff;">2</strong>
+                  <button type="button" class="as-qty-btn" id="as-qty-plus" aria-label="Increase wholesale quantity">+</button>
+                </div>
+              </div>
+              <div class="as-summary-row">
+                <strong>PO Total (Panay Freight incl.):</strong>
+                <strong id="as-total-val" class="mono" style="color: #34d399; font-size: 13px;">₱8,850.00</strong>
+              </div>
+            </div>
+
+            <div class="as-pipeline-box">
+              <div class="as-pipeline-header">
+                <span class="as-pipeline-title">Order Lifecycle Pipeline</span>
+                <span class="as-pipeline-status" id="as-status-label">Ready to Submit PO</span>
+              </div>
+              <div class="as-pipeline-steps">
+                <span class="as-step" id="as-step-1">1. Submit</span>
+                <span class="as-step" id="as-step-2">2. Confirm</span>
+                <span class="as-step" id="as-step-3">3. Prep</span>
+                <span class="as-step" id="as-step-4">4. Dispatch</span>
+                <span class="as-step" id="as-step-5">5. Deliver</span>
+              </div>
+            </div>
+
+            <button type="button" class="as-btn-submit" id="as-trigger-order">
+              <span>Simulate B2B PO Dispatch</span> <span aria-hidden="true">⚡</span>
+            </button>
+            <button type="button" class="text-link" id="as-reset-order" style="color: #5eead4; font-size: 10px; margin-top: 6px;" hidden>Reset Order Simulation ↺</button>
+
+            <div class="as-security-footer">
+              <span>🔒 Atomic Row Lock: Acquired</span>
+              <span>PostgreSQL RLS Active ✓</span>
+            </div>
+
+            <a href="https://antiquesupply.vercel.app" target="_blank" rel="noopener noreferrer" class="aquaflow-live-chip" style="color: #2dd4bf; border-color: #0f766e; margin-top: 10px;">Open Production Marketplace (antiquesupply.vercel.app) ↗</a>
+          </div>
+          <span class="visual-note">Live Next.js 15 &amp; Supabase B2B Platform · Panay &amp; Boracay</span>
+          <span class="visual-corner" aria-hidden="true">↗</span>
+        </div>
+      </article>
+
       <div class="work-bottom">
         <span><i class="mini-dot"></i> Interactive concepts &amp; production deployments.</span>
         <div class="project-pagination" role="group" aria-label="Browse projects">
           <button class="project-step" data-project-step="-1" type="button" aria-label="Previous project">&#8592;</button>
-          <span class="mono" id="project-position" role="status" aria-live="polite">01 / 05</span>
+          <span class="mono" id="project-position" role="status" aria-live="polite">01 / 06</span>
           <button class="project-step" data-project-step="1" type="button" aria-label="Next project">&#8594;</button>
         </div>
       </div>
@@ -528,7 +645,7 @@
           </div>
           <div id="lab-output" role="status" aria-live="polite" aria-atomic="true">
             <div class="lab-art" aria-hidden="true"><span class="lab-bracket">{</span><span class="lab-asterisk">✳</span><span class="lab-bracket">}</span><span class="lab-art-caption mono">CURIOUS BY DEFAULT.</span></div>
-            <div class="lab-output-copy"><p class="eyebrow">A WORK IN PROGRESS, BY DESIGN</p><h3 id="lab-title">Useful things, thoughtfully built.</h3><p id="lab-description">From AquaFlow's water logistics PWA to SAC ISPSO ScholarLink, San Jose TODA, MotoRelease, and EcoCollect SJ, I enjoy turning real community needs into clear, practical software.</p><pre id="lab-code">const approach = ["understand", "build", "refine"];</pre></div>
+            <div class="lab-output-copy"><p class="eyebrow">A WORK IN PROGRESS, BY DESIGN</p><h3 id="lab-title">Useful things, thoughtfully built.</h3><p id="lab-description">From AquaFlow's water logistics PWA to AntiqueSupply's B2B marketplace, SAC ISPSO, San Jose TODA, MotoRelease, and EcoCollect SJ, I enjoy turning real community needs into clear, practical software.</p><pre id="lab-code">const approach = ["understand", "build", "refine"];</pre></div>
           </div>
           <div class="lab-window-footer mono"><span><i class="status-dot" aria-hidden="true"></i> ALWAYS ITERATING</span><span>BUILT WITH INTENTION ↗</span></div>
         </div>
@@ -554,6 +671,7 @@
           <li data-skill="code" data-tech="javascript">JavaScript</li>
           <li data-skill="code" data-tech="htmlcss">HTML &amp; CSS</li>
           <li data-skill="data" data-tech="firebase">Firebase Firestore</li>
+          <li data-skill="data" data-tech="postgresql">PostgreSQL / Supabase</li>
           <li data-skill="data" data-tech="mysql">MySQL</li>
           <li data-skill="tools" data-tech="passkeys">WebAuthn / Passkeys</li>
           <li data-skill="tools" data-tech="vercel">Vercel</li>
@@ -629,6 +747,7 @@
     <button type="button" data-command="scholarship"><span>🎓</span> SAC ISPSO ScholarLink (Next.js 14) <span>↗</span></button>
     <button type="button" data-command="motorelease"><span>🏍️</span> MotoRelease (Yamaha OR/CR Releasing) <span>↗</span></button>
     <button type="button" data-command="ecocollect"><span>🚛</span> EcoCollect SJ (Waste Tracking &amp; MENRO) <span>↗</span></button>
+    <button type="button" data-command="antiquesupply"><span>📦</span> AntiqueSupply (B2B Marketplace &amp; Supabase) <span>↗</span></button>
     <button type="button" data-command="playground"><span>02</span> Interactive playground <span>↗</span></button>
     <button type="button" data-command="about"><span>03</span> About &amp; toolkit <span>↗</span></button>
     <button type="button" data-command="approach"><span>04</span> My process <span>↗</span></button>

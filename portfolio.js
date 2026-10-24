@@ -628,6 +628,124 @@ ecoChips.forEach(chip => {
 });
 
 /* ----------------------------------------------------
+   Interactive AntiqueSupply B2B Procurement Simulator
+---------------------------------------------------- */
+let asQuantity = 2;
+let asCurrentPrice = 4250;
+let asCurrentUnit = "50kg Sack";
+let asCurrentMoq = 2;
+let asPipelineTimer = null;
+
+const asProdBtns = $$(".as-prod-btn");
+const asCoopName = $("#as-coop-name");
+const asProdUnitPrice = $("#as-prod-unit-price");
+const asQtyVal = $("#as-qty-val");
+const asTotalVal = $("#as-total-val");
+const asQtyMinus = $("#as-qty-minus");
+const asQtyPlus = $("#as-qty-plus");
+const asTriggerOrder = $("#as-trigger-order");
+const asResetOrder = $("#as-reset-order");
+const asStatusLabel = $("#as-status-label");
+const asSteps = [$("#as-step-1"), $("#as-step-2"), $("#as-step-3"), $("#as-step-4"), $("#as-step-5")];
+
+function updateAsCalculations() {
+  const freight = 350; // standard Panay freight allocation
+  const total = (asQuantity * asCurrentPrice) + freight;
+  if (asQtyVal) asQtyVal.textContent = String(asQuantity);
+  if (asTotalVal) asTotalVal.textContent = `₱${total.toLocaleString("en-PH", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
+asProdBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    asProdBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    asCurrentPrice = Number(btn.dataset.price);
+    asCurrentUnit = btn.dataset.unit;
+    asCurrentMoq = Number(btn.dataset.moq) || 1;
+    asQuantity = Math.max(asQuantity, asCurrentMoq);
+    if (asCoopName) asCoopName.textContent = btn.dataset.coop;
+    if (asProdUnitPrice) asProdUnitPrice.textContent = `₱${asCurrentPrice.toLocaleString("en-PH", { minimumFractionDigits: 2 })} / ${asCurrentUnit}`;
+    playSound("click");
+    updateAsCalculations();
+  });
+});
+
+if (asQtyMinus && asQtyPlus) {
+  asQtyMinus.addEventListener("click", () => {
+    if (asQuantity > asCurrentMoq) {
+      asQuantity -= 1;
+      playSound("click");
+      updateAsCalculations();
+    }
+  });
+  asQtyPlus.addEventListener("click", () => {
+    if (asQuantity < 50) {
+      asQuantity += 1;
+      playSound("click");
+      updateAsCalculations();
+    }
+  });
+}
+
+if (asTriggerOrder) {
+  asTriggerOrder.addEventListener("click", () => {
+    playSound("click");
+    asTriggerOrder.disabled = true;
+    asTriggerOrder.innerHTML = '<span>Locking Inventory in Supabase...</span> <span aria-hidden="true">⏳</span>';
+    clearTimeout(asPipelineTimer);
+
+    // Step 1: Submit PO
+    asSteps.forEach(s => s && s.classList.remove("done", "current"));
+    if (asSteps[0]) asSteps[0].classList.add("done");
+    if (asStatusLabel) asStatusLabel.textContent = "PO Submitted · Stock Reserved";
+
+    // Step 2: Supplier Confirmed (700ms)
+    asPipelineTimer = setTimeout(() => {
+      playSound("click");
+      if (asSteps[1]) asSteps[1].classList.add("done");
+      if (asStatusLabel) asStatusLabel.textContent = "Cooperative Accepted PO ✓";
+
+      // Step 3: Preparing (1500ms)
+      asPipelineTimer = setTimeout(() => {
+        playSound("click");
+        if (asSteps[2]) asSteps[2].classList.add("done");
+        if (asStatusLabel) asStatusLabel.textContent = "Packing & Freight Verification";
+
+        // Step 4: Dispatched (2300ms)
+        asPipelineTimer = setTimeout(() => {
+          playSound("click");
+          if (asSteps[3]) asSteps[3].classList.add("done");
+          if (asStatusLabel) asStatusLabel.textContent = "In Transit (Panay Freight Line)";
+
+          // Step 5: Delivered (3100ms)
+          asPipelineTimer = setTimeout(() => {
+            playSound("success");
+            if (asSteps[4]) asSteps[4].classList.add("done", "current");
+            if (asStatusLabel) asStatusLabel.textContent = "Delivered to Receiving Dock! 🎉";
+            asTriggerOrder.innerHTML = '<span>PO Completed!</span> <span aria-hidden="true">✓</span>';
+            if (asResetOrder) asResetOrder.hidden = false;
+          }, 800);
+        }, 800);
+      }, 800);
+    }, 700);
+  });
+}
+
+if (asResetOrder) {
+  asResetOrder.addEventListener("click", () => {
+    clearTimeout(asPipelineTimer);
+    asSteps.forEach(s => s && s.classList.remove("done", "current"));
+    if (asStatusLabel) asStatusLabel.textContent = "Ready to Submit PO";
+    if (asTriggerOrder) {
+      asTriggerOrder.disabled = false;
+      asTriggerOrder.innerHTML = '<span>Simulate B2B PO Dispatch</span> <span aria-hidden="true">⚡</span>';
+    }
+    asResetOrder.hidden = true;
+    playSound("click");
+  });
+}
+
+/* ----------------------------------------------------
    Projects Detailed Dialog Data
 ---------------------------------------------------- */
 const projects = {
@@ -680,6 +798,16 @@ const projects = {
     tools: ["Kotlin", "Jetpack Compose", "Next.js 15", "TypeScript", "Tailwind CSS", "Cloud Firestore", "Material Design 3", "RA 9003 Compliance", "Clean Architecture"],
     live: "https://github.com/kylho1231/ecocollect-sj",
     repo: "https://github.com/kylho1231/ecocollect-sj"
+  },
+  antiquesupply: {
+    title: "AntiqueSupply — B2B Regional Marketplace & Supplier Hub",
+    category: "06 / NEXT.JS 15, ANDROID & SUPABASE · REGIONAL COMMERCE",
+    intro: "A full-stack B2B marketplace, procurement manager, and cooperative operations hub connecting Antique Province agricultural producers and artisans with commercial buyers across Panay Island and Boracay.",
+    need: "Smallholder agricultural cooperatives (Laua-an Muscovado, Bugasong Patadyong weavers, Tibiao VCO, Pandan Bariw crafts) struggle with isolated local distribution and predatory middlemen, while Boracay eco-resorts and Panay restaurants lack verified direct procurement channels.",
+    approach: "Built a Next.js 15 (React 19, TypeScript) web portal with Tailwind CSS and GetLayers-inspired cinematic design, paired with a native Kotlin Android application with offline Room draft caching. Engineered a normalized PostgreSQL/Supabase database featuring Row Level Security (RLS) tenant isolation, ACID row-level atomic inventory locking to eliminate overselling, multi-item Request for Quotation (RFQ) pipelines, and an immutable 6-stage order lifecycle state machine. Deployed in production on Vercel.",
+    tools: ["Next.js 15", "React 19", "Kotlin (Compose)", "Supabase / PostgreSQL", "TypeScript", "Tailwind CSS", "Room Database", "Vercel", "RA 10173 Compliance"],
+    live: "https://antiquesupply.vercel.app",
+    repo: "https://github.com/kylho1231/antiquesupply"
   }
 };
 
@@ -744,16 +872,16 @@ const skillStories = {
     project: "motorelease"
   },
   nextjs: {
-    desc: "Powers the SAC ISPSO ScholarLink portal (Next.js 14) and the EcoCollect SJ MENRO municipal administration portal (Next.js 15 App Router).",
-    project: "scholarship"
+    desc: "Powers AntiqueSupply's B2B marketplace (Next.js 15 App Router, React 19) and SAC ISPSO ScholarLink (Next.js 14).",
+    project: "antiquesupply"
   },
   react: {
     desc: "Used in AquaFlow to architect a responsive, state-driven water refill ordering PWA with Vite, component hooks, and optimistic UI updates.",
     project: "aquaflow"
   },
   kotlin: {
-    desc: "Engineered native Android applications for San Jose TODA (fare matrix & statutory discounts) and EcoCollect SJ (Jetpack Compose civic waste tracking).",
-    project: "toda"
+    desc: "Engineered native Android applications for AntiqueSupply (Jetpack Compose, Room offline cache), San Jose TODA, and EcoCollect SJ.",
+    project: "antiquesupply"
   },
   typescript: {
     desc: "Provides strict type contracts across AquaFlow's API requests, order state management, and Firestore data documents.",
@@ -788,16 +916,16 @@ const skillStories = {
     project: "motorelease"
   },
   postgresql: {
-    desc: "Relational database used for normalized applicant profiles and document review states in the ISPSO scholarship system.",
-    project: "scholarship"
+    desc: "PostgreSQL & Supabase backend powering AntiqueSupply with Row Level Security (RLS) tenant isolation and atomic inventory locks.",
+    project: "antiquesupply"
   },
   passkeys: {
     desc: "Integrated WebAuthn biometric passkey authentication in AquaFlow for seamless, passwordless customer sign-ins.",
     project: "aquaflow"
   },
   vercel: {
-    desc: "Production cloud deployment platform for AquaFlow (aqua-flow-ochre.vercel.app), MotoRelease (motorelease.vercel.app), and SAC ISPSO ScholarLink (sac-ispso.vercel.app).",
-    project: "motorelease"
+    desc: "Production cloud deployment platform for AntiqueSupply (antiquesupply.vercel.app), MotoRelease, AquaFlow, and SAC ISPSO.",
+    project: "antiquesupply"
   },
   android: {
     desc: "Native Android Studio IDE environment utilized for compiling, testing, and debugging San Jose TODA and EcoCollect SJ mobile apps.",
