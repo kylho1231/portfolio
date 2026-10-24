@@ -32,11 +32,19 @@ A personal portfolio highlighting full-stack engineering, Progressive Web Apps (
    - **Summary:** Centralized scholarship management and student portal for St. Anthony’s College (SAC) in Antique. Replaces uncoordinated Facebook announcements with automated 12-digit DepEd LRN anti-fraud validation, digital QR stipend claiming passes for SAC Gym verification, live schedule alerts for UniFAST TES (₱20,000/sem) and TDP-TES (₱7,500/sem), and an AI guidance advisor (Schola).
    - **Interactive Preview:** Live interactive scholarship grant switcher with dynamic grant subsidy amounts, institutional SAC crest, and digital QR stipend claim pass.
 
-4. **The Next Mile — Motorcycle Plate & OR/CR Monitoring**
-   - **Platform:** Web Application
-   - **GitHub Repository:** [https://github.com/kylho1231/project1](https://github.com/kylho1231/project1)
-   - **Tech Stack:** PHP, JavaScript, MySQL, Bootstrap
-   - **Summary:** Customer service portal for checking document release milestones and receiving automated SMS status updates.
+4. **MotoRelease — Yamaha OR/CR & License Plate Tracking System**
+   - **Production Customer Tracker (Vercel):** [https://motorelease.vercel.app/track](https://motorelease.vercel.app/track) (Staff Console: [https://motorelease.vercel.app/login](https://motorelease.vercel.app/login))
+   - **GitHub Repository:** [https://github.com/kylho1231/motorelease](https://github.com/kylho1231/motorelease)
+   - **Tech Stack:** Laravel 11 LTS, PHP 8.2+, Tailwind CSS, Alpine.js, MySQL, Semaphore SMS API, Pure PHP QR Engine, RA 10173 Compliance, Vercel
+   - **Summary:** Full-stack dealership document and license plate logistics management platform built for motorcycle dealerships (pilot implementation for Yamaha San Jose de Buenavista, Antique). Digitizes the independent lifecycles of Official Receipts (OR), Certificates of Registration (CR), and metal license plates with automated Philippine SMS alerts (Semaphore), QR verification claim passes, masked RA 10173 data privacy gates, and dual physical verification turnover locks. Includes 29 passing automated unit/feature tests.
+   - **Interactive Preview:** In-browser reference lookup simulation (`TRK-YAM-2026-0001`, `0002`, `0003`) displaying real-time dual-custody document statuses, masked owner identity data, and dealership pickup passes.
+
+5. **EcoCollect SJ — Municipal Solid Waste Collection & MENRO Portal**
+   - **GitHub Repository:** [https://github.com/kylho1231/ecocollect-sj](https://github.com/kylho1231/ecocollect-sj)
+   - **Platform:** Native Kotlin Android App (Jetpack Compose) + Web Admin Portal (Next.js 15 App Router)
+   - **Tech Stack:** Kotlin, Jetpack Compose, Next.js 15, TypeScript, Tailwind CSS, Cloud Firestore, Material Design 3, RA 9003 Compliance, Clean Architecture
+   - **Summary:** Civic solid waste collection, scheduling, tracking, and governance platform for San Jose de Buenavista, Antique (Pilot Barangay: Funda-Dalipe). Enforces an honest data philosophy where unconfirmed timetables remain transparently marked *Awaiting Official Confirmation*, provides full RA 9003 waste segregation education in local Kinaray-a (*Madunot*, *Mabaligya*, *Di-madunot*, *Delikado*), and photo-verified illegal dumping incident ticketing.
+   - **Interactive Preview:** In-browser civic schedule simulator with pilot barangay switching (Funda-Dalipe vs Atabay), MENRO verification badge, interactive Kinaray-a waste segregation guide, and citizen incident reporter tracking code.
 
 ---
 
@@ -45,10 +53,12 @@ A personal portfolio highlighting full-stack engineering, Progressive Web Apps (
 - **Interactive AquaFlow Simulator:** Select container types (5-Gal Slim vs 5-Gal Round), change quantities with dynamic PHP pricing, and simulate the real-time order lifecycle (Placed → Station Preparation → Dispatched → Delivered).
 - **San Jose TODA Municipal Fare Calculator:** Interactive Android simulation calculating exact regulated fares across San Jose de Buenavista routes (Funda-Dalipe, San Angel, Badiang, Madrangca, Maybato) with 20% discounts for students, seniors, and PWDs, pakyaw / solo ride rates, and simulated incident reporting to TMO.
 - **SAC ISPSO ScholarLink Grant Switcher & Digital Pass:** Switch between UniFAST TES (₱20,000/sem), TDP-TES (₱7,500/sem), and CAS Working Scholar grants with dynamic grant amounts and digital QR stipend claiming pass for the SAC Gymnasium.
+- **MotoRelease Reference Lookup Simulator:** Live interactive dealership tracking preview switching between sample Yamaha vehicle dossiers (`TRK-YAM-2026-0001`, `0002`, `0003`) with dual OR/CR & metal license plate readiness states, masked data privacy compliance, and dealership claiming QR pass.
+- **EcoCollect SJ Civic Waste Operations Simulator:** Interactive barangay collection schedule switcher (Funda-Dalipe vs Atabay) with official MENRO confirmation status, 4-tier Kinaray-a waste segregation guide (*Madunot*, *Mabaligya*, *Di-madunot*, *Delikado*), and citizen incident tracker code.
 - **Tactile Sound Effects (Web Audio API):** Clean, synthesized audio feedback on user interactions (tab switching, ordering water, toggling themes, and clicking tools). Easily toggleable via the header button (`🔊 / 🔇`) and saved locally.
-- **Interactive Skills Map:** Click any skill chip in the toolkit (Next.js 14, React 18, Kotlin, TypeScript, Firebase, Tailwind CSS, etc.) to reveal how Jhon applied it in real-world projects, with a 1-click jump button to the relevant project.
+- **Interactive Skills Map:** Click any skill chip in the toolkit (Laravel 11, Next.js 14 & 15, Kotlin, React 18, TypeScript, PHP 8.2, Firebase, Tailwind CSS, etc.) to reveal how Jhon applied it in real-world projects, with a 1-click jump button to the relevant project.
 - **Code Playground with One-Click Copy:** Explore architectural mindsets across *Build*, *Design*, *Engineer (PWA)*, and *Learn* with a copy button that copies the snippet directly to your clipboard.
-- **Category Filter Pills:** Switch between *All (4)*, *PWA & Cloud (2)*, *Android (1)*, and *Customer Service (1)* to quickly focus on specific engineering domains.
+- **Category Filter Pills:** Switch between *All (5)*, *PWA & Cloud (3)*, *Android (2)*, and *Civic & Community (3)* to quickly focus on specific engineering domains.
 - **Quick Command Palette (`Ctrl+K` or `⌘ K`):** Instant keyboard navigation to projects, themes, sound settings, GitHub profile, and color accents.
 - **Interactive Contact Experience:** Pre-select inquiry topics (*Project Collaboration*, *Job / Internship*, *Saying Hello*) to generate pre-filled email links, copy the email address, or connect on LinkedIn and GitHub.
 - **Themes & Palettes:** Dark editorial mode by default, light mode toggle, and three selectable accents (Lime, Coral, Sky).

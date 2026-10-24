@@ -256,7 +256,8 @@ workFilterBtns.forEach(btn => {
       projectTabs.forEach(t => { t.hidden = false; });
     } else {
       projectTabs.forEach(t => {
-        const matches = t.dataset.category === filter;
+        const categories = (t.dataset.category || "").split(" ");
+        const matches = categories.includes(filter);
         t.hidden = !matches;
       });
       // If current tab is hidden, switch to the first visible one
@@ -497,28 +498,134 @@ ispsoGrantBtns.forEach(btn => {
 });
 
 /* ----------------------------------------------------
-   Motorcycle Release Stage Demo
+   Interactive MotoRelease Yamaha Verification Simulator
 ---------------------------------------------------- */
-const releaseMessages = [
-  "Your sample documents are being processed.",
-  "Your sample OR/CR documents are ready. Plate processing continues.",
-  "Your sample documents and plate are ready for collection."
-];
-const releaseSelect = $("#release-stage");
-if (releaseSelect) {
-  releaseSelect.addEventListener("change", event => {
-    const stage = Number(event.target.value);
-    const releaseRes = $("#release-result");
-    if (releaseRes) releaseRes.textContent = releaseMessages[stage];
-    $$(".tracker-steps li").forEach((step, index) => {
-      const current = stage === 2 ? 2 : 1;
-      step.classList.toggle("is-complete", index < current);
-      step.classList.toggle("is-current", index === current);
-      if (index === current) step.setAttribute("aria-current", "step"); else step.removeAttribute("aria-current");
-    });
+const mrRecordSelect = $("#mr-record-select");
+const mrModelName = $("#mr-model-name");
+const mrOwnerInfo = $("#mr-owner-info");
+const mrOverallBadge = $("#mr-overall-badge");
+const mrOrcrStatus = $("#mr-orcr-status");
+const mrPlateStatus = $("#mr-plate-status");
+
+const mrRecordsData = {
+  rec1: {
+    model: "Yamaha NMAX 155 ABS",
+    owner: "Owner: J*** D** · Engine: G3M•••••56 · Acquired: Sep 2026",
+    overallText: "Ready for Release ✓",
+    overallClass: "ready",
+    orcrHtml: "Verified Available ✓",
+    plateHtml: "Metal Plate Ready ✓"
+  },
+  rec2: {
+    model: "Yamaha Aerox 155 S-Version",
+    owner: "Owner: M**** C**** S***** · Engine: B65•••••40 · Acquired: Aug 2026",
+    overallText: "Documents Claimed ✓",
+    overallClass: "ready",
+    orcrHtml: "Released to Owner ✓",
+    plateHtml: "Plate Installed ✓"
+  },
+  rec3: {
+    model: "Yamaha Mio Fazzio 125 Hybrid",
+    owner: "Owner: P**** R**** · Engine: E3R•••••21 · Acquired: Oct 2026",
+    overallText: "In LTO Registration ⏳",
+    overallClass: "pending",
+    orcrHtml: "LTO Processing (Day 8/14) ⏳",
+    plateHtml: "Production Queue ⏳"
+  }
+};
+
+if (mrRecordSelect) {
+  mrRecordSelect.addEventListener("change", () => {
+    const rec = mrRecordsData[mrRecordSelect.value];
+    if (rec) {
+      if (mrModelName) mrModelName.textContent = rec.model;
+      if (mrOwnerInfo) mrOwnerInfo.textContent = rec.owner;
+      if (mrOverallBadge) {
+        mrOverallBadge.textContent = rec.overallText;
+        mrOverallBadge.className = `mr-badge ${rec.overallClass}`;
+      }
+      if (mrOrcrStatus) mrOrcrStatus.textContent = rec.orcrHtml;
+      if (mrPlateStatus) mrPlateStatus.textContent = rec.plateHtml;
+    }
     playSound("click");
   });
 }
+
+/* ----------------------------------------------------
+   Interactive EcoCollect SJ Waste Operations Simulator
+---------------------------------------------------- */
+const ecoBarangaySelect = $("#eco-barangay-select");
+const ecoBarangayName = $("#eco-barangay-name");
+const ecoStatusTag = $("#eco-status-tag");
+const ecoScheduleMeta = $("#eco-schedule-meta");
+const ecoChips = $$(".eco-chip");
+const ecoCatTitle = $("#eco-cat-title");
+const ecoCatDetails = $("#eco-cat-details");
+
+const ecoBarangayData = {
+  funda: {
+    name: "Barangay Funda-Dalipe Collection",
+    tagText: "Awaiting Confirmation ⏳",
+    tagClass: "pending",
+    meta: "Schedule: Mon (Madunot) · Wed (Mabaligya) · Fri (Di-madunot) — Awaiting MENRO signed executive reference."
+  },
+  atabay: {
+    name: "Barangay Atabay Collection",
+    tagText: "MENRO Verified ✓",
+    tagClass: "ready",
+    meta: "Schedule: Tue & Sat 6:00 AM · Truck SJ-02 — Verified under MENRO-RES-2026-088."
+  }
+};
+
+const ecoCategoryData = {
+  bio: {
+    title: "Madunot (Biodegradable Waste)",
+    desc: "Food leftovers, fruit peels, garden cuttings, vegetable scraps. Collection: Mondays 6:00 AM – 9:00 AM."
+  },
+  rec: {
+    title: "Mabaligya (Recyclable Waste)",
+    desc: "Clean cardboard, PET bottles, scrap metal, glass bottles, tin cans. Brought to Funda MRF or junk shops."
+  },
+  res: {
+    title: "Di-madunot (Residual Waste)",
+    desc: "Sachets, single-use plastics, candy wrappers, dirty packaging. Scheduled for municipal sanitary landfill."
+  },
+  haz: {
+    title: "Delikado (Special / Hazardous Waste)",
+    desc: "Broken glass, e-waste, expired medicine, household chemicals, batteries. Requires special MENRO handling."
+  }
+};
+
+if (ecoBarangaySelect) {
+  ecoBarangaySelect.addEventListener("change", () => {
+    const data = ecoBarangayData[ecoBarangaySelect.value];
+    if (data) {
+      if (ecoBarangayName) ecoBarangayName.textContent = data.name;
+      if (ecoStatusTag) {
+        ecoStatusTag.textContent = data.tagText;
+        ecoStatusTag.className = `eco-verify-tag ${data.tagClass}`;
+      }
+      if (ecoScheduleMeta) {
+        const parts = data.meta.split(" — ");
+        ecoScheduleMeta.innerHTML = `<strong>${parts[0]}</strong><br><span style="color: ${data.tagClass === 'ready' ? '#059669' : '#64748b'};">${parts[1]}</span>`;
+      }
+    }
+    playSound("click");
+  });
+}
+
+ecoChips.forEach(chip => {
+  chip.addEventListener("click", () => {
+    ecoChips.forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    const cat = ecoCategoryData[chip.dataset.cat];
+    if (cat) {
+      if (ecoCatTitle) ecoCatTitle.textContent = cat.title;
+      if (ecoCatDetails) ecoCatDetails.textContent = cat.desc;
+    }
+    playSound("click");
+  });
+});
 
 /* ----------------------------------------------------
    Projects Detailed Dialog Data
@@ -554,14 +661,25 @@ const projects = {
     live: "https://sac-ispso.vercel.app",
     repo: "https://github.com/kylho1231/ISPSO"
   },
-  motorcycle: {
-    title: "The Next Mile — Motorcycle Plate & OR/CR Monitoring",
-    category: "04 / WEB · CUSTOMER SERVICE",
-    intro: "Helping customers follow the next step in their motorcycle plate and registration release journey.",
-    need: "Customers need a transparent way to check the release status of motorcycle plates and registration documents without repeated in-person visits.",
-    approach: "The web workflow uses chassis number lookups with release milestone updates and SMS notification triggers.",
-    tools: ["PHP", "JavaScript", "MySQL", "Bootstrap"],
-    repo: "https://github.com/kylho1231/project1"
+  motorelease: {
+    title: "MotoRelease — Yamaha OR/CR & License Plate Tracking System",
+    category: "04 / LARAVEL 11 & PWA · DEALERSHIP LOGISTICS",
+    intro: "A full-stack dealership logistics and customer self-service platform for Yamaha San Jose de Buenavista, Antique, tracking OR/CR document releases and LTO license plate lifecycles.",
+    need: "Motorcycle buyers endure months of anxious uncertainty, repetitive dealership visits, and jammed phone lines inquiring if their Land Transportation Office (LTO) Official Receipt (OR), Certificate of Registration (CR), or physical license plates have arrived.",
+    approach: "Built with Laravel 11 LTS, PHP 8.2+, Tailwind CSS, and Alpine.js. Implements RA 10173 (Data Privacy Act) compliant public tracking by tracking number (TRK-YAM-YYYY-XXXX) and last 4 engine digits, automated Semaphore SMS dispatch upon physical vault intake, dual-custody digital turnover logs, QR verification, and role-based staff administration. Deployed live on Vercel with passing automated test suite.",
+    tools: ["Laravel 11 LTS", "PHP 8.2+", "Tailwind CSS", "Alpine.js", "MySQL", "Semaphore SMS API", "Pure PHP QR Engine", "RA 10173 Compliance", "Vercel"],
+    live: "https://motorelease.vercel.app/track",
+    repo: "https://github.com/kylho1231/motorelease"
+  },
+  ecocollect: {
+    title: "EcoCollect SJ — Municipal Solid Waste Collection & MENRO Portal",
+    category: "05 / ANDROID & NEXT.JS 15 · CIVIC GOVERNANCE",
+    intro: "A civic solid waste collection, scheduling, tracking, and governance platform for San Jose de Buenavista, Antique, featuring a native Android citizen app and Next.js 15 web administration portal.",
+    need: "Unpredictable municipal waste collection schedules cause garbage accumulation, stray animal foraging, and illegal dumping across residential barangays (pilot: Funda-Dalipe). Citizens lack verified collection times and clear RA 9003 segregation instructions in their local language.",
+    approach: "Engineered a native Kotlin Android application with Jetpack Compose and Material Design 3 for citizens, paired with a Next.js 15 (React 19, TypeScript) administrative and MENRO portal. Backed by Google Cloud Firestore with real-time route updates, honest unverified schedule flagging, localized Kinaray-a segregation guides (Madunot, Mabaligya, Di-madunot, Delikado), and photo-verified illegal dumping incident ticketing.",
+    tools: ["Kotlin", "Jetpack Compose", "Next.js 15", "TypeScript", "Tailwind CSS", "Cloud Firestore", "Material Design 3", "RA 9003 Compliance", "Clean Architecture"],
+    live: "https://github.com/kylho1231/ecocollect-sj",
+    repo: "https://github.com/kylho1231/ecocollect-sj"
   }
 };
 
@@ -621,8 +739,12 @@ $$("dialog").forEach(dialog => dialog.addEventListener("click", event => {
    Interactive Skills Explorer & Tool Map
 ---------------------------------------------------- */
 const skillStories = {
+  laravel: {
+    desc: "Architected MotoRelease with Laravel 11 LTS, Eloquent ORM, dual-gate physical custody verification, and automated Semaphore SMS dispatch.",
+    project: "motorelease"
+  },
   nextjs: {
-    desc: "Powers the SAC ISPSO ScholarLink production portal with App Router, server rendering, dynamic routing, and instant Vercel edge deployment.",
+    desc: "Powers the SAC ISPSO ScholarLink portal (Next.js 14) and the EcoCollect SJ MENRO municipal administration portal (Next.js 15 App Router).",
     project: "scholarship"
   },
   react: {
@@ -630,7 +752,7 @@ const skillStories = {
     project: "aquaflow"
   },
   kotlin: {
-    desc: "Used in the San Jose TODA Android app for idiomatic, null-safe municipal fare calculations and Material Design 3 ViewBinding.",
+    desc: "Engineered native Android applications for San Jose TODA (fare matrix & statutory discounts) and EcoCollect SJ (Jetpack Compose civic waste tracking).",
     project: "toda"
   },
   typescript: {
@@ -642,7 +764,7 @@ const skillStories = {
     project: "aquaflow"
   },
   tailwind: {
-    desc: "Employed in AquaFlow and SAC ISPSO ScholarLink for clean, mobile-first utility design systems with responsive layouts.",
+    desc: "Employed across AquaFlow, MotoRelease, and SAC ISPSO ScholarLink for clean, mobile-first utility design systems.",
     project: "aquaflow"
   },
   htmlcss: {
@@ -654,16 +776,16 @@ const skillStories = {
     project: "toda"
   },
   php: {
-    desc: "Used in the Motorcycle Plate & OR/CR Monitoring system for server-side chassis number lookups and status management.",
-    project: "motorcycle"
+    desc: "Used in MotoRelease (PHP 8.2+) with strict typing, custom Form Requests, service layer architecture, and pure-PHP SVG QR code rendering.",
+    project: "motorelease"
   },
   firebase: {
-    desc: "Powers AquaFlow's multi-tenant Firestore cloud transactions & security rules, as well as TODA Verify's data sync.",
-    project: "aquaflow"
+    desc: "Cloud Firestore real-time data persistence and security rules powering AquaFlow and EcoCollect SJ municipal collections.",
+    project: "ecocollect"
   },
   mysql: {
-    desc: "Configured relational schema design and indexing for TODA franchise records and motorcycle customer tracking.",
-    project: "toda"
+    desc: "Configured relational schema design, migrations, and indexing for MotoRelease vehicle dossiers and TODA records.",
+    project: "motorelease"
   },
   postgresql: {
     desc: "Relational database used for normalized applicant profiles and document review states in the ISPSO scholarship system.",
@@ -674,12 +796,12 @@ const skillStories = {
     project: "aquaflow"
   },
   vercel: {
-    desc: "Production cloud deployment platform for AquaFlow (aqua-flow-ochre.vercel.app) and SAC ISPSO ScholarLink (sac-ispso.vercel.app).",
-    project: "scholarship"
+    desc: "Production cloud deployment platform for AquaFlow (aqua-flow-ochre.vercel.app), MotoRelease (motorelease.vercel.app), and SAC ISPSO ScholarLink (sac-ispso.vercel.app).",
+    project: "motorelease"
   },
   android: {
-    desc: "Native Android Studio IDE environment utilized for compiling, testing, and debugging the San Jose TODA mobile application.",
-    project: "toda"
+    desc: "Native Android Studio IDE environment utilized for compiling, testing, and debugging San Jose TODA and EcoCollect SJ mobile apps.",
+    project: "ecocollect"
   },
   git: {
     desc: "Version control workflows, commit history, branch strategies, and CI/CD deployment pipelines on GitHub.",

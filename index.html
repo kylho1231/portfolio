@@ -72,26 +72,27 @@
       </div>
     </section>
     <section class="work section" id="work" aria-labelledby="work-title"><div class="container">
-      <div class="section-topline"><p class="eyebrow"><span>01 /</span> SELECTED WORK</p><span class="section-count mono">FOUR PROJECTS. REAL-WORLD CONTEXT.</span></div>
-      <div class="section-heading" data-reveal><h2 id="work-title">Small details.<br><em>Real-world purpose.</em></h2><p>Exploring better ways to move, stay informed, and access clean water &amp; educational opportunities. A selection of full-stack PWA, Android, and web systems.</p></div>
+      <div class="section-topline"><p class="eyebrow"><span>01 /</span> SELECTED WORK</p><span class="section-count mono">FIVE PROJECTS. REAL-WORLD CONTEXT.</span></div>
+      <div class="section-heading" data-reveal><h2 id="work-title">Small details.<br><em>Real-world purpose.</em></h2><p>Exploring better ways to move, stay informed, access clean water, release vehicular documents, and coordinate municipal solid waste. A portfolio of production PWAs, native Android, and Laravel architectures.</p></div>
 
       <!-- Quick Category Filter Bar -->
       <div class="work-filter-bar">
         <span class="mono">CATEGORIES:</span>
         <div class="work-filters" role="group" aria-label="Filter projects by category">
-          <button type="button" class="work-filter-btn" data-filter="all" aria-pressed="true">All (4)</button>
-          <button type="button" class="work-filter-btn" data-filter="pwa" aria-pressed="false">PWA &amp; Cloud (2)</button>
-          <button type="button" class="work-filter-btn" data-filter="android" aria-pressed="false">Android (1)</button>
-          <button type="button" class="work-filter-btn" data-filter="web" aria-pressed="false">Customer Service (1)</button>
+          <button type="button" class="work-filter-btn" data-filter="all" aria-pressed="true">All (5)</button>
+          <button type="button" class="work-filter-btn" data-filter="pwa" aria-pressed="false">PWA &amp; Cloud (3)</button>
+          <button type="button" class="work-filter-btn" data-filter="android" aria-pressed="false">Android (2)</button>
+          <button type="button" class="work-filter-btn" data-filter="civic" aria-pressed="false">Civic &amp; Community (3)</button>
         </div>
       </div>
 
-      <!-- 4 Project Tabs -->
+      <!-- 5 Project Tabs -->
       <div class="project-tabs" role="tablist" aria-label="Explore selected projects">
         <button class="project-tab" id="tab-aquaflow" type="button" role="tab" aria-selected="true" aria-controls="panel-aquaflow" data-project="aquaflow" data-category="pwa"><span class="tab-number">01</span><span><strong>AquaFlow</strong><small>Water Refill · PWA &amp; Vercel</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
-        <button class="project-tab" id="tab-toda" type="button" role="tab" aria-selected="false" aria-controls="panel-toda" tabindex="-1" data-project="toda" data-category="android"><span class="tab-number">02</span><span><strong>San Jose TODA</strong><small>Municipal Guide · Kotlin Android</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
-        <button class="project-tab" id="tab-scholarship" type="button" role="tab" aria-selected="false" aria-controls="panel-scholarship" tabindex="-1" data-project="scholarship" data-category="pwa"><span class="tab-number">03</span><span><strong>SAC ISPSO</strong><small>ScholarLink · Next.js 14</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
-        <button class="project-tab" id="tab-motorcycle" type="button" role="tab" aria-selected="false" aria-controls="panel-motorcycle" tabindex="-1" data-project="motorcycle" data-category="web"><span class="tab-number">04</span><span><strong>The next mile</strong><small>Release Tracker · Web</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+        <button class="project-tab" id="tab-toda" type="button" role="tab" aria-selected="false" aria-controls="panel-toda" tabindex="-1" data-project="toda" data-category="android civic"><span class="tab-number">02</span><span><strong>San Jose TODA</strong><small>Municipal Guide · Android</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+        <button class="project-tab" id="tab-scholarship" type="button" role="tab" aria-selected="false" aria-controls="panel-scholarship" tabindex="-1" data-project="scholarship" data-category="pwa civic"><span class="tab-number">03</span><span><strong>SAC ISPSO</strong><small>ScholarLink · Next.js 14</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+        <button class="project-tab" id="tab-motorelease" type="button" role="tab" aria-selected="false" aria-controls="panel-motorelease" tabindex="-1" data-project="motorelease" data-category="pwa"><span class="tab-number">04</span><span><strong>MotoRelease</strong><small>Yamaha OR/CR · Laravel</small></span><span class="tab-badge">LIVE</span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+        <button class="project-tab" id="tab-ecocollect" type="button" role="tab" aria-selected="false" aria-controls="panel-ecocollect" tabindex="-1" data-project="ecocollect" data-category="android civic"><span class="tab-number">05</span><span><strong>EcoCollect SJ</strong><small>Solid Waste · Android/Web</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
       </div>
 
       <!-- Panel 1: AquaFlow -->
@@ -331,23 +332,172 @@
         </div>
       </article>
 
-      <!-- Panel 4: Motorcycle tracker -->
-      <article class="project-panel" id="panel-motorcycle" role="tabpanel" aria-labelledby="tab-motorcycle" tabindex="0" hidden>
-        <div class="project-copy"><div class="project-label"><span class="mini-dot"></span> CUSTOMER SERVICE &amp; TRACKING</div><h3>The next mile,<br>without the guesswork.</h3><p class="project-name">Motorcycle Plate &amp; OR/CR Monitoring</p><p>A customer-facing web application to follow plate and registration document release status. Designed for Yamaha customers in San Jose, Antique.</p><ul class="tags" aria-label="Project technologies"><li>PHP</li><li>JavaScript</li><li>MySQL</li><li>Bootstrap</li></ul>
+      <!-- Panel 4: MotoRelease (Yamaha Dealership OR/CR & Plate Release) -->
+      <article class="project-panel" id="panel-motorelease" role="tabpanel" aria-labelledby="tab-motorelease" tabindex="0" hidden>
+        <div class="project-copy">
+          <div class="project-label"><span class="mini-dot"></span> DEALERSHIP LOGISTICS · LIVE PRODUCTION</div>
+          <h3>Document releases,<br>without the waiting room.</h3>
+          <p class="project-name">MotoRelease — Yamaha OR/CR &amp; License Plate Tracking System</p>
+          <p>A web-based document and plate release management portal engineered for motorcycle dealerships (pilot implementation for a Yamaha dealership in San Jose de Buenavista, Antique). Digitizes the independent lifecycles of Official Receipts (OR), Certificates of Registration (CR), and metal license plates with Philippine SMS alerts (Semaphore), QR code access, masked RA 10173 data privacy gates, and double-claim prevention locks.</p>
+          <ul class="tags" aria-label="Project technologies">
+            <li>Laravel 11</li>
+            <li>PHP 8.2+</li>
+            <li>Tailwind CSS</li>
+            <li>Alpine.js</li>
+            <li>MySQL</li>
+            <li>Semaphore SMS</li>
+            <li>RA 10173 Privacy</li>
+            <li>Vercel</li>
+          </ul>
           <div class="project-actions-group">
-            <a class="button button-secondary" href="https://github.com/kylho1231/project1" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub Repo <span aria-hidden="true">↗</span></a>
-            <button class="text-link project-open" type="button" data-open-project="motorcycle">Explore the project <span aria-hidden="true">↗</span></button>
+            <a class="button button-primary" href="https://motorelease.vercel.app/track" target="_blank" rel="noopener noreferrer">Launch Customer Tracker <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="button button-secondary" href="https://github.com/kylho1231/motorelease" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub Repo <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://motorelease.vercel.app/login" target="_blank" rel="noopener noreferrer">Staff Console <span aria-hidden="true">↗</span></a>
+            <button class="text-link project-open" type="button" data-open-project="motorelease">System architecture <span aria-hidden="true">↗</span></button>
           </div>
-          <span class="project-platform mono">04 — WEB APPLICATION</span>
+          <span class="project-platform mono">04 — FULL-STACK LARAVEL 11 &amp; PWA (VERCEL)</span>
         </div>
-        <div class="project-visual visual-motorcycle"><span class="visual-label mono">KNOW WHERE THINGS STAND.</span><div class="browser-demo"><div class="browser-chrome"><span aria-hidden="true">● ● ●</span><span>Release tracker / Concept</span><span aria-hidden="true">↗</span></div><div class="tracker-body"><div class="demo-eyebrow">THE NEXT MILE</div><h4>Your documents.<br>One clear update.</h4><p>Explore a sample release journey.</p><label for="release-stage">Preview a release stage</label><select id="release-stage"><option value="0">Processing</option><option value="1">Documents ready</option><option value="2">Ready for collection</option></select><ol class="tracker-steps"><li class="is-complete"><span>1</span>Submitted</li><li class="is-current" aria-current="step"><span>2</span>Processing</li><li><span>3</span>Collect</li></ol><div class="tracker-result" role="status"><span class="status-dot" aria-hidden="true"></span><span id="release-result">Your sample documents are being processed.</span></div></div></div><span class="visual-note">Interactive concept · Sample data only</span><span class="visual-corner" aria-hidden="true">↗</span></div>
+        <div class="project-visual visual-motorcycle">
+          <span class="visual-label mono">INTERACTIVE CUSTOMER TRACKING SIMULATION</span>
+          <div class="motorelease-demo">
+            <div class="mr-header">
+              <div class="mr-branding">
+                <span style="font-size: 20px;">🏍️</span>
+                <div>
+                  <strong>MotoRelease Tracker</strong>
+                  <small>Yamaha San Jose de Buenavista, Antique</small>
+                </div>
+              </div>
+              <span class="mr-pill">VERCEL LIVE</span>
+            </div>
+
+            <label for="mr-record-select" style="font-size: 11px; font-weight: 600; color: #7c2d12; display: block; margin-bottom: 4px;">Select Vehicle Record (Reference Lookup):</label>
+            <select id="mr-record-select" class="mr-select">
+              <option value="rec1">TRK-YAM-2026-0001 · Yamaha NMAX 155 (Juan D.)</option>
+              <option value="rec2">TRK-YAM-2026-0002 · Yamaha Aerox 155 (Maria S.)</option>
+              <option value="rec3">TRK-YAM-2026-0003 · Yamaha Mio Fazzio (Pedro R.)</option>
+            </select>
+
+            <div class="mr-status-card">
+              <div class="mr-status-header">
+                <div>
+                  <div class="mr-model-title" id="mr-model-name">Yamaha NMAX 155 ABS</div>
+                  <small style="color: #a16207; font-size: 10px;" id="mr-owner-info">Owner: J*** D** · Engine: G3M•••••56</small>
+                </div>
+                <span class="mr-badge ready" id="mr-overall-badge">Ready for Release ✓</span>
+              </div>
+
+              <div class="mr-grid">
+                <div class="mr-box">
+                  <span>OR / CR Documents:</span>
+                  <strong id="mr-orcr-status" style="color: #15803d;">Verified Available ✓</strong>
+                  <small style="display: block; color: #78716c; margin-top: 2px;">Batch #OR-2026-042</small>
+                </div>
+                <div class="mr-box">
+                  <span>License Plate:</span>
+                  <strong id="mr-plate-status" style="color: #15803d;">Metal Plate Ready ✓</strong>
+                  <small style="display: block; color: #78716c; margin-top: 2px;">Plate: 1234-AB</small>
+                </div>
+              </div>
+
+              <div class="mr-qr-box">
+                <svg viewBox="0 0 100 100" fill="#9a3412" aria-hidden="true"><path d="M5 5h28v28H5zm7 7v14h14V12zM67 5h28v28H67zm7 7v14h14V12zM5 67h28v28H5zm7 7v14h14V74z" fill-rule="evenodd"/><path d="M42 5h9v15h10v9H42zm0 32h18v9h-9v11H38v-9h4zM5 42h25v9H16v9H5zm59 0h11v11h20v9H64zm-22 25h9v9h12v19h-9V84H42zm33 5h20v9H84v14h-9zM87 42h8v9h-8zM37 87h8v8h-8z"/></svg>
+                <div>
+                  <strong>Dealership Claim Pass</strong>
+                  <small>Bring 1 valid government ID &amp; original sales invoice to Yamaha San Jose.</small>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://motorelease.vercel.app/track" target="_blank" rel="noopener noreferrer" class="aquaflow-live-chip" style="color: #9a3412; border-color: #fdba74;">Open Production Tracker (motorelease.vercel.app) ↗</a>
+          </div>
+          <span class="visual-note">Live Laravel 11 Vercel deployment · San Jose de Buenavista</span>
+          <span class="visual-corner" aria-hidden="true">↗</span>
+        </div>
+      </article>
+
+      <!-- Panel 5: EcoCollect SJ (Municipal Solid Waste Collection & MENRO) -->
+      <article class="project-panel" id="panel-ecocollect" role="tabpanel" aria-labelledby="tab-ecocollect" tabindex="0" hidden>
+        <div class="project-copy">
+          <div class="project-label"><span class="mini-dot"></span> CIVIC GOVERNANCE · ANDROID &amp; NEXT.JS 15</div>
+          <h3>Honest municipal schedules,<br>cleaner coastal towns.</h3>
+          <p class="project-name">EcoCollect SJ — Municipal Solid Waste Collection &amp; MENRO Portal</p>
+          <p>A civic technology platform modernizing solid waste collection, citizen reporting, route progress tracking, and administrative governance for the Municipality of San Jose de Buenavista, Antique (Pilot Barangay: Funda-Dalipe). Enforces an honest data philosophy where unconfirmed timetables remain transparently marked <em>Awaiting Official Confirmation</em>, provides full RA 9003 waste segregation education in local Kinaray-a (<em>Madunot, Mabaligya, Di-madunot, Delikado</em>), and protects resident privacy under RA 10173.</p>
+          <ul class="tags" aria-label="Project technologies">
+            <li>Kotlin (Compose)</li>
+            <li>Next.js 15</li>
+            <li>TypeScript</li>
+            <li>Tailwind CSS</li>
+            <li>Cloud Firestore</li>
+            <li>Material Design 3</li>
+            <li>RA 9003 Waste Guide</li>
+            <li>Clean Architecture</li>
+          </ul>
+          <div class="project-actions-group">
+            <a class="button button-primary" href="https://github.com/kylho1231/ecocollect-sj" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub Repository <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+            <button class="text-link project-open" type="button" data-open-project="ecocollect">Architecture details <span aria-hidden="true">↗</span></button>
+          </div>
+          <span class="project-platform mono">05 — ANDROID KOTLIN (COMPOSE) &amp; NEXT.JS 15</span>
+        </div>
+        <div class="project-visual visual-toda" style="background: radial-gradient(circle at 50% 50%, #064e3b 0%, #022c22 100%);">
+          <span class="visual-label mono">INTERACTIVE CIVIC SCHEDULE &amp; SEGREGATION GUIDE</span>
+          <div class="ecocollect-demo">
+            <div class="eco-header">
+              <div class="eco-branding">
+                <span style="font-size: 20px;">🚛</span>
+                <div>
+                  <strong>EcoCollect SJ</strong>
+                  <small>San Jose de Buenavista · MENRO</small>
+                </div>
+              </div>
+              <span class="eco-pill">PILOT BARANGAY</span>
+            </div>
+
+            <label for="eco-barangay-select" style="font-size: 11px; font-weight: 600; color: #065f46; display: block; margin-bottom: 4px;">Select Barangay / District:</label>
+            <select id="eco-barangay-select" class="eco-barangay-select">
+              <option value="funda">Barangay Funda-Dalipe (Pilot)</option>
+              <option value="atabay">Barangay Atabay (Validated)</option>
+            </select>
+
+            <div class="eco-schedule-card">
+              <div class="eco-schedule-status">
+                <strong id="eco-barangay-name">Funda-Dalipe Collection</strong>
+                <span class="eco-verify-tag pending" id="eco-status-tag">Awaiting Confirmation ⏳</span>
+              </div>
+              <p class="eco-schedule-meta" id="eco-schedule-meta">
+                <strong>Schedule:</strong> Mon (Madunot) · Wed (Mabaligya) · Fri (Di-madunot)<br>
+                <span style="color: #64748b;">Awaiting MENRO signed executive reference.</span>
+              </p>
+            </div>
+
+            <div style="font-size: 10px; font-weight: 700; color: #065f46; margin-bottom: 6px;">RA 9003 KINARAY-A SEGREGATION GUIDE:</div>
+            <div class="eco-segregation-chips" role="radiogroup" aria-label="Waste segregation category">
+              <button type="button" class="eco-chip active" data-cat="bio">Madunot</button>
+              <button type="button" class="eco-chip" data-cat="rec">Mabaligya</button>
+              <button type="button" class="eco-chip" data-cat="res">Di-madunot</button>
+              <button type="button" class="eco-chip" data-cat="haz">Delikado</button>
+            </div>
+
+            <div class="eco-category-box" id="eco-cat-desc">
+              <strong id="eco-cat-title">Madunot (Biodegradable Waste)</strong>
+              <small id="eco-cat-details">Food leftovers, fruit peels, garden cuttings, vegetable scraps. Collection: Mondays 6:00 AM – 9:00 AM.</small>
+            </div>
+
+            <div class="eco-complaint-box">
+              <span>Incident Reporter Tracker:</span>
+              <strong style="color: #047857;" id="eco-complaint-code">EC-20261024-0042 ✓</strong>
+            </div>
+          </div>
+          <span class="visual-note">Civic Tech Platform · San Jose de Buenavista, Antique</span>
+          <span class="visual-corner" aria-hidden="true">↗</span>
+        </div>
       </article>
 
       <div class="work-bottom">
         <span><i class="mini-dot"></i> Interactive concepts &amp; production deployments.</span>
         <div class="project-pagination" role="group" aria-label="Browse projects">
           <button class="project-step" data-project-step="-1" type="button" aria-label="Previous project">&#8592;</button>
-          <span class="mono" id="project-position" role="status" aria-live="polite">01 / 04</span>
+          <span class="mono" id="project-position" role="status" aria-live="polite">01 / 05</span>
           <button class="project-step" data-project-step="1" type="button" aria-label="Next project">&#8594;</button>
         </div>
       </div>
@@ -378,7 +528,7 @@
           </div>
           <div id="lab-output" role="status" aria-live="polite" aria-atomic="true">
             <div class="lab-art" aria-hidden="true"><span class="lab-bracket">{</span><span class="lab-asterisk">✳</span><span class="lab-bracket">}</span><span class="lab-art-caption mono">CURIOUS BY DEFAULT.</span></div>
-            <div class="lab-output-copy"><p class="eyebrow">A WORK IN PROGRESS, BY DESIGN</p><h3 id="lab-title">Useful things, thoughtfully built.</h3><p id="lab-description">From AquaFlow's water logistics PWA to SAC ISPSO ScholarLink and San Jose TODA, I enjoy turning real community needs into clear, practical software.</p><pre id="lab-code">const approach = ["understand", "build", "refine"];</pre></div>
+            <div class="lab-output-copy"><p class="eyebrow">A WORK IN PROGRESS, BY DESIGN</p><h3 id="lab-title">Useful things, thoughtfully built.</h3><p id="lab-description">From AquaFlow's water logistics PWA to SAC ISPSO ScholarLink, San Jose TODA, MotoRelease, and EcoCollect SJ, I enjoy turning real community needs into clear, practical software.</p><pre id="lab-code">const approach = ["understand", "build", "refine"];</pre></div>
           </div>
           <div class="lab-window-footer mono"><span><i class="status-dot" aria-hidden="true"></i> ALWAYS ITERATING</span><span>BUILT WITH INTENTION ↗</span></div>
         </div>
@@ -394,15 +544,15 @@
         <div class="toolkit-heading"><span class="detail-label mono">MY GROWING TOOLKIT</span><span class="mono" style="font-size: 10px; color: var(--accent);">CLICK TO EXPLORE ↗</span></div>
         <div class="skill-filters" role="group" aria-label="Filter toolkit"><button type="button" data-skill-filter="all" aria-pressed="true">All</button><button type="button" data-skill-filter="code" aria-pressed="false">Code</button><button type="button" data-skill-filter="data" aria-pressed="false">Data</button><button type="button" data-skill-filter="tools" aria-pressed="false">Tools</button></div>
         <ul class="skills-list" id="skills-list">
-          <li data-skill="code" data-tech="nextjs">Next.js 14</li>
+          <li data-skill="code" data-tech="laravel">Laravel 11</li>
+          <li data-skill="code" data-tech="nextjs">Next.js 14 &amp; 15</li>
           <li data-skill="code" data-tech="react">React 18</li>
-          <li data-skill="code" data-tech="kotlin">Kotlin</li>
+          <li data-skill="code" data-tech="kotlin">Kotlin &amp; Compose</li>
           <li data-skill="code" data-tech="typescript">TypeScript</li>
+          <li data-skill="code" data-tech="php">PHP 8.2</li>
           <li data-skill="code" data-tech="tailwind">Tailwind CSS</li>
           <li data-skill="code" data-tech="javascript">JavaScript</li>
           <li data-skill="code" data-tech="htmlcss">HTML &amp; CSS</li>
-          <li data-skill="code" data-tech="java">Java</li>
-          <li data-skill="code" data-tech="php">PHP</li>
           <li data-skill="data" data-tech="firebase">Firebase Firestore</li>
           <li data-skill="data" data-tech="mysql">MySQL</li>
           <li data-skill="tools" data-tech="passkeys">WebAuthn / Passkeys</li>
@@ -477,7 +627,8 @@
     <button type="button" data-command="aquaflow"><span>💧</span> AquaFlow (Water Refill PWA) <span>↗</span></button>
     <button type="button" data-command="toda"><span>🛵</span> San Jose TODA (Android App) <span>↗</span></button>
     <button type="button" data-command="scholarship"><span>🎓</span> SAC ISPSO ScholarLink (Next.js 14) <span>↗</span></button>
-    <button type="button" data-command="motorcycle"><span>↳</span> Motorcycle release tracker <span>↗</span></button>
+    <button type="button" data-command="motorelease"><span>🏍️</span> MotoRelease (Yamaha OR/CR Releasing) <span>↗</span></button>
+    <button type="button" data-command="ecocollect"><span>🚛</span> EcoCollect SJ (Waste Tracking &amp; MENRO) <span>↗</span></button>
     <button type="button" data-command="playground"><span>02</span> Interactive playground <span>↗</span></button>
     <button type="button" data-command="about"><span>03</span> About &amp; toolkit <span>↗</span></button>
     <button type="button" data-command="approach"><span>04</span> My process <span>↗</span></button>
