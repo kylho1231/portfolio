@@ -16,31 +16,37 @@ A personal portfolio highlighting full-stack engineering, Progressive Web Apps (
    - **Summary:** Mobile-first Progressive Web App built for water refill stations and customers. Features multi-tenant station isolation, Firebase Firestore transactions, biometric WebAuthn passkey authentication, inventory monitoring, and live order dispatch.
    - **Interactive Preview:** In-browser refill ordering simulator with real container selection, live price calculations, and simulated dispatch status transitions.
 
-2. **TODA Verify — Membership & Franchise Verification**
-   - **Platform:** Android Mobile App
-   - **Tech Stack:** Java, Android Studio, MySQL, Firebase
-   - **Summary:** Centralized Android tool for municipal driver registration and QR-assisted franchise verification for San Jose de Buenavista.
+2. **San Jose TODA — Municipal Fare Calculator & Matrix**
+   - **Platform:** Native Kotlin Android Application (API 37)
+   - **GitHub Profile:** [https://github.com/kylho1231](https://github.com/kylho1231)
+   - **Tech Stack:** Kotlin, Android Studio (API 37), Material Design 3, ViewBinding, Municipal Ordinances 2022-18 & 2024-01
+   - **Summary:** Official San Jose de Buenavista TODA Fare Matrix and Fare Calculator app with real-time distance calculations, statutory 20% discounts for students, seniors, and PWDs, pakyaw/solo ride rates, offline matrices, and direct reporting hotlines to San Jose Traffic Management Office (TMO) and PNP.
+   - **Interactive Preview:** In-browser Android fare calculator simulation with live route selection, passenger discount chips, pakyaw toggle, regulated fare display, and emergency incident reporting simulation.
 
-3. **The Next Mile — Motorcycle Plate & OR/CR Monitoring**
+3. **SAC ISPSO ScholarLink — Scholarship Portal & Stipend Manager**
+   - **Production Portal (Vercel):** [https://sac-ispso.vercel.app](https://sac-ispso.vercel.app) (Admin Console: [https://sac-ispso.vercel.app/admin](https://sac-ispso.vercel.app/admin))
+   - **GitHub Repository:** [https://github.com/kylho1231/ISPSO](https://github.com/kylho1231/ISPSO)
+   - **Tech Stack:** Next.js 14, React 18, TypeScript, Tailwind CSS, Lucide React, PWA, Vercel
+   - **Summary:** Centralized scholarship management and student portal for St. Anthony’s College (SAC) in Antique. Replaces uncoordinated Facebook announcements with automated 12-digit DepEd LRN anti-fraud validation, digital QR stipend claiming passes for SAC Gym verification, live schedule alerts for UniFAST TES (₱20,000/sem) and TDP-TES (₱7,500/sem), and an AI guidance advisor (Schola).
+   - **Interactive Preview:** Live interactive scholarship grant switcher with dynamic grant subsidy amounts, institutional SAC crest, and digital QR stipend claim pass.
+
+4. **The Next Mile — Motorcycle Plate & OR/CR Monitoring**
    - **Platform:** Web Application
    - **GitHub Repository:** [https://github.com/kylho1231/project1](https://github.com/kylho1231/project1)
    - **Tech Stack:** PHP, JavaScript, MySQL, Bootstrap
    - **Summary:** Customer service portal for checking document release milestones and receiving automated SMS status updates.
-
-4. **ISPSO Scholarship Monitoring System**
-   - **Platform:** Web Application
-   - **Tech Stack:** Python, Django, PostgreSQL, HTML & CSS
-   - **Summary:** Scholarship management system for organizing applicant records, reviewing academic documents, and tracking verification workflows.
 
 ---
 
 ## Interactive Features
 
 - **Interactive AquaFlow Simulator:** Select container types (5-Gal Slim vs 5-Gal Round), change quantities with dynamic PHP pricing, and simulate the real-time order lifecycle (Placed → Station Preparation → Dispatched → Delivered).
+- **San Jose TODA Municipal Fare Calculator:** Interactive Android simulation calculating exact regulated fares across San Jose de Buenavista routes (Funda-Dalipe, San Angel, Badiang, Madrangca, Maybato) with 20% discounts for students, seniors, and PWDs, pakyaw / solo ride rates, and simulated incident reporting to TMO.
+- **SAC ISPSO ScholarLink Grant Switcher & Digital Pass:** Switch between UniFAST TES (₱20,000/sem), TDP-TES (₱7,500/sem), and CAS Working Scholar grants with dynamic grant amounts and digital QR stipend claiming pass for the SAC Gymnasium.
 - **Tactile Sound Effects (Web Audio API):** Clean, synthesized audio feedback on user interactions (tab switching, ordering water, toggling themes, and clicking tools). Easily toggleable via the header button (`🔊 / 🔇`) and saved locally.
-- **Interactive Skills Map:** Click any skill chip in the toolkit (React, TypeScript, Firebase, Java, Python, etc.) to reveal how Jhon applied it in real-world projects, with a 1-click jump button to the relevant project.
+- **Interactive Skills Map:** Click any skill chip in the toolkit (Next.js 14, React 18, Kotlin, TypeScript, Firebase, Tailwind CSS, etc.) to reveal how Jhon applied it in real-world projects, with a 1-click jump button to the relevant project.
 - **Code Playground with One-Click Copy:** Explore architectural mindsets across *Build*, *Design*, *Engineer (PWA)*, and *Learn* with a copy button that copies the snippet directly to your clipboard.
-- **Category Filter Pills:** Switch between *All (4)*, *PWA & Cloud (1)*, *Android & Mobility (1)*, and *Web Systems (2)* to quickly focus on specific engineering domains.
+- **Category Filter Pills:** Switch between *All (4)*, *PWA & Cloud (2)*, *Android (1)*, and *Customer Service (1)* to quickly focus on specific engineering domains.
 - **Quick Command Palette (`Ctrl+K` or `⌘ K`):** Instant keyboard navigation to projects, themes, sound settings, GitHub profile, and color accents.
 - **Interactive Contact Experience:** Pre-select inquiry topics (*Project Collaboration*, *Job / Internship*, *Saying Hello*) to generate pre-filled email links, copy the email address, or connect on LinkedIn and GitHub.
 - **Themes & Palettes:** Dark editorial mode by default, light mode toggle, and three selectable accents (Lime, Coral, Sky).

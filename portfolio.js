@@ -385,24 +385,120 @@ if (afResetDemo) {
 }
 
 /* ----------------------------------------------------
-   Existing Demos: TODA, Motorcycle, Scholarship
+   Interactive TODA Municipal Fare Calculator
 ---------------------------------------------------- */
-let verifiedSample = true;
-const verifyBtn = $("[data-verify]");
-if (verifyBtn) {
-  verifyBtn.addEventListener("click", () => {
-    verifiedSample = !verifiedSample;
-    const result = $("#verification-result");
-    if (result) {
-      result.classList.toggle("pending", !verifiedSample);
-      $(".verify-icon", result).textContent = verifiedSample ? "✓" : "!";
-      $("strong", result).textContent = verifiedSample ? "Franchise verified" : "Review required";
-      $("small", result).textContent = `Sample record · ${verifiedSample ? "SJ-2026-001" : "SJ-2026-002"}`;
+const todaRouteSelect = $("#toda-route-select");
+const todaChips = $$(".toda-chip");
+const todaSpecialCheckbox = $("#toda-special-trip");
+const todaFareElem = $("#toda-calculated-fare");
+const todaNoteElem = $("#toda-fare-note");
+const todaReportBtn = $("#toda-report-btn");
+
+let todaPassengerType = "regular";
+
+function updateTodaFare() {
+  if (!todaRouteSelect || !todaFareElem) return;
+  const selectedOption = todaRouteSelect.selectedOptions[0];
+  if (!selectedOption) return;
+
+  const regFare = parseFloat(selectedOption.dataset.reg) || 15;
+  const discFare = parseFloat(selectedOption.dataset.disc) || 12;
+  const isSpecial = todaSpecialCheckbox ? todaSpecialCheckbox.checked : false;
+
+  let finalFare = todaPassengerType === "regular" ? regFare : discFare;
+  if (isSpecial) {
+    // Pakyaw / Solo charter ride: 3x regular standard fare
+    finalFare = regFare * 3;
+  }
+
+  todaFareElem.textContent = `₱${finalFare.toFixed(2)}`;
+  if (todaNoteElem) {
+    if (isSpecial) {
+      todaNoteElem.textContent = "Special Trip / Pakyaw (Solo Charter — 3x base rate)";
+    } else if (todaPassengerType !== "regular") {
+      todaNoteElem.textContent = `20% Statutory Discount applied (${todaPassengerType.toUpperCase()})`;
+    } else {
+      todaNoteElem.textContent = "Regulated standard rate (MO 2022-18 & 2024-01)";
     }
+  }
+}
+
+if (todaRouteSelect) {
+  todaRouteSelect.addEventListener("change", () => {
     playSound("click");
+    updateTodaFare();
   });
 }
 
+todaChips.forEach(chip => {
+  chip.addEventListener("click", () => {
+    todaChips.forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    todaPassengerType = chip.dataset.ptype || "regular";
+    playSound("click");
+    updateTodaFare();
+  });
+});
+
+if (todaSpecialCheckbox) {
+  todaSpecialCheckbox.addEventListener("change", () => {
+    playSound("click");
+    updateTodaFare();
+  });
+}
+
+if (todaReportBtn) {
+  todaReportBtn.addEventListener("click", () => {
+    playSound("switch");
+    notify("Simulated Incident: Hotlines for San Jose TMO (0917-XXX-TODA) & San Jose MPS ready.");
+  });
+}
+
+/* ----------------------------------------------------
+   Interactive SAC ISPSO ScholarLink Grant Switcher
+---------------------------------------------------- */
+const ispsoGrantBtns = $$(".ispso-grant-btn");
+const ispsoTitleElem = $("#ispso-grant-title");
+const ispsoAmountElem = $("#ispso-grant-amount");
+
+const ispsoGrantsData = {
+  tes: {
+    title: "UniFAST Tertiary Education Subsidy (TES)",
+    amount: "₱20,000.00 / sem",
+    color: "#780000"
+  },
+  tdp: {
+    title: "Tulong Dunong Program for TES (TDP-TES)",
+    amount: "₱7,500.00 / sem",
+    color: "#780000"
+  },
+  cas: {
+    title: "College of Arts & Sciences Working Scholar",
+    amount: "100% Tuition Waiver",
+    color: "#0f766e"
+  }
+};
+
+ispsoGrantBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    ispsoGrantBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    const grantKey = btn.dataset.grant;
+    const grant = ispsoGrantsData[grantKey];
+    if (grant) {
+      if (ispsoTitleElem) ispsoTitleElem.textContent = grant.title;
+      if (ispsoAmountElem) {
+        ispsoAmountElem.textContent = grant.amount;
+        ispsoAmountElem.style.color = grant.color;
+      }
+    }
+    playSound("click");
+  });
+});
+
+/* ----------------------------------------------------
+   Motorcycle Release Stage Demo
+---------------------------------------------------- */
 const releaseMessages = [
   "Your sample documents are being processed.",
   "Your sample OR/CR documents are ready. Plate processing continues.",
@@ -424,19 +520,6 @@ if (releaseSelect) {
   });
 }
 
-const checklistContainer = $(".document-checklist");
-if (checklistContainer) {
-  checklistContainer.addEventListener("change", () => {
-    const count = $$(".document-checklist input:checked").length;
-    const total = $$(".document-checklist input").length;
-    const progress = $("#checklist-progress");
-    const status = $("#checklist-status");
-    if (progress) progress.value = count;
-    if (status) status.textContent = count === total ? "All sample documents prepared!" : `${count} of ${total} documents prepared`;
-    playSound(count === total ? "success" : "click");
-  });
-}
-
 /* ----------------------------------------------------
    Projects Detailed Dialog Data
 ---------------------------------------------------- */
@@ -452,31 +535,32 @@ const projects = {
     repo: "https://github.com/kylho1231/AquaFlow"
   },
   toda: {
-    title: "TODA Membership & Franchise Verification",
-    category: "02 / ANDROID · TRANSPORTATION",
-    intro: "Centralizing membership records and franchise compliance checks into one clear mobile workflow.",
-    need: "Transportation regulatory work involves member registration and franchise checks. A centralized view helps the Municipal Transportation Franchising Desk in San Jose de Buenavista, Antique organize this information.",
-    approach: "The Android application connects driver member registration, QR-assisted verification, franchise checks, and an administrative desk overview.",
-    tools: ["Java", "Android Studio", "MySQL", "Firebase"],
+    title: "San Jose TODA — Municipal Fare Calculator & Matrix",
+    category: "02 / ANDROID · MUNICIPAL MOBILITY",
+    intro: "An Android application implementing the official San Jose de Buenavista TODA Fare Matrix (Municipal Ordinances 2022-18 & 2024-01).",
+    need: "Commuters, students, and tricycle operators frequently face disputes over unregulated fares, confusing per-kilometer increments, and unauthorized special trip rates across San Jose de Buenavista barangays.",
+    approach: "Engineered a native Kotlin Android application (target API 37) utilizing Material Design 3 and ViewBinding. Features real-time route calculations, automatic 20% statutory discounts for students, senior citizens, and PWDs, transparent pakyaw/solo ride rates, offline fare matrices, and direct reporting channels to San Jose Traffic Management Office (TMO) and PNP.",
+    tools: ["Kotlin", "Android Studio (API 37)", "Material Design 3", "ViewBinding", "MO 2022-18", "MO 2024-01", "Municipal Ordinances"],
     repo: "https://github.com/kylho1231"
   },
+  scholarship: {
+    title: "SAC ISPSO ScholarLink — Scholarship Portal & Stipend Manager",
+    category: "03 / NEXT.JS · CAMPUS LOGISTICS",
+    intro: "A production scholarship management portal for St. Anthony's College (SAC) in Antique, streamlining UniFAST and institutional grants.",
+    need: "Students and scholarship coordinators previously relied on unorganized Facebook announcement comments and crowded in-person queues at the SAC Gymnasium to check stipend releases, causing confusion, missed payout batches, and verification fraud.",
+    approach: "Built a full-stack Next.js 14 Progressive Web App with React 18, TypeScript, and Tailwind CSS. Features anti-fraud 12-digit DepEd LRN validation, dynamic digital QR stipend claiming passes for SAC Gym verification, live schedule alerts for UniFAST TES (₱20,000/sem) and TDP-TES (₱7,500/sem), an AI guidance advisor (Schola), and an administrative console deployed on Vercel.",
+    tools: ["Next.js 14", "React 18", "TypeScript", "Tailwind CSS", "Lucide React", "PWA", "Vercel", "DepEd LRN Validation", "AI Advisor"],
+    live: "https://sac-ispso.vercel.app",
+    repo: "https://github.com/kylho1231/ISPSO"
+  },
   motorcycle: {
-    title: "Motorcycle Plate & OR/CR Monitoring",
-    category: "03 / WEB · CUSTOMER SERVICE",
+    title: "The Next Mile — Motorcycle Plate & OR/CR Monitoring",
+    category: "04 / WEB · CUSTOMER SERVICE",
     intro: "Helping customers follow the next step in their motorcycle plate and registration release journey.",
     need: "Customers need a transparent way to check the release status of motorcycle plates and registration documents without repeated in-person visits.",
     approach: "The web workflow uses chassis number lookups with release milestone updates and SMS notification triggers.",
     tools: ["PHP", "JavaScript", "MySQL", "Bootstrap"],
     repo: "https://github.com/kylho1231/project1"
-  },
-  scholarship: {
-    title: "ISPSO Scholarship Monitoring System",
-    category: "04 / WEB · EDUCATION",
-    intro: "Making applicant information and scholarship application progress transparent and easier to manage.",
-    need: "Scholarship administration brings together applicant records, supporting documents, and application review status.",
-    approach: "The system organizes applicant records, document verification, and scholarship reporting in one secure dashboard.",
-    tools: ["Python", "Django", "PostgreSQL", "HTML & CSS"],
-    repo: "https://github.com/kylho1231"
   }
 };
 
@@ -536,9 +620,17 @@ $$("dialog").forEach(dialog => dialog.addEventListener("click", event => {
    Interactive Skills Explorer & Tool Map
 ---------------------------------------------------- */
 const skillStories = {
+  nextjs: {
+    desc: "Powers the SAC ISPSO ScholarLink production portal with App Router, server rendering, dynamic routing, and instant Vercel edge deployment.",
+    project: "scholarship"
+  },
   react: {
     desc: "Used in AquaFlow to architect a responsive, state-driven water refill ordering PWA with Vite, component hooks, and optimistic UI updates.",
     project: "aquaflow"
+  },
+  kotlin: {
+    desc: "Used in the San Jose TODA Android app for idiomatic, null-safe municipal fare calculations and Material Design 3 ViewBinding.",
+    project: "toda"
   },
   typescript: {
     desc: "Provides strict type contracts across AquaFlow's API requests, order state management, and Firestore data documents.",
@@ -549,7 +641,7 @@ const skillStories = {
     project: "aquaflow"
   },
   tailwind: {
-    desc: "Employed in AquaFlow for a clean, mobile-first utility-first design system with responsive layouts and fluid touch states.",
+    desc: "Employed in AquaFlow and SAC ISPSO ScholarLink for clean, mobile-first utility design systems with responsive layouts.",
     project: "aquaflow"
   },
   htmlcss: {
@@ -557,16 +649,8 @@ const skillStories = {
     project: "scholarship"
   },
   java: {
-    desc: "Used in TODA Verify for Android native development, QR scanning integration, and mobile municipal verification.",
+    desc: "Core foundation for Android application development, object-oriented architecture, and backend systems.",
     project: "toda"
-  },
-  python: {
-    desc: "Applied in ISPSO Scholarship Monitoring with Django for data processing, application validation, and reporting.",
-    project: "scholarship"
-  },
-  django: {
-    desc: "Powers the backend architecture, ORM models, and administrative review screens for scholarship document pipelines.",
-    project: "scholarship"
   },
   php: {
     desc: "Used in the Motorcycle Plate & OR/CR Monitoring system for server-side chassis number lookups and status management.",
@@ -589,11 +673,11 @@ const skillStories = {
     project: "aquaflow"
   },
   vercel: {
-    desc: "Production cloud deployment platform for AquaFlow (aqua-flow-ochre.vercel.app) with automatic edge preview branches.",
-    project: "aquaflow"
+    desc: "Production cloud deployment platform for AquaFlow (aqua-flow-ochre.vercel.app) and SAC ISPSO ScholarLink (sac-ispso.vercel.app).",
+    project: "scholarship"
   },
   android: {
-    desc: "Native Android Studio IDE environment utilized for compiling, testing, and debugging the TODA Verify mobile APK.",
+    desc: "Native Android Studio IDE environment utilized for compiling, testing, and debugging the San Jose TODA mobile application.",
     project: "toda"
   },
   git: {
