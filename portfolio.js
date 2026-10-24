@@ -1250,6 +1250,11 @@ commandButtons.forEach(button => button.addEventListener("click", () => {
   if (action === "random-accent") { randomAccent(); return; }
   if (action === "copy") { copyPortfolio(); return; }
   if (action === "github") { window.open("https://github.com/kylho1231", "_blank"); return; }
+  if (action === "council") {
+    const dockBtn = $("#dock-toggle-btn");
+    if (dockBtn) dockBtn.click();
+    return;
+  }
   
   const section = projects[action] ? "work" : action;
   if (projects[action]) selectProject(action);

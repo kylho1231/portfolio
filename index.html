@@ -9,12 +9,11 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' rx='20' fill='%232b493d'/%3E%3Ctext x='40' y='52' text-anchor='middle' font-family='Arial' font-size='34' fill='%23f5f4ef'%3Eje.%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700;750;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700;750;800&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="portfolio.css">
-  <link rel="stylesheet" href="motion-lab.css">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/spatial-ui.css">
+  <link rel="stylesheet" href="css/council.css">
   <script src="portfolio.js" defer></script>
-  <script src="motion-lab.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -25,7 +24,7 @@
       <nav aria-label="Main navigation">
         <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Open navigation"><span></span><span></span></button>
         <ul class="nav-links" id="primary-links">
-          <li><a href="#motion-lab">Motion lab</a></li><li><a href="#work">Selected work</a></li><li><a href="#playground">Playground</a></li><li><a href="#about">About</a></li><li><a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></li>
+<li><a href="#work">Selected work</a></li><li><a href="#motion-lab">Motion Lab</a></li><li><a href="#playground">Playground</a></li><li><a href="#about">About</a></li><li><a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></li>
         </ul>
       </nav>
       <div class="header-tools">
@@ -55,7 +54,8 @@
             <div class="hero-description"><span class="hero-hello" aria-hidden="true">↳</span><p class="hero-intro">I build thoughtful digital experiences for everyday needs. A little curiosity, a lot of intention, and people at the heart of it all.</p></div>
             <div class="hero-actions">
               <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a>
-              <a class="button button-secondary" href="https://github.com/kylho1231" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub Profile <span aria-hidden="true">↗</span></a>
+              <a class="button button-secondary" href="#council-hero-stage"><span>🤖</span> AI Council <span aria-hidden="true">↓</span></a>
+              <a class="button button-secondary" href="https://github.com/kylho1231" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub <span aria-hidden="true">↗</span></a>
               <a class="text-link" href="#playground">Take a look around <span aria-hidden="true">↓</span></a>
             </div>
           </div>
@@ -79,20 +79,54 @@
             <div class="studio-caption"><span class="mono">CURRENTLY EXPLORING</span><p>Useful software.<br>Meaningful interactions.</p><a href="#about" aria-label="More about Jhon">↗</a></div>
           </div>
         </div>
+
+        <!-- The AI Council: 3D Procedural Hero Showcase Stage -->
+        <div class="council-hero-stage" id="council-hero-stage" aria-label="Interactive 3D AI Council Showcase Stage">
+          <!-- Stage Header: Character Selector Pills -->
+          <div class="council-stage-header">
+            <div class="council-selector-group" id="character-pills" role="tablist" aria-label="Select AI Council guide">
+              <button type="button" class="char-pill active" data-char="code" role="tab" aria-selected="true"><span class="char-pill-dot" aria-hidden="true"></span>CODE</button>
+              <button type="button" class="char-pill" data-char="claude" role="tab" aria-selected="false"><span class="char-pill-dot" aria-hidden="true"></span>CLAUDE</button>
+              <button type="button" class="char-pill" data-char="grok" role="tab" aria-selected="false"><span class="char-pill-dot" aria-hidden="true"></span>GROK</button>
+              <button type="button" class="char-pill" data-char="gemini" role="tab" aria-selected="false"><span class="char-pill-dot" aria-hidden="true"></span>GEMINI</button>
+              <button type="button" class="char-pill" data-char="council" role="tab" aria-selected="false"><span class="char-pill-dot" aria-hidden="true"></span>COUNCIL</button>
+            </div>
+            <div class="stage-controls-group">
+              <span class="stage-badge"><span class="stage-badge-indicator" aria-hidden="true"></span>PROCEDURAL 3D</span>
+              <button type="button" class="stage-mode-btn" id="stage-mode-btn" aria-label="Toggle between 3D Spatial and Lite Mode">3D Mode</button>
+            </div>
+          </div>
+
+          <!-- WebGL Three.js Canvas Container -->
+          <div class="council-canvas-container" id="council-canvas-container"></div>
+
+          <!-- Non-WebGL / Lite Fallback Stage -->
+          <div class="council-stage-fallback" id="council-stage-fallback" aria-hidden="true">
+            <div class="fallback-content">
+              <div class="fallback-avatar-ring">
+                <div class="fallback-avatar-inner" id="fallback-avatar-text">CODE</div>
+              </div>
+              <p style="font-family: var(--font-mono-tech); font-size: 0.85rem; color: #94a3b8;">High-Performance Lite Mode Active</p>
+            </div>
+          </div>
+
+          <!-- Stage Footer: Interactive Speech Bubble Overlay -->
+          <div class="council-stage-footer">
+            <div class="council-speech-bubble" id="council-speech-bubble">
+              <div class="speech-header">
+                <div class="speech-speaker" id="speech-speaker-label">CODE</div>
+                <span class="speech-state-badge mono">PORTFOLIO GUIDE</span>
+              </div>
+              <p class="speech-text" id="speech-text-content">Welcome to JE. Digital Universe. I'm CODE. Ask me anything about Jhon's full-stack architecture, Kotlin mobile apps, or civic projects.</p>
+              <div class="speech-actions" id="speech-actions-container">
+                <!-- Action chips populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="hero-bottom"><a href="#work"><span class="scroll-icon" aria-hidden="true">↓</span> SCROLL TO EXPLORE</a><div class="hero-disciplines"><span>NEXT.JS 14</span><span>REACT</span><span>KOTLIN</span><span>FIREBASE</span><span>PWA</span></div><span class="mono">A PERSONAL PORTFOLIO / <span data-year>2026</span></span></div>
       </div>
     </section>
-    <section class="motion-lab section" id="motion-lab" aria-labelledby="motion-lab-title"><div class="container">
-      <div class="section-topline"><p class="eyebrow"><span>+</span> DIGITAL MOTION LAB</p><span class="section-count mono">HOVER / MOVE / EXPLORE</span></div>
-      <div class="section-heading" data-reveal><h2 id="motion-lab-title">Made to move.<br><em>Built to feel.</em></h2><p>Good interactions are more than decoration. Explore three small studies in depth, responsiveness, and kinetic typography. Move your mouse across each card.</p></div>
-      <div class="motion-section-actions"><p class="motion-info">003 / EXPERIMENTS IN HUMAN-CENTERED INTERACTION</p><button type="button" id="motion-toggle" class="motion-control" aria-pressed="true"><span class="switch-track" aria-hidden="true"><span class="switch-knob"></span></span><span class="motion-control-label">Motion on</span></button></div>
-      <div class="motion-showcase-grid">
-        <article class="motion-showcase" data-reveal><div class="motion-showcase-head"><span>SPATIAL INTERFACE / 01</span><span class="index">↗ 3D</span></div><div class="motion-showcase-scene"><div class="depth-stage"><div class="depth-stack" aria-hidden="true"><div class="depth-plane depth-plane--back"></div><div class="depth-plane depth-plane--middle"></div><div class="depth-plane depth-plane--front"><span>PORTFOLIO_2026</span><strong>je.</strong><span>IDEAS / INTERFACES / IMPACT</span></div></div></div></div><div class="motion-showcase-foot"><h3>Layers of depth.</h3><p>Stacked surfaces react to cursor position to create tangible dimensionality.</p></div></article>
-        <article class="motion-showcase" data-reveal><div class="motion-showcase-head"><span>TACTILE INTERACTION / 02</span><span class="index">↗ FEEL</span></div><div class="motion-showcase-scene"><div class="magnetic-stage"><button type="button" class="magnetic-button">Explore work <span aria-hidden="true">↗</span></button></div></div><div class="motion-showcase-foot"><h3>A little attraction.</h3><p>A responsive magnetic action that leads to the projects behind the pixels.</p></div></article>
-        <article class="motion-showcase" data-reveal><div class="motion-showcase-head"><span>KINETIC TYPE / 03</span><span class="index">↗ TYPE</span></div><div class="motion-showcase-scene"><div class="kinetic-stage" aria-hidden="true"><div class="motion-grid-line"></div><span class="kinetic-word">MOVE.</span></div></div><div class="motion-showcase-foot"><h3>Type in motion.</h3><p>Expressive typography with subtle 3D perspective and dynamic shadows.</p></div></article>
-      </div>
-      <div class="motion-lab-notes"><span><i class="status-dot" aria-hidden="true"></i> ALL DEMOS RUN LOCALLY IN YOUR BROWSER</span><span>PERFORMANCE-MINDED / REDUCED-MOTION FRIENDLY</span></div>
-    </div></section>
     <section class="work section" id="work" aria-labelledby="work-title"><div class="container">
       <div class="section-topline"><p class="eyebrow"><span>01 /</span> SELECTED WORK</p><span class="section-count mono">SEVEN PROJECTS. REAL-WORLD CONTEXT.</span></div>
       <div class="section-heading" data-reveal><h2 id="work-title">Small details.<br><em>Real-world purpose.</em></h2><p>Exploring better ways to move, book authorized municipal tricycles, stay informed, access clean water, release vehicular documents, coordinate municipal solid waste, and connect local provincial producers with commercial buyers. A portfolio of production PWAs, native Android, and full-stack architectures.</p></div>
@@ -739,9 +773,107 @@
       </div>
     </div></section>
 
+    <!-- Digital Motion Lab Section (#motion-lab) -->
+    <section class="motion-lab-section section" id="motion-lab" aria-labelledby="motion-lab-title">
+      <div class="container">
+        <div class="lab-header" data-reveal>
+          <div class="lab-badge"><span class="mini-dot"></span> 02 / SPATIAL COMPUTING &amp; PHYSICS</div>
+          <h2 class="lab-title" id="motion-lab-title">Digital Motion Lab.<br><em>Tactile physics in code.</em></h2>
+          <p class="lab-subtitle">A sandbox of tactile interactions, reactive physics, and spatial depth engineered with vanilla math, CSS 3D transforms, and Three.js shader concepts.</p>
+        </div>
+
+        <div class="lab-experiments-grid">
+          <!-- Experiment 01: Spatial 3D Depth Card -->
+          <article class="experiment-card" id="exp1-card">
+            <div class="experiment-header">
+              <span class="experiment-tag">EXP. 01 / PARALLAX TILT</span>
+              <span class="experiment-indicator" aria-hidden="true"></span>
+            </div>
+            <h3 class="experiment-title">Spatial 3D Depth Card</h3>
+            <p class="experiment-desc">Interactive dynamic light sheen, multi-plane parallax depth layers, and physics-calculated matrix rotation.</p>
+            
+            <div class="experiment-stage" id="exp1-viewport">
+              <div class="tilt-card-viewport">
+                <div class="tilt-card" id="exp1-tilt-card" tabindex="0" role="region" aria-label="Interactive 3D tilt card">
+                  <div class="tilt-sheen" aria-hidden="true"></div>
+                  <div class="tilt-layer-top">
+                    <div class="tilt-chip"></div>
+                    <span class="tilt-network">JE.NET // 3D</span>
+                  </div>
+                  <div class="tilt-layer-middle">
+                    <div class="tilt-card-num">SPATIAL · 2026</div>
+                  </div>
+                  <div class="tilt-layer-bottom">
+                    <span>JHON ESTRABO</span>
+                    <span class="mono">PH · UTC+8</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="experiment-footer">
+              <span class="mono" style="color: #64748b; font-size: 0.72rem;">Drag or hover to rotate</span>
+              <button type="button" class="exp-reset-btn" id="exp1-reset-btn">Reset</button>
+            </div>
+          </article>
+
+          <!-- Experiment 02: Tactile Magnetic Button -->
+          <article class="experiment-card" id="exp2-card">
+            <div class="experiment-header">
+              <span class="experiment-tag">EXP. 02 / MAGNETIC ATTRACTION</span>
+              <span class="experiment-indicator" style="background: #caff6b; box-shadow: 0 0 8px #caff6b;" aria-hidden="true"></span>
+            </div>
+            <h3 class="experiment-title">Tactile Magnetic Button</h3>
+            <p class="experiment-desc">Elastic cursor attraction, spring resistance kinematics, and expanding kinetic wave on trigger.</p>
+            
+            <div class="experiment-stage" id="exp2-viewport">
+              <div class="magnetic-viewport">
+                <div class="magnetic-btn-wrap">
+                  <button type="button" class="magnetic-btn" id="exp2-magnetic-btn">
+                    <span>Transmit Signal</span>
+                    <svg class="magnetic-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
+                </div>
+                <div class="magnetic-feedback" id="exp2-feedback">Approach button to attract</div>
+              </div>
+            </div>
+
+            <div class="experiment-footer">
+              <span class="mono" style="color: #64748b; font-size: 0.72rem;">Proximity threshold: 90px</span>
+              <button type="button" class="exp-reset-btn" id="exp2-reset-btn">Reset</button>
+            </div>
+          </article>
+
+          <!-- Experiment 03: Kinetic Spatial Typography -->
+          <article class="experiment-card" id="exp3-card">
+            <div class="experiment-header">
+              <span class="experiment-tag">EXP. 03 / KINETIC TYPE</span>
+              <span class="experiment-indicator" style="background: #9a83ff; box-shadow: 0 0 8px #9a83ff;" aria-hidden="true"></span>
+            </div>
+            <h3 class="experiment-title">Kinetic Spatial Typography</h3>
+            <p class="experiment-desc">Letter-by-letter displacement wave, depth rotation, and reactive chromatic glow upon proximity.</p>
+            
+            <div class="experiment-stage" id="exp3-viewport">
+              <div class="kinetic-viewport">
+                <div class="kinetic-stage-text" id="exp3-text-stage" data-text="POSSIBILITY" aria-label="Interactive kinetic text: POSSIBILITY">
+                  <!-- Split into spans by MotionLabController -->
+                </div>
+                <div class="kinetic-caption">Hover or drag across letters</div>
+              </div>
+            </div>
+
+            <div class="experiment-footer">
+              <span class="mono" style="color: #64748b; font-size: 0.72rem;">Reactive spatial text</span>
+              <button type="button" class="exp-reset-btn" id="exp3-reset-btn">Reset</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- Playground Section -->
     <section class="playground section" id="playground" aria-labelledby="playground-title"><div class="container">
-      <div class="section-topline"><p class="eyebrow"><span>02 /</span> A LITTLE INTERACTION</p><span class="mono section-count">GO AHEAD. MAKE IT YOURS.</span></div>
+      <div class="section-topline"><p class="eyebrow"><span>03 /</span> INTERACTIVE PLAYGROUND</p><span class="mono section-count">GO AHEAD. MAKE IT YOURS.</span></div>
       <div class="lab-grid">
         <div class="lab-copy" data-reveal>
           <h2 id="playground-title">Make yourself<br><em>at home.</em></h2>
@@ -773,7 +905,7 @@
 
     <!-- About Section with Interactive Skills Explorer -->
     <section class="about section container" id="about" aria-labelledby="about-title">
-      <div class="section-topline"><p class="eyebrow"><span>03 /</span> BEHIND THE CODE</p><span class="mono section-count">ALWAYS A WORK IN PROGRESS.</span></div>
+      <div class="section-topline"><p class="eyebrow"><span>04 /</span> BEHIND THE CODE</p><span class="mono section-count">ALWAYS A WORK IN PROGRESS.</span></div>
       <div class="about-grid"><div class="about-copy" data-reveal><h2 id="about-title">A curious mind.<br><em>A practical approach.</em></h2><p class="large-copy">I like making complicated things feel a little more human.</p><p>I’m pursuing a Bachelor of Science in Information Technology at St. Anthony’s College. Based in San Jose, Antique, I’m drawn to projects that make everyday processes more organized and easier to use.</p><p>From Next.js and React full-stack apps to Kotlin Android native architecture, Firebase Cloud databases, and thoughtful UI details, I enjoy figuring out how things work — and how they could work better.</p><a class="text-link" href="#contact">Let’s make something useful <span aria-hidden="true">↗</span></a><div class="personal-note"><span aria-hidden="true">✳</span><p>Still learning.<br><strong>Always making progress.</strong></p></div></div>
       <div class="about-sidebar" data-reveal><div class="education-card"><span class="detail-label mono">THE LEARNING JOURNEY</span><div class="education-row"><span class="education-dot" aria-hidden="true"></span><div><span class="education-year mono">2022 — PRESENT</span><h3>BS Information Technology</h3><p>St. Anthony’s College</p><span class="education-tag">Currently studying</span></div></div><div class="education-row"><span class="education-dot" aria-hidden="true"></span><div><span class="education-year mono">2020 — 2022</span><h3>Senior High School · HUMSS</h3><p>St. Anthony’s College</p></div></div></div>
       <div class="toolkit">
@@ -812,10 +944,10 @@
     </section>
 
     <!-- Approach Section -->
-    <section class="approach section" id="approach" aria-labelledby="approach-title"><div class="container"><div class="section-topline"><p class="eyebrow"><span>04 /</span> THE WAY I WORK</p><span class="mono section-count">INTENTION BEFORE IMPLEMENTATION.</span></div><div class="process-grid"><div data-reveal><h2 id="approach-title">Think it through.<br>Build it well.<br><em>Make it better.</em></h2><p class="process-intro">A practical process, with people at the center.<br>Open a step to see how I approach it.</p><span class="process-spark" aria-hidden="true">✳</span></div><div class="process-list" data-reveal><details name="process" open><summary><span class="mono">01</span><h3>Understand the need</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Start with the people using the product. Understand the everyday task, the friction, and what a useful result would look like.</p></details><details name="process"><summary><span class="mono">02</span><h3>Give the idea a shape</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Map the important flows and information. Explore the interface before committing to code, with clear navigation and simple decisions.</p></details><details name="process"><summary><span class="mono">03</span><h3>Build with intention</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Develop in small, manageable steps. Connect the interface and application logic, keeping clarity and maintainability in mind.</p></details><details name="process"><summary><span class="mono">04</span><h3>Review, refine, repeat</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Walk through the experience, test the important interactions, and address what gets in the way. Small refinements make a difference.</p></details></div></div></div></section>
+    <section class="approach section" id="approach" aria-labelledby="approach-title"><div class="container"><div class="section-topline"><p class="eyebrow"><span>05 /</span> THE WAY I WORK</p><span class="mono section-count">INTENTION BEFORE IMPLEMENTATION.</span></div><div class="process-grid"><div data-reveal><h2 id="approach-title">Think it through.<br>Build it well.<br><em>Make it better.</em></h2><p class="process-intro">A practical process, with people at the center.<br>Open a step to see how I approach it.</p><span class="process-spark" aria-hidden="true">✳</span></div><div class="process-list" data-reveal><details name="process" open><summary><span class="mono">01</span><h3>Understand the need</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Start with the people using the product. Understand the everyday task, the friction, and what a useful result would look like.</p></details><details name="process"><summary><span class="mono">02</span><h3>Give the idea a shape</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Map the important flows and information. Explore the interface before committing to code, with clear navigation and simple decisions.</p></details><details name="process"><summary><span class="mono">03</span><h3>Build with intention</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Develop in small, manageable steps. Connect the interface and application logic, keeping clarity and maintainability in mind.</p></details><details name="process"><summary><span class="mono">04</span><h3>Review, refine, repeat</h3><span class="details-plus" aria-hidden="true">+</span></summary><p>Walk through the experience, test the important interactions, and address what gets in the way. Small refinements make a difference.</p></details></div></div></div></section>
 
     <!-- Contact Section with Interactive Topic Selector -->
-    <section class="contact section container" id="contact" aria-labelledby="contact-title"><div class="section-topline"><p class="eyebrow"><span>05 /</span> SOMETHING STARTS WITH HELLO</p><span class="mono section-count"><span class="status-dot pulse"></span> SAN JOSE, ANTIQUE</span></div><div class="contact-grid" data-reveal><div><h2 id="contact-title">Something in mind?<br><em>Let’s make it happen.</em><span aria-hidden="true">↗</span></h2><p>For thoughtful software, community projects,<br>or a good conversation about what’s possible.</p></div>
+    <section class="contact section container" id="contact" aria-labelledby="contact-title"><div class="section-topline"><p class="eyebrow"><span>06 /</span> SOMETHING STARTS WITH HELLO</p><span class="mono section-count"><span class="status-dot pulse"></span> SAN JOSE, ANTIQUE</span></div><div class="contact-grid" data-reveal><div><h2 id="contact-title">Something in mind?<br><em>Let’s make it happen.</em><span aria-hidden="true">↗</span></h2><p>For thoughtful software, community projects,<br>or a good conversation about what’s possible.</p></div>
       <div class="contact-actions">
         <!-- Quick Inquiry Topic Selector -->
         <div class="quick-inquiry-box">
@@ -870,10 +1002,12 @@
     <button type="button" data-command="ecocollect"><span>🚛</span> EcoCollect SJ (Waste Tracking &amp; MENRO) <span>↗</span></button>
     <button type="button" data-command="antiquesupply"><span>📦</span> AntiqueSupply (B2B Marketplace &amp; Supabase) <span>↗</span></button>
     <button type="button" data-command="antiqueride"><span>🛵</span> AntiqueRide (Smart Tricycle Dispatch PWA) <span>↗</span></button>
-    <button type="button" data-command="playground"><span>02</span> Interactive playground <span>↗</span></button>
-    <button type="button" data-command="about"><span>03</span> About &amp; toolkit <span>↗</span></button>
-    <button type="button" data-command="approach"><span>04</span> My process <span>↗</span></button>
-    <button type="button" data-command="contact"><span>05</span> Get in touch <span>↗</span></button>
+    <button type="button" data-command="motion-lab"><span>⚡</span> 02 Digital Motion Lab (Spatial UI) <span>↗</span></button>
+    <button type="button" data-command="council"><span>🤖</span> Ask the AI Council Concierge <span>↗</span></button>
+    <button type="button" data-command="playground"><span>03</span> Interactive playground <span>↗</span></button>
+    <button type="button" data-command="about"><span>04</span> About &amp; toolkit <span>↗</span></button>
+    <button type="button" data-command="approach"><span>05</span> My process <span>↗</span></button>
+    <button type="button" data-command="contact"><span>06</span> Get in touch <span>↗</span></button>
     <button type="button" data-command="github"><span>⌘</span> Open GitHub Profile (@kylho1231) <span>↗</span></button>
     <button type="button" data-command="sound"><span>🔊</span> Toggle Sound FX <span>↗</span></button>
     <button type="button" data-command="random-accent"><span>🎨</span> Surprise accent color <span>↗</span></button>
@@ -881,5 +1015,140 @@
     <button type="button" data-command="copy"><span>⧉</span> Copy portfolio link <span>↗</span></button>
   </div><p class="sr-only" id="command-status" role="status" aria-live="polite"></p><p class="command-empty" hidden>No matches. Try “AquaFlow”, “TODA”, “ISPSO”, or “theme”.</p><p class="command-hint mono">↑ ↓ TO NAVIGATE <span>ESC TO CLOSE</span></p></dialog>
   <div class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Persistent Floating AI Council Dock -->
+  <div class="council-dock" id="council-floating-dock">
+    <button type="button" class="dock-toggle-btn" id="dock-toggle-btn" aria-label="Open AI Council Concierge" aria-haspopup="dialog" aria-expanded="false">
+      <div class="dock-avatar-cluster" aria-hidden="true">
+        <span class="dock-avatar-dot code"></span>
+        <span class="dock-avatar-dot claude"></span>
+        <span class="dock-avatar-dot grok"></span>
+        <span class="dock-avatar-dot gemini"></span>
+      </div>
+      <span>Ask AI Council</span>
+      <span class="dock-status-pulse" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <!-- Interactive Concierge Drawer Backdrop -->
+  <div class="concierge-backdrop" id="concierge-backdrop" aria-hidden="true"></div>
+
+  <!-- Interactive Concierge Drawer -->
+  <aside class="concierge-drawer" id="concierge-drawer" role="dialog" aria-modal="true" aria-labelledby="concierge-drawer-title" aria-hidden="true">
+    <div class="concierge-header">
+      <div class="concierge-title-wrap">
+        <h2 class="concierge-title" id="concierge-drawer-title">
+          <span>AI Council Concierge</span>
+          <span class="concierge-badge">Live</span>
+        </h2>
+        <span class="concierge-subtitle">Interactive guides for Jhon Kylho Estrabo's portfolio</span>
+      </div>
+      <div class="concierge-controls">
+        <button type="button" class="concierge-btn-icon" id="open-planner-btn" title="Launch Guided Project Inquiry Planner" aria-label="Open Guided Project Inquiry Planner">📋</button>
+        <button type="button" class="concierge-btn-icon" id="concierge-voice-btn" title="Enable AI Voice (Opt-in Web Speech)" aria-label="Enable voice audio" aria-pressed="false">🔊</button>
+        <button type="button" class="concierge-btn-icon" id="concierge-close-btn" title="Close Concierge" aria-label="Close Concierge">×</button>
+      </div>
+    </div>
+
+    <!-- Character Quick Switcher Bar -->
+    <div class="concierge-char-bar" role="tablist" aria-label="Select active companion">
+      <button type="button" class="concierge-char-btn active" data-char="code" role="tab" aria-selected="true"><span>●</span> CODE</button>
+      <button type="button" class="concierge-char-btn" data-char="claude" role="tab" aria-selected="false"><span>●</span> CLAUDE</button>
+      <button type="button" class="concierge-char-btn" data-char="grok" role="tab" aria-selected="false"><span>●</span> GROK</button>
+      <button type="button" class="concierge-char-btn" data-char="gemini" role="tab" aria-selected="false"><span>●</span> GEMINI</button>
+      <button type="button" class="concierge-char-btn" data-char="council" role="tab" aria-selected="false"><span>●</span> ALL</button>
+    </div>
+
+    <!-- Messages List -->
+    <div class="concierge-messages" id="concierge-messages" role="log" aria-live="polite">
+      <!-- Bubbles added dynamically -->
+    </div>
+
+    <!-- Mandatory Ethical AI Disclosure -->
+    <div class="concierge-disclosure">
+      Unofficial portfolio companions created by Jhon Kylho Estrabo. Not affiliated with Anthropic, Google, or xAI.
+    </div>
+
+    <!-- Quick Chips Area -->
+    <div class="concierge-quick-chips" id="concierge-quick-chips" role="group" aria-label="Suggested questions">
+      <!-- Chips added dynamically -->
+    </div>
+
+    <!-- Chat Input Form -->
+    <form class="concierge-input-form" id="concierge-form">
+      <input type="text" class="concierge-input" id="concierge-input" placeholder="Ask about AquaFlow, skills, background, or hiring…" autocomplete="off" aria-label="Message the AI Council">
+      <button type="submit" class="concierge-send-btn" aria-label="Send message">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </form>
+
+    <!-- Guided Inquiry Planner Modal (Nested inside drawer for full context) -->
+    <div class="inquiry-planner-modal" id="inquiry-planner-modal" role="dialog" aria-modal="true" aria-labelledby="planner-modal-title" aria-hidden="true">
+      <div class="planner-header">
+        <h3 class="planner-title" id="planner-modal-title">Guided Project Planner</h3>
+        <button type="button" class="concierge-btn-icon" id="planner-cancel-btn" aria-label="Close planner">×</button>
+      </div>
+
+      <div class="planner-step-group">
+        <span class="planner-label">1. Project Category</span>
+        <div class="planner-options-grid">
+          <button type="button" class="planner-option-btn selected" data-inquiry-type="Full-Stack Web App">Full-Stack Web Application</button>
+          <button type="button" class="planner-option-btn" data-inquiry-type="Native Android App">Native Android App (Kotlin)</button>
+          <button type="button" class="planner-option-btn" data-inquiry-type="Spatial / 3D UI">Spatial / 3D Web Experience</button>
+          <button type="button" class="planner-option-btn" data-inquiry-type="Civic / Utility Platform">Civic / Operations Platform</button>
+        </div>
+      </div>
+
+      <div class="planner-step-group">
+        <span class="planner-label">2. Preferred Technology</span>
+        <div class="planner-options-grid">
+          <button type="button" class="planner-option-btn selected" data-inquiry-tech="React / Next.js">React &amp; Next.js 14/15</button>
+          <button type="button" class="planner-option-btn" data-inquiry-tech="Kotlin / Android Studio">Kotlin &amp; Jetpack</button>
+          <button type="button" class="planner-option-btn" data-inquiry-tech="Firebase / Supabase">Firebase / Supabase Cloud</button>
+          <button type="button" class="planner-option-btn" data-inquiry-tech="Full Recommendation">Architect's Choice</button>
+        </div>
+      </div>
+
+      <div class="planner-step-group">
+        <span class="planner-label">3. Target Timeline</span>
+        <div class="planner-options-grid">
+          <button type="button" class="planner-option-btn" data-inquiry-timeline="Under 1 Month">Under 1 Month (Urgent)</button>
+          <button type="button" class="planner-option-btn selected" data-inquiry-timeline="1-2 Months">1–2 Months</button>
+          <button type="button" class="planner-option-btn" data-inquiry-timeline="Flexible">Flexible Schedule</button>
+          <button type="button" class="planner-option-btn" data-inquiry-timeline="Consultation">Consultation First</button>
+        </div>
+      </div>
+
+      <div class="planner-step-group">
+        <span class="planner-label">4. Project Notes &amp; Objectives</span>
+        <textarea id="planner-notes-input" class="planner-textarea" placeholder="Briefly describe what you're building, key users, and primary goals…"></textarea>
+      </div>
+
+      <div class="planner-footer-actions">
+        <button type="button" class="planner-submit-btn" id="planner-submit-btn">Generate Inquiry Email ↗</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Three.js r128 CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- JE. Digital Universe Modules -->
+  <script src="js/three/ThreeSceneManager.js"></script>
+  <script src="js/three/CharacterBase.js"></script>
+  <script src="js/three/CodeCharacter.js"></script>
+  <script src="js/three/ClaudeCharacter.js"></script>
+  <script src="js/three/GrokCharacter.js"></script>
+  <script src="js/three/GeminiCharacter.js"></script>
+  <script src="js/three/CouncilStage.js"></script>
+  <script src="js/concierge/KnowledgeBase.js"></script>
+  <script src="js/concierge/IntentRouter.js"></script>
+  <script src="js/concierge/DialogueEngine.js"></script>
+  <script src="js/concierge/InquiryBuilder.js"></script>
+  <script src="js/concierge/VoiceManager.js"></script>
+  <script src="js/interaction/PointerController.js"></script>
+  <script src="js/interaction/MotionLabController.js"></script>
+  <script src="js/interaction/ScrollDirector.js"></script>
+  <script src="js/council-init.js"></script>
 </body>
 </html>

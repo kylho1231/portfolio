@@ -1,0 +1,422 @@
+/* ==========================================================================
+   JE. DIGITAL UNIVERSE — SPATIAL UI & MOTION LAB STYLES
+   Futuristic Humanism: Spatial Computing, 3D Tilt Cards, Magnetic Buttons,
+   and Kinetic Typography
+   ========================================================================== */
+
+:root {
+  --color-void: #080b12;
+  --color-midnight: #111827;
+  --color-slate-card: rgba(17, 24, 39, 0.75);
+  --color-accent-lime: #caff6b;
+  --color-accent-cyan: #69e8f2;
+  --color-accent-amber: #e6a47c;
+  --color-accent-violet: #9a83ff;
+  --color-accent-blue: #699cff;
+  --font-mono-tech: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  --font-display-spatial: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-hover: rgba(202, 255, 107, 0.4);
+  --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* ==========================================================================
+   Section: Digital Motion Lab (#motion-lab)
+   ========================================================================== */
+
+.motion-lab-section {
+  position: relative;
+  padding: 5rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.lab-header {
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.lab-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(202, 255, 107, 0.08);
+  border: 1px solid rgba(202, 255, 107, 0.25);
+  border-radius: 9999px;
+  font-family: var(--font-mono-tech);
+  font-size: 0.8rem;
+  color: var(--color-accent-lime);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.lab-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-lime);
+  box-shadow: 0 0 8px var(--color-accent-lime);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.lab-title {
+  font-family: var(--font-display-spatial);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #f5f7fa;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.lab-subtitle {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  max-width: 650px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 3-Column Lab Grid */
+.lab-experiments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  perspective: 1200px;
+}
+
+/* Individual Experiment Card */
+.experiment-card {
+  position: relative;
+  background: var(--color-slate-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.experiment-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 12px 40px rgba(202, 255, 107, 0.12);
+}
+
+.experiment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 0.75rem;
+}
+
+.experiment-tag {
+  font-family: var(--font-mono-tech);
+  font-size: 0.75rem;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+.experiment-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3b82f6;
+  box-shadow: 0 0 8px #3b82f6;
+}
+
+.experiment-title {
+  font-family: var(--font-display-spatial);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0 0 0.5rem;
+}
+
+.experiment-desc {
+  font-size: 0.925rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+}
+
+/* Interactive Sandbox Area Inside Each Card */
+.experiment-stage {
+  flex: 1;
+  min-height: 220px;
+  background: rgba(8, 11, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   Experiment 01: Spatial 3D Depth Card
+   -------------------------------------------------------------------------- */
+.tilt-card-viewport {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.tilt-card {
+  width: 240px;
+  height: 160px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid rgba(105, 232, 242, 0.3);
+  border-radius: 14px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem;
+}
+
+.tilt-card:active {
+  cursor: grabbing;
+}
+
+.tilt-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: radial-gradient(circle at var(--sheen-x, 50%) var(--sheen-y, 50%), rgba(255, 255, 255, 0.22) 0%, transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tilt-card:hover .tilt-sheen {
+  opacity: 1;
+}
+
+.tilt-layer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateZ(28px);
+}
+
+.tilt-chip {
+  width: 32px;
+  height: 24px;
+  background: linear-gradient(135deg, #fbbf24, #d97706);
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tilt-network {
+  font-family: var(--font-mono-tech);
+  font-size: 0.7rem;
+  color: #69e8f2;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.tilt-layer-middle {
+  transform: translateZ(40px);
+  text-align: left;
+}
+
+.tilt-card-num {
+  font-family: var(--font-mono-tech);
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  letter-spacing: 0.12em;
+}
+
+.tilt-layer-bottom {
+  transform: translateZ(20px);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* --------------------------------------------------------------------------
+   Experiment 02: Tactile Magnetic Button
+   -------------------------------------------------------------------------- */
+.magnetic-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.magnetic-btn-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.magnetic-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.8rem;
+  font-family: var(--font-display-spatial);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #080b12;
+  background: var(--color-accent-lime);
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(202, 255, 107, 0.3);
+  will-change: transform;
+}
+
+.magnetic-btn:focus-visible {
+  box-shadow: 0 0 0 3px #080b12, 0 0 0 6px var(--color-accent-lime);
+}
+
+.magnetic-btn-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s ease;
+}
+
+.magnetic-btn:hover .magnetic-btn-icon {
+  transform: rotate(45deg);
+}
+
+.magnetic-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple-anim 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-anim {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.magnetic-feedback {
+  font-family: var(--font-mono-tech);
+  font-size: 0.75rem;
+  color: #64748b;
+  min-height: 1.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   Experiment 03: Kinetic Spatial Typography
+   -------------------------------------------------------------------------- */
+.kinetic-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  perspective: 600px;
+}
+
+.kinetic-stage-text {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.kinetic-char {
+  display: inline-block;
+  font-family: var(--font-display-spatial);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  letter-spacing: -0.03em;
+  transition: transform 0.15s ease, color 0.2s ease, text-shadow 0.2s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.kinetic-char.active {
+  color: var(--color-accent-violet);
+  text-shadow: 0 0 16px rgba(154, 131, 255, 0.6);
+}
+
+.kinetic-caption {
+  margin-top: 1rem;
+  font-family: var(--font-mono-tech);
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* Experiment Footer / Controls */
+.experiment-footer {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.exp-reset-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  font-family: var(--font-mono-tech);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exp-reset-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f1f5f9;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   Reduced Motion Overrides
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .tilt-card,
+  .magnetic-btn,
+  .kinetic-char,
+  .lab-badge::before {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
