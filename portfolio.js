@@ -746,6 +746,122 @@ if (asResetOrder) {
 }
 
 /* ----------------------------------------------------
+   Interactive AntiqueRide Smart Tricycle Dispatch Simulator
+---------------------------------------------------- */
+const arRouteSelect = $("#ar-route-select");
+const arChips = $$(".ar-chip");
+const arTodaName = $("#ar-toda-name");
+const arPinDisplay = $("#ar-pin-display");
+const arFareRule = $("#ar-fare-rule");
+const arFareDisplay = $("#ar-fare-display");
+const arStatusLabel = $("#ar-status-label");
+const arSteps = [$("#ar-step-1"), $("#ar-step-2"), $("#ar-step-3"), $("#ar-step-4")];
+const arTriggerDispatch = $("#ar-trigger-dispatch");
+const arResetDispatch = $("#ar-reset-dispatch");
+
+let arPassengerType = "regular";
+let arDispatchTimer = null;
+
+function updateArFare() {
+  if (!arRouteSelect || !arFareDisplay) return;
+  const opt = arRouteSelect.selectedOptions[0];
+  if (!opt) return;
+
+  const baseFare = parseFloat(opt.dataset.fare) || 15.00;
+  const discFare = parseFloat(opt.dataset.disc) || 12.00;
+  const toda = opt.dataset.toda || "Tradetown TODA (TTODA)";
+  if (arTodaName) arTodaName.textContent = toda;
+
+  let calculated = baseFare;
+  if (arPassengerType === "pakyaw") {
+    calculated = 50.00;
+    if (arFareRule) arFareRule.textContent = "Special Charter / Solo Pakyaw Rate";
+  } else if (arPassengerType !== "regular") {
+    calculated = discFare;
+    if (arFareRule) arFareRule.textContent = `20% Statutory Discount (${arPassengerType.toUpperCase()})`;
+  } else {
+    calculated = baseFare;
+    if (arFareRule) arFareRule.textContent = "Municipal Tariff (MO No. 2023-014)";
+  }
+
+  arFareDisplay.textContent = `₱${calculated.toFixed(2)}`;
+}
+
+if (arRouteSelect) {
+  arRouteSelect.addEventListener("change", () => {
+    playSound("click");
+    updateArFare();
+  });
+}
+
+arChips.forEach(chip => {
+  chip.addEventListener("click", () => {
+    arChips.forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    arPassengerType = chip.dataset.ptype || "regular";
+    playSound("click");
+    updateArFare();
+  });
+});
+
+if (arTriggerDispatch) {
+  arTriggerDispatch.addEventListener("click", () => {
+    playSound("switch");
+    arTriggerDispatch.disabled = true;
+    arTriggerDispatch.innerHTML = '<span>Broadcasting to Terminal Queue...</span> <span aria-hidden="true">📡</span>';
+    clearTimeout(arDispatchTimer);
+
+    // Generate random 4-digit security PIN
+    const generatedPin = Math.floor(1000 + Math.random() * 9000);
+    if (arPinDisplay) arPinDisplay.textContent = `PIN: ${generatedPin}`;
+
+    // Step 1: Dispatch
+    arSteps.forEach(s => s && s.classList.remove("done", "current"));
+    if (arSteps[0]) arSteps[0].classList.add("done");
+    if (arStatusLabel) arStatusLabel.textContent = "Searching nearby drivers...";
+
+    // Step 2: Matched (700ms)
+    arDispatchTimer = setTimeout(() => {
+      playSound("click");
+      if (arSteps[1]) arSteps[1].classList.add("done");
+      if (arStatusLabel) arStatusLabel.textContent = "Matched: Unit #204 (TTODA)";
+
+      // Step 3: Arrived (1500ms)
+      arDispatchTimer = setTimeout(() => {
+        playSound("click");
+        if (arSteps[2]) arSteps[2].classList.add("done");
+        if (arStatusLabel) arStatusLabel.textContent = "Driver Arrived at Pickup!";
+
+        // Step 4: Started (2300ms)
+        arDispatchTimer = setTimeout(() => {
+          playSound("success");
+          if (arSteps[3]) {
+            arSteps[3].classList.add("done", "current");
+          }
+          if (arStatusLabel) arStatusLabel.textContent = "PIN Verified ✓ Trip in Progress!";
+          arTriggerDispatch.innerHTML = '<span>Ride Active</span> <span aria-hidden="true">🛵</span>';
+          if (arResetDispatch) arResetDispatch.hidden = false;
+        }, 800);
+      }, 800);
+    }, 700);
+  });
+}
+
+if (arResetDispatch) {
+  arResetDispatch.addEventListener("click", () => {
+    clearTimeout(arDispatchTimer);
+    arSteps.forEach(s => s && s.classList.remove("done", "current"));
+    if (arStatusLabel) arStatusLabel.textContent = "Ready to Book";
+    if (arTriggerDispatch) {
+      arTriggerDispatch.disabled = false;
+      arTriggerDispatch.innerHTML = '<span>Request Tricycle Dispatch</span> <span aria-hidden="true">⚡</span>';
+    }
+    arResetDispatch.hidden = true;
+    playSound("click");
+  });
+}
+
+/* ----------------------------------------------------
    Projects Detailed Dialog Data
 ---------------------------------------------------- */
 const projects = {
@@ -808,6 +924,16 @@ const projects = {
     tools: ["Next.js 15", "React 19", "Kotlin (Compose)", "Supabase / PostgreSQL", "TypeScript", "Tailwind CSS", "Room Database", "Vercel", "RA 10173 Compliance"],
     live: "https://antiquesupply.vercel.app",
     repo: "https://github.com/kylho1231/antiquesupply"
+  },
+  antiqueride: {
+    title: "AntiqueRide — Smart Transportation and Tricycle Booking Platform",
+    category: "07 / NEXT.JS 16, LEAFLET GIS & PWA · SMART MOBILITY",
+    intro: "A full-stack Progressive Web Application modernizing public tricycle transport, dispatch operations, and commuter safety in San Jose de Buenavista, Antique.",
+    need: "Commuters struggle with finding available tricycles in rural barangays and uncoordinated terminal queues, face fare ambiguity without transparent ordinance tariff enforcement, and lack safety verification during evening transit.",
+    approach: "Engineered an installable Progressive Web Application (PWA) with Next.js 16 (Turbopack), React 19, TypeScript, and Tailwind CSS v4. Features Leaflet/OpenStreetMap GIS spatial routing, PostGIS spatial driver proximity queries, Sangguniang Bayan fare matrix enforcement (MO No. 2023-014), statutory 20% discounts for students, seniors, and PWDs, 4-digit pickup PIN matching, and dedicated isolated role portals for Commuters, TODA Drivers, and Super Administrators. Verified by 35/35 automated acceptance tests and deployed on Vercel.",
+    tools: ["Next.js 16 (Turbopack)", "React 19", "TypeScript", "Tailwind CSS v4", "Leaflet GIS", "OpenStreetMap", "PostGIS / Supabase", "PWA (WebAPK)", "RA 10173", "Vercel"],
+    live: "https://antiqueride.vercel.app",
+    repo: "https://github.com/kylho1231/antiqueride"
   }
 };
 
@@ -872,8 +998,8 @@ const skillStories = {
     project: "motorelease"
   },
   nextjs: {
-    desc: "Powers AntiqueSupply's B2B marketplace (Next.js 15 App Router, React 19) and SAC ISPSO ScholarLink (Next.js 14).",
-    project: "antiquesupply"
+    desc: "Powers AntiqueRide (Next.js 16 Turbopack), AntiqueSupply (Next.js 15), and SAC ISPSO ScholarLink (Next.js 14).",
+    project: "antiqueride"
   },
   react: {
     desc: "Used in AquaFlow to architect a responsive, state-driven water refill ordering PWA with Vite, component hooks, and optimistic UI updates.",
@@ -916,16 +1042,20 @@ const skillStories = {
     project: "motorelease"
   },
   postgresql: {
-    desc: "PostgreSQL & Supabase backend powering AntiqueSupply with Row Level Security (RLS) tenant isolation and atomic inventory locks.",
-    project: "antiquesupply"
+    desc: "PostgreSQL with PostGIS spatial geography indexing in AntiqueRide, and Supabase RLS in AntiqueSupply.",
+    project: "antiqueride"
+  },
+  leaflet: {
+    desc: "Implemented interactive OpenStreetMap GIS routing, terminal pins, and live driver telemetry in AntiqueRide.",
+    project: "antiqueride"
   },
   passkeys: {
     desc: "Integrated WebAuthn biometric passkey authentication in AquaFlow for seamless, passwordless customer sign-ins.",
     project: "aquaflow"
   },
   vercel: {
-    desc: "Production cloud deployment platform for AntiqueSupply (antiquesupply.vercel.app), MotoRelease, AquaFlow, and SAC ISPSO.",
-    project: "antiquesupply"
+    desc: "Production cloud deployment platform for AntiqueRide (antiqueride.vercel.app), AntiqueSupply, MotoRelease, and AquaFlow.",
+    project: "antiqueride"
   },
   android: {
     desc: "Native Android Studio IDE environment utilized for compiling, testing, and debugging San Jose TODA and EcoCollect SJ mobile apps.",

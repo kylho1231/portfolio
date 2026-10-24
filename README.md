@@ -53,6 +53,13 @@ A personal portfolio highlighting full-stack engineering, Progressive Web Apps (
    - **Summary:** Full-stack B2B procurement marketplace, supplier operations hub, and native Android companion application connecting smallholder agricultural cooperatives and artisanal manufacturers across Antique Province (Laua-an Muscovado, Bugasong Patadyong weavers, Tibiao VCO, Pandan Bariw crafts) with commercial buyers and island resorts across Panay Island and Boracay. Features atomic row-level inventory locking in Supabase/PostgreSQL, multi-item Request for Quotation (RFQ) pipelines, and an immutable 6-stage order lifecycle state machine.
    - **Interactive Preview:** In-browser B2B procurement simulator featuring authentic Antique cooperative products, commercial buyer entity selection (Boracay Palms Resort, Panay Bistro), dynamic wholesale price and freight calculations, and interactive order lifecycle state machine dispatch.
 
+7. **AntiqueRide — Smart Transportation and Tricycle Booking Platform**
+   - **Production PWA (Vercel):** [https://antiqueride.vercel.app](https://antiqueride.vercel.app) (Commuter Portal: [https://antiqueride.vercel.app/commuter](https://antiqueride.vercel.app/commuter))
+   - **GitHub Repository:** [https://github.com/kylho1231/antiqueride](https://github.com/kylho1231/antiqueride)
+   - **Tech Stack:** Next.js 16 (Turbopack), React 19, TypeScript, Tailwind CSS v4, Leaflet GIS, OpenStreetMap, PostGIS / Supabase, PWA (WebAPK), Vercel
+   - **Summary:** Full-stack Progressive Web Application modernizing public tricycle transport, dispatch operations, and commuter safety in San Jose de Buenavista, Antique. Features dedicated role-isolated portals for commuters, TODA drivers, and municipal administrators, real-time OpenStreetMap (Leaflet GIS) terminal routing, Sangguniang Bayan fare matrix enforcement (MO No. 2023-014), mandatory 20% statutory discounts, and 4-digit security pickup PIN matching with passing 35/35 automated acceptance tests.
+   - **Interactive Preview:** In-browser smart dispatch and PIN matching simulator with pilot terminal routes across San Jose de Buenavista, statutory passenger discount selector, frozen fare snapshot calculation, and 4-step dispatch state progression (`Dispatch` → `Matched` → `Arrived` → `Started`).
+
 ---
 
 ## Interactive Features
@@ -63,10 +70,11 @@ A personal portfolio highlighting full-stack engineering, Progressive Web Apps (
 - **MotoRelease Reference Lookup Simulator:** Live interactive dealership tracking preview switching between sample Yamaha vehicle dossiers (`TRK-YAM-2026-0001`, `0002`, `0003`) with dual OR/CR & metal license plate readiness states, masked data privacy compliance, and dealership claiming QR pass.
 - **EcoCollect SJ Civic Waste Operations Simulator:** Interactive barangay collection schedule switcher (Funda-Dalipe vs Atabay) with official MENRO confirmation status, 4-tier Kinaray-a waste segregation guide (*Madunot*, *Mabaligya*, *Di-madunot*, *Delikado*), and citizen incident tracker code.
 - **AntiqueSupply B2B Procurement & Pipeline Simulator:** Live procurement simulation for commercial buyers on Panay and Boracay Island, featuring wholesale quantity controls, real cooperative catalog selections, and 5-stage order fulfillment pipeline dispatch (`Submitted` → `Confirmed` → `Preparing` → `Dispatched` → `Delivered`).
+- **AntiqueRide Smart Dispatch & 4-Digit PIN Simulator:** Real-time tricycle dispatch simulation across San Jose de Buenavista routes with Sangguniang Bayan fare matrix enforcement, statutory 20% discounts, 4-digit pickup PIN generation, and 4-step driver radar tracking.
 - **Tactile Sound Effects (Web Audio API):** Clean, synthesized audio feedback on user interactions (tab switching, ordering water, toggling themes, and clicking tools). Easily toggleable via the header button (`🔊 / 🔇`) and saved locally.
-- **Interactive Skills Map:** Click any skill chip in the toolkit (Next.js 15, PostgreSQL / Supabase, Kotlin, Laravel 11, React 18, TypeScript, PHP 8.2, Firebase, Tailwind CSS, etc.) to reveal how Jhon applied it in real-world projects, with a 1-click jump button to the relevant project.
+- **Interactive Skills Map:** Click any skill chip in the toolkit (Next.js 16, Leaflet GIS, PostgreSQL / PostGIS, Kotlin, Laravel 11, React 19, TypeScript, PHP 8.2, Firebase, Tailwind CSS, etc.) to reveal how Jhon applied it in real-world projects, with a 1-click jump button to the relevant project.
 - **Code Playground with One-Click Copy:** Explore architectural mindsets across *Build*, *Design*, *Engineer (PWA)*, and *Learn* with a copy button that copies the snippet directly to your clipboard.
-- **Category Filter Pills:** Switch between *All (6)*, *PWA & Cloud (4)*, *Android (3)*, and *Civic & Community (4)* to quickly focus on specific engineering domains.
+- **Category Filter Pills:** Switch between *All (7)*, *PWA & Cloud (5)*, *Android (3)*, and *Civic & Mobility (5)* to quickly focus on specific engineering domains.
 - **Quick Command Palette (`Ctrl+K` or `⌘ K`):** Instant keyboard navigation to projects, themes, sound settings, GitHub profile, and color accents.
 - **Interactive Contact Experience:** Pre-select inquiry topics (*Project Collaboration*, *Job / Internship*, *Saying Hello*) to generate pre-filled email links, copy the email address, or connect on LinkedIn and GitHub.
 - **Themes & Palettes:** Dark editorial mode by default, light mode toggle, and three selectable accents (Lime, Coral, Sky).
