@@ -90,7 +90,7 @@
 /* 3-Column Lab Grid */
 .lab-experiments-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   perspective: 1200px;
 }
@@ -405,6 +405,72 @@
   background: rgba(255, 255, 255, 0.05);
   color: #f1f5f9;
   border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   Responsive Overrides for Motion Lab (<= 768px & <= 480px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .motion-lab-section {
+    padding: 3.5rem 1rem;
+  }
+  .lab-header {
+    margin-bottom: 2rem;
+  }
+  .lab-title {
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+  }
+  .lab-subtitle {
+    font-size: 0.95rem;
+  }
+  .lab-experiments-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .experiment-card {
+    padding: 1.35rem;
+    border-radius: 16px;
+  }
+  .experiment-stage {
+    min-height: 190px;
+  }
+  .tilt-card {
+    width: 220px;
+    height: 145px;
+    padding: 1rem;
+  }
+  .kinetic-char {
+    font-size: clamp(1.4rem, 6.5vw, 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .motion-lab-section {
+    padding: 2.75rem 0.75rem;
+  }
+  .experiment-card {
+    padding: 1.15rem;
+  }
+  .experiment-title {
+    font-size: 1.15rem;
+  }
+  .experiment-desc {
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+  .tilt-card {
+    width: 200px;
+    height: 135px;
+    padding: 0.85rem;
+  }
+  .tilt-card-num {
+    font-size: 0.8rem;
+  }
+  .magnetic-btn {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.88rem;
+  }
 }
 
 /* ==========================================================================

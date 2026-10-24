@@ -56,22 +56,26 @@ class CouncilStage {
     this.activeMode = 'single';
     this.activeCharacterKey = charKey;
 
+    const isMobile = window.innerWidth < 768;
+    const targetY = isMobile ? 0.85 : 0.0;
+
     Object.keys(this.characters).forEach(k => {
       const char = this.characters[k];
       const grp = char.getGroup();
       if (k === charKey) {
         grp.visible = true;
-        char.targetPosition.set(0, 0, 0);
+        char.targetPosition.set(0, targetY, 0);
         char.setState('idle');
       } else {
         grp.visible = false;
-        char.targetPosition.set(k === 'code' || k === 'claude' ? -6 : 6, 0, -2);
+        char.targetPosition.set(k === 'code' || k === 'claude' ? -6 : 6, targetY, -2);
       }
     });
 
     // Camera target for single character
     if (this.sm.camera) {
-      this.sm.camera.position.z = window.innerWidth < 600 ? 8.5 : 7.0;
+      this.sm.camera.position.z = isMobile ? 8.5 : 7.0;
+      this.sm.camera.position.y = isMobile ? 0.35 : 0.0;
       this.sm.camera.position.x = 0;
     }
   }
@@ -88,13 +92,13 @@ class CouncilStage {
       gemini: new THREE.Vector3(2.6, -0.1, -0.6)
     };
 
-    // On narrow screens, arrange in a tighter 2x2 grid
+    // On narrow screens, arrange in a tighter 2x2 grid elevated above the speech bubble
     const isMobile = window.innerWidth < 768;
     if (isMobile) {
-      formations.code.set(-1.1, 1.1, 0);
-      formations.claude.set(1.1, 1.1, 0);
-      formations.grok.set(-1.1, -1.1, 0);
-      formations.gemini.set(1.1, -1.1, 0);
+      formations.code.set(-1.0, 1.7, 0);
+      formations.claude.set(1.0, 1.7, 0);
+      formations.grok.set(-1.0, 0.4, 0);
+      formations.gemini.set(1.0, 0.4, 0);
     }
 
     Object.keys(this.characters).forEach(k => {
@@ -107,7 +111,8 @@ class CouncilStage {
 
     // Camera pulls back to fit all 4
     if (this.sm.camera) {
-      this.sm.camera.position.z = isMobile ? 10.5 : 8.8;
+      this.sm.camera.position.z = isMobile ? 10.0 : 8.8;
+      this.sm.camera.position.y = isMobile ? 0.5 : 0.0;
       this.sm.camera.position.x = 0;
     }
   }

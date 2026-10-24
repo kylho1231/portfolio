@@ -60,7 +60,8 @@ class ThreeSceneManager {
 
     // 2. Camera
     this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    this.camera.position.set(0, 0, 7.5);
+    const isMobile = width < 768;
+    this.camera.position.set(0, isMobile ? 0.35 : 0, isMobile ? 8.5 : 7.5);
 
     // 3. Clock
     this.clock = new THREE.Clock();
@@ -136,11 +137,13 @@ class ThreeSceneManager {
     const height = this.container.clientHeight;
 
     this.camera.aspect = width / height;
-    // Adjust camera distance on narrow mobile screens for optimal framing
-    if (width < 600) {
-      this.camera.position.z = 9.2;
+    const isMobile = width < 768;
+    if (isMobile) {
+      this.camera.position.z = 8.5;
+      this.camera.position.y = 0.35;
     } else {
       this.camera.position.z = 7.5;
+      this.camera.position.y = 0.0;
     }
     this.camera.updateProjectionMatrix();
 

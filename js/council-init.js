@@ -117,6 +117,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Speech Bubble Minimize/Expand Toggle
+  const speechBubble = document.getElementById('council-speech-bubble');
+  const speechToggleBtn = document.getElementById('speech-toggle-btn');
+  if (speechBubble && speechToggleBtn) {
+    speechToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      speechBubble.classList.toggle('collapsed');
+      const isCollapsed = speechBubble.classList.contains('collapsed');
+      speechToggleBtn.textContent = isCollapsed ? '+' : '−';
+      speechToggleBtn.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+    });
+  }
+
   // 7. Stage Mode Button (3D Spatial vs Lite Mode)
   const stageModeBtn = document.getElementById('stage-mode-btn');
   if (stageModeBtn) {
