@@ -40,7 +40,7 @@ ul { padding: 0; list-style: none; }
 .skip-link:focus { transform: translateY(0); }
 .scroll-progress { position: fixed; z-index: 60; inset: 0 0 auto; height: 3px; pointer-events: none; }
 .scroll-progress span { display: block; height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); }
-.site-header { position: sticky; z-index: 30; top: 0; background: var(--header); backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
+.site-header { position: sticky; z-index: 50; top: 0; background: var(--header); backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
 .header-inner { display: flex; align-items: center; gap: 28px; min-height: 94px; }
 .brand { display: flex; align-items: center; gap: 16px; margin-right: auto; }
 .brand-mark, .footer-brand { font: 750 48px/1 var(--display); letter-spacing: -.09em; }
@@ -65,7 +65,7 @@ kbd { font: 10px var(--mono); color: var(--muted); border: 1px solid var(--line)
 .menu-toggle { display: none; }
 
 /* Introduction: oversized type, personal portrait, and a quiet editorial grid. */
-.hero { overflow: clip; }
+.hero { overflow: clip; position: relative; isolation: isolate; z-index: 10; background: var(--paper); }
 .hero-topline, .hero-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; color: var(--muted); }
 .hero-topline { padding-top: 30px; font-size: 12px; }
 .hero-topline > span:first-child { display: flex; align-items: center; gap: 12px; }

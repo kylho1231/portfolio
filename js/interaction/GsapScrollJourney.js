@@ -27,13 +27,17 @@
     const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
 
     let lastIndex = -1;
-    const colorValues = ["#d3a6ff", "#76d8ff", "#f0f2f8", "#ffb678"];
+    const getColors = () => document.documentElement.dataset.theme === "light"
+      ? ["#7c3aed", "#0284c7", "#1e293b", "#c2410c"]
+      : ["#d3a6ff", "#76d8ff", "#f0f2f8", "#ffb678"];
+
     const setProgress = (progress) => {
       const scaled = Math.min(chapters.length - 1, Math.max(0, progress * (chapters.length - 1)));
       const index = Math.min(chapters.length - 1, Math.floor(scaled + .5));
+      const colors = getColors();
       if (index !== lastIndex) {
         lastIndex = index;
-        root.style.setProperty("--je-chapter-color", colorValues[index] || "#caff6b");
+        root.style.setProperty("--je-chapter-color", colors[index] || (document.documentElement.dataset.theme === "light" ? "#466a0b" : "#caff6b"));
         if (counter) counter.textContent = String(index + 1).padStart(2, "0") + " / " + String(chapters.length).padStart(2, "0");
       }
       fills.forEach((dot, i) => {
@@ -42,10 +46,17 @@
     };
     setProgress(0);
 
+    window.addEventListener("themechange", () => {
+      lastIndex = -1;
+      const st = ST.getById("je-horizontal-story");
+      if (st) setProgress(st.progress);
+      else setProgress(0);
+    });
+
     // Desktop only. Mobile, reduced motion and failed-CDN cases always show
     // all chapters naturally in the page flow.
     const media = gsap.matchMedia();
-    media.add("(min-width: 901px) and (min-height: 500px) and (prefers-reduced-motion: no-preference)", () => {
+    media.add("(min-width: 901px) and (min-height: 460px) and (prefers-reduced-motion: no-preference)", () => {
       root.style.setProperty("--je-header-height", headerHeight() + "px");
       root.classList.add("je-gsap-active");
       const travel = () => Math.max(1, distance());
@@ -65,7 +76,7 @@
           end: () => "+=" + Math.round(travel() * .82),
           invalidateOnRefresh: true,
           scrub: .9,
-          anticipatePin: 1,
+          anticipatePin: 0,
           onUpdate(self) { setProgress(self.progress); },
           onRefresh(self) {
             root.style.setProperty("--je-header-height", headerHeight() + "px");

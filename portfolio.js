@@ -97,6 +97,8 @@ function setTheme(theme, persist = false) {
   themeButton.title = `Switch to ${dark ? "light" : "dark"} mode`;
   const metaTheme = $("meta[name='theme-color']");
   if (metaTheme) metaTheme.content = dark ? "#111915" : "#f2f1e9";
+  window.dispatchEvent(new CustomEvent("themechange", { detail: { theme } }));
+  if (window.ScrollTrigger) window.ScrollTrigger.refresh();
   if (persist) {
     chosenTheme = theme;
     playSound("switch");

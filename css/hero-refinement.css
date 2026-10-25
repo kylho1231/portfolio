@@ -6,6 +6,8 @@
 .hero {
   overflow: clip;
   position: relative;
+  isolation: isolate;
+  z-index: 10;
   background:
     radial-gradient(ellipse 52% 58% at 88% 38%, rgba(94, 143, 205, .09), transparent 78%),
     var(--paper);

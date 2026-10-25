@@ -6,6 +6,7 @@
   --je-backdrop: #080b13;
   position: relative;
   isolation: isolate;
+  z-index: 20;
   overflow: clip;
   background: var(--je-backdrop);
   color: #f7fbff;
@@ -34,10 +35,11 @@
 .je-journey-intro p:not(.je-kicker) { color: #a8b5c3; font: 400 14px/1.7 "DM Sans",sans-serif; max-width: 335px; }
 .je-scroll-viewport {
   position: relative;
+  z-index: 20;
   height: min(800px, calc(100svh - 86px));
   min-height: 600px;
   overflow: hidden;
-  background: #080c16;
+  background: var(--je-backdrop, #080c16);
   border-block: 1px solid rgba(255,255,255,.075);
 }
 .je-scroll-track { display: flex; height: 100%; width: max-content; }
@@ -203,14 +205,27 @@
 }
 
 /* Scroll stability and cinematic polish — 2026 iteration */
-.je-scroll-journey { overflow: visible; }
+.je-scroll-journey {
+  overflow: clip;
+  position: relative;
+  isolation: isolate;
+  z-index: 20;
+  background: var(--je-backdrop);
+}
+.pin-spacer:has(.je-scroll-viewport),
+.je-scroll-journey .pin-spacer {
+  z-index: 20 !important;
+  background: var(--je-backdrop) !important;
+}
 .je-scroll-journey.je-gsap-active .je-scroll-viewport {
   height: calc(100svh - var(--je-header-height, 82px));
-  min-height: 470px;
+  min-height: 460px;
   max-height: 820px;
   overflow: hidden;
   position: relative;
   contain: paint;
+  z-index: 20;
+  background: var(--je-backdrop, #080c16);
 }
 .je-scroll-journey.je-gsap-active .je-scroll-track {
   width: max-content;
@@ -260,9 +275,14 @@ html[data-theme="light"] .je-scroll-journey {
   --je-lime: var(--accent, #466a0b);
   --je-chapter-color: #6366f1;
   --je-backdrop: var(--paper, #f2f1e9);
-  background: var(--je-backdrop);
+  background: var(--je-backdrop) !important;
   color: var(--ink, #17271d);
   border-block: 1px solid var(--line, #cbd2c4);
+}
+
+html[data-theme="light"] .pin-spacer:has(.je-scroll-viewport),
+html[data-theme="light"] .je-scroll-journey .pin-spacer {
+  background: var(--paper, #f2f1e9) !important;
 }
 
 html[data-theme="light"] .je-journey-intro .je-kicker {
@@ -281,8 +301,9 @@ html[data-theme="light"] .je-journey-intro p:not(.je-kicker) {
   color: var(--body-ink, #48584c);
 }
 
-html[data-theme="light"] .je-scroll-viewport {
-  background: var(--surface, #faf9f3);
+html[data-theme="light"] .je-scroll-viewport,
+html[data-theme="light"] .je-scroll-journey.je-gsap-active .je-scroll-viewport {
+  background: var(--surface, #faf9f3) !important;
   border-block: 1px solid var(--line, #cbd2c4);
 }
 
