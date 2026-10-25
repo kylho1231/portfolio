@@ -10,6 +10,11 @@ const JhonKnowledgeBase = {
     monogram: "je.",
     role: "Full-Stack & Mobile Developer / IT Student",
     institution: "St. Anthony's College",
+    seniorHighSchool: "Antique National School",
+    education: [
+      { degree: "BS Information Technology", school: "St. Anthony's College", period: "2022 — Present", status: "Currently studying" },
+      { degree: "Senior High School · HUMSS", school: "Antique National School", period: "2020 — 2022", status: "Graduated" }
+    ],
     location: "San Jose de Buenavista, Antique, Philippines",
     timezone: "Asia/Manila (UTC+8)",
     headline: "Ideas into interfaces. Code into possibility.",

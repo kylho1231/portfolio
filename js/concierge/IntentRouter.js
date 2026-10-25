@@ -109,6 +109,21 @@ class IntentRouter {
       };
     }
 
+    // Education & School Background
+    if (q.includes('school') || q.includes('college') || q.includes('education') || q.includes('degree') || q.includes('study') || q.includes('ans') || q.includes('humss')) {
+      return {
+        intent: 'education_background',
+        character: 'claude',
+        text: `Jhon's educational journey in Antique, Philippines:
+
+• **BS Information Technology** (2022 — Present) · **St. Anthony's College**
+• **Senior High School (HUMSS)** (2020 — 2022) · **Antique National School**`,
+        actionAnchor: '#about',
+        actionLabel: 'View Education in About',
+        chips: ['Who is Jhon?', 'Core Skills', 'Selected Projects']
+      };
+    }
+
     // 3. Technical Skills / Tech Stack
     if (q.includes('skill') || q.includes('stack') || q.includes('tech') || q.includes('language') || q.includes('framework') || q.includes('react') || q.includes('kotlin') || q.includes('database')) {
       return {
