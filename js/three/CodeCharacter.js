@@ -1,515 +1,378 @@
 /**
- * JE. DIGITAL UNIVERSE — CODE (CHARACTER 01)
- * Identity: The Systems Architect
- * Color: Emerald green (#10B981) + Ice Cyan (#69E8F2) + Brushed Graphite (#111827)
- * Archetype: Technical guardian / futuristic engineering companion
- *
- * Core Features:
- * - Multifaceted metallic polyhedron chassis with beveled cyber-armor shell
- * - Luminous internal pulsating cyan power reactor core visible through chassis panel gaps
- * - Seamlessly integrated cybernetic visor with dark obsidian glass and glowing scanline HUD
- * - Expressive dual digital optic lenses with emerald pupils that smoothly track cursor gaze
- * - Articulated cybernetic brow plates (idle, listening curiosity, analytical thinking, excitement)
- * - Layered carapace armor cowls (top crest with cooling vents, flank plates with cyan energy channels)
- * - Mechanical expansion effect: Outer armor panels smoothly separate during excited/speaking states
- * - Articulated floating mechanical hands (repulsor cuff, palm chassis, articulated fingers, holographic projector)
- * - Three concentric engineering gyro rings with graphite gimbal brackets, tick nodes, and counter-rotation
- * - Orbiting code data packets and algorithmic brackets
+ * JE. CHIBI AI UNIVERSE — CODEX (CHARACTER 02 / BLUE CHIBI ROBOT)
+ * Role: Programming Expert & Systems Architecture Guide
+ * Visual Reference: Leftmost sky-blue robot in reference artwork.
+ * Features:
+ * - Oversized rounded baby-blue metallic dome helmet with periscope antenna
+ * - Circular headphone bolt ears
+ * - Large expressive glossy blue eyes with anime catchlights
+ * - Digital glowing mouth slot with speech pulse
+ * - Plump rounded torso with cyber grid texture and illuminated chest reactor
+ * - Chunky robotic sneakers with circular wheel treads
+ * - Signature Prop: Technical clipboard with paper checklist document
  */
 
-class CodeCharacter extends CharacterBase {
+class CodexCharacter extends CharacterBase {
   constructor() {
-    super('CODE', 0x69e8f2);
-    this.accentGreen = 0x10b981;
+    super('CODEX', 0x38bdf8);
+    this.primaryBlue = 0x0284c7;
+    this.lightCyan = 0x69e8f2;
+    this.accentPink = 0xf472b6;
 
-    // Custom optics gaze tracking instead of group-level neck swing
-    this.disableDefaultGaze = true;
+    this.clipboard = null;
+    this.chestReactor = null;
+    this.antennaLens = null;
 
-    // Structural references
-    this.rings = [];
-    this.particles = null;
-    this.hands = [];
-    this.leftHand = null;
-    this.rightHand = null;
-    this.leftEye = null;
-    this.rightEye = null;
-    this.leftPupil = null;
-    this.rightPupil = null;
-    this.leftBrow = null;
-    this.rightBrow = null;
-    this.scanline = null;
-    this.hologram = null;
-    this.hologramMat = null;
-
-    // Expandable armor panels
-    this.topCrest = null;
-    this.leftFlank = null;
-    this.rightFlank = null;
-    this.reactor = null;
-    this.currentExpansion = 0;
-
-    this.buildCharacter();
+    this.buildChibi();
   }
 
-  buildCharacter() {
-    // 1. High-Performance PBR Materials
-    const graphiteMat = new THREE.MeshStandardMaterial({
-      color: 0x111827,
-      roughness: 0.38,
-      metalness: 0.82
+  buildChibi() {
+    // 1. Materials Palette
+    const helmetMat = new THREE.MeshStandardMaterial({
+      color: 0x7dd3fc,
+      metalness: 0.55,
+      roughness: 0.25
     });
 
-    const armorPlateMat = new THREE.MeshStandardMaterial({
-      color: 0x1e293b,
-      roughness: 0.45,
-      metalness: 0.75
-    });
-
-    const darkVisorHousingMat = new THREE.MeshStandardMaterial({
-      color: 0x090d16,
-      roughness: 0.25,
-      metalness: 0.9
-    });
-
-    const visorGlassMat = new THREE.MeshStandardMaterial({
-      color: 0x020617,
-      roughness: 0.08,
-      metalness: 0.95
-    });
-
-    const cyanGlowMat = new THREE.MeshStandardMaterial({
+    const bodyMat = new THREE.MeshStandardMaterial({
       color: 0x38bdf8,
-      emissive: 0x06b6d4,
-      emissiveIntensity: 0.75,
+      metalness: 0.45,
+      roughness: 0.35
+    });
+
+    const navyAccentMat = new THREE.MeshStandardMaterial({
+      color: 0x0369a1,
+      metalness: 0.6,
+      roughness: 0.3
+    });
+
+    const jointMat = new THREE.MeshStandardMaterial({
+      color: 0x64748b,
+      metalness: 0.8,
+      roughness: 0.25
+    });
+
+    const eyeWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const irisMat = new THREE.MeshBasicMaterial({ color: 0x0284c7 });
+    const pupilMat = new THREE.MeshBasicMaterial({ color: 0x090d16 });
+    const catchlightMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+
+    const mouthSlotMat = new THREE.MeshBasicMaterial({ color: 0x082f49 });
+    this.mouthGlowMat = new THREE.MeshStandardMaterial({
+      color: 0x69e8f2,
+      emissive: 0x38bdf8,
+      emissiveIntensity: 0.9,
       roughness: 0.2
     });
-    this.cyanGlowMat = cyanGlowMat;
 
-    const emeraldGlowMat = new THREE.MeshStandardMaterial({
-      color: 0x10b981,
-      emissive: 0x059669,
-      emissiveIntensity: 0.75,
+    const reactorMat = new THREE.MeshStandardMaterial({
+      color: 0x38bdf8,
+      emissive: 0x0284c7,
+      emissiveIntensity: 0.85,
       roughness: 0.2
     });
-    this.emeraldGlowMat = emeraldGlowMat;
 
-    const coreReactorMat = new THREE.MeshStandardMaterial({
-      color: 0x69e8f2,
-      emissive: 0x0ea5e9,
-      emissiveIntensity: 0.95,
-      roughness: 0.15
+    const pinkTrimMat = new THREE.MeshStandardMaterial({
+      color: 0xf472b6,
+      roughness: 0.3,
+      metalness: 0.2
     });
 
-    const innerWireMat = new THREE.MeshBasicMaterial({
-      color: 0x69e8f2,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.22
+    // 2. Head & Helmet Assembly (headGroup at y = 1.05)
+    // Large rounded dome helmet
+    const headGeo = new THREE.SphereGeometry(0.72, 32, 32);
+    headGeo.scale(1.0, 0.95, 0.98);
+    this.headMesh = new THREE.Mesh(headGeo, helmetMat);
+    this.headGroup.add(this.headMesh);
+
+    // Top Periscope Antenna
+    const stalkGeo = new THREE.CylinderGeometry(0.04, 0.05, 0.2, 16);
+    const stalk = new THREE.Mesh(stalkGeo, jointMat);
+    stalk.position.set(0, 0.76, 0);
+    this.headGroup.add(stalk);
+
+    const pinkRing = new THREE.Mesh(new THREE.TorusGeometry(0.07, 0.02, 12, 24), pinkTrimMat);
+    pinkRing.position.set(0, 0.82, 0);
+    pinkRing.rotation.x = Math.PI / 2;
+    this.headGroup.add(pinkRing);
+
+    this.antennaLens = new THREE.Mesh(new THREE.SphereGeometry(0.075, 16, 16), this.mouthGlowMat);
+    this.antennaLens.position.set(0, 0.88, 0);
+    this.headGroup.add(this.antennaLens);
+
+    // Circular Headphone Ears (Left & Right)
+    const earGeo = new THREE.CylinderGeometry(0.18, 0.18, 0.14, 24);
+    earGeo.rotateZ(Math.PI / 2);
+    const earCapGeo = new THREE.CylinderGeometry(0.12, 0.12, 0.18, 24);
+    earCapGeo.rotateZ(Math.PI / 2);
+
+    const leftEar = new THREE.Mesh(earGeo, navyAccentMat);
+    leftEar.position.set(-0.72, 0, 0);
+    const leftEarCap = new THREE.Mesh(earCapGeo, helmetMat);
+    leftEarCap.position.set(-0.76, 0, 0);
+    this.headGroup.add(leftEar, leftEarCap);
+
+    const rightEar = new THREE.Mesh(earGeo, navyAccentMat);
+    rightEar.position.set(0.72, 0, 0);
+    const rightEarCap = new THREE.Mesh(earCapGeo, helmetMat);
+    rightEarCap.position.set(0.76, 0, 0);
+    this.headGroup.add(rightEar, rightEarCap);
+
+    // 3. Expressive Chibi Eyes
+    const createEye = (isRight) => {
+      const eyeGroup = new THREE.Group();
+      const xOffset = isRight ? 0.24 : -0.24;
+
+      // Sclera
+      const sclera = new THREE.Mesh(new THREE.CircleGeometry(0.17, 24), eyeWhiteMat);
+      sclera.position.set(0, 0, 0);
+      eyeGroup.add(sclera);
+
+      // Iris
+      const iris = new THREE.Mesh(new THREE.CircleGeometry(0.13, 24), irisMat);
+      iris.position.set(0, -0.01, 0.002);
+      eyeGroup.add(iris);
+
+      // Pupil
+      const pupil = new THREE.Mesh(new THREE.CircleGeometry(0.085, 24), pupilMat);
+      pupil.position.set(0, -0.01, 0.004);
+      eyeGroup.add(pupil);
+
+      // Catchlight 1 (Big top-right)
+      const spec1 = new THREE.Mesh(new THREE.CircleGeometry(0.038, 16), catchlightMat);
+      spec1.position.set(0.04, 0.04, 0.006);
+      eyeGroup.add(spec1);
+
+      // Catchlight 2 (Small bottom-left)
+      const spec2 = new THREE.Mesh(new THREE.CircleGeometry(0.018, 16), catchlightMat);
+      spec2.position.set(-0.03, -0.04, 0.006);
+      eyeGroup.add(spec2);
+
+      eyeGroup.position.set(xOffset, 0.06, 0.69);
+      return { group: eyeGroup, pupil: pupil, iris: iris };
+    };
+
+    const eyeL = createEye(false);
+    const eyeR = createEye(true);
+    this.leftEye = eyeL.group;
+    this.rightEye = eyeR.group;
+    this.leftPupil = eyeL.pupil;
+    this.rightPupil = eyeR.pupil;
+    this.headGroup.add(this.leftEye, this.rightEye);
+
+    // Cheeks Blush Dots
+    const blushMat = new THREE.MeshBasicMaterial({ color: 0xf472b6, transparent: true, opacity: 0.45 });
+    const blushL = new THREE.Mesh(new THREE.CircleGeometry(0.07, 16), blushMat);
+    blushL.position.set(-0.35, -0.12, 0.67);
+    const blushR = new THREE.Mesh(new THREE.CircleGeometry(0.07, 16), blushMat);
+    blushR.position.set(0.35, -0.12, 0.67);
+    this.headGroup.add(blushL, blushR);
+
+    // Digital Mouth Slot
+    const mouthHousing = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.07, 0.04), mouthSlotMat);
+    mouthHousing.position.set(0, -0.22, 0.68);
+    this.mouth = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.03, 0.05), this.mouthGlowMat);
+    this.mouth.position.set(0, -0.22, 0.69);
+    this.headGroup.add(mouthHousing, this.mouth);
+
+    // 4. Torso & Body Assembly (bodyGroup at y = 0.45)
+    // Plump Rounded Torso
+    const torsoGeo = new THREE.CylinderGeometry(0.38, 0.44, 0.55, 24);
+    this.torsoMesh = new THREE.Mesh(torsoGeo, bodyMat);
+    this.bodyGroup.add(this.torsoMesh);
+
+    // Neck Collar Ring
+    const collar = new THREE.Mesh(new THREE.TorusGeometry(0.36, 0.04, 16, 32), navyAccentMat);
+    collar.position.set(0, 0.28, 0);
+    collar.rotation.x = Math.PI / 2;
+    this.bodyGroup.add(collar);
+
+    // Chest Reactor
+    this.chestReactor = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.05, 20), reactorMat);
+    this.chestReactor.position.set(0, 0.08, 0.38);
+    this.chestReactor.rotation.x = Math.PI / 2;
+    this.bodyGroup.add(this.chestReactor);
+
+    // Torso Tech Grid Lines
+    const gridLine1 = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.015, 0.01), navyAccentMat);
+    gridLine1.position.set(0, -0.06, 0.41);
+    const gridLine2 = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.015, 0.01), navyAccentMat);
+    gridLine2.position.set(0, -0.16, 0.43);
+    this.bodyGroup.add(gridLine1, gridLine2);
+
+    // 5. Short Rounded Arms (leftArmGroup & rightArmGroup)
+    // Left Arm (Holding Clipboard)
+    const armGeo = new THREE.CylinderGeometry(0.08, 0.07, 0.32, 16);
+    const shoulderGeo = new THREE.SphereGeometry(0.11, 16, 16);
+    const handGeo = new THREE.SphereGeometry(0.09, 16, 16);
+
+    const leftShoulder = new THREE.Mesh(shoulderGeo, navyAccentMat);
+    const leftArm = new THREE.Mesh(armGeo, helmetMat);
+    leftArm.position.set(0, -0.18, 0);
+    const leftHand = new THREE.Mesh(handGeo, jointMat);
+    leftHand.position.set(0, -0.34, 0);
+    this.leftArmGroup.add(leftShoulder, leftArm, leftHand);
+
+    // Technical Clipboard in Left Hand (Held proudly like reference!)
+    this.clipboard = new THREE.Group();
+    const boardMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.4 });
+    const paperMat = new THREE.MeshBasicMaterial({ color: 0xf8fafc });
+    const lineMat = new THREE.MeshBasicMaterial({ color: 0x0284c7 });
+
+    const board = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.38, 0.02), boardMat);
+    const paper = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.32, 0.025), paperMat);
+    paper.position.z = 0.005;
+    this.clipboard.add(board, paper);
+
+    // Document checklist lines
+    [-0.08, -0.02, 0.04, 0.1].forEach(yPos => {
+      const line = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.015, 0.03), lineMat);
+      line.position.set(0, yPos, 0.01);
+      this.clipboard.add(line);
     });
 
-    // 2. Chassis Core & Internal Reactor (in bodyGroup)
-    // Pulsating Inner Reactor Core
-    this.reactor = new THREE.Mesh(new THREE.OctahedronGeometry(0.52, 0), coreReactorMat);
-    this.bodyGroup.add(this.reactor);
+    this.clipboard.position.set(0, -0.32, 0.14);
+    this.clipboard.rotation.x = -0.3;
+    this.leftArmGroup.add(this.clipboard);
 
-    // Inner Cyber-Wireframe Lattice
-    const wireMesh = new THREE.Mesh(new THREE.IcosahedronGeometry(0.92, 1), innerWireMat);
-    this.bodyGroup.add(wireMesh);
+    // Right Arm (Free / Gesturing / Thinking)
+    const rightShoulder = new THREE.Mesh(shoulderGeo, navyAccentMat);
+    const rightArm = new THREE.Mesh(armGeo, helmetMat);
+    rightArm.position.set(0, -0.18, 0);
+    const rightHand = new THREE.Mesh(handGeo, jointMat);
+    rightHand.position.set(0, -0.34, 0);
+    this.rightArmGroup.add(rightShoulder, rightArm, rightHand);
 
-    // Main Faceted Polyhedral Chassis Body
-    const coreGeo = new THREE.IcosahedronGeometry(1.02, 1);
-    this.coreMesh = new THREE.Mesh(coreGeo, graphiteMat);
-    this.bodyGroup.add(this.coreMesh);
+    // 6. Stubby Legs & Chunky Robotic Sneakers
+    const legGeo = new THREE.CylinderGeometry(0.08, 0.09, 0.22, 16);
+    const bootGeo = new THREE.BoxGeometry(0.24, 0.16, 0.38);
+    const soleGeo = new THREE.BoxGeometry(0.26, 0.06, 0.40);
+    const wheelGeo = new THREE.CylinderGeometry(0.06, 0.06, 0.28, 16);
+    wheelGeo.rotateZ(Math.PI / 2);
 
-    // 3. Layered Outer Armor Cowls (Expandable Carapace)
-    // Top Crest Armor Cowl (Crown)
-    this.topCrest = new THREE.Group();
-    this.topCrest.position.set(0, 1.02, 0);
-    const crestPlate = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.54, 0.14, 6), armorPlateMat);
-    this.topCrest.add(crestPlate);
-    // 3 Emerald Cooling Vent Slats
-    [-0.14, 0, 0.14].forEach(zPos => {
-      const vent = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.03, 0.05), emeraldGlowMat);
-      vent.position.set(0, 0.08, zPos);
-      this.topCrest.add(vent);
-    });
-    this.bodyGroup.add(this.topCrest);
+    const createLeg = (isRight) => {
+      const legGroup = isRight ? this.rightLegGroup : this.leftLegGroup;
+      const legMesh = new THREE.Mesh(legGeo, jointMat);
+      legMesh.position.set(0, -0.11, 0);
 
-    // Left Flank Armor Carapace
-    this.leftFlank = new THREE.Group();
-    this.leftFlank.position.set(-0.98, 0.0, 0.0);
-    const leftPlate = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.78, 0.9), armorPlateMat);
-    const leftEnergySeam = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.68, 0.92), cyanGlowMat);
-    this.leftFlank.add(leftPlate, leftEnergySeam);
-    this.bodyGroup.add(this.leftFlank);
+      const boot = new THREE.Mesh(bootGeo, helmetMat);
+      boot.position.set(0, -0.22, 0.06);
 
-    // Right Flank Armor Carapace
-    this.rightFlank = new THREE.Group();
-    this.rightFlank.position.set(0.98, 0.0, 0.0);
-    const rightPlate = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.78, 0.9), armorPlateMat);
-    const rightEnergySeam = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.68, 0.92), cyanGlowMat);
-    this.rightFlank.add(rightPlate, rightEnergySeam);
-    this.bodyGroup.add(this.rightFlank);
+      const sole = new THREE.Mesh(soleGeo, navyAccentMat);
+      sole.position.set(0, -0.30, 0.06);
 
-    // Bottom Thruster Gimbal Ring
-    const thrusterGeo = new THREE.TorusGeometry(0.32, 0.04, 12, 24);
-    const thruster = new THREE.Mesh(thrusterGeo, emeraldGlowMat);
-    thruster.position.set(0, -0.98, 0);
-    thruster.rotation.x = Math.PI / 2;
-    this.bodyGroup.add(thruster);
+      const wheel = new THREE.Mesh(wheelGeo, jointMat);
+      wheel.position.set(0, -0.22, 0.06);
 
-    // 4. Integrated Face Visor & Digital Cyber-Optics
-    this.visorGroup = new THREE.Group();
-    // Positioned seamlessly on the front-upper quadrant of the core
-    this.visorGroup.position.set(0, 0.22, 0.86);
-    this.visorGroup.rotation.x = -0.12; // Angled back along contour
+      legGroup.add(legMesh, boot, sole, wheel);
+    };
+    createLeg(false);
+    createLeg(true);
 
-    // Visor Outer Beveled Housing
-    const visorHousingGeo = new THREE.BoxGeometry(0.88, 0.34, 0.16);
-    const visorHousing = new THREE.Mesh(visorHousingGeo, darkVisorHousingMat);
-    this.visorGroup.add(visorHousing);
-
-    // Cyan Trim Edge
-    const trimGeo = new THREE.BoxGeometry(0.9, 0.36, 0.02);
-    const trim = new THREE.Mesh(trimGeo, cyanGlowMat);
-    trim.position.z = 0.02;
-    this.visorGroup.add(trim);
-
-    // Deep Obsidian Glass Screen
-    const screenGeo = new THREE.BoxGeometry(0.82, 0.28, 0.04);
-    const screen = new THREE.Mesh(screenGeo, visorGlassMat);
-    screen.position.z = 0.08;
-    this.visorGroup.add(screen);
-
-    // Glowing Horizontal HUD Scanline
-    const scanlineGeo = new THREE.BoxGeometry(0.76, 0.016, 0.01);
-    this.scanline = new THREE.Mesh(scanlineGeo, cyanGlowMat);
-    this.scanline.position.set(0, 0, 0.10);
-    this.visorGroup.add(this.scanline);
-
-    // Dual Expressive Digital Optic Lenses (Left & Right Eyes)
-    const irisGeo = new THREE.TorusGeometry(0.065, 0.014, 12, 24);
-    const pupilGeo = new THREE.SphereGeometry(0.038, 16, 16);
-    const specGeo = new THREE.SphereGeometry(0.012, 8, 8);
-    const specMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
-
-    // Left Eye
-    this.leftEye = new THREE.Group();
-    this.leftEye.position.set(-0.20, 0.0, 0.10);
-    const leftIris = new THREE.Mesh(irisGeo, cyanGlowMat);
-    this.leftPupil = new THREE.Mesh(pupilGeo, emeraldGlowMat);
-    const leftSpec = new THREE.Mesh(specGeo, specMat);
-    leftSpec.position.set(0.015, 0.015, 0.03);
-    this.leftEye.add(leftIris, this.leftPupil, leftSpec);
-    this.visorGroup.add(this.leftEye);
-
-    // Right Eye
-    this.rightEye = new THREE.Group();
-    this.rightEye.position.set(0.20, 0.0, 0.10);
-    const rightIris = new THREE.Mesh(irisGeo, cyanGlowMat);
-    this.rightPupil = new THREE.Mesh(pupilGeo, emeraldGlowMat);
-    const rightSpec = new THREE.Mesh(specGeo, specMat);
-    rightSpec.position.set(0.015, 0.015, 0.03);
-    this.rightEye.add(rightIris, this.rightPupil, rightSpec);
-    this.visorGroup.add(this.rightEye);
-
-    // Articulated Cybernetic Brow Plates
-    const browGeo = new THREE.BoxGeometry(0.32, 0.04, 0.04);
-    this.leftBrow = new THREE.Mesh(browGeo, graphiteMat);
-    this.leftBrow.position.set(-0.20, 0.16, 0.10);
-    this.rightBrow = new THREE.Mesh(browGeo, graphiteMat);
-    this.rightBrow.position.set(0.20, 0.16, 0.10);
-    this.visorGroup.add(this.leftBrow, this.rightBrow);
-
-    // Attach Visor directly to bodyGroup so it remains anchored to the chassis
-    this.bodyGroup.add(this.visorGroup);
-
-    // 5. Floating Articulated Cybernetic Hands (accessoriesGroup)
-    this.leftHand = this.createMechanicalHand(-1);
-    this.leftHand.position.set(-1.45, -0.22, 0.15);
-    this.rightHand = this.createMechanicalHand(1);
-    this.rightHand.position.set(1.45, -0.22, 0.15);
-
-    this.accessoriesGroup.add(this.leftHand, this.rightHand);
-    this.hands.push(this.leftHand, this.rightHand);
-
-    // Holographic Code Blueprint Module above Right Hand
-    this.hologramMat = new THREE.MeshBasicMaterial({
-      color: 0x69e8f2,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.35,
-      side: THREE.DoubleSide
-    });
-    this.hologram = new THREE.Mesh(new THREE.PlaneGeometry(0.42, 0.3), this.hologramMat);
-    this.hologram.position.set(0, 0.22, 0.08);
-    this.hologram.rotation.x = -Math.PI / 4;
-    this.rightHand.add(this.hologram);
-
-    // 6. Concentric Engineering Gyro Rings (accessoriesGroup)
-    // Ring 1 (Inner Cyan Gimbal with 4 clamp nodes)
-    const ring1Geo = new THREE.TorusGeometry(1.58, 0.024, 16, 64);
-    const ring1 = new THREE.Mesh(ring1Geo, cyanGlowMat);
-    // 4 clamp brackets
-    for (let b = 0; b < 4; b++) {
-      const angle = (b / 4) * Math.PI * 2;
-      const bracket = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.12, 0.12), armorPlateMat);
-      bracket.position.set(Math.cos(angle) * 1.58, Math.sin(angle) * 1.58, 0);
-      ring1.add(bracket);
+    // 7. Ambient Data Sparkles (effectsGroup)
+    const sparkleCount = 20;
+    const sparkleGeo = new THREE.BufferGeometry();
+    const positions = new Float32Array(sparkleCount * 3);
+    for (let i = 0; i < sparkleCount * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 2.2;
+      positions[i + 1] = Math.random() * 2.2 - 0.5;
+      positions[i + 2] = (Math.random() - 0.5) * 2.0;
     }
-    ring1.rotation.x = Math.PI / 3;
-    this.accessoriesGroup.add(ring1);
-    this.rings.push({ mesh: ring1, rotSpeedX: 0.35, rotSpeedY: 0.55 });
-
-    // Ring 2 (Outer Emerald Gimbal)
-    const ring2Geo = new THREE.TorusGeometry(1.92, 0.018, 16, 64);
-    const ring2 = new THREE.Mesh(ring2Geo, emeraldGlowMat);
-    ring2.rotation.y = Math.PI / 4;
-    ring2.rotation.z = Math.PI / 6;
-    this.accessoriesGroup.add(ring2);
-    this.rings.push({ mesh: ring2, rotSpeedX: -0.45, rotSpeedY: 0.25 });
-
-    // Ring 3 (Data Horizon Orbit Ring)
-    const ring3Geo = new THREE.TorusGeometry(2.22, 0.012, 16, 64);
-    const ring3Mat = new THREE.MeshBasicMaterial({
+    sparkleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const sparkleMat = new THREE.PointsMaterial({
       color: 0x38bdf8,
+      size: 0.05,
       transparent: true,
-      opacity: 0.5
+      opacity: 0.75
     });
-    const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
-    ring3.rotation.x = -Math.PI / 5;
-    this.accessoriesGroup.add(ring3);
-    this.rings.push({ mesh: ring3, rotSpeedX: 0.15, rotSpeedY: -0.3 });
-
-    // 7. Orbiting Code Data Packets (effectsGroup)
-    const particleCount = 48;
-    const particleGeo = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount * 3; i += 3) {
-      const radius = 1.45 + Math.random() * 0.95;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = (Math.random() - 0.5) * Math.PI * 0.8;
-      positions[i] = radius * Math.cos(phi) * Math.cos(theta);
-      positions[i + 1] = radius * Math.sin(phi);
-      positions[i + 2] = radius * Math.cos(phi) * Math.sin(theta);
-    }
-    particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particleMat = new THREE.PointsMaterial({
-      color: 0x69e8f2,
-      size: 0.055,
-      transparent: true,
-      opacity: 0.85
-    });
-    this.particles = new THREE.Points(particleGeo, particleMat);
-    this.effectsGroup.add(this.particles);
-  }
-
-  createMechanicalHand(side) {
-    // side: -1 for left, 1 for right
-    const handGroup = new THREE.Group();
-    const graphiteMat = new THREE.MeshStandardMaterial({
-      color: 0x111827,
-      roughness: 0.38,
-      metalness: 0.82
-    });
-    const cyanMat = new THREE.MeshStandardMaterial({
-      color: 0x38bdf8,
-      emissive: 0x06b6d4,
-      emissiveIntensity: 0.7,
-      roughness: 0.2
-    });
-
-    // Floating Wrist Repulsor Ring
-    const wristGeo = new THREE.TorusGeometry(0.12, 0.02, 12, 24);
-    const wrist = new THREE.Mesh(wristGeo, cyanMat);
-    wrist.rotation.x = Math.PI / 2;
-    handGroup.add(wrist);
-
-    // Palm Chassis Plate
-    const palmGeo = new THREE.BoxGeometry(0.24, 0.10, 0.26);
-    const palm = new THREE.Mesh(palmGeo, graphiteMat);
-    palm.position.set(0, 0, 0.14);
-    handGroup.add(palm);
-
-    // Finger 1 (Index)
-    const f1 = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.05, 0.16), graphiteMat);
-    f1.position.set(-0.06 * side, 0, 0.32);
-    handGroup.add(f1);
-
-    // Finger 2 (Middle)
-    const f2 = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.05, 0.18), graphiteMat);
-    f2.position.set(0.03 * side, 0, 0.33);
-    handGroup.add(f2);
-
-    // Opposable Thumb Plate
-    const thumb = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.05, 0.12), cyanMat);
-    thumb.position.set(0.14 * side, 0.02, 0.20);
-    thumb.rotation.y = 0.5 * side;
-    handGroup.add(thumb);
-
-    return handGroup;
+    this.sparkles = new THREE.Points(sparkleGeo, sparkleMat);
+    this.effectsGroup.add(this.sparkles);
   }
 
   updateProcedural(delta, time) {
-    // 1. Engineering Gyro Rings Dynamic Precession
-    const ringSpeedMult = this.state === 'thinking' ? 2.6 : (this.state === 'listening' ? 0.35 : 1.0);
-    this.rings.forEach(r => {
-      if (!this.reducedMotion) {
-        r.mesh.rotation.x += r.rotSpeedX * delta * ringSpeedMult;
-        r.mesh.rotation.y += r.rotSpeedY * delta * ringSpeedMult;
+    // 1. Eye Blinking & Pupil Tracking
+    if (this.isBlinking) {
+      this.leftEye.scale.y = 0.1;
+      this.rightEye.scale.y = 0.1;
+    } else {
+      this.leftEye.scale.y = 1.0;
+      this.rightEye.scale.y = 1.0;
+
+      // Fine pupil cursor tracking
+      const px = this.smoothedPointer.x * 0.04;
+      const py = this.smoothedPointer.y * 0.03;
+      if (this.leftPupil && this.rightPupil) {
+        this.leftPupil.position.x = px;
+        this.leftPupil.position.y = -0.01 + py;
+        this.rightPupil.position.x = px;
+        this.rightPupil.position.y = -0.01 + py;
       }
-    });
-
-    // 2. Data Particles Swirl
-    if (this.particles && !this.reducedMotion) {
-      const particleRotSpeed = this.state === 'thinking' ? 1.8 : 0.4;
-      this.particles.rotation.y += particleRotSpeed * delta;
-      this.particles.rotation.x = Math.sin(time * 0.4) * 0.12;
     }
 
-    // 3. Reactor Core Pulse
-    if (this.reactor) {
-      const pulseSpeed = this.state === 'thinking' ? 6.0 : (this.state === 'speaking' ? 4.5 : 2.0);
-      const reactorScale = 0.52 + Math.sin(time * pulseSpeed) * 0.05;
-      this.reactor.scale.set(reactorScale, reactorScale, reactorScale);
-      this.reactor.rotation.y += delta * 0.8;
-      this.reactor.rotation.x += delta * 0.4;
-    }
-
-    // 4. Mechanical Shell Expansion Effect (excited / speaking states)
-    let targetExpansion = 0;
-    if (this.state === 'excited') targetExpansion = 0.22;
-    else if (this.state === 'speaking') targetExpansion = 0.08;
-
-    this.currentExpansion += (targetExpansion - this.currentExpansion) * 0.1;
-    if (this.leftFlank && this.rightFlank && this.topCrest) {
-      this.leftFlank.position.x = -0.98 - this.currentExpansion;
-      this.rightFlank.position.x = 0.98 + this.currentExpansion;
-      this.topCrest.position.y = 1.02 + this.currentExpansion * 0.7;
-    }
-
-    // 5. Gaze Tracking & Expressive Optics
-    // Subtle body yaw & pitch toward cursor
-    this.bodyGroup.rotation.y = this.smoothedPointer.x * 0.18;
-    this.bodyGroup.rotation.x = -this.smoothedPointer.y * 0.12;
-
-    // Optical Pupil Gaze Tracking within Visor Window
-    const gazeX = Math.max(-0.08, Math.min(0.08, this.smoothedPointer.x * 0.08));
-    const gazeY = Math.max(-0.04, Math.min(0.04, this.smoothedPointer.y * 0.05));
-
-    if (this.leftEye && this.rightEye) {
+    // 2. State-Specific Arm & Limb Choreography
+    if (!this.reducedMotion) {
       if (this.state === 'thinking') {
-        // Horizontal algorithmic scanning motion
-        const scanOffset = Math.sin(time * 7) * 0.06;
-        this.leftEye.position.x = -0.20 + scanOffset;
-        this.rightEye.position.x = 0.20 + scanOffset;
-        this.leftEye.position.y = 0.0;
-        this.rightEye.position.y = 0.0;
-      } else {
-        this.leftEye.position.x = -0.20 + gazeX;
-        this.rightEye.position.x = 0.20 + gazeX;
-        this.leftEye.position.y = gazeY;
-        this.rightEye.position.y = gazeY;
-      }
-    }
+        // Signature Pose: Codex raises right hand toward chin to ponder!
+        this.rightArmGroup.position.lerp(new THREE.Vector3(0.38, 0.72, 0.45), 0.1);
+        this.rightArmGroup.rotation.x = -1.2;
+        this.rightArmGroup.rotation.z = -0.5;
 
-    // Pupil Dilation / Brow Articulation by State
-    if (this.leftPupil && this.rightPupil && this.leftBrow && this.rightBrow) {
-      if (this.state === 'listening') {
-        // Pupils dilate, brows arch inquisitively
-        this.leftPupil.scale.set(1.25, 1.25, 1.25);
-        this.rightPupil.scale.set(1.25, 1.25, 1.25);
-        this.leftBrow.rotation.z = -0.12;
-        this.rightBrow.rotation.z = 0.12;
-        this.leftBrow.position.y = 0.18;
-        this.rightBrow.position.y = 0.18;
-      } else if (this.state === 'thinking') {
-        // Focused squint, brows angle downward analytically
-        this.leftPupil.scale.set(0.9, 0.9, 0.9);
-        this.rightPupil.scale.set(0.9, 0.9, 0.9);
-        this.leftBrow.rotation.z = 0.20;
-        this.rightBrow.rotation.z = -0.20;
-        this.leftBrow.position.y = 0.14;
-        this.rightBrow.position.y = 0.14;
-      } else if (this.state === 'excited') {
-        // High alert cheerful pulse
-        this.leftPupil.scale.set(1.3, 1.3, 1.3);
-        this.rightPupil.scale.set(1.3, 1.3, 1.3);
-        this.leftBrow.rotation.z = 0;
-        this.rightBrow.rotation.z = 0;
-        this.leftBrow.position.y = 0.20;
-        this.rightBrow.position.y = 0.20;
-      } else {
-        // Neutral Idle
-        this.leftPupil.scale.set(1.0, 1.0, 1.0);
-        this.rightPupil.scale.set(1.0, 1.0, 1.0);
-        this.leftBrow.rotation.z = 0;
-        this.rightBrow.rotation.z = 0;
-        this.leftBrow.position.y = 0.16;
-        this.rightBrow.position.y = 0.16;
-      }
-    }
-
-    // Visor HUD Scanline Glow & Speech Pulse
-    if (this.cyanGlowMat) {
-      if (this.state === 'speaking') {
-        this.cyanGlowMat.emissiveIntensity = 0.75 + this.speechIntensity * 0.45;
-      } else if (this.state === 'thinking') {
-        this.cyanGlowMat.emissiveIntensity = 0.65 + Math.sin(time * 6) * 0.25;
-      } else {
-        this.cyanGlowMat.emissiveIntensity = 0.75;
-      }
-    }
-
-    // 6. Floating Mechanical Hands Kinematics
-    if (this.leftHand && this.rightHand) {
-      if (this.state === 'listening') {
-        // Hands move inward attentively near chest
-        this.leftHand.position.lerp(new THREE.Vector3(-1.18, -0.12, 0.45), 0.1);
-        this.rightHand.position.lerp(new THREE.Vector3(1.18, -0.12, 0.45), 0.1);
-        this.leftHand.rotation.y = 0.35;
-        this.rightHand.rotation.y = -0.35;
-      } else if (this.state === 'thinking') {
-        // Right hand elevates near visor in classic thinking gesture
-        this.leftHand.position.lerp(new THREE.Vector3(-1.35, -0.28, 0.2), 0.1);
-        this.rightHand.position.lerp(new THREE.Vector3(0.85, 0.18, 0.68), 0.1);
-        this.rightHand.rotation.z = 0.45;
-        this.rightHand.rotation.y = -0.4;
+        // Left arm steadies clipboard
+        this.leftArmGroup.position.lerp(new THREE.Vector3(-0.48, 0.60, 0.2), 0.1);
+        this.leftArmGroup.rotation.x = -0.2;
       } else if (this.state === 'speaking') {
-        // Natural conversational wave cadence
-        this.leftHand.position.x = -1.4;
-        this.leftHand.position.y = -0.20 + Math.sin(time * 6) * 0.12;
-        this.rightHand.position.x = 1.4;
-        this.rightHand.position.y = -0.20 - Math.sin(time * 6) * 0.12;
-        this.leftHand.rotation.z = Math.sin(time * 3) * 0.15;
-        this.rightHand.rotation.z = -Math.sin(time * 3) * 0.15;
-      } else if (this.state === 'excited') {
-        // Hands elevate and open with energetic micro-bounce
-        this.leftHand.position.lerp(new THREE.Vector3(-1.6, 0.22, 0.3), 0.15);
-        this.rightHand.position.lerp(new THREE.Vector3(1.6, 0.22, 0.3), 0.15);
-        this.leftHand.rotation.z = -0.35;
-        this.rightHand.rotation.z = 0.35;
-      } else {
-        // Idle Hovering
-        this.leftHand.position.x = -1.45;
-        this.leftHand.position.y = -0.22 + Math.sin(time * 1.6) * 0.06;
-        this.leftHand.position.z = 0.15;
-        this.leftHand.rotation.set(0, 0, 0);
+        // Speech cadence: Head bobs, right hand gestures, mouth pulses
+        this.rightArmGroup.position.lerp(new THREE.Vector3(0.58, 0.62, 0.2), 0.1);
+        this.rightArmGroup.rotation.x = -0.4 + Math.sin(time * 6) * 0.25;
+        this.rightArmGroup.rotation.z = 0.2;
 
-        this.rightHand.position.x = 1.45;
-        this.rightHand.position.y = -0.22 + Math.cos(time * 1.6) * 0.06;
-        this.rightHand.position.z = 0.15;
-        this.rightHand.rotation.set(0, 0, 0);
+        this.leftArmGroup.position.lerp(new THREE.Vector3(-0.52, 0.62, 0.15), 0.1);
+        this.leftArmGroup.rotation.x = -0.3 + Math.cos(time * 5) * 0.15;
+
+        if (this.mouthGlowMat) {
+          this.mouthGlowMat.emissiveIntensity = 0.8 + this.speechIntensity * 0.8;
+          this.mouth.scale.x = 1.0 + this.speechIntensity * 0.4;
+        }
+      } else if (this.state === 'excited') {
+        // Cheerful jumping & waving
+        this.rightArmGroup.position.lerp(new THREE.Vector3(0.62, 0.85, 0.1), 0.15);
+        this.rightArmGroup.rotation.z = 1.2 + Math.sin(time * 12) * 0.3;
+        this.rightArmGroup.rotation.x = -0.2;
+
+        this.leftArmGroup.position.lerp(new THREE.Vector3(-0.62, 0.85, 0.1), 0.15);
+        this.leftArmGroup.rotation.z = -1.2 - Math.sin(time * 12) * 0.3;
+        this.leftArmGroup.rotation.x = -0.2;
+      } else {
+        // Idle: Gentle breathing sway
+        this.rightArmGroup.position.lerp(new THREE.Vector3(0.55, 0.65, 0), 0.1);
+        this.rightArmGroup.rotation.x = Math.sin(time * 1.8) * 0.08;
+        this.rightArmGroup.rotation.z = 0.08;
+
+        this.leftArmGroup.position.lerp(new THREE.Vector3(-0.55, 0.65, 0), 0.1);
+        this.leftArmGroup.rotation.x = -0.2 + Math.cos(time * 1.8) * 0.06;
+        this.leftArmGroup.rotation.z = -0.08;
+
+        if (this.mouthGlowMat) {
+          this.mouthGlowMat.emissiveIntensity = 0.8;
+          this.mouth.scale.x = 1.0;
+        }
       }
     }
 
-    // 7. Holographic Blueprint Visibility
-    if (this.hologram && this.hologramMat) {
-      const holoTargetOpacity = (this.state === 'speaking' || this.state === 'excited') ? 0.75 : 0.25;
-      this.hologramMat.opacity += (holoTargetOpacity - this.hologramMat.opacity) * 0.1;
-      this.hologram.rotation.z += delta * 0.6;
+    // 3. Chest Reactor Pulse
+    if (this.chestReactor) {
+      const pulseSpeed = this.state === 'thinking' ? 4.5 : 2.0;
+      const s = 1.0 + Math.sin(time * pulseSpeed) * 0.08;
+      this.chestReactor.scale.set(s, s, s);
+    }
+
+    // 4. Sparkle Particles Drift
+    if (this.sparkles && !this.reducedMotion) {
+      this.sparkles.rotation.y += delta * 0.2;
     }
   }
 }
 
-window.CodeCharacter = CodeCharacter;
+// Backwards compatibility aliases
+window.CodexCharacter = CodexCharacter;
+window.CodeCharacter = CodexCharacter;

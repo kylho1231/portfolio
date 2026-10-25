@@ -11,7 +11,7 @@ class DialogueEngine {
     this.voiceManager = options.voiceManager || null;
     this.typewriterInterval = null;
     this.isTyping = false;
-    this.activeCharacter = 'code';
+    this.activeCharacter = 'gemini';
 
     // DOM Elements
     this.stageBubbleEl = options.stageBubbleEl || null;
@@ -44,7 +44,7 @@ class DialogueEngine {
     if (!payload || !payload.text) return;
 
     const charKey = payload.character || this.activeCharacter;
-    const charMeta = window.JhonKnowledgeBase.characters[charKey] || window.JhonKnowledgeBase.characters.code;
+    const charMeta = window.JhonKnowledgeBase.characters[charKey] || window.JhonKnowledgeBase.characters.gemini;
 
     // 1. Update 3D Character State
     if (this.stage) {

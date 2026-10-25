@@ -48,6 +48,7 @@ class VoiceManager {
 
     // Voice modulation profiles per character
     switch (charKey) {
+      case 'codex':
       case 'code':
         utterance.pitch = 1.08;
         utterance.rate = 1.02;

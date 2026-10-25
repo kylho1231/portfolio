@@ -1,144 +1,316 @@
 /**
- * JE. DIGITAL UNIVERSE — CLAUDE (CHARACTER 02)
- * Identity: The Human-Centered Storyteller
- * Color: Terracotta + Warm Amber (#E6A47C) + Gold (#F59E0B)
- * Features: Kinetic origami lotus petals, warm metallic core, rotating halo,
- * expressive eyes, soft internal bioluminescence.
+ * JE. CHIBI AI UNIVERSE — CLAUDE (CHARACTER 01 / WARM ORANGE CHIBI ROBOT)
+ * Role: About Me Guide & Storyteller
+ * Visual Reference: Rightmost warm orange/mustard aviator robot in reference artwork.
+ * Features:
+ * - Oversized smooth warm orange helmet head with white racing stripes
+ * - Cyber aviator goggles with tinted lenses & warm amber eyes
+ * - Cozy patterned winter scarf around the neck
+ * - Mustard yellow puffy aviator jacket with blue collar and pockets
+ * - Chunky rounded brown boots with beige soles
+ * - Signature Prop: Cute takeaway cup with bent straw
  */
 
 class ClaudeCharacter extends CharacterBase {
   constructor() {
-    super('CLAUDE', 0xe6a47c);
-    this.accentGold = 0xf59e0b;
-    this.petals = [];
-    this.halo = null;
-    this.eyes = [];
-    this.coreMesh = null;
-    this.disableDefaultGaze = true;
+    super('CLAUDE', 0xf97316);
+    this.primaryOrange = 0xf97316;
+    this.amberGold = 0xf59e0b;
+    this.mustardJacket = 0xeab308;
 
-    this.buildCharacter();
+    this.drinkCup = null;
+    this.goggles = null;
+
+    this.buildChibi();
   }
 
-  buildCharacter() {
-    // Warm PBR materials
-    const amberMat = new THREE.MeshStandardMaterial({
-      color: 0x854d0e,
-      roughness: 0.35,
-      metalness: 0.65
+  buildChibi() {
+    // 1. Materials Palette
+    const helmetMat = new THREE.MeshStandardMaterial({
+      color: 0xf97316,
+      metalness: 0.45,
+      roughness: 0.3
     });
 
-    const petalMat = new THREE.MeshStandardMaterial({
-      color: 0xe6a47c,
-      roughness: 0.25,
+    const jacketMat = new THREE.MeshStandardMaterial({
+      color: 0xeab308,
+      metalness: 0.2,
+      roughness: 0.5
+    });
+
+    const navyAccentMat = new THREE.MeshStandardMaterial({
+      color: 0x1e3a8a,
       metalness: 0.3,
-      side: THREE.DoubleSide
+      roughness: 0.4
     });
 
-    const goldGlowMat = new THREE.MeshStandardMaterial({
-      color: 0xf59e0b,
-      emissive: 0xf59e0b,
-      emissiveIntensity: 0.7,
+    const scarfMat = new THREE.MeshStandardMaterial({
+      color: 0x94a3b8,
+      roughness: 0.8
+    });
+
+    const pantsMat = new THREE.MeshStandardMaterial({
+      color: 0x334155,
+      roughness: 0.6
+    });
+
+    const bootMat = new THREE.MeshStandardMaterial({
+      color: 0x78350f,
+      roughness: 0.45,
+      metalness: 0.2
+    });
+
+    const soleMat = new THREE.MeshStandardMaterial({
+      color: 0xd6d3d1,
+      roughness: 0.5
+    });
+
+    const goggleFrameMat = new THREE.MeshStandardMaterial({
+      color: 0x0f172a,
+      metalness: 0.7,
       roughness: 0.2
     });
 
-    // 1. Central Rounded Core
-    const coreGeo = new THREE.SphereGeometry(0.85, 32, 32);
-    this.coreMesh = new THREE.Mesh(coreGeo, amberMat);
-    this.bodyGroup.add(this.coreMesh);
-
-    // 2. Kinetic Origami Petals (Arranged radially in 2 tiers)
-    const petalGeo = new THREE.ConeGeometry(0.35, 1.1, 4);
-    petalGeo.rotateX(Math.PI / 2);
-
-    const petalCount = 8;
-    for (let i = 0; i < petalCount; i++) {
-      const angle = (i / petalCount) * Math.PI * 2;
-      const petalHolder = new THREE.Group();
-      petalHolder.rotation.z = angle;
-
-      const petal = new THREE.Mesh(petalGeo, petalMat);
-      petal.position.y = 0.95;
-      petal.scale.set(0.9, 0.4, 1.2);
-      petalHolder.add(petal);
-
-      this.bodyGroup.add(petalHolder);
-      this.petals.push({
-        holder: petalHolder,
-        baseAngle: angle,
-        petalMesh: petal,
-        foldPhase: i * 0.4
-      });
-    }
-
-    // 3. Expressive Glowing Eyes
-    const eyeGeo = new THREE.SphereGeometry(0.08, 16, 16);
-    [-0.22, 0.22].forEach(xOffset => {
-      const eye = new THREE.Mesh(eyeGeo, goldGlowMat);
-      eye.position.set(xOffset, 0.15, 0.8);
-      this.headGroup.add(eye);
-      this.eyes.push(eye);
+    const goggleLensMat = new THREE.MeshStandardMaterial({
+      color: 0x581c87,
+      transparent: true,
+      opacity: 0.6,
+      roughness: 0.1,
+      metalness: 0.8
     });
 
-    // 4. Gently Rotating Halo overhead
-    const haloGeo = new THREE.TorusGeometry(1.2, 0.028, 16, 48);
-    this.halo = new THREE.Mesh(haloGeo, goldGlowMat);
-    this.halo.position.set(0, 1.45, 0);
-    this.halo.rotation.x = Math.PI / 2.5;
-    this.accessoriesGroup.add(this.halo);
+    const eyeWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const irisMat = new THREE.MeshBasicMaterial({ color: 0xd97706 });
+    const pupilMat = new THREE.MeshBasicMaterial({ color: 0x0f172a });
+    const catchlightMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
-    // 5. Floating Story Fragment (Memory Card)
-    const cardGeo = new THREE.BoxGeometry(0.4, 0.55, 0.02);
-    const cardMat = new THREE.MeshStandardMaterial({
-      color: 0xfef3c7,
-      emissive: 0xd97706,
-      emissiveIntensity: 0.2,
-      roughness: 0.3
+    // 2. Head & Helmet Assembly (headGroup at y = 1.05)
+    const headGeo = new THREE.SphereGeometry(0.70, 32, 32);
+    headGeo.scale(1.0, 0.94, 0.98);
+    this.headMesh = new THREE.Mesh(headGeo, helmetMat);
+    this.headGroup.add(this.headMesh);
+
+    // White Racing Stripe across side
+    const stripeGeo = new THREE.TorusGeometry(0.70, 0.02, 12, 32, Math.PI);
+    const stripe = new THREE.Mesh(stripeGeo, new THREE.MeshBasicMaterial({ color: 0xf8fafc }));
+    stripe.position.set(0, 0, 0);
+    stripe.rotation.x = Math.PI / 2;
+    stripe.rotation.y = 0.2;
+    this.headGroup.add(stripe);
+
+    // Circular Ear Headset
+    const earGeo = new THREE.CylinderGeometry(0.18, 0.18, 0.12, 24);
+    earGeo.rotateZ(Math.PI / 2);
+    const earRingGeo = new THREE.TorusGeometry(0.18, 0.025, 12, 24);
+    earRingGeo.rotateY(Math.PI / 2);
+
+    const leftEar = new THREE.Mesh(earGeo, navyAccentMat);
+    leftEar.position.set(-0.70, 0, 0);
+    const leftEarRing = new THREE.Mesh(earRingGeo, new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+    leftEarRing.position.set(-0.74, 0, 0);
+    this.headGroup.add(leftEar, leftEarRing);
+
+    const rightEar = new THREE.Mesh(earGeo, navyAccentMat);
+    rightEar.position.set(0.70, 0, 0);
+    const rightEarRing = new THREE.Mesh(earRingGeo, new THREE.MeshBasicMaterial({ color: 0xf472b6 }));
+    rightEarRing.position.set(0.74, 0, 0);
+    this.headGroup.add(rightEar, rightEarRing);
+
+    // Cyber Aviator Goggles
+    this.goggles = new THREE.Group();
+    const goggleBridge = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.05, 0.04), goggleFrameMat);
+    goggleBridge.position.set(0, 0.08, 0.68);
+    this.goggles.add(goggleBridge);
+
+    [-0.24, 0.24].forEach(xOff => {
+      const frame = new THREE.Mesh(new THREE.CylinderGeometry(0.20, 0.20, 0.08, 20), goggleFrameMat);
+      frame.rotateX(Math.PI / 2);
+      frame.position.set(xOff, 0.08, 0.67);
+
+      const lens = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.09, 20), goggleLensMat);
+      lens.rotateX(Math.PI / 2);
+      lens.position.set(xOff, 0.08, 0.68);
+
+      this.goggles.add(frame, lens);
     });
-    this.storyCard = new THREE.Mesh(cardGeo, cardMat);
-    this.storyCard.position.set(1.4, 0.2, 0.3);
-    this.storyCard.rotation.y = -0.4;
-    this.accessoriesGroup.add(this.storyCard);
+    this.headGroup.add(this.goggles);
+
+    // Expressive Eyes behind goggles
+    const createEye = (isRight) => {
+      const eyeGroup = new THREE.Group();
+      const xOffset = isRight ? 0.24 : -0.24;
+
+      const sclera = new THREE.Mesh(new THREE.CircleGeometry(0.16, 24), eyeWhiteMat);
+      const iris = new THREE.Mesh(new THREE.CircleGeometry(0.12, 24), irisMat);
+      iris.position.set(0, -0.01, 0.002);
+      const pupil = new THREE.Mesh(new THREE.CircleGeometry(0.08, 24), pupilMat);
+      pupil.position.set(0, -0.01, 0.004);
+
+      const spec1 = new THREE.Mesh(new THREE.CircleGeometry(0.036, 16), catchlightMat);
+      spec1.position.set(0.04, 0.04, 0.006);
+      const spec2 = new THREE.Mesh(new THREE.CircleGeometry(0.016, 16), catchlightMat);
+      spec2.position.set(-0.03, -0.04, 0.006);
+
+      eyeGroup.add(sclera, iris, pupil, spec1, spec2);
+      eyeGroup.position.set(xOffset, 0.08, 0.66);
+      return { group: eyeGroup, pupil: pupil };
+    };
+
+    const eyeL = createEye(false);
+    const eyeR = createEye(true);
+    this.leftEye = eyeL.group;
+    this.rightEye = eyeR.group;
+    this.leftPupil = eyeL.pupil;
+    this.rightPupil = eyeR.pupil;
+    this.headGroup.add(this.leftEye, this.rightEye);
+
+    // Cheeks Peach Blush
+    const blushMat = new THREE.MeshBasicMaterial({ color: 0xfb923c, transparent: true, opacity: 0.5 });
+    const blushL = new THREE.Mesh(new THREE.CircleGeometry(0.065, 16), blushMat);
+    blushL.position.set(-0.34, -0.10, 0.66);
+    const blushR = new THREE.Mesh(new THREE.CircleGeometry(0.065, 16), blushMat);
+    blushR.position.set(0.34, -0.10, 0.66);
+    this.headGroup.add(blushL, blushR);
+
+    // Cheerful Smiling Mouth
+    const mouthGeo = new THREE.TorusGeometry(0.07, 0.018, 12, 20, Math.PI);
+    this.mouth = new THREE.Mesh(mouthGeo, new THREE.MeshBasicMaterial({ color: 0x7c2d12 }));
+    this.mouth.position.set(0, -0.20, 0.67);
+    this.mouth.rotation.z = Math.PI;
+    this.headGroup.add(this.mouth);
+
+    // 3. Torso, Scarf & Puffy Aviator Jacket (bodyGroup at y = 0.45)
+    // Cozy Knitted Scarf
+    const scarfGeo = new THREE.TorusGeometry(0.38, 0.10, 16, 32);
+    const scarf = new THREE.Mesh(scarfGeo, scarfMat);
+    scarf.position.set(0, 0.28, 0);
+    scarf.rotation.x = Math.PI / 2.2;
+    this.bodyGroup.add(scarf);
+
+    // Scarf tail hanging down
+    const scarfTail = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.28, 0.06), scarfMat);
+    scarfTail.position.set(-0.16, 0.12, 0.38);
+    scarfTail.rotation.z = 0.15;
+    this.bodyGroup.add(scarfTail);
+
+    // Puffy Aviator Jacket
+    const jacketGeo = new THREE.CylinderGeometry(0.40, 0.45, 0.52, 24);
+    const jacket = new THREE.Mesh(jacketGeo, jacketMat);
+    this.bodyGroup.add(jacket);
+
+    // Blue Jacket Trim & Pockets
+    const pocketL = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.08, 0.02), navyAccentMat);
+    pocketL.position.set(-0.20, -0.06, 0.42);
+    const pocketR = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.08, 0.02), navyAccentMat);
+    pocketR.position.set(0.20, -0.06, 0.42);
+    this.bodyGroup.add(pocketL, pocketR);
+
+    // 4. Arms & Signature Takeaway Drink Cup (leftArmGroup & rightArmGroup)
+    const armGeo = new THREE.CylinderGeometry(0.09, 0.08, 0.30, 16);
+    const handGeo = new THREE.SphereGeometry(0.085, 16, 16);
+
+    // Left Arm (Holding Drink Cup!)
+    const leftArm = new THREE.Mesh(armGeo, jacketMat);
+    leftArm.position.set(0, -0.16, 0);
+    const leftHand = new THREE.Mesh(handGeo, helmetMat);
+    leftHand.position.set(0, -0.32, 0);
+    this.leftArmGroup.add(leftArm, leftHand);
+
+    // Takeaway Coffee/Boba Cup
+    this.drinkCup = new THREE.Group();
+    const cupMat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.3 });
+    const lidMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.3 });
+    const strawMat = new THREE.MeshBasicMaterial({ color: 0xf472b6 });
+
+    const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.06, 0.22, 16), cupMat);
+    const lid = new THREE.Mesh(new THREE.CylinderGeometry(0.095, 0.095, 0.04, 16), lidMat);
+    lid.position.y = 0.12;
+
+    const straw = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, 0.18, 8), strawMat);
+    straw.position.set(0.03, 0.20, 0);
+    straw.rotation.z = -0.25;
+
+    this.drinkCup.add(cup, lid, straw);
+    this.drinkCup.position.set(0, -0.30, 0.16);
+    this.leftArmGroup.add(this.drinkCup);
+
+    // Right Arm (Friendly Waving Arm)
+    const rightArm = new THREE.Mesh(armGeo, jacketMat);
+    rightArm.position.set(0, -0.16, 0);
+    const rightHand = new THREE.Mesh(handGeo, helmetMat);
+    rightHand.position.set(0, -0.32, 0);
+    this.rightArmGroup.add(rightArm, rightHand);
+
+    // 5. Legs & Rounded Brown Boots
+    const legGeo = new THREE.CylinderGeometry(0.08, 0.09, 0.22, 16);
+    const bootGeo = new THREE.BoxGeometry(0.24, 0.16, 0.36);
+    const soleGeo = new THREE.BoxGeometry(0.26, 0.05, 0.38);
+
+    const createLeg = (isRight) => {
+      const legGroup = isRight ? this.rightLegGroup : this.leftLegGroup;
+      const leg = new THREE.Mesh(legGeo, pantsMat);
+      leg.position.set(0, -0.11, 0);
+
+      const boot = new THREE.Mesh(bootGeo, bootMat);
+      boot.position.set(0, -0.22, 0.05);
+
+      const sole = new THREE.Mesh(soleGeo, soleMat);
+      sole.position.set(0, -0.30, 0.05);
+
+      legGroup.add(leg, boot, sole);
+    };
+    createLeg(false);
+    createLeg(true);
   }
 
   updateProcedural(delta, time) {
-    // 1. Origami Petal Wave Motion
-    const petalSpeed = this.state === 'speaking' ? 4.0 : (this.state === 'listening' ? 0.8 : 1.2);
-    this.petals.forEach(p => {
-      if (!this.reducedMotion) {
-        let foldOffset = Math.sin(time * petalSpeed + p.foldPhase) * 0.15;
-        if (this.state === 'listening') {
-          // Petals fold inward attentively
-          foldOffset = -0.25;
-        } else if (this.state === 'excited') {
-          // Petals blossom wide open
-          foldOffset = 0.35 + Math.sin(time * 6) * 0.1;
-        } else if (this.state === 'speaking') {
-          // Rhythmic petal breathing
-          foldOffset = Math.sin(time * 6 + p.foldPhase) * (0.2 + this.speechIntensity * 0.2);
-        }
-        p.petalMesh.position.y = 0.95 + foldOffset;
-        p.petalMesh.rotation.x = foldOffset * 0.8;
+    // 1. Blinking & Pupil Tracking
+    if (this.isBlinking) {
+      this.leftEye.scale.y = 0.1;
+      this.rightEye.scale.y = 0.1;
+    } else {
+      this.leftEye.scale.y = 1.0;
+      this.rightEye.scale.y = 1.0;
+
+      const px = this.smoothedPointer.x * 0.035;
+      const py = this.smoothedPointer.y * 0.025;
+      if (this.leftPupil && this.rightPupil) {
+        this.leftPupil.position.x = px;
+        this.leftPupil.position.y = -0.01 + py;
+        this.rightPupil.position.x = px;
+        this.rightPupil.position.y = -0.01 + py;
       }
-    });
-
-    // 2. Halo Rotation
-    if (this.halo && !this.reducedMotion) {
-      const haloSpeed = this.state === 'thinking' ? 2.5 : 0.6;
-      this.halo.rotation.z += haloSpeed * delta;
-      this.halo.position.y = 1.45 + Math.sin(time * 2) * 0.05;
     }
 
-    // 3. Floating Story Card Hover
-    if (this.storyCard && !this.reducedMotion) {
-      this.storyCard.position.y = 0.2 + Math.sin(time * 1.8) * 0.1;
-      this.storyCard.rotation.z = Math.sin(time * 1.2) * 0.1;
-    }
+    // 2. State-Specific Kinematics
+    if (!this.reducedMotion) {
+      if (this.state === 'speaking') {
+        // Conversational head nod & waving right arm
+        this.rightArmGroup.position.lerp(new THREE.Vector3(0.60, 0.80, 0.1), 0.1);
+        this.rightArmGroup.rotation.z = 1.2 + Math.sin(time * 8) * 0.2;
+        this.rightArmGroup.rotation.x = -0.2;
 
-    // 4. Eye Gaze Tracking
-    this.eyes.forEach(eye => {
-      eye.position.x = (eye === this.eyes[0] ? -0.22 : 0.22) + this.smoothedPointer.x * 0.04;
-      eye.position.y = 0.15 + this.smoothedPointer.y * 0.03;
-    });
+        this.leftArmGroup.position.lerp(new THREE.Vector3(-0.52, 0.65, 0.1), 0.1);
+        this.leftArmGroup.rotation.x = -0.2;
+      } else if (this.state === 'excited') {
+        // Celebratory bounce
+        this.rightArmGroup.position.lerp(new THREE.Vector3(0.65, 0.85, 0), 0.15);
+        this.rightArmGroup.rotation.z = 1.4 + Math.sin(time * 12) * 0.2;
+
+        this.leftArmGroup.position.lerp(new THREE.Vector3(-0.65, 0.85, 0), 0.15);
+        this.leftArmGroup.rotation.z = -1.4 - Math.sin(time * 12) * 0.2;
+      } else {
+        // Idle: Signature cute wave with right hand!
+        this.rightArmGroup.position.lerp(new THREE.Vector3(0.58, 0.72, 0.05), 0.1);
+        this.rightArmGroup.rotation.z = 0.8 + Math.sin(time * 2.5) * 0.15;
+        this.rightArmGroup.rotation.x = -0.15;
+
+        // Left arm holds cup steadily with gentle bob
+        this.leftArmGroup.position.lerp(new THREE.Vector3(-0.54, 0.65, 0.05), 0.1);
+        this.leftArmGroup.rotation.x = -0.2 + Math.sin(time * 1.5) * 0.05;
+        this.leftArmGroup.rotation.z = -0.05;
+      }
+    }
   }
 }
 

@@ -10,12 +10,12 @@ class ScrollDirector {
     this.currentSection = null;
     this.sectionPrompts = {
       'top': {
-        char: 'code',
-        text: "Welcome to JE. Digital Universe. I'm CODE. Ask me anything about Jhon's full-stack architecture, Kotlin mobile apps, or civic projects.",
-        chips: ['Explore Projects', 'Who is Jhon?', 'Digital Motion Lab', 'Contact Jhon']
+        char: 'gemini',
+        text: "Welcome to Jhon's Portfolio! I'm Gemini. Need a tour?",
+        chips: ['Start Tour', 'Meet the Characters', 'Explore Projects']
       },
       'work': {
-        char: 'code',
+        char: 'codex',
         text: "You're exploring Jhon's Selected Work. 7 verified systems across water utilities, municipal transport, waste collection, and B2B commerce.",
         chips: ['AquaFlow System', 'TODA Guide', 'AntiqueRide App', 'Tech Stack']
       },
@@ -31,8 +31,8 @@ class ScrollDirector {
       },
       'about': {
         char: 'claude',
-        text: "Rooted in San Jose, Antique, Jhon builds software grounded in real community needs. 'Ideas into interfaces. Code into possibility.'",
-        chips: ['Read Philosophy', 'Education & Background', 'Collaborate']
+        text: "Hi, I'm Claude! Jhon is an IT student at St. Anthony's College and Antique National School alumnus, building practical software for everyday community needs.",
+        chips: ['Education & Journey', 'Core Skills', 'Collaborate']
       },
       'approach': {
         char: 'claude',

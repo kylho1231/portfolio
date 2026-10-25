@@ -5,9 +5,11 @@
    ========================================================================== */
 
 :root {
-  --char-code-color: #69e8f2;
-  --char-code-bg: rgba(105, 232, 242, 0.12);
-  --char-claude-color: #e6a47c;
+  --char-codex-color: #38bdf8;
+  --char-code-color: #38bdf8;
+  --char-codex-bg: rgba(56, 189, 248, 0.12);
+  --char-code-bg: rgba(56, 189, 248, 0.12);
+  --char-claude-color: #f97316;
   --char-claude-bg: rgba(230, 164, 124, 0.12);
   --char-grok-color: #9a83ff;
   --char-grok-bg: rgba(154, 131, 255, 0.12);
@@ -16,8 +18,8 @@
   --char-council-color: #caff6b;
   --char-council-bg: rgba(202, 255, 107, 0.12);
 
-  --council-active-color: var(--char-code-color);
-  --council-active-bg: var(--char-code-bg);
+  --council-active-color: var(--char-gemini-color);
+  --council-active-bg: var(--char-gemini-bg);
 }
 
 /* ==========================================================================
@@ -126,6 +128,7 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
+.char-pill[data-char="codex"].active,
 .char-pill[data-char="code"].active {
   --char-pill-accent: var(--char-code-color);
   color: #080b12;
@@ -459,6 +462,7 @@
   margin-left: -4px;
 }
 
+.dock-avatar-dot.codex,
 .dock-avatar-dot.code { background: var(--char-code-color); }
 .dock-avatar-dot.claude { background: var(--char-claude-color); }
 .dock-avatar-dot.grok { background: var(--char-grok-color); }
@@ -657,6 +661,7 @@
   font-weight: 600;
 }
 
+.concierge-char-btn[data-char="codex"].active,
 .concierge-char-btn[data-char="code"].active { color: var(--char-code-color); }
 .concierge-char-btn[data-char="claude"].active { color: var(--char-claude-color); }
 .concierge-char-btn[data-char="grok"].active { color: var(--char-grok-color); }
@@ -709,6 +714,7 @@
   display: block;
 }
 
+.message-author.codex,
 .message-author.code { color: var(--char-code-color); }
 .message-author.claude { color: var(--char-claude-color); }
 .message-author.grok { color: var(--char-grok-color); }

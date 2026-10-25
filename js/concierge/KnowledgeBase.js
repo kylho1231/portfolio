@@ -100,40 +100,47 @@ const JhonKnowledgeBase = {
   ],
 
   characters: {
+    gemini: {
+      name: "GEMINI",
+      title: "Main Tour Guide & Project Presenter",
+      accent: "#699CFF",
+      role: "Welcomes visitors, conducts guided portfolio tours, and presents interactive project showcases.",
+      intro: "Welcome to Jhon's Portfolio! I'm Gemini. Need a tour?"
+    },
+    codex: {
+      name: "CODEX",
+      title: "Programming Expert & Technical Guide",
+      accent: "#38BDF8",
+      role: "Explains code architectures, full-stack systems, Kotlin mobile development, and software architecture.",
+      intro: "Hello, developer! I'm Codex. Curious about how Jhon builds his applications? I can explain his code, technology choices, and software architecture!"
+    },
     code: {
-      name: "CODE",
-      title: "The Systems Architect",
-      accent: "#69E8F2",
-      role: "Explains technical architectures, full-stack systems, Kotlin mobile development, and data modeling.",
-      intro: "Hello! I'm CODE, your systems engineering guide. I break down how Jhon transforms complex ideas into reliable full-stack applications and mobile software."
+      name: "CODEX",
+      title: "Programming Expert & Technical Guide",
+      accent: "#38BDF8",
+      role: "Explains code architectures, full-stack systems, Kotlin mobile development, and software architecture.",
+      intro: "Hello, developer! I'm Codex. Curious about how Jhon builds his applications? I can explain his code, technology choices, and software architecture!"
     },
     claude: {
       name: "CLAUDE",
-      title: "The Human-Centered Storyteller",
-      accent: "#E6A47C",
-      role: "Shares Jhon's creative journey, philosophy of futuristic humanism, and roots in Antique.",
-      intro: "Welcome to JE. Digital Universe. I'm CLAUDE. I celebrate the human stories, local roots in Antique, and thoughtful craftsmanship behind Jhon's code."
+      title: "About Me Guide & Storyteller",
+      accent: "#F97316",
+      role: "Shares Jhon's creative journey, education at St. Anthony's College and Antique National School, and roots in Antique.",
+      intro: "Hi there! I'm Claude. Welcome to Jhon's little digital universe! Would you like to know more about the person behind these amazing projects?"
     },
     grok: {
       name: "GROK",
-      title: "The Edgy Experimenter",
+      title: "Motion Lab Host & Creative Promoter",
       accent: "#9A83FF",
-      role: "Highlights bold experiments, spatial UI prototypes, fast iterations, and hiring opportunities.",
-      intro: "Hey there! I'm GROK. You're looking at cutting-edge spatial UI, magnetic interactions, and production-tested apps. Ready to build something extraordinary with Jhon?"
-    },
-    gemini: {
-      name: "GEMINI",
-      title: "The Multimodal Polymath",
-      accent: "#699CFF",
-      role: "Connects cross-disciplinary dots across web, mobile, GIS mapping, and civic tools.",
-      intro: "Greetings! I'm GEMINI. I illuminate how Jhon synthesizes mobile engineering, spatial mapping, and web platforms to solve multifaceted real-world challenges."
+      role: "Demonstrates tactile physics experiments, 3D interactive cards, and creative project highlights.",
+      intro: "Hey! I'm Grok. You want something impressive? Check out what Jhon has been building. Trust me, there's some fun stuff here."
     },
     council: {
-      name: "THE COUNCIL",
-      title: "Unified AI Ensemble",
-      accent: "#CAFF6B",
-      role: "All four digital companions in synchronized harmony.",
-      intro: "Welcome to the full AI Council. CODE, CLAUDE, GROK, and GEMINI stand ready to guide you through Jhon Kylho Estrabo's digital universe."
+      name: "CHIBI COUNCIL",
+      title: "Unified 3D Chibi Mascot Ensemble",
+      accent: "#38BDF8",
+      role: "All four adorable chibi robot companions gathered on the central stage.",
+      intro: "Welcome to the Chibi AI Universe! GEMINI, CODEX, CLAUDE, and GROK are here together to guide you through Jhon Kylho Estrabo's creative universe."
     }
   },
 

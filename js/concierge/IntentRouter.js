@@ -9,7 +9,28 @@ class IntentRouter {
     this.kb = kb || window.JhonKnowledgeBase;
   }
 
-  route(queryText, activeChar = 'code') {
+  route(queryText, activeChar = 'gemini') {
+    // 0. Tour & Navigation Guidance (Prompt Section 4 & 8)
+    if (q.includes('tour') || q.includes('guide me') || q.includes('start tour') || q.includes('walkthrough')) {
+      return {
+        intent: 'guided_tour',
+        character: 'gemini',
+        text: "I'd love to give you a tour of Jhon's universe! Here are the main highlights:\n\n• **01 / Selected Work**: 7 real-world projects with interactive web simulators\n• **02 / Digital Motion Lab**: Tactile 3D physics and kinetic UI\n• **03 / Interactive Playground**: Hands-on operational sandboxes\n• **04 / Behind the Code**: Jhon's story, education & technical toolkit\n• **05 / Contact & Collaboration**: Project inquiry planner & direct reachout",
+        actionAnchor: '#work',
+        actionLabel: 'Begin Tour (Selected Work)',
+        chips: ['Explore Projects', 'Meet the Characters', 'Digital Motion Lab']
+      };
+    }
+
+    if (q.includes('meet') || q.includes('mascot') || q.includes('chibi') || q.includes('who are you') || q.includes('characters')) {
+      return {
+        intent: 'meet_mascots',
+        character: 'gemini',
+        text: "Meet our 3D Chibi Robot team!\n\n• **GEMINI (Rainbow)**: Tour guide & project presenter\n• **CODEX (Blue)**: Systems architect & programming expert\n• **CLAUDE (Orange)**: Storyteller & About Me guide\n• **GROK (Black & White)**: Motion Lab host & creative promoter\n\nClick any companion in the dock or pills above to chat with them!",
+        chips: ['Chat with CODEX', 'Chat with CLAUDE', 'Chat with GROK', 'Start Tour']
+      };
+    }
+
     const q = (queryText || '').toLowerCase().trim();
 
     // 1. Specific Project Matches

@@ -102,18 +102,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function updateActiveCharacterUI(charKey) {
-    // Update pills
-    charPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-char') === charKey));
-    drawerCharBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-char') === charKey));
+    if (charKey === 'code') charKey = 'codex';
+    // Update pills matching both codex and code
+    charPills.forEach(p => {
+      const pKey = p.getAttribute('data-char');
+      const matches = pKey === charKey || (charKey === 'codex' && pKey === 'code');
+      p.classList.toggle('active', matches);
+      p.setAttribute('aria-selected', matches ? 'true' : 'false');
+    });
+    drawerCharBtns.forEach(b => {
+      const bKey = b.getAttribute('data-char');
+      const matches = bKey === charKey || (charKey === 'codex' && bKey === 'code');
+      b.classList.toggle('active', matches);
+      b.setAttribute('aria-selected', matches ? 'true' : 'false');
+    });
 
     dialogueEngine.setActiveCharacter(charKey);
 
     // Initial greeting for character
-    const charMeta = window.JhonKnowledgeBase.characters[charKey] || window.JhonKnowledgeBase.characters.code;
+    const charMeta = window.JhonKnowledgeBase.characters[charKey] || window.JhonKnowledgeBase.characters.gemini;
+    const chips = charKey === 'gemini' 
+      ? ['Start Tour', 'Meet the Characters', 'Explore Projects'] 
+      : ['Who is Jhon?', 'Explore Projects', 'Digital Motion Lab', 'Contact Jhon'];
+
     dialogueEngine.speak({
       character: charKey,
       text: charMeta.intro,
-      chips: ['Who is Jhon?', 'Explore Projects', 'Digital Motion Lab', 'Contact Jhon']
+      chips: chips
     });
   }
 
@@ -225,13 +240,14 @@ document.addEventListener('DOMContentLoaded', () => {
   mediaQuery.addEventListener('change', handleMotionPref);
   handleMotionPref(mediaQuery);
 
-  // 13. Initial Welcome Greeting
+  // 13. Initial Welcome Greeting with GEMINI
   setTimeout(() => {
-    const codeIntro = window.JhonKnowledgeBase.characters.code.intro;
+    const geminiMeta = window.JhonKnowledgeBase.characters.gemini;
+    dialogueEngine.setActiveCharacter('gemini');
     dialogueEngine.speak({
-      character: 'code',
-      text: codeIntro,
-      chips: ['Who is Jhon?', 'Explore Projects', 'Digital Motion Lab', 'Contact Jhon']
+      character: 'gemini',
+      text: geminiMeta.intro,
+      chips: ['Start Tour', 'Meet the Characters', 'Explore Projects', 'Contact Jhon']
     });
   }, 400);
 });
