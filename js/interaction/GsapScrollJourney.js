@@ -1,137 +1,163 @@
 /**
- * JE. DIGITAL UNIVERSE — GSAP Scroll Journey
- * Scrubbed, pinned desktop narrative inspired by gsap.com/scroll.
- * Degrades to accessible stacked chapters if the CDN cannot load.
- * Does not take over touch, native scrolling, or the AI Council animation state.
+ * JE. Digital Universe — scroll story director.
+ * A single ScrollTrigger owns the pinned horizontal sequence.
+ * All transitions can reverse cleanly, and static content works without GSAP.
  */
 (function () {
   "use strict";
 
-  function init() {
-    const journey = document.getElementById("scroll-journey");
-    if (!journey) return;
-    if (!window.gsap || !window.ScrollTrigger) {
-      console.info("[JE Scroll] GSAP unavailable; accessible static chapters enabled.");
-      return;
-    }
+  function initScrollJourney() {
+    const root = document.getElementById("scroll-journey");
+    if (!root || !window.gsap || !window.ScrollTrigger) return;
+
     const gsap = window.gsap;
-    const ScrollTrigger = window.ScrollTrigger;
-    gsap.registerPlugin(ScrollTrigger);
+    const ST = window.ScrollTrigger;
+    gsap.registerPlugin(ST);
 
-    const viewport = journey.querySelector(".je-scroll-viewport");
-    const track = journey.querySelector(".je-scroll-track");
-    const chapters = Array.from(journey.querySelectorAll(".je-chapter"));
-    const dots = Array.from(journey.querySelectorAll(".je-journey-dot"));
-    const counter = journey.querySelector(".je-story-mark");
-    const colorMap = ["#d3a6ff", "#76d8ff", "#f0f2f8", "#ffb678"];
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const mobile = window.matchMedia("(max-width: 900px)");
-    if (!viewport || !track || !chapters.length) return;
+    const viewport = root.querySelector(".je-scroll-viewport");
+    const track = root.querySelector(".je-scroll-track");
+    const chapters = Array.from(root.querySelectorAll(".je-chapter"));
+    const fills = Array.from(root.querySelectorAll(".je-journey-dot"));
+    const counter = root.querySelector(".je-story-mark");
+    const header = document.querySelector(".site-header");
 
-    let lastChapter = -1;
-    function updateProgress(progress) {
-      const position = Math.min(chapters.length - 1, Math.max(0, Math.floor(progress * (chapters.length - 1) + 0.5)));
-      if (position !== lastChapter) {
-        lastChapter = position;
-        journey.style.setProperty("--je-chapter-color", colorMap[position]);
-        if (counter) counter.textContent = String(position + 1).padStart(2, "0") + " / " + String(chapters.length).padStart(2, "0");
+    if (!viewport || !track || chapters.length < 2) return;
+
+    const headerHeight = () => Math.max(0, Math.round(header?.getBoundingClientRect().height || 0));
+    const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
+
+    let lastIndex = -1;
+    const colorValues = ["#d3a6ff", "#76d8ff", "#f0f2f8", "#ffb678"];
+    const setProgress = (progress) => {
+      const scaled = Math.min(chapters.length - 1, Math.max(0, progress * (chapters.length - 1)));
+      const index = Math.min(chapters.length - 1, Math.floor(scaled + .5));
+      if (index !== lastIndex) {
+        lastIndex = index;
+        root.style.setProperty("--je-chapter-color", colorValues[index] || "#caff6b");
+        if (counter) counter.textContent = String(index + 1).padStart(2, "0") + " / " + String(chapters.length).padStart(2, "0");
       }
-      dots.forEach((dot, index) => {
-        const fill = Math.max(0, Math.min(1, progress * (chapters.length - 1) - index + 1));
-        dot.style.setProperty("--je-fill", String(fill));
-        dot.classList.toggle("is-active", fill > .995);
+      fills.forEach((dot, i) => {
+        dot.style.setProperty("--je-fill", String(Math.max(0, Math.min(1, scaled - i + 1))));
       });
-    }
-    updateProgress(0);
+    };
+    setProgress(0);
 
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 901px) and (prefers-reduced-motion: no-preference)", function () {
-      journey.classList.add("je-gsap-active");
-      const distance = () => Math.max(1, track.scrollWidth - viewport.clientWidth);
-      const tween = gsap.to(track, {
-        x: () => -distance(),
-        duration: 1,
+    // Desktop only. Mobile, reduced motion and failed-CDN cases always show
+    // all chapters naturally in the page flow.
+    const media = gsap.matchMedia();
+    media.add("(min-width: 901px) and (min-height: 500px) and (prefers-reduced-motion: no-preference)", () => {
+      root.style.setProperty("--je-header-height", headerHeight() + "px");
+      root.classList.add("je-gsap-active");
+      const travel = () => Math.max(1, distance());
+
+      // Pin the ACTUAL viewport, not its ancestor. This prevents early jumps,
+      // intro clipping and the sticky header offset mismatch.
+      const pan = gsap.to(track, {
+        x: () => -travel(),
         ease: "none",
         overwrite: "auto",
         scrollTrigger: {
-          trigger: journey,
-          start: "top top+=82",
-          end: () => "+=" + distance(),
-          scrub: 0.8,
-          pin: viewport,
+          id: "je-horizontal-story",
+          trigger: viewport,
+          pin: true,
           pinSpacing: true,
-          anticipatePin: 1,
+          start: () => "top top+=" + headerHeight(),
+          end: () => "+=" + Math.round(travel() * .82),
           invalidateOnRefresh: true,
-          onUpdate: self => updateProgress(self.progress)
+          scrub: .9,
+          anticipatePin: 1,
+          onUpdate(self) { setProgress(self.progress); },
+          onRefresh(self) {
+            root.style.setProperty("--je-header-height", headerHeight() + "px");
+            setProgress(self.progress);
+          }
         }
       });
 
-      // Independent scrub: staged mascots float and twist while the page moves.
-      const floatTween = gsap.to(journey.querySelectorAll(".je-robot-float"), {
-        y: -22,
-        rotationY: 18,
-        rotationZ: 3,
-        stagger: 0.12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: journey,
-          start: "top top+=82",
-          end: () => "+=" + distance(),
-          scrub: 1,
-          invalidateOnRefresh: true
+      // Choreograph each chapter as it ENTERS the viewport. These use the
+      // parent horizontal tween for correct measurements while scrubbing.
+      chapters.slice(1).forEach((chapter) => {
+        const copy = chapter.querySelector(".je-chapter-copy");
+        const art = chapter.querySelector(".je-chapter-art");
+        if (copy) {
+          gsap.fromTo(copy, { x: 75, opacity: .36 }, {
+            x: 0, opacity: 1, ease: "none",
+            scrollTrigger: {
+              trigger: chapter, containerAnimation: pan,
+              start: "left 93%", end: "left 49%", scrub: true
+            }
+          });
+        }
+        if (art) {
+          gsap.fromTo(art, { x: 85, rotateY: -16, scale: .88, opacity: .55 }, {
+            x: 0, rotateY: 0, scale: 1, opacity: 1, ease: "none",
+            scrollTrigger: {
+              trigger: chapter, containerAnimation: pan,
+              start: "left 98%", end: "left 48%", scrub: true
+            }
+          });
         }
       });
-      const glowTween = gsap.to(journey.querySelectorAll(".je-art-glow"), {
-        scale: 1.17,
-        opacity: .72,
-        ease: "none",
-        scrollTrigger: {
-          trigger: journey,
-          start: "top top+=82",
-          end: () => "+=" + distance(),
-          scrub: 1.3,
-          invalidateOnRefresh: true
-        }
-      });
-      ScrollTrigger.refresh();
+
+      // A subtle 3D illustration response throughout the scroll journey.
+      gsap.fromTo(root.querySelectorAll(".je-robot-float"),
+        { y: 17, rotateY: -11 }, {
+          y: -14, rotateY: 13, ease: "none",
+          scrollTrigger: {
+            trigger: viewport, start: () => "top top+=" + headerHeight(),
+            end: () => "+=" + Math.round(travel() * .82),
+            scrub: 1.4, invalidateOnRefresh: true
+          }
+        });
+
       return () => {
-        // matchMedia reverts its own GSAP instances first.
-        journey.classList.remove("je-gsap-active");
-        gsap.set(track, { clearProps: "transform" });
-        gsap.set(journey.querySelectorAll(".je-robot-float,.je-art-glow"), { clearProps: "transform,opacity" });
-        lastChapter = -1;
-        updateProgress(0);
+        root.classList.remove("je-gsap-active");
+        root.style.removeProperty("--je-header-height");
+        lastIndex = -1;
+        setProgress(0);
       };
     });
 
-    mm.add("(prefers-reduced-motion: no-preference)", function () {
-      // Gentle reveal of section labels without altering existing data-reveal cards.
-      const labels = Array.from(document.querySelectorAll(
+    // On smaller devices, reveal the chapter artwork without hijacking native scroll.
+    media.add("(max-width: 900px) and (prefers-reduced-motion: no-preference)", () => {
+      chapters.forEach((chapter) => {
+        const art = chapter.querySelector(".je-chapter-art");
+        if (!art) return;
+        gsap.fromTo(art, { opacity: .65, y: 35 }, {
+          opacity: 1, y: 0, duration: .75, ease: "power2.out",
+          scrollTrigger: {
+            trigger: chapter, start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
+    });
+
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      const labels = document.querySelectorAll(
         "#work .section-topline, #motion-lab .lab-badge, #playground .section-topline, #about .section-topline, #approach .section-topline, #contact .section-topline"
-      ));
-      labels.forEach(label => {
-        gsap.fromTo(label, { opacity: .15, x: -28 }, {
-          opacity: 1, x: 0, duration: .75, ease: "power2.out",
-          scrollTrigger: { trigger: label, start: "top 87%", toggleActions: "play none none reverse" }
+      );
+      labels.forEach((label) => {
+        gsap.fromTo(label, { opacity: .4, x: -16 }, {
+          opacity: 1, x: 0, ease: "power2.out", duration: .6,
+          scrollTrigger: {
+            trigger: label, start: "top 88%",
+            toggleActions: "play none none reverse"
+          }
         });
       });
-      const hero = document.querySelector(".hero-studio");
-      if (hero) {
-        gsap.to(hero, {
-          y: -48, rotate: -1.5, ease: "none",
-          scrollTrigger: { trigger: "#top", start: "top top", end: "bottom top", scrub: .7 }
-        });
-      }
     });
-    window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
-    // Native anchor scrolling stays intact; provide a skip link before the long sequence.
-    document.querySelectorAll('a[href="#work"],a[href="#scroll-journey"]').forEach(link => {
-      link.addEventListener("click", () => {
-        // Refresh after jumping past a pinned sequence (for Safari / mobile rotation).
-        window.requestAnimationFrame(() => ScrollTrigger.refresh());
-      });
-    });
+
+    // Refresh dimensions once imagery and fonts settle, but do NOT refresh on
+    // every anchor click (which previously caused visible jumpiness).
+    const refresh = () => ST.refresh();
+    if (document.readyState !== "complete") {
+      window.addEventListener("load", refresh, { once: true });
+    }
+    document.fonts?.ready?.then(refresh).catch(() => {});
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
-  else init();
+
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", initScrollJourney, { once: true });
+  else initScrollJourney();
 })();
