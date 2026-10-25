@@ -63,10 +63,11 @@ class GrokCharacter extends CharacterBase {
     stripe2.rotation.x = 0.15;
     this.bodyGroup.add(stripe2);
 
-    // 2. Head with Sharp Angular Visor
+    // 2. Head with Sharp Angular Visor (centered at neck pivot)
+    this.headGroup.position.set(0, 0.95, 0.1);
     const headGeo = new THREE.BoxGeometry(0.85, 0.5, 0.7);
     this.headMesh = new THREE.Mesh(headGeo, chromeMat);
-    this.headMesh.position.set(0, 0.95, 0.1);
+    this.headMesh.position.set(0, 0, 0);
     this.headGroup.add(this.headMesh);
 
     // Sharp Violet Visor
@@ -74,7 +75,7 @@ class GrokCharacter extends CharacterBase {
     visorGeo.rotateX(Math.PI / 2);
     this.visorMat = violetGlowMat;
     this.visor = new THREE.Mesh(visorGeo, this.visorMat);
-    this.visor.position.set(0, 0.95, 0.45);
+    this.visor.position.set(0, 0, 0.36);
     this.visor.scale.set(1.0, 0.4, 0.4);
     this.headGroup.add(this.visor);
 

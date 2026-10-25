@@ -14,6 +14,7 @@ class ClaudeCharacter extends CharacterBase {
     this.halo = null;
     this.eyes = [];
     this.coreMesh = null;
+    this.disableDefaultGaze = true;
 
     this.buildCharacter();
   }

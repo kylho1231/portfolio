@@ -38,6 +38,9 @@ class CharacterBase {
 
     // Speech pulse variable (0.0 to 1.0)
     this.speechIntensity = 0;
+
+    // Subclasses can disable default group-level gaze rotation to implement custom optics tracking
+    this.disableDefaultGaze = false;
   }
 
   getGroup() {
@@ -73,25 +76,27 @@ class CharacterBase {
     this.smoothedPointer.y += (this.pointerNormalized.y - this.smoothedPointer.y) * lerpFactor;
 
     // Smooth position lerp
-    this.group.position.lerp(this.targetPosition, 0.05);
+    this.basePosition.lerp(this.targetPosition, 0.05);
 
-    // Floating breathing motion
+    // Floating breathing motion — applied uniformly to the whole character assembly
     if (!this.reducedMotion) {
       const breathSpeed = this.state === 'thinking' ? 3.0 : 1.5;
       const breathAmp = this.state === 'excited' ? 0.22 : 0.12;
       const hoverOffset = Math.sin(time * breathSpeed) * breathAmp;
-      this.bodyGroup.position.y = hoverOffset;
-      this.headGroup.position.y = hoverOffset * 1.1;
+      this.group.position.x = this.basePosition.x;
+      this.group.position.z = this.basePosition.z;
+      this.group.position.y = this.basePosition.y + hoverOffset;
     } else {
-      this.bodyGroup.position.y = 0;
-      this.headGroup.position.y = 0;
+      this.group.position.copy(this.basePosition);
     }
 
-    // Default gaze tracking on head
-    const maxLookYaw = 0.45;
-    const maxLookPitch = 0.35;
-    this.headGroup.rotation.y = this.smoothedPointer.x * maxLookYaw;
-    this.headGroup.rotation.x = -this.smoothedPointer.y * maxLookPitch;
+    // Default gaze tracking on head group if enabled
+    if (!this.disableDefaultGaze) {
+      const maxLookYaw = 0.35;
+      const maxLookPitch = 0.25;
+      this.headGroup.rotation.y = this.smoothedPointer.x * maxLookYaw;
+      this.headGroup.rotation.x = -this.smoothedPointer.y * maxLookPitch;
+    }
 
     // Speech decay
     if (this.state === 'speaking') {

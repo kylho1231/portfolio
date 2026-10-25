@@ -78,7 +78,7 @@ class ThreeSceneManager {
       this.renderer.setSize(width, height);
       this.renderer.outputEncoding = THREE.sRGBEncoding;
       this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      this.renderer.toneMappingExposure = 1.1;
+      this.renderer.toneMappingExposure = 1.0;
 
       // Append canvas to container
       this.container.innerHTML = '';
@@ -112,21 +112,21 @@ class ThreeSceneManager {
 
   setupLighting() {
     // Ambient soft fill light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
     this.scene.add(ambientLight);
 
-    // Key directional light
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    keyLight.position.set(5, 8, 6);
+    // Key directional light - balanced studio lighting to prevent harsh specular burn
+    const keyLight = new THREE.DirectionalLight(0xf8fafc, 0.95);
+    keyLight.position.set(4, 6, 5);
     this.scene.add(keyLight);
 
-    // Colored rim/back light
-    const rimLight = new THREE.DirectionalLight(0x69e8f2, 1.0);
-    rimLight.position.set(-6, -4, -4);
+    // Colored rim/back light (Ice Cyan)
+    const rimLight = new THREE.DirectionalLight(0x69e8f2, 0.85);
+    rimLight.position.set(-6, -3, -4);
     this.scene.add(rimLight);
 
-    // Warm secondary rim light
-    const warmRim = new THREE.DirectionalLight(0xe6a47c, 0.6);
+    // Warm secondary rim light (Warm Amber)
+    const warmRim = new THREE.DirectionalLight(0xe6a47c, 0.5);
     warmRim.position.set(6, -2, -3);
     this.scene.add(warmRim);
   }
