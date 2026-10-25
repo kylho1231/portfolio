@@ -201,3 +201,52 @@
  .je-chapter {height:auto!important;min-height:200px!important;width:100%!important;}
  .je-story-controls {display:none;}
 }
+
+/* Scroll stability and cinematic polish — 2026 iteration */
+.je-scroll-journey { overflow: visible; }
+.je-scroll-journey.je-gsap-active .je-scroll-viewport {
+  height: calc(100svh - var(--je-header-height, 82px));
+  min-height: 470px;
+  max-height: 820px;
+  overflow: hidden;
+  position: relative;
+  contain: paint;
+}
+.je-scroll-journey.je-gsap-active .je-scroll-track {
+  width: max-content;
+  height: 100%;
+  display: flex;
+  will-change: transform;
+}
+.je-scroll-journey.je-gsap-active .je-chapter {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100%;
+  flex: 0 0 100vw;
+  min-height: 0;
+  overflow: hidden;
+}
+.je-scroll-journey.je-gsap-active .je-chapter-copy,
+.je-scroll-journey.je-gsap-active .je-chapter-art { backface-visibility: hidden; }
+.je-journey-dot { background: rgba(226,241,255,.25); }
+.je-journey-dot::after { transform: scaleX(var(--je-fill,0)); }
+.je-scroll-journey .je-story-controls { pointer-events:none; }
+.je-scroll-journey .je-journey-skip { pointer-events:auto; }
+.je-chapter-art { transform-style: preserve-3d; }
+.je-chapter .je-art-card { transition: box-shadow .3s ease; }
+@media (max-height: 700px) and (min-width: 901px) {
+  .je-scroll-journey.je-gsap-active .je-chapter { padding-block:25px; }
+  .je-scroll-journey.je-gsap-active .je-chapter h3 {font-size:clamp(39px,5.3vw,76px);}
+  .je-scroll-journey.je-gsap-active .je-chapter-description {margin-top:16px;}
+  .je-scroll-journey.je-gsap-active .je-chapter-actions {margin-top:17px;}
+  .je-scroll-journey.je-gsap-active .je-chapter-stamp {margin-top:14px;}
+  .je-scroll-journey.je-gsap-active .je-chapter-art {height: min(390px,60vh);min-height: 290px;}
+  .je-scroll-journey.je-gsap-active .je-robot-float {transform:scale(.84);}
+}
+@media (max-width:900px), (prefers-reduced-motion:reduce) {
+ .je-scroll-journey {overflow:clip;}
+ .je-scroll-journey .je-scroll-viewport {height:auto;min-height:0;overflow:visible;}
+ .je-scroll-journey .je-scroll-track {display:block;width:100%;height:auto;transform:none!important;}
+ .je-scroll-journey .je-chapter {width:100%;max-width:100%;min-height:450px;height:auto;}
+ .je-scroll-journey .je-story-controls {display:none;}
+}
