@@ -262,13 +262,24 @@ class CouncilStage {
 
   updateTheme(forcedTheme) {
     const isLight = (forcedTheme || document.documentElement.dataset.theme) === 'light';
+    if (this.sm.renderer) {
+      // The pale stage reflects considerably more light than the dark theme.
+      // Lower exposure so white character materials retain their form and color.
+      this.sm.renderer.toneMappingExposure = isLight ? 0.78 : 1.0;
+    }
     if (this.platform && this.platform.material) {
-      this.platform.material.color.setHex(isLight ? 0xe2e8f0 : 0x0a0f1d);
-      this.platform.material.metalness = isLight ? 0.35 : 0.85;
-      this.platform.material.roughness = isLight ? 0.45 : 0.35;
+      this.platform.material.color.setHex(isLight ? 0x536273 : 0x0a0f1d);
+      this.platform.material.metalness = isLight ? 0.55 : 0.85;
+      this.platform.material.roughness = isLight ? 0.5 : 0.35;
     }
     if (this.shadow && this.shadow.material) {
-      this.shadow.material.opacity = isLight ? 0.12 : 0.4;
+      this.shadow.material.opacity = isLight ? 0.24 : 0.4;
+    }
+    if (this.rimMat) {
+      this.rimMat.emissiveIntensity = isLight ? 0.55 : 0.8;
+    }
+    if (this.charLight) {
+      this.charLight.intensity = isLight ? 0.9 : 1.2;
     }
   }
 
