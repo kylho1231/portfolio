@@ -18,6 +18,7 @@ class CouncilStage {
 
     this.initStageEnvironment();
     this.initCharacters();
+    this.initThemeWatcher();
     this.sm.onUpdate(this.update.bind(this));
   }
 
@@ -60,10 +61,10 @@ class CouncilStage {
     // Soft Studio Contact Shadow
     const shadowGeo = new THREE.CircleGeometry(3.9, 32);
     const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.4 });
-    const shadow = new THREE.Mesh(shadowGeo, shadowMat);
-    shadow.position.set(0, -0.12, 0);
-    shadow.rotation.x = -Math.PI / 2;
-    platformGroup.add(shadow);
+    this.shadow = new THREE.Mesh(shadowGeo, shadowMat);
+    this.shadow.position.set(0, -0.12, 0);
+    this.shadow.rotation.x = -Math.PI / 2;
+    platformGroup.add(this.shadow);
 
     this.sm.scene.add(platformGroup);
 
@@ -245,6 +246,29 @@ class CouncilStage {
           char.setState('idle');
         }
       }, durationMs);
+    }
+  }
+
+  initThemeWatcher() {
+    this.updateTheme();
+    if (typeof MutationObserver !== 'undefined' && document.documentElement) {
+      const observer = new MutationObserver(() => this.updateTheme());
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+      });
+    }
+  }
+
+  updateTheme(forcedTheme) {
+    const isLight = (forcedTheme || document.documentElement.dataset.theme) === 'light';
+    if (this.platform && this.platform.material) {
+      this.platform.material.color.setHex(isLight ? 0xe2e8f0 : 0x0a0f1d);
+      this.platform.material.metalness = isLight ? 0.35 : 0.85;
+      this.platform.material.roughness = isLight ? 0.45 : 0.35;
+    }
+    if (this.shadow && this.shadow.material) {
+      this.shadow.material.opacity = isLight ? 0.12 : 0.4;
     }
   }
 

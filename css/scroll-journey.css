@@ -250,3 +250,179 @@
  .je-scroll-journey .je-chapter {width:100%;max-width:100%;min-height:450px;height:auto;}
  .je-scroll-journey .je-story-controls {display:none;}
 }
+
+/* ==========================================================================
+   JE. SCROLL JOURNEY — LIGHT MODE THEME ADAPTATION
+   Applies seamless, accessible light mode styling matching portfolio design tokens.
+   ========================================================================== */
+
+html[data-theme="light"] .je-scroll-journey {
+  --je-lime: var(--accent, #466a0b);
+  --je-chapter-color: #6366f1;
+  --je-backdrop: var(--paper, #f2f1e9);
+  background: var(--je-backdrop);
+  color: var(--ink, #17271d);
+  border-block: 1px solid var(--line, #cbd2c4);
+}
+
+html[data-theme="light"] .je-journey-intro .je-kicker {
+  color: var(--accent, #466a0b);
+}
+
+html[data-theme="light"] .je-journey-intro h2 {
+  color: var(--ink, #17271d);
+}
+
+html[data-theme="light"] .je-journey-intro h2 em {
+  color: var(--accent, #466a0b);
+}
+
+html[data-theme="light"] .je-journey-intro p:not(.je-kicker) {
+  color: var(--body-ink, #48584c);
+}
+
+html[data-theme="light"] .je-scroll-viewport {
+  background: var(--surface, #faf9f3);
+  border-block: 1px solid var(--line, #cbd2c4);
+}
+
+html[data-theme="light"] .je-chapter {
+  background: radial-gradient(ellipse at 75% 48%, rgba(var(--je-tone-rgb), 0.12), transparent 55%), var(--surface, #faf9f3);
+}
+
+/* Light Mode High-Contrast Tone Tokens for Chibi Characters */
+html[data-theme="light"] .je-chapter[data-character="gemini"] {
+  --je-tone: #7c3aed;
+  --je-tone-rgb: 124, 58, 237;
+}
+
+html[data-theme="light"] .je-chapter[data-character="codex"] {
+  --je-tone: #0284c7;
+  --je-tone-rgb: 2, 132, 199;
+}
+
+html[data-theme="light"] .je-chapter[data-character="grok"] {
+  --je-tone: #1e293b;
+  --je-tone-rgb: 30, 41, 59;
+}
+
+html[data-theme="light"] .je-chapter[data-character="claude"] {
+  --je-tone: #c2410c;
+  --je-tone-rgb: 194, 65, 12;
+}
+
+html[data-theme="light"] .je-chapter::before {
+  opacity: 0.25;
+  background-image: linear-gradient(rgba(100, 116, 139, 0.20) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(100, 116, 139, 0.20) 1px, transparent 1px);
+  mask-image: linear-gradient(to right, transparent, #000 20%, #000 85%, transparent);
+}
+
+html[data-theme="light"] .je-chapter h3 {
+  color: var(--ink, #17271d);
+}
+
+html[data-theme="light"] .je-chapter-description {
+  color: var(--body-ink, #48584c);
+}
+
+html[data-theme="light"] .je-chapter-link {
+  border: 1px solid var(--line, #cbd2c4);
+  color: var(--ink, #17271d);
+  background: var(--paper, #f2f1e9);
+}
+
+html[data-theme="light"] .je-chapter-link:hover {
+  background: rgba(var(--je-tone-rgb), 0.12);
+  border-color: var(--je-tone);
+}
+
+html[data-theme="light"] .je-chapter-link-primary {
+  background: var(--je-tone);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+html[data-theme="light"] .je-chapter-link-primary:hover {
+  background: var(--ink, #17271d);
+  color: #ffffff;
+}
+
+html[data-theme="light"] .je-chapter-stamp {
+  color: var(--muted, #59675b);
+}
+
+html[data-theme="light"] .je-art-card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--line, #cbd2c4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="light"] .je-art-card strong {
+  color: var(--ink, #17271d);
+}
+
+html[data-theme="light"] .je-art-card small {
+  color: var(--muted, #59675b);
+}
+
+html[data-theme="light"] .je-art-ring {
+  border-color: rgba(var(--je-tone-rgb), 0.25);
+}
+
+html[data-theme="light"] .je-art-plate {
+  border-color: rgba(var(--je-tone-rgb), 0.35);
+  background: radial-gradient(ellipse, rgba(var(--je-tone-rgb), 0.12), transparent 70%);
+}
+
+html[data-theme="light"] .je-robot-head {
+  box-shadow: inset -9px -12px 23px rgba(0, 0, 0, 0.10), 0 12px 28px rgba(0, 0, 0, 0.12);
+  border-color: var(--je-tone);
+}
+
+html[data-theme="light"] .je-robot-crest {
+  background: #ffffff;
+  border: 2px solid var(--je-tone);
+  color: var(--je-tone);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="light"] .je-chapter[data-character="grok"] .je-robot-crest {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+html[data-theme="light"] .je-story-controls {
+  background: linear-gradient(transparent, rgba(242, 241, 233, 0.96) 65%);
+}
+
+html[data-theme="light"] .je-journey-dot {
+  background: rgba(0, 0, 0, 0.14);
+}
+
+html[data-theme="light"] .je-journey-dot::after {
+  background: var(--accent, #466a0b);
+}
+
+html[data-theme="light"] .je-story-mark {
+  color: var(--muted, #59675b);
+}
+
+html[data-theme="light"] .je-journey-skip {
+  color: var(--ink, #17271d);
+  border: 1px solid var(--line, #cbd2c4);
+  background: var(--surface, #faf9f3);
+}
+
+html[data-theme="light"] .je-journey-skip:hover {
+  background: var(--paper, #f2f1e9);
+}
+
+html[data-theme="light"] .je-journey-outro {
+  color: var(--muted, #59675b);
+}
+
+html[data-theme="light"] .je-journey-outro a {
+  color: var(--accent, #466a0b);
+}
