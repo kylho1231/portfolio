@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const charMeta = window.JhonKnowledgeBase.characters[charKey] || window.JhonKnowledgeBase.characters.gemini;
     const chips = charKey === 'gemini' 
       ? ['Start Tour', 'Meet the Characters', 'Explore Projects'] 
-      : ['Who is Jhon?', 'Explore Projects', 'Digital Motion Lab', 'Contact Jhon'];
+      : ['Who is Jhon?', 'Explore Projects', 'View Skills & Stack', 'Contact Jhon'];
 
     dialogueEngine.speak({
       character: charKey,

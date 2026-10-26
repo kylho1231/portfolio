@@ -41,8 +41,8 @@ class CharacterBase {
     this.bodyGroup.position.set(0, 0.45, 0);
     this.leftArmGroup.position.set(-0.55, 0.65, 0);
     this.rightArmGroup.position.set(0.55, 0.65, 0);
-    this.leftLegGroup.position.set(-0.24, 0.05, 0);
-    this.rightLegGroup.position.set(0.24, 0.05, 0);
+    this.leftLegGroup.position.set(-0.24, -0.10, 0);
+    this.rightLegGroup.position.set(0.24, -0.10, 0);
 
     // State Machine
     this.state = 'idle';

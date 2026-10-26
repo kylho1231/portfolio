@@ -90,7 +90,7 @@ class IntentRouter {
         text: `**${proj.title}** tackles municipal waste management with modern tech! It features WebAuthn biometric passkey authentication, scheduled collection routes, and diversion analytics.\n\nStack: **${proj.stack.join(', ')}**.`,
         actionAnchor: '#work',
         actionLabel: 'Test EcoCollect Simulator',
-        chips: ['Show Motion Lab', 'Antique Supply B2B', 'Tech Stack']
+        chips: ['View Skills & Stack', 'Antique Supply B2B', 'Tech Stack']
       };
     }
 
@@ -153,7 +153,7 @@ class IntentRouter {
         text: `Jhon's technical foundation spans:\n\n• **Frontend & Web:** ${this.kb.skills.frontend.slice(0, 5).join(', ')}\n• **Mobile Development:** ${this.kb.skills.mobile.join(', ')}\n• **Backend & Cloud:** ${this.kb.skills.backend.join(', ')}\n• **Architecture:** ${this.kb.skills.architecture.join(', ')}`,
         actionAnchor: '#work',
         actionLabel: 'See Applied Code',
-        chips: ['Explore Projects', 'Digital Motion Lab', 'Contact Jhon']
+        chips: ['Explore Projects', 'View Skills & Stack', 'Contact Jhon']
       };
     }
 
@@ -211,7 +211,7 @@ class IntentRouter {
         intent: 'greeting',
         character: activeChar,
         text: `${activeInfo.intro}\n\nWhat would you like to explore today?`,
-        chips: ['Who is Jhon?', 'Explore Projects', 'Digital Motion Lab', 'Start a Project']
+        chips: ['Who is Jhon?', 'Explore Projects', 'View Skills & Stack', 'Start a Project']
       };
     }
 
@@ -221,7 +221,7 @@ class IntentRouter {
       intent: 'fallback',
       character: fallbackChar,
       text: `I'd love to help you explore Jhon's work! You can ask about his **7 verified projects**, **skills in React/Kotlin/Firebase**, **roots in Antique**, or use the quick links below:`,
-      chips: ['AquaFlow Project', 'Who is Jhon?', 'Digital Motion Lab', 'Contact & Hire']
+      chips: ['AquaFlow Project', 'Who is Jhon?', 'View Skills & Stack', 'Contact & Hire']
     };
   }
 }

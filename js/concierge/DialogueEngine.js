@@ -131,7 +131,7 @@ class DialogueEngine {
         this.stageActionsEl.appendChild(urlBtn);
       }
 
-      const chips = payload.chips || ['Explore Projects', 'Who is Jhon?', 'Digital Motion Lab'];
+      const chips = payload.chips || ['Explore Projects', 'Who is Jhon?', 'View Skills & Stack'];
       chips.slice(0, 3).forEach(chipText => {
         const chip = document.createElement('button');
         chip.type = 'button';

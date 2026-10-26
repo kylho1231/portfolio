@@ -79,6 +79,12 @@ class ClaudeCharacter extends CharacterBase {
       metalness: 0.8
     });
 
+    const faceWhiteMat = new THREE.MeshStandardMaterial({
+      color: 0xf8fafc,
+      metalness: 0.08,
+      roughness: 0.32
+    });
+
     const eyeWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
     const irisMat = new THREE.MeshBasicMaterial({ color: 0xd97706 });
     const pupilMat = new THREE.MeshBasicMaterial({ color: 0x0f172a });
@@ -89,6 +95,13 @@ class ClaudeCharacter extends CharacterBase {
     headGeo.scale(1.0, 0.94, 0.98);
     this.headMesh = new THREE.Mesh(headGeo, helmetMat);
     this.headGroup.add(this.headMesh);
+
+    // Inner Porcelain White Faceplate
+    const faceGeo = new THREE.SphereGeometry(0.68, 32, 24, 0, Math.PI * 2, 0, Math.PI / 1.7);
+    faceGeo.scale(0.96, 0.94, 0.98);
+    const faceMask = new THREE.Mesh(faceGeo, faceWhiteMat);
+    faceMask.position.set(0, -0.04, 0.05);
+    this.headGroup.add(faceMask);
 
     // White Racing Stripe across side
     const stripeGeo = new THREE.TorusGeometry(0.70, 0.02, 12, 32, Math.PI);

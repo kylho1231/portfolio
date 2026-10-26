@@ -58,10 +58,11 @@ class ThreeSceneManager {
     // 1. Scene
     this.scene = new THREE.Scene();
 
-    // 2. Camera
+    // 2. Camera (Framed with optical clearance for mascot & pedestal)
     this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
     const isMobile = width < 768;
-    this.camera.position.set(0, isMobile ? 0.35 : 0, isMobile ? 8.5 : 7.5);
+    this.camera.position.set(0, isMobile ? 0.45 : 0.45, isMobile ? 8.2 : 7.0);
+    this.camera.lookAt(0, 0.35, 0);
 
     // 3. Clock
     this.clock = new THREE.Clock();
@@ -78,7 +79,7 @@ class ThreeSceneManager {
       this.renderer.setSize(width, height);
       this.renderer.outputEncoding = THREE.sRGBEncoding;
       this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      this.renderer.toneMappingExposure = 1.0;
+      this.renderer.toneMappingExposure = 1.05;
 
       // Append canvas to container
       this.container.innerHTML = '';
@@ -111,23 +112,28 @@ class ThreeSceneManager {
   }
 
   setupLighting() {
-    // Ambient soft fill light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    // Ambient soft studio fill light
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
     this.scene.add(ambientLight);
 
-    // Key directional light - balanced studio lighting to prevent harsh specular burn
-    const keyLight = new THREE.DirectionalLight(0xf8fafc, 0.95);
-    keyLight.position.set(4, 6, 5);
+    // Key directional light - studio collectible illumination
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.1);
+    keyLight.position.set(4, 7, 5);
     this.scene.add(keyLight);
 
+    // Fill directional light from opposite angle
+    const fillLight = new THREE.DirectionalLight(0xe0f2fe, 0.55);
+    fillLight.position.set(-4, 3, 4);
+    this.scene.add(fillLight);
+
     // Colored rim/back light (Ice Cyan)
-    const rimLight = new THREE.DirectionalLight(0x69e8f2, 0.85);
-    rimLight.position.set(-6, -3, -4);
+    const rimLight = new THREE.DirectionalLight(0x69e8f2, 0.9);
+    rimLight.position.set(-5, 4, -5);
     this.scene.add(rimLight);
 
-    // Warm secondary rim light (Warm Amber)
-    const warmRim = new THREE.DirectionalLight(0xe6a47c, 0.5);
-    warmRim.position.set(6, -2, -3);
+    // Warm secondary rim light (Warm Amber / Gold)
+    const warmRim = new THREE.DirectionalLight(0xfcd34d, 0.45);
+    warmRim.position.set(5, 2, -4);
     this.scene.add(warmRim);
   }
 
@@ -139,12 +145,11 @@ class ThreeSceneManager {
     this.camera.aspect = width / height;
     const isMobile = width < 768;
     if (isMobile) {
-      this.camera.position.z = 8.5;
-      this.camera.position.y = 0.35;
+      this.camera.position.set(0, 0.45, 8.2);
     } else {
-      this.camera.position.z = 7.5;
-      this.camera.position.y = 0.0;
+      this.camera.position.set(0, 0.45, 7.0);
     }
+    this.camera.lookAt(0, 0.35, 0);
     this.camera.updateProjectionMatrix();
 
     this.renderer.setSize(width, height);

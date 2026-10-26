@@ -23,54 +23,62 @@ class CouncilStage {
   }
 
   initStageEnvironment() {
-    // 1. Floating Circular Metallic Studio Platform
+    // 1. Floating Circular Metallic Studio Platform (Grounded cleanly under boots)
     const platformGroup = new THREE.Group();
-    platformGroup.position.set(0, -0.75, 0);
+    platformGroup.position.set(0, -0.52, 0);
 
-    // Platform Base Disc
-    const platGeo = new THREE.CylinderGeometry(3.6, 3.8, 0.22, 64);
+    // Platform Base Disc (Beveled Obsidian & Brushed Steel Finish)
+    const platGeo = new THREE.CylinderGeometry(3.2, 3.4, 0.20, 64);
     const platMat = new THREE.MeshStandardMaterial({
-      color: 0x0a0f1d,
-      metalness: 0.85,
-      roughness: 0.35
+      color: 0x0b1120,
+      metalness: 0.88,
+      roughness: 0.22
     });
     this.platform = new THREE.Mesh(platGeo, platMat);
     platformGroup.add(this.platform);
 
-    // Glowing Neon Rim Ring
-    const rimGeo = new THREE.TorusGeometry(3.62, 0.035, 16, 64);
+    // Glowing Neon Rim Ring (Pulsing Character Accent Glow)
+    const rimGeo = new THREE.TorusGeometry(3.22, 0.04, 16, 64);
     this.rimMat = new THREE.MeshStandardMaterial({
-      color: 0x818cf8,
-      emissive: 0x6366f1,
-      emissiveIntensity: 0.8,
-      roughness: 0.2
+      color: 0x38bdf8,
+      emissive: 0x0284c7,
+      emissiveIntensity: 1.1,
+      roughness: 0.15
     });
     this.platformRim = new THREE.Mesh(rimGeo, this.rimMat);
-    this.platformRim.position.set(0, 0.11, 0);
+    this.platformRim.position.set(0, 0.10, 0);
     this.platformRim.rotation.x = Math.PI / 2;
     platformGroup.add(this.platformRim);
 
-    // Inner Concentric Grid Ring
-    const innerRingGeo = new THREE.TorusGeometry(2.4, 0.015, 12, 48);
-    const innerRingMat = new THREE.MeshBasicMaterial({ color: 0x334155, transparent: true, opacity: 0.4 });
-    const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat);
-    innerRing.position.set(0, 0.112, 0);
+    // Inner Concentric Holographic Grid Rings
+    const innerRingGeo = new THREE.TorusGeometry(2.1, 0.016, 12, 48);
+    this.innerRingMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.5 });
+    const innerRing = new THREE.Mesh(innerRingGeo, this.innerRingMat);
+    innerRing.position.set(0, 0.102, 0);
     innerRing.rotation.x = Math.PI / 2;
     platformGroup.add(innerRing);
 
-    // Soft Studio Contact Shadow
-    const shadowGeo = new THREE.CircleGeometry(3.9, 32);
-    const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.4 });
+    // Outer Beveled Trim Ring
+    const outerTrimGeo = new THREE.TorusGeometry(3.38, 0.015, 12, 48);
+    const outerTrimMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.9, roughness: 0.2 });
+    const outerTrim = new THREE.Mesh(outerTrimGeo, outerTrimMat);
+    outerTrim.position.set(0, -0.05, 0);
+    outerTrim.rotation.x = Math.PI / 2;
+    platformGroup.add(outerTrim);
+
+    // Soft Ground Contact Shadow (Directly grounding the character)
+    const shadowGeo = new THREE.CircleGeometry(3.5, 32);
+    const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.55 });
     this.shadow = new THREE.Mesh(shadowGeo, shadowMat);
-    this.shadow.position.set(0, -0.12, 0);
+    this.shadow.position.set(0, -0.11, 0);
     this.shadow.rotation.x = -Math.PI / 2;
     platformGroup.add(this.shadow);
 
     this.sm.scene.add(platformGroup);
 
     // 2. Character-Specific Soft Dynamic Spotlight
-    this.charLight = new THREE.PointLight(0x818cf8, 1.2, 10);
-    this.charLight.position.set(0, 3.5, 2.5);
+    this.charLight = new THREE.PointLight(0x38bdf8, 1.4, 10);
+    this.charLight.position.set(0, 3.4, 2.2);
     this.sm.scene.add(this.charLight);
   }
 
@@ -153,11 +161,10 @@ class CouncilStage {
       }
     });
 
-    // Camera target for single character
+    // Camera target for single character (framed above dialogue HUD)
     if (this.sm.camera) {
-      this.sm.camera.position.z = isMobile ? 8.5 : 7.0;
-      this.sm.camera.position.y = isMobile ? 0.45 : 0.15;
-      this.sm.camera.position.x = 0;
+      this.sm.camera.position.set(0, isMobile ? 0.52 : 0.42, isMobile ? 8.2 : 6.8);
+      this.sm.camera.lookAt(0, 0.32, 0);
     }
   }
 
@@ -202,9 +209,8 @@ class CouncilStage {
 
     // Camera pulls back to frame all 4 chibi friends comfortably
     if (this.sm.camera) {
-      this.sm.camera.position.z = isMobile ? 10.0 : 8.6;
-      this.sm.camera.position.y = isMobile ? 0.6 : 0.2;
-      this.sm.camera.position.x = 0;
+      this.sm.camera.position.set(0, isMobile ? 0.65 : 0.42, isMobile ? 9.8 : 8.2);
+      this.sm.camera.lookAt(0, 0.28, 0);
     }
   }
 
