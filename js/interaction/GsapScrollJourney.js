@@ -146,7 +146,7 @@
 
     media.add("(prefers-reduced-motion: no-preference)", () => {
       const labels = document.querySelectorAll(
-        "#work .section-topline, #motion-lab .lab-badge, #playground .section-topline, #about .section-topline, #approach .section-topline, #contact .section-topline"
+        "#work .section-topline, #skills .section-topline, #about .section-topline, #contact .section-topline"
       );
       labels.forEach((label) => {
         gsap.fromTo(label, { opacity: .4, x: -16 }, {

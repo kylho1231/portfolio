@@ -15,10 +15,10 @@ class IntentRouter {
       return {
         intent: 'guided_tour',
         character: 'gemini',
-        text: "I'd love to give you a tour of Jhon's universe! Here are the main highlights:\n\n• **01 / Selected Work**: 7 real-world projects with interactive web simulators\n• **02 / Digital Motion Lab**: Tactile 3D physics and kinetic UI\n• **03 / Interactive Playground**: Hands-on operational sandboxes\n• **04 / Behind the Code**: Jhon's story, education & technical toolkit\n• **05 / Contact & Collaboration**: Project inquiry planner & direct reachout",
+        text: "I'd love to give you a tour of Jhon's portfolio! Here are the main highlights:\n\n• **01 / Selected Work**: 7 verified production projects with interactive web simulators\n• **02 / Technical Skills & Stack**: Web, Android, Cloud, and Database architecture\n• **03 / About & Credentials**: BSIT senior at St. Anthony's College and civic impact\n• **04 / Contact & Collaboration**: Project inquiry planner & direct reachout",
         actionAnchor: '#work',
         actionLabel: 'Begin Tour (Selected Work)',
-        chips: ['Explore Projects', 'Meet the Characters', 'Digital Motion Lab']
+        chips: ['Explore Projects', 'View Technical Skills', 'About Jhon', 'Contact']
       };
     }
 
@@ -169,15 +169,15 @@ class IntentRouter {
       };
     }
 
-    // 5. Digital Motion Lab / Experiments
-    if (q.includes('motion lab') || q.includes('experiment') || q.includes('spatial') || q.includes('tilt') || q.includes('magnetic') || q.includes('kinetic') || q.includes('3d')) {
+    // 5. Technical Skills & Architecture
+    if (q.includes('skill') || q.includes('stack') || q.includes('tech') || q.includes('language') || q.includes('framework') || q.includes('tools') || q.includes('know')) {
       return {
-        intent: 'motion_lab',
+        intent: 'skills_overview',
         character: 'grok',
-        text: `Step into the **Digital Motion Lab**! Here we explore three tactile interaction physics:\n\n1. **Spatial 3D Depth Card** (Parallax tilt & dynamic light sheen)\n2. **Tactile Magnetic Button** (Elastic attraction & ripple feedback)\n3. **Kinetic Spatial Typography** (Pointer proximity wave & depth transform)`,
-        actionAnchor: '#motion-lab',
-        actionLabel: 'Enter Motion Lab',
-        chips: ['Test 3D Tilt', 'Try Magnetic Button', 'Kinetic Text']
+        text: `Here are Jhon's core technical competencies:\n\n1. **Web & Full-Stack**: Next.js 16/15/14, React 19/18, TypeScript, Tailwind CSS v4, PWA\n2. **Native Android**: Kotlin, Jetpack Compose, Material Design 3, Room SQLite\n3. **Backend & Cloud**: Laravel 11, Supabase (PostgreSQL), Firebase Firestore, MySQL\n4. **Specialized Integrations**: Leaflet GIS, WebAuthn Passkeys, Semaphore SMS, RA 10173 Privacy`,
+        actionAnchor: '#skills',
+        actionLabel: 'View Skills & Stack',
+        chips: ['Web Engineering', 'Android Architecture', 'Cloud & Data', 'Specialized Tech']
       };
     }
 
