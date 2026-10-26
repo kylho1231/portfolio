@@ -1,7 +1,7 @@
 # JE. Digital Universe — Developer Portfolio & 3D AI Council
 
 **Developer:** Jhon Kylho Estrabo (`je.`)  
-**Role:** Full-Stack & Mobile Developer / IT Student at St. Anthony's College  
+**Role:** Fullstack Web and Mobile Developer / IT Student at St. Anthony's College  
 **Location:** San Jose de Buenavista, Antique, Philippines (Asia/Manila UTC+8)  
 **Live Universe:** [https://kylho1231.github.io/portfolio/](https://kylho1231.github.io/portfolio/)  
 **GitHub Profile:** [https://github.com/kylho1231](https://github.com/kylho1231)  
