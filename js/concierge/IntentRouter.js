@@ -220,7 +220,7 @@ class IntentRouter {
     return {
       intent: 'fallback',
       character: fallbackChar,
-      text: `I'd love to help you explore Jhon's work! You can ask about his **7 verified projects**, **skills in React/Kotlin/Firebase**, **roots in Antique**, or use the quick links below:`,
+      text: `I'd love to help you explore Jhon's work! You can ask about his **10 verified projects**, **skills in React/Kotlin/Firebase**, **roots in Antique**, or use the quick links below:`,
       chips: ['AquaFlow Project', 'Who is Jhon?', 'View Skills & Stack', 'Contact & Hire']
     };
   }

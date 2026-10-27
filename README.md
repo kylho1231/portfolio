@@ -95,6 +95,24 @@ An interactive sandbox exploring three tactile physics interactions:
    - **Tech Stack:** Next.js 16 (Turbopack), React 19, TypeScript, Tailwind CSS v4, Leaflet GIS, OpenStreetMap, PostGIS / Supabase, PWA
    - **Features:** Full-stack dispatch platform for commuters, TODA drivers, and municipal administrators with OpenStreetMap terminal pathfinding, 4-digit pickup security PINs, and automated test coverage.
 
+8. **SAC QueueFlow — Smart Campus Queuing & Lobby Monitor System**
+   - **Production App:** [https://sac-queueflow.vercel.app](https://sac-queueflow.vercel.app)
+   - **GitHub Repository:** [https://github.com/kylho1231/sac-queueflow](https://github.com/kylho1231/sac-queueflow)
+   - **Tech Stack:** Next.js 16 (Turbopack), React 19, TypeScript, Tailwind CSS v4, Supabase (Realtime & RLS), Lucide Icons, Vercel
+   - **Features:** Smart campus queuing system for St. Anthony's College serving Registrar, Cashier, Dean, and Accounting offices. Features class-conflict +45 min deferment holds, audio chime ticket calling, full-screen TV lobby display mode, and digital QR boarding passes.
+
+9. **Pak na Pak — Food Platform, Glaze Discovery & Ordering Engine**
+   - **Production Platform:** [https://pak-na-pak.vercel.app](https://pak-na-pak.vercel.app)
+   - **GitHub Repository:** [https://github.com/kylho1231/pak-na-pak](https://github.com/kylho1231/pak-na-pak)
+   - **Tech Stack:** Next.js 16 (Turbopack), React 19, TypeScript, Tailwind CSS v4, Lucide Icons, Facebook Messenger API Bridge, Vercel
+   - **Features:** Digital food ordering platform featuring 12 signature glazes (e.g. Classic Buffalo, Garlic Parmesan, Salted Egg), ₱99 Sulit Zone student meals, interactive Unli Samgyupsal grill package comparison, and seamless 1-click Messenger order bridge.
+
+10. **WE GOT YOU — Local Repair, Emergency Roadside & Service Discovery**
+    - **Production Platform:** [https://we-got-you.vercel.app](https://we-got-you.vercel.app)
+    - **GitHub Repository:** [https://github.com/kylho1231/we-got-you](https://github.com/kylho1231/we-got-you)
+    - **Tech Stack:** Next.js 15.5, React 19, TypeScript, Tailwind CSS, MapLibre GL, OpenStreetMap, PostGIS / Supabase, PWA, Vercel
+    - **Features:** Emergency roadside assistance, towing dispatch, and certified local repair shop discovery across Antique and Panay. Features sub-1.5s geolocation, live technician dispatch radar, verified badge trust tiers, and 1-tap direct PNP/911 emergency dialing.
+
 ---
 
 ## Technical Architecture & Directory Structure

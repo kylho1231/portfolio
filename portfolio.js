@@ -863,6 +863,152 @@ if (arResetDispatch) {
   });
 }
 
+/* --- SAC QueueFlow Simulator --- */
+let qfCurrentServing = 36;
+let qfAheadCount = 3;
+let qfDeferred = false;
+
+const qfOfficeSelect = $("#qf-office-select");
+const qfServingDisplay = $("#qf-serving-display");
+const qfAheadDisplay = $("#qf-ahead-display");
+const qfStatusDisplay = $("#qf-status-display");
+const qfBtnCall = $("#qf-btn-call");
+const qfBtnDefer = $("#qf-btn-defer");
+
+function updateQfOffice() {
+  if (!qfOfficeSelect || !qfServingDisplay) return;
+  const prefix = qfOfficeSelect.value || "R";
+  qfServingDisplay.textContent = prefix + "-" + String(qfCurrentServing).padStart(3, "0");
+  const upNext1 = $("#qf-upnext-1");
+  const upNext2 = $("#qf-upnext-2");
+  if (upNext1) upNext1.textContent = prefix + "-" + String(qfCurrentServing + 1).padStart(3, "0");
+  if (upNext2) upNext2.textContent = prefix + "-" + String(qfCurrentServing + 2).padStart(3, "0");
+}
+
+if (qfOfficeSelect) {
+  qfOfficeSelect.addEventListener("change", updateQfOffice);
+}
+
+if (qfBtnCall) {
+  qfBtnCall.addEventListener("click", () => {
+    qfCurrentServing++;
+    if (qfAheadCount > 0) qfAheadCount--;
+    updateQfOffice();
+    if (qfAheadDisplay) qfAheadDisplay.textContent = "~" + (qfAheadCount * 4) + " mins (" + qfAheadCount + " ahead)";
+    if (qfStatusDisplay && qfAheadCount === 0) {
+      qfStatusDisplay.textContent = "YOUR TURN NOW!";
+      qfStatusDisplay.style.color = "#34d399";
+    }
+    playSound("click");
+  });
+}
+
+if (qfBtnDefer) {
+  qfBtnDefer.addEventListener("click", () => {
+    if (qfDeferred) return;
+    qfDeferred = true;
+    qfAheadCount += 5;
+    if (qfAheadDisplay) qfAheadDisplay.textContent = "DEFERRED +45m (~" + (qfAheadCount * 4) + " mins)";
+    if (qfStatusDisplay) {
+      qfStatusDisplay.textContent = "CLASS-CONFLICT DEFERRED (45m)";
+      qfStatusDisplay.style.color = "#fbbf24";
+    }
+    qfBtnDefer.textContent = "✓ Deferment Active";
+    qfBtnDefer.disabled = true;
+    playSound("click");
+  });
+}
+
+/* --- Pak na Pak Simulator --- */
+let pnpPrice = 99.00;
+let pnpMealName = "Pak Meal (3 pcs + Rice)";
+let pnpGlaze = "Garlic Parmesan";
+
+const pnpTierBtns = $(".pnp-tier-btn");
+const pnpGlazeBtns = $(".pnp-glaze-btn");
+const pnpOrderMeal = $("#pnp-order-meal");
+const pnpOrderGlaze = $("#pnp-order-glaze");
+const pnpOrderTotal = $("#pnp-order-total");
+const pnpBtnMessenger = $("#pnp-btn-messenger");
+
+pnpTierBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    pnpTierBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    pnpPrice = parseFloat(btn.dataset.price) || 99.00;
+    pnpMealName = btn.dataset.name || "Pak Meal";
+    if (pnpOrderMeal) pnpOrderMeal.textContent = pnpMealName;
+    if (pnpOrderTotal) pnpOrderTotal.textContent = "₱" + pnpPrice.toFixed(2);
+    playSound("click");
+  });
+});
+
+pnpGlazeBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    pnpGlazeBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    pnpGlaze = btn.dataset.glaze || "Garlic Parmesan";
+    if (pnpOrderGlaze) pnpOrderGlaze.textContent = pnpGlaze;
+    playSound("click");
+  });
+});
+
+if (pnpBtnMessenger) {
+  pnpBtnMessenger.addEventListener("click", () => {
+    pnpBtnMessenger.innerHTML = "<span>✓ Summary Formatted for Messenger!</span>";
+    setTimeout(() => {
+      pnpBtnMessenger.innerHTML = '<span>Bridge to Messenger Order 💬</span>';
+    }, 2500);
+    playSound("click");
+  });
+}
+
+/* --- WE GOT YOU Simulator --- */
+let wgyDispatching = false;
+const wgyIssueBtns = $(".wgy-issue-btn");
+const wgyBtnDispatch = $("#wgy-btn-dispatch");
+const wgySteps = [$("#wgy-step-1"), $("#wgy-step-2"), $("#wgy-step-3")];
+const wgyMatchedShop = $("#wgy-matched-shop");
+const wgyEtaBadge = $("#wgy-eta-badge");
+
+wgyIssueBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    wgyIssueBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    playSound("click");
+  });
+});
+
+if (wgyBtnDispatch) {
+  wgyBtnDispatch.addEventListener("click", () => {
+    if (wgyDispatching) return;
+    wgyDispatching = true;
+    wgyBtnDispatch.disabled = true;
+    wgyBtnDispatch.textContent = "Scanning Nearest Verified Techs...";
+
+    if (wgySteps[0]) wgySteps[0].classList.add("current");
+
+    setTimeout(() => {
+      if (wgySteps[0]) { wgySteps[0].classList.remove("current"); wgySteps[0].classList.add("done"); }
+      if (wgySteps[1]) wgySteps[1].classList.add("current");
+      if (wgyMatchedShop) wgyMatchedShop.textContent = "Bong's Moto & Vulcanizing (0.8 km)";
+      if (wgyEtaBadge) wgyEtaBadge.textContent = "ETA: 7 MINS";
+
+      setTimeout(() => {
+        if (wgySteps[1]) { wgySteps[1].classList.remove("current"); wgySteps[1].classList.add("done"); }
+        if (wgySteps[2]) wgySteps[2].classList.add("current");
+        wgyBtnDispatch.textContent = "✓ Tech En Route · Live Radar Active";
+        playSound("click");
+        setTimeout(() => {
+          wgyDispatching = false;
+          wgyBtnDispatch.disabled = false;
+          wgyBtnDispatch.textContent = "Request Roadside Rescue ⚡";
+        }, 3000);
+      }, 900);
+    }, 800);
+  });
+}
+
 /* ----------------------------------------------------
    Projects Detailed Dialog Data
 ---------------------------------------------------- */
@@ -936,6 +1082,36 @@ const projects = {
     tools: ["Next.js 16 (Turbopack)", "React 19", "TypeScript", "Tailwind CSS v4", "Leaflet GIS", "OpenStreetMap", "PostGIS / Supabase", "PWA (WebAPK)", "RA 10173", "Vercel"],
     live: "https://antiqueride.vercel.app",
     repo: "https://github.com/kylho1231/antiqueride"
+  },
+  queueflow: {
+    title: "SAC QueueFlow — Smart Queuing & Student Notification System",
+    category: "08 / NEXT.JS 16, SUPABASE & PWA · CAMPUS LOGISTICS",
+    intro: "A modern, real-time queuing and student notification platform tailored for the Registrar, Accounting, and Dean's offices of St. Anthony's College (SAC) in Antique.",
+    need: "Students previously spent hours inside crowded administrative hallways or constantly ran out of lectures to check physical queue bulletin boards, leading to missed transactions, class disruption, and lack of line transparency.",
+    approach: "Engineered with Next.js 16 (App Router), TypeScript, and Tailwind CSS v4, backed by Supabase / PostgreSQL with Row-Level Security (RLS) and real-time broadcast channels. Implements dynamic wait time estimation, Class-Conflict Deferments (allowing students to pause tickets for 45 minutes to attend lectures), opaque cryptographically signed QR passes (SAC-PASS), and high-visibility TV lobby monitors with synthetic voice calling. Fully compliant with the Philippine Data Privacy Act (RA 10173).",
+    tools: ["Next.js 16", "React 19", "TypeScript", "Supabase / PostgreSQL", "Tailwind CSS v4", "PWA", "Framer Motion", "QR Code Engine", "RA 10173", "Vercel"],
+    live: "https://sac-queueflow.vercel.app",
+    repo: "https://github.com/kylho1231/sac-queueflow"
+  },
+  paknapak: {
+    title: "Pak na Pak — Restaurant & Digital Ordering Web Platform",
+    category: "09 / NEXT.JS 16 & TAILWIND V4 · FOOD COMMERCE",
+    intro: "An official modern digital ordering, menu showcase, and customer engagement web platform for Pak na Pak in San Jose de Buenavista, Antique.",
+    need: "A beloved fast-casual chicken and Korean grill restaurant in Antique needed a branded, responsive digital ordering presence to showcase 12 signature glazes, manage ₱99 Sulit value meals and unli-samgyupsal sets, and streamline direct ordering without heavy third-party delivery commissions.",
+    approach: "Built with Next.js 16 (Turbopack), React 19, TypeScript, and Tailwind CSS v4. Features an interactive flavor tasting selector for 12 glazes, live customizable order bag with dynamic subtotal calculations, 1-click automated Facebook Messenger order summary bridging, high-resolution zoomable printed menu archive, and a protected store manager price/inventory editor. Deployed in production on Vercel.",
+    tools: ["Next.js 16 (Turbopack)", "React 19", "TypeScript", "Tailwind CSS v4", "Lucide React", "Canvas Confetti", "Framer Motion", "PWA", "Vercel"],
+    live: "https://pak-na-pak.vercel.app",
+    repo: "https://github.com/kylho1231/pak-na-pak"
+  },
+  wegotyou: {
+    title: "WE GOT YOU — Local Repair, Roadside Assistance & Emergency Service Discovery Platform",
+    category: "10 / NEXT.JS 15, MAPLIBRE GL & POSTGIS · EMERGENCY & UTILITY",
+    intro: "A hyperlocal repair discovery, emergency roadside rescue, and technician dispatch platform for San Jose de Buenavista, Antique.",
+    need: "Commuters, drivers, and households face high vulnerability during sudden roadside breakdowns (flat tires, dead batteries, stalled engines) across Antique's provincial corridors, with no centralized directory of verified active repair shops or emergency towing services.",
+    approach: "Engineered a Next.js 15.5 application with TypeScript, Tailwind CSS, MapLibre GL spatial mapping, and PostgreSQL / PostGIS geolocation. Features 3 dedicated portals: Customer Rescue Wizard, Provider Dashboard with active Roadside Dispatch toggle, and Super Admin verification control center. Calculates nearest providers via Haversine distance formulas, provides direct one-touch 911 / Antique PNP integration, and includes an AI triage assistant understanding English, Tagalog, and Kinaray-a.",
+    tools: ["Next.js 15.5", "React 19", "TypeScript", "Tailwind CSS", "MapLibre GL", "PostgreSQL / PostGIS", "PWA", "Haversine Proximity", "Vercel"],
+    live: "https://we-got-you.vercel.app",
+    repo: "https://github.com/kylho1231/we-got-you"
   }
 };
 

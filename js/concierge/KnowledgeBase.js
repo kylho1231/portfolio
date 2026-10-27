@@ -96,6 +96,33 @@ const JhonKnowledgeBase = {
       description: "A comprehensive transit companion for Antique province commuters featuring live route pathfinding, fare verification, municipal terminal rosters, and transport schedules.",
       simulatorId: "antiqueride-sim",
       liveDemo: "https://antiqueride.vercel.app/"
+    },
+    {
+      id: "queueflow",
+      title: "SAC QueueFlow",
+      tagline: "Smart Queuing & Student Notification System",
+      stack: ["Next.js 16", "Supabase", "TypeScript", "Tailwind CSS v4"],
+      description: "A real-time academic queuing and student notification platform for St. Anthony's College, featuring Class-Conflict Deferments, digital QR passes, and TV lobby monitor broadcasts.",
+      simulatorId: "queueflow-sim",
+      liveDemo: "https://sac-queueflow.vercel.app"
+    },
+    {
+      id: "paknapak",
+      title: "Pak na Pak",
+      tagline: "Restaurant & Digital Ordering Web Platform",
+      stack: ["Next.js 16", "Tailwind CSS v4", "TypeScript", "Framer Motion"],
+      description: "Official web platform for Pak na Pak restaurant in San Jose, Antique, featuring interactive 12-glaze chicken tastings, ₱99 Sulit Zone meals, and 1-click Facebook Messenger ordering.",
+      simulatorId: "paknapak-sim",
+      liveDemo: "https://pak-na-pak.vercel.app"
+    },
+    {
+      id: "wegotyou",
+      title: "WE GOT YOU",
+      tagline: "Local Repair, Roadside Assistance & Emergency Service Discovery",
+      stack: ["Next.js 15.5", "MapLibre GL", "PostgreSQL / PostGIS", "Tailwind CSS"],
+      description: "Hyperlocal emergency roadside rescue and verified repair provider discovery platform across San Jose de Buenavista with Haversine proximity calculations and direct 911 dispatch.",
+      simulatorId: "wegotyou-sim",
+      liveDemo: "https://we-got-you.vercel.app"
     }
   ],
 
