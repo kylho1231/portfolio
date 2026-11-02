@@ -123,7 +123,7 @@ class IntentRouter {
       return {
         intent: 'creative_media',
         character: 'claude',
-        text: `Yes! Beyond software engineering, **${this.kb.developer.name}** is an active **drone pilot, photographer, videographer, and video editor**!\n\n• **Drone Piloting (UAV)**: Aerial cinematography and landscape/event perspective\n• **Photography**: Commercial brand imagery, community documentary, and portraits\n• **Videography**: High-definition video filming and live event coverage\n• **Video Editing**: Cinematic pacing, color grading, sound design, and narrative post-production`,
+        text: `Yes! Beyond software engineering, **${this.kb.developer.name}** is **FULLSTACK WEB AND MOBILE**, as well as an active **drone pilot, photographer, videographer, and video editor**!\n\n• **Drone Piloting (UAV)**: Aerial cinematography and landscape/event perspective\n• **Photography**: Commercial brand imagery, community documentary, and portraits\n• **Videography**: High-definition video filming and live event coverage\n• **Video Editing**: Cinematic pacing, color grading, sound design, and narrative post-production`,
         actionAnchor: '#skills',
         actionLabel: 'View Media & Aerial Skills',
         chips: ['Technical Skills', 'About Jhon', 'Contact Jhon']

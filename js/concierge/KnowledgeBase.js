@@ -8,7 +8,7 @@ const JhonKnowledgeBase = {
   developer: {
     name: "Jhon Kylho Estrabo",
     monogram: "je.",
-    role: "Fullstack Web & Mobile Developer ? Drone Pilot, Photographer & Video Editor",
+    role: "FULLSTACK WEB AND MOBILE",
     creativeRoles: ["Drone Pilot (UAV)", "Photographer", "Videographer", "Video Editor"],
     institution: "St. Anthony's College",
     seniorHighSchool: "Antique National School",
