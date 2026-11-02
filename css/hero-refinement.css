@@ -31,9 +31,12 @@
 .hero .hero-copy > .eyebrow {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 6px;
   width: fit-content;
   margin-bottom: 24px;
   font-size: 10px;
+  line-height: 1.6;
   letter-spacing: .11em;
 }
 .hero .hero-copy h1 {
