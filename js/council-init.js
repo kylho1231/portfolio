@@ -5,34 +5,28 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Ensure Three.js is loaded
-  if (typeof THREE === 'undefined') {
-    console.warn('[CouncilInit] THREE is undefined. Fallback to lite mode.');
-    enableLiteMode();
-    return;
-  }
-
-  // 1. Scene Manager
+  // 1. Scene Manager (if Three.js and 3D canvas stage are present)
   const stageContainer = document.getElementById('council-hero-stage');
   const canvasContainer = document.getElementById('council-canvas-container');
-  if (!canvasContainer) return;
-
-  const sceneManager = new ThreeSceneManager(canvasContainer, {
-    maxPixelRatio: window.innerWidth < 768 ? 1.5 : 2.0
-  });
-
-  const isWebGLReady = sceneManager.init();
+  let sceneManager = null;
   let councilStage = null;
 
-  if (isWebGLReady) {
-    councilStage = new CouncilStage(sceneManager);
-  } else {
-    enableLiteMode();
+  if (typeof THREE !== 'undefined' && canvasContainer && typeof ThreeSceneManager !== 'undefined') {
+    sceneManager = new ThreeSceneManager(canvasContainer, {
+      maxPixelRatio: window.innerWidth < 768 ? 1.5 : 2.0
+    });
+
+    const isWebGLReady = sceneManager.init();
+    if (isWebGLReady && typeof CouncilStage !== 'undefined') {
+      councilStage = new CouncilStage(sceneManager);
+    } else {
+      enableLiteMode();
+    }
   }
 
   // 2. Pointer Controller
-  const pointerController = new PointerController();
-  if (councilStage) {
+  if (councilStage && typeof PointerController !== 'undefined') {
+    const pointerController = new PointerController();
     pointerController.subscribe((x, y) => {
       councilStage.setPointer(x, y);
     });
