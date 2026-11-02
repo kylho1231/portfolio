@@ -8,7 +8,8 @@ const JhonKnowledgeBase = {
   developer: {
     name: "Jhon Kylho Estrabo",
     monogram: "je.",
-    role: "Fullstack Web and Mobile Developer / IT Student",
+    role: "Fullstack Web & Mobile Developer ? Drone Pilot, Photographer & Video Editor",
+    creativeRoles: ["Drone Pilot (UAV)", "Photographer", "Videographer", "Video Editor"],
     institution: "St. Anthony's College",
     seniorHighSchool: "Antique National School",
     education: [
@@ -19,7 +20,7 @@ const JhonKnowledgeBase = {
     timezone: "Asia/Manila (UTC+8)",
     headline: "Ideas into interfaces. Code into possibility.",
     creativeStatement: "Made to move. Built to feel.",
-    bio: "I build thoughtful digital experiences for everyday needs. A little curiosity, a lot of intention, and people at the heart of it all.",
+    bio: "I build practical digital systems for everyday needs, and capture compelling visual stories from the ground and sky as an active drone pilot, photographer, videographer, and editor.",
     availability: "Open to software projects & collaborations.",
     github: "https://github.com/kylho1231",
     portfolioUrl: "https://kylho1231.github.io/portfolio/",
@@ -30,7 +31,8 @@ const JhonKnowledgeBase = {
     frontend: ["React", "Next.js", "JavaScript (ES6+)", "TypeScript", "Tailwind CSS", "HTML5 / Accessible Semantics", "Interactive WebGL / Three.js"],
     mobile: ["Kotlin", "Android Studio", "Progressive Web Apps (PWA)"],
     backend: ["Node.js", "Express", "Firebase / Firestore", "Supabase / PostgreSQL", "REST APIs", "Authentication / WebAuthn"],
-    architecture: ["System Design", "Relational & Document Databases", "Responsive UI", "Motion Design", "State Management"]
+    architecture: ["System Design", "Relational & Document Databases", "Responsive UI", "Motion Design", "State Management"],
+    creativeMedia: ["Drone Piloting (UAV)", "Aerial Cinematography", "Photography", "Videography", "Video Editing", "Color Grading", "Post-Production"]
   },
 
   projects: [

@@ -11,3 +11,5 @@
 /graphify-out/
 *.docx
 *.pdf
+
+.vercel

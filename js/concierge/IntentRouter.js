@@ -118,6 +118,18 @@ class IntentRouter {
       };
     }
 
+    // 1.5. Drone Pilot, Photography, Videography & Video Editing
+    if (q.includes('drone') || q.includes('pilot') || q.includes('photo') || q.includes('video') || q.includes('camera') || q.includes('edit') || q.includes('media') || q.includes('aerial') || q.includes('cinematography')) {
+      return {
+        intent: 'creative_media',
+        character: 'claude',
+        text: `Yes! Beyond software engineering, **${this.kb.developer.name}** is an active **drone pilot, photographer, videographer, and video editor**!\n\n• **Drone Piloting (UAV)**: Aerial cinematography and landscape/event perspective\n• **Photography**: Commercial brand imagery, community documentary, and portraits\n• **Videography**: High-definition video filming and live event coverage\n• **Video Editing**: Cinematic pacing, color grading, sound design, and narrative post-production`,
+        actionAnchor: '#skills',
+        actionLabel: 'View Media & Aerial Skills',
+        chips: ['Technical Skills', 'About Jhon', 'Contact Jhon']
+      };
+    }
+
     // 2. Who is Jhon / About / Bio
     if (q.includes('who is') || q.includes('about') || q.includes('bio') || q.includes('background') || q.includes('tell me about')) {
       return {

@@ -22,11 +22,11 @@ class ScrollDirector {
       'skills': {
         char: 'grok',
         text: "Here are Jhon's Core Technical Skills: Next.js 16, React 19, Kotlin Compose, Laravel 11, Supabase, and real-time cloud databases. Click any tool to see where it was used!",
-        chips: ['Web Engineering', 'Android Architecture', 'Backend & Cloud', 'Civic Tech & Security']
+        chips: ['Web Engineering', 'Android Architecture', 'Cloud & Data', 'Drone & Visual Media']
       },
       'about': {
         char: 'claude',
-        text: "Hi, I'm Claude! Jhon is a senior BSIT student at St. Anthony's College, building high-impact software that serves everyday communities in Antique Province.",
+        text: "Hi, I'm Claude! Jhon is a senior BSIT student at St. Anthony's College and an active drone pilot, photographer, videographer, and editor crafting visual stories in Antique.",
         chips: ['Academic Background', 'Why His Profile Matters', 'Collaborate']
       },
       'contact': {
