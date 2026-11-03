@@ -1,7 +1,7 @@
 /**
  * JE. DIGITAL UNIVERSE — AI COUNCIL BOOTSTRAP INITIALIZER
  * Coordinates 3D procedural characters, spatial UI, concierge dialogue,
- * motion lab physics, and accessibility modes.
+ * motion physics, and accessibility modes.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let sceneManager = null;
   let councilStage = null;
 
+  function enableLiteMode() {
+    if (stageContainer) stageContainer.classList.add('lite-mode');
+    if (sceneManager) sceneManager.stop();
+  }
+
   if (typeof THREE !== 'undefined' && canvasContainer && typeof ThreeSceneManager !== 'undefined') {
     sceneManager = new ThreeSceneManager(canvasContainer, {
       maxPixelRatio: window.innerWidth < 768 ? 1.5 : 2.0
@@ -19,9 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const isWebGLReady = sceneManager.init();
     if (isWebGLReady && typeof CouncilStage !== 'undefined') {
       councilStage = new CouncilStage(sceneManager);
+      window.councilStage = councilStage;
     } else {
       enableLiteMode();
     }
+  } else {
+    enableLiteMode();
   }
 
   // 2. Pointer Controller
@@ -41,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       voiceBtn.classList.toggle('active', isVoiceOn);
       voiceBtn.setAttribute('aria-pressed', isVoiceOn ? 'true' : 'false');
       voiceBtn.title = isVoiceOn ? 'Mute AI Voice' : 'Enable AI Voice (Opt-in)';
-      if (isVoiceOn) {
+      if (isVoiceOn && window.dialogueEngine) {
         voiceManager.speak("Audio output activated. I am ready to guide you.", dialogueEngine.activeCharacter);
       }
     });
@@ -113,11 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dialogueEngine.setActiveCharacter(charKey);
 
-    // Initial greeting for character
+    // Initial greeting for character with primary client prompts
     const charMeta = window.JhonKnowledgeBase.characters[charKey] || window.JhonKnowledgeBase.characters.gemini;
-    const chips = charKey === 'gemini' 
-      ? ['Start Tour', 'Meet the Characters', 'Explore Projects'] 
-      : ['Who is Jhon?', 'Explore Projects', 'View Skills & Stack', 'Contact Jhon'];
+    const chips = ['Show me your projects.', 'What can you build?', 'Tell me about your skills.', 'How can I contact you?'];
 
     dialogueEngine.speak({
       character: charKey,
@@ -125,8 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
       chips: chips
     });
   }
+  window.updateActiveCharacterUI = updateActiveCharacterUI;
 
-  // Speech Bubble Minimize/Expand Toggle
+  // Speech Bubble Minimize/Expand Dismissal Toggle
   const speechBubble = document.getElementById('council-speech-bubble');
   const speechToggleBtn = document.getElementById('speech-toggle-btn');
   if (speechBubble && speechToggleBtn) {
@@ -136,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isCollapsed = speechBubble.classList.contains('collapsed');
       speechToggleBtn.textContent = isCollapsed ? '+' : '−';
       speechToggleBtn.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+      speechToggleBtn.setAttribute('title', isCollapsed ? 'Expand dialogue panel' : 'Dismiss / minimize dialogue panel');
     });
   }
 
@@ -143,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const stageModeBtn = document.getElementById('stage-mode-btn');
   if (stageModeBtn) {
     stageModeBtn.addEventListener('click', () => {
-      if (stageContainer.classList.contains('lite-mode')) {
+      if (stageContainer && stageContainer.classList.contains('lite-mode')) {
         stageContainer.classList.remove('lite-mode');
         stageModeBtn.textContent = '3D Mode';
         if (sceneManager) sceneManager.start();
@@ -152,11 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
         stageModeBtn.textContent = 'Lite Mode';
       }
     });
-  }
-
-  function enableLiteMode() {
-    if (stageContainer) stageContainer.classList.add('lite-mode');
-    if (sceneManager) sceneManager.stop();
   }
 
   // 8. Floating Council Dock & Concierge Drawer
@@ -174,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
       backdrop.classList.add('open');
       backdrop.setAttribute('aria-hidden', 'false');
     }
-    // Focus chat input
     const chatInput = document.getElementById('concierge-input');
     if (chatInput) setTimeout(() => chatInput.focus(), 300);
   }
@@ -194,7 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
   if (backdrop) backdrop.addEventListener('click', closeDrawer);
 
-  // Keyboard escape closes drawer
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       if (inquiryModal && inquiryModal.classList.contains('open')) {
@@ -234,14 +235,14 @@ document.addEventListener('DOMContentLoaded', () => {
   mediaQuery.addEventListener('change', handleMotionPref);
   handleMotionPref(mediaQuery);
 
-  // 13. Initial Welcome Greeting with GEMINI
+  // 13. Initial Welcome Greeting with GEMINI (Hero Mascot)
   setTimeout(() => {
     const geminiMeta = window.JhonKnowledgeBase.characters.gemini;
     dialogueEngine.setActiveCharacter('gemini');
     dialogueEngine.speak({
       character: 'gemini',
       text: geminiMeta.intro,
-      chips: ['Start Tour', 'Meet the Characters', 'Explore Projects', 'Contact Jhon']
+      chips: ['Show me your projects.', 'What can you build?', 'Tell me about your skills.', 'How can I contact you?']
     });
   }, 400);
 });

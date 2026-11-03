@@ -21,33 +21,35 @@ The experience is built upon **Futuristic Humanism**—uniting technical precisi
 
 ## Key Highlights & Centerpieces
 
-### 1. The AI Council — Four Procedural 3D Companions
-Four original, procedurally generated 3D characters serve as interactive portfolio guides, technical explainers, and client concierges:
+### 1. The AI Council — Four Cohesive 3D Chibi Mascots & 3D je. Monogram
+Four original, procedurally generated 3D chibi-style mascots alongside an illuminated 3D **je.** monogram badge serve as interactive portfolio guides, technical explainers, and client concierges:
 
-- **CODE — The Systems Architect (`#69E8F2` & `#10B981`)**  
-  Multifaceted metallic polyhedron core, animated cyan LED visor, tracking luminous eyes, concentric engineering orbit rings, and floating articulated hands. Explains full-stack architecture, Kotlin mobile engineering, and data modeling.
-- **CLAUDE — The Human-Centered Storyteller (`#E6A47C` & `#F59E0B`)**  
-  Kinetic origami lotus petals, warm amber metallic sphere, rotating halo, and soft internal bioluminescence. Shares Jhon's creative journey, philosophy, and roots in Antique.
-- **GROK — The Edgy Experimenter (`#9A83FF` & `#EC4899`)**  
-  Obsidian and brushed chrome angular mecha chassis, sharp cosmic violet visor, segmented shoulder armor, dynamic posture, and sparking neon energy particles. Highlights rapid iterations and spatial interactions.
-- **GEMINI — The Multimodal Polymath (`#699CFF` & `#38BDF8`)**  
-  Dual-core crystalline prisms orbiting a shared gravitational center, intersecting quantum wave rings, and a luminous downward projection beam. Connects cross-disciplinary dots across web, mobile, and GIS civic tools.
-- **COUNCIL MODE**  
+- **CODEX — Blue (#38BDF8 / #0284C7)**  
+  *Role:* Explains full-stack development, software architecture, backend APIs, and native Kotlin mobile engineering. Features high-tech cyber antenna fins, animated LED cyan visor, porcelain-white face mask, and a floating holographic datapad.
+- **CLAUDE — Warm Orange (#F97316 / #E6A47C)**  
+  *Role:* Introduces planning, structure, user experience, and Jhon's human-centered philosophy and community roots in Antique. Features warm aviator goggles, knitted winter scarf, signature coffee mug, and a cheerful welcoming wave.
+- **GEMINI — Rainbow Accents (#699CFF / Pastel Cyan, Pink & Gold)**  
+  *Role:* Presents visual ideas, creative exploration, drone cinematography, and tour guidance. Features floating iridescent overhead halo, retro chassis with compass gauge dial, tech dossier folder, and star-sparkle anime reflections.
+- **GROK — Black & White (#090D16 / Chrome & Cosmic Violet #9A83FF)**  
+  *Role:* Offers a playful, high-energy introduction to project exploration, problem solving, and interactive state machines. Features obsidian mecha chassis, rectangular cyber goggles, cozy scarf, high-top sneakers, and signature confident crossed-arms pose.
+- **THE 3D "je." MONOGRAM EMBLEM**  
+  A floating circular medallion on the front rim of the pedestal with crisp "je." typography, glowing cyan period dot, and brushed-titanium bezel rim. Reacts with gentle floating bobbing and pointer parallax.
+- **COUNCIL ENSEMBLE MODE**  
   Synchronizes all four companions simultaneously in an arc formation across the stage.
 
 *Ethical AI Disclosure: The AI Council characters are original, interactive 3D companions designed and built by Jhon Kylho Estrabo as portfolio guides. They are not affiliated with or endorsed by Anthropic, Google, or xAI.*
 
-### 2. Digital Motion Lab (`#motion-lab`)
-An interactive sandbox exploring three tactile physics interactions:
-- **EXP. 01 / Spatial 3D Depth Card:** Multi-plane parallax translation, physics-calculated matrix rotation, and dynamic light sheen tracking pointer position.
-- **EXP. 02 / Tactile Magnetic Button:** Elastic cursor attraction within a 90px threshold, spring resistance kinematics, and expanding kinetic wave on trigger.
-- **EXP. 03 / Kinetic Spatial Typography:** Letter-by-letter displacement wave, depth rotation, and reactive chromatic glow upon cursor proximity.
-
-### 3. Local Deterministic Concierge Engine
-- **Zero API Dependency:** Operates 100% locally in the browser with deterministic intent classification, turn-taking, typewriter delivery, and contextual section hosting.
+### 2. Client Concierge & Guided Project Planner
+- **Zero API Dependency:** Operates 100% locally in the browser with deterministic intent classification, turn-taking, typewriter delivery, and quick chip triggers.
+- **Four Core Inquiries:** Direct support for visitor prompts: *"Show me your projects."*, *"What can you build?"*, *"Tell me about your skills."*, and *"How can I contact you?"*.
 - **Guided Project Inquiry Planner:** A scoping wizard that transforms visitor requirements (project type, stack, timeline, goals) into a pre-populated, structured `mailto:` draft.
 - **Web Speech API Audio:** Opt-in voice synthesis with differentiated vocal pitch and cadence for each companion.
-- **Seamless Performance & Fallback:** Single shared WebGL renderer, `devicePixelRatio` clamping, background rendering pause via `IntersectionObserver`, and a high-performance Lite Mode fallback.
+
+### 3. GSAP Scroll Storytelling (Hero → About → Skills → Projects → Contact)
+- **Natural Fluid Motion:** Zero scroll hijacking and no bloated pinned sections. Clean staggered entrances for section titles, skill domains, and project cards.
+- **Header Offset Clearance:** CSS `scroll-margin-top` guarantees navigation links never land underneath the fixed header.
+- **Interactive Mascot Greeting:** When scrolling into view of the Contact section, the active 3D mascot performs an automated friendly wave!
+- **Accessibility & Fallback:** Strictly adheres to `prefers-reduced-motion` and gracefully degrades to static HTML/CSS layout when WebGL or JavaScript is constrained.
 
 ---
 

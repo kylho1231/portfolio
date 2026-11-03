@@ -1,174 +1,178 @@
 /**
- * JE. Digital Universe — scroll story director.
- * A single ScrollTrigger owns the pinned horizontal sequence.
- * All transitions can reverse cleanly, and static content works without GSAP.
+ * JE. DIGITAL UNIVERSE — GSAP SCROLL STORYTELLING COORDINATOR
+ * Orchestrates fluid section reveals, layer depth transitions,
+ * smooth project entrances, and contact mascot greeting without scroll hijacking.
+ * 
+ * Flow: Hero (#top) → About (#about) → Skills (#skills) → Projects (#work) → Contact (#contact)
+ * Adheres strictly to prefers-reduced-motion and gracefully degrades if GSAP is unavailable.
  */
+
 (function () {
-  "use strict";
+  'use strict';
 
   function initScrollJourney() {
-    const root = document.getElementById("scroll-journey");
-    if (!root || !window.gsap || !window.ScrollTrigger) return;
+    if (!window.gsap || !window.ScrollTrigger) {
+      console.info('[ScrollJourney] GSAP or ScrollTrigger not loaded; falling back to native CSS layout.');
+      return;
+    }
 
     const gsap = window.gsap;
     const ST = window.ScrollTrigger;
     gsap.registerPlugin(ST);
 
-    const viewport = root.querySelector(".je-scroll-viewport");
-    const track = root.querySelector(".je-scroll-track");
-    const chapters = Array.from(root.querySelectorAll(".je-chapter"));
-    const fills = Array.from(root.querySelectorAll(".je-journey-dot"));
-    const counter = root.querySelector(".je-story-mark");
-    const header = document.querySelector(".site-header");
-
-    if (!viewport || !track || chapters.length < 2) return;
-
-    const headerHeight = () => Math.max(0, Math.round(header?.getBoundingClientRect().height || 0));
-    const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-
-    let lastIndex = -1;
-    const getColors = () => document.documentElement.dataset.theme === "light"
-      ? ["#7c3aed", "#0284c7", "#1e293b", "#c2410c"]
-      : ["#d3a6ff", "#76d8ff", "#f0f2f8", "#ffb678"];
-
-    const setProgress = (progress) => {
-      const scaled = Math.min(chapters.length - 1, Math.max(0, progress * (chapters.length - 1)));
-      const index = Math.min(chapters.length - 1, Math.floor(scaled + .5));
-      const colors = getColors();
-      if (index !== lastIndex) {
-        lastIndex = index;
-        root.style.setProperty("--je-chapter-color", colors[index] || (document.documentElement.dataset.theme === "light" ? "#466a0b" : "#caff6b"));
-        if (counter) counter.textContent = String(index + 1).padStart(2, "0") + " / " + String(chapters.length).padStart(2, "0");
-      }
-      fills.forEach((dot, i) => {
-        dot.style.setProperty("--je-fill", String(Math.max(0, Math.min(1, scaled - i + 1))));
-      });
-    };
-    setProgress(0);
-
-    window.addEventListener("themechange", () => {
-      lastIndex = -1;
-      const st = ST.getById("je-horizontal-story");
-      if (st) setProgress(st.progress);
-      else setProgress(0);
-    });
-
-    // Desktop only. Mobile, reduced motion and failed-CDN cases always show
-    // all chapters naturally in the page flow.
-    const media = gsap.matchMedia();
-    media.add("(min-width: 901px) and (min-height: 460px) and (prefers-reduced-motion: no-preference)", () => {
-      root.style.setProperty("--je-header-height", headerHeight() + "px");
-      root.classList.add("je-gsap-active");
-      const travel = () => Math.max(1, distance());
-
-      // Pin the ACTUAL viewport, not its ancestor. This prevents early jumps,
-      // intro clipping and the sticky header offset mismatch.
-      const pan = gsap.to(track, {
-        x: () => -travel(),
-        ease: "none",
-        overwrite: "auto",
-        scrollTrigger: {
-          id: "je-horizontal-story",
-          trigger: viewport,
-          pin: true,
-          pinSpacing: true,
-          start: () => "top top+=" + headerHeight(),
-          end: () => "+=" + Math.round(travel() * .82),
-          invalidateOnRefresh: true,
-          scrub: .9,
-          anticipatePin: 0,
-          onUpdate(self) { setProgress(self.progress); },
-          onRefresh(self) {
-            root.style.setProperty("--je-header-height", headerHeight() + "px");
-            setProgress(self.progress);
-          }
-        }
-      });
-
-      // Choreograph each chapter as it ENTERS the viewport. These use the
-      // parent horizontal tween for correct measurements while scrubbing.
-      chapters.slice(1).forEach((chapter) => {
-        const copy = chapter.querySelector(".je-chapter-copy");
-        const art = chapter.querySelector(".je-chapter-art");
-        if (copy) {
-          gsap.fromTo(copy, { x: 75, opacity: .36 }, {
-            x: 0, opacity: 1, ease: "none",
-            scrollTrigger: {
-              trigger: chapter, containerAnimation: pan,
-              start: "left 93%", end: "left 49%", scrub: true
-            }
-          });
-        }
-        if (art) {
-          gsap.fromTo(art, { x: 85, rotateY: -16, scale: .88, opacity: .55 }, {
-            x: 0, rotateY: 0, scale: 1, opacity: 1, ease: "none",
-            scrollTrigger: {
-              trigger: chapter, containerAnimation: pan,
-              start: "left 98%", end: "left 48%", scrub: true
-            }
-          });
-        }
-      });
-
-      // A subtle 3D illustration response throughout the scroll journey.
-      gsap.fromTo(root.querySelectorAll(".je-robot-float"),
-        { y: 17, rotateY: -11 }, {
-          y: -14, rotateY: 13, ease: "none",
-          scrollTrigger: {
-            trigger: viewport, start: () => "top top+=" + headerHeight(),
-            end: () => "+=" + Math.round(travel() * .82),
-            scrub: 1.4, invalidateOnRefresh: true
-          }
-        });
-
-      return () => {
-        root.classList.remove("je-gsap-active");
-        root.style.removeProperty("--je-header-height");
-        lastIndex = -1;
-        setProgress(0);
-      };
-    });
-
-    // On smaller devices, reveal the chapter artwork without hijacking native scroll.
-    media.add("(max-width: 900px) and (prefers-reduced-motion: no-preference)", () => {
-      chapters.forEach((chapter) => {
-        const art = chapter.querySelector(".je-chapter-art");
-        if (!art) return;
-        gsap.fromTo(art, { opacity: .65, y: 35 }, {
-          opacity: 1, y: 0, duration: .75, ease: "power2.out",
-          scrollTrigger: {
-            trigger: chapter, start: "top 80%",
-            toggleActions: "play none none reverse"
-          }
-        });
-      });
-    });
-
-    media.add("(prefers-reduced-motion: no-preference)", () => {
-      const labels = document.querySelectorAll(
-        "#work .section-topline, #skills .section-topline, #about .section-topline, #contact .section-topline"
-      );
-      labels.forEach((label) => {
-        gsap.fromTo(label, { opacity: .4, x: -16 }, {
-          opacity: 1, x: 0, ease: "power2.out", duration: .6,
-          scrollTrigger: {
-            trigger: label, start: "top 88%",
-            toggleActions: "play none none reverse"
-          }
-        });
-      });
-    });
-
-    // Refresh dimensions once imagery and fonts settle, but do NOT refresh on
-    // every anchor click (which previously caused visible jumpiness).
-    const refresh = () => ST.refresh();
-    if (document.readyState !== "complete") {
-      window.addEventListener("load", refresh, { once: true });
+    // Respect user's motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      console.info('[ScrollJourney] prefers-reduced-motion active. Skipping scroll motion tweens.');
+      return;
     }
-    document.fonts?.ready?.then(refresh).catch(() => {});
+
+    const header = document.querySelector('.site-header');
+    const headerHeight = () => Math.round(header ? header.getBoundingClientRect().height : 72);
+
+    // Ensure CSS scroll-margin-top is dynamically kept in sync
+    const updateHeaderOffset = () => {
+      document.documentElement.style.setProperty('--site-header-height', `${headerHeight()}px`);
+    };
+    updateHeaderOffset();
+    window.addEventListener('resize', updateHeaderOffset, { passive: true });
+
+    // 1. Restrained Section Reveals (Hero → About → Skills → Projects → Contact)
+    const sections = [
+      { id: '#about', title: '#about-title', copy: '.about-copy', aside: '.about-sidebar' },
+      { id: '#skills', title: '#skills-title', cards: '.skill-domain-card', toolkit: '.toolkit-interactive' },
+      { id: '#work', title: '#work-title', filter: '.work-filter-bar', tabs: '.project-tabs', panel: '.project-panel:not([hidden])' },
+      { id: '#contact', title: '#contact-title', actions: '.contact-actions' }
+    ];
+
+    sections.forEach((secConfig) => {
+      const sectionEl = document.querySelector(secConfig.id);
+      if (!sectionEl) return;
+
+      const titleEl = secConfig.title ? sectionEl.querySelector(secConfig.title) : null;
+      if (titleEl) {
+        gsap.fromTo(titleEl, 
+          { opacity: 0.15, y: 22 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: titleEl,
+              start: 'top 88%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      }
+
+      // Staggered domain cards in Skills
+      if (secConfig.cards) {
+        const cards = sectionEl.querySelectorAll(secConfig.cards);
+        if (cards.length > 0) {
+          gsap.fromTo(cards,
+            { opacity: 0.2, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.1,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: cards[0],
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        }
+      }
+
+      // Subtle entrance for project showcase
+      if (secConfig.tabs) {
+        const tabsEl = sectionEl.querySelector(secConfig.tabs);
+        if (tabsEl) {
+          gsap.fromTo(tabsEl,
+            { opacity: 0.3, y: 16 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.65,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: tabsEl,
+                start: 'top 88%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        }
+      }
+    });
+
+    // 2. Mascot Friendly Wave on Contact Section Entrance
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      let hasWaved = false;
+      ST.create({
+        trigger: contactSection,
+        start: 'top 78%',
+        onEnter: () => {
+          if (!hasWaved) {
+            hasWaved = true;
+            if (window.councilStage && typeof window.councilStage.triggerWave === 'function') {
+              window.councilStage.triggerWave(window.councilStage.activeCharacterKey, 2600);
+            }
+          }
+        }
+      });
+    }
+
+    // 3. Subtle Perspective Tilt on Project Previews (Hover devices only)
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      const projectFigures = document.querySelectorAll('.project-panel-preview, .project-panel figure, .project-panel [data-tilt]');
+      projectFigures.forEach((fig) => {
+        let bounds;
+        const onEnter = () => { bounds = fig.getBoundingClientRect(); };
+        const onMove = (e) => {
+          if (!bounds) bounds = fig.getBoundingClientRect();
+          const mouseX = e.clientX - bounds.left;
+          const mouseY = e.clientY - bounds.top;
+          const xPct = (mouseX / bounds.width - 0.5) * 2;
+          const yPct = (mouseY / bounds.height - 0.5) * 2;
+          gsap.to(fig, {
+            rotationY: xPct * 4,
+            rotationX: -yPct * 4,
+            transformPerspective: 900,
+            duration: 0.35,
+            ease: 'power1.out'
+          });
+        };
+        const onLeave = () => {
+          gsap.to(fig, {
+            rotationY: 0,
+            rotationX: 0,
+            duration: 0.5,
+            ease: 'power2.out'
+          });
+        };
+
+        fig.addEventListener('mouseenter', onEnter, { passive: true });
+        fig.addEventListener('mousemove', onMove, { passive: true });
+        fig.addEventListener('mouseleave', onLeave, { passive: true });
+      });
+    }
+
+    // Refresh ScrollTrigger when theme changes or window resizes
+    window.addEventListener('themechange', () => ST.refresh());
+    window.addEventListener('resize', () => ST.refresh(), { passive: true });
   }
 
-  if (document.readyState === "loading")
-    document.addEventListener("DOMContentLoaded", initScrollJourney, { once: true });
-  else initScrollJourney();
+  // Execute after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollJourney);
+  } else {
+    initScrollJourney();
+  }
 })();
