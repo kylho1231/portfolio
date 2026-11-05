@@ -64,8 +64,8 @@ class ThreeSceneManager {
     // 2. Camera (Framed with optical clearance for mascot & pedestal)
     this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
     const isMobile = width < 768;
-    this.camera.position.set(0, isMobile ? 0.45 : 0.42, isMobile ? 8.0 : 6.8);
-    this.camera.lookAt(0, 0.32, 0);
+    this.camera.position.set(0, isMobile ? 0.68 : 0.60, isMobile ? 7.6 : 6.5);
+    this.camera.lookAt(0, 0.50, 0);
 
     // 3. Clock
     this.clock = new THREE.Clock();
@@ -155,11 +155,11 @@ class ThreeSceneManager {
     this.camera.aspect = width / height;
     const isMobile = width < 768;
     if (isMobile) {
-      this.camera.position.set(0, 0.45, 8.0);
+      this.camera.position.set(0, 0.68, 7.6);
     } else {
-      this.camera.position.set(0, 0.42, 6.8);
+      this.camera.position.set(0, 0.60, 6.5);
     }
-    this.camera.lookAt(0, 0.32, 0);
+    this.camera.lookAt(0, 0.50, 0);
     this.camera.updateProjectionMatrix();
 
     const maxPR = isMobile ? 1.5 : (this.options.maxPixelRatio || 2.0);

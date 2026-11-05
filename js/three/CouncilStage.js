@@ -30,7 +30,7 @@ class CouncilStage {
   initStageEnvironment() {
     // 1. Floating Circular Metallic Studio Platform (Grounded cleanly under boots)
     const platformGroup = new THREE.Group();
-    platformGroup.position.set(0, -0.52, 0);
+    platformGroup.position.set(0, -0.22, 0);
 
     // Platform Base Disc (Beveled Obsidian & Brushed Steel Finish)
     const platGeo = new THREE.CylinderGeometry(3.2, 3.4, 0.20, 64);
