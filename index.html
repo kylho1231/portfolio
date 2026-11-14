@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://kylho1231.github.io/portfolio/">
   <meta property="og:site_name" content="Jhon Kylho Estrabo — Digital Universe">
   <meta property="og:title" content="Jhon Kylho Estrabo — FULLSTACK WEB AND MOBILE">
-  <meta property="og:description" content="Explore 10 production civic, dining, mobility, and community software systems engineered with Next.js 16, Kotlin Android, Supabase, and interactive 3D spatial experiences.">
+  <meta property="og:description" content="Explore 10 production civic, dining, mobility, and community software systems engineered by Jhon Kylho Estrabo with Next.js 16, Kotlin Android, Supabase, and modern web architectures.">
   <meta property="og:image" content="https://kylho1231.github.io/portfolio/picture/newpic.jpg">
   <meta property="og:image:alt" content="Portrait of Jhon Kylho Estrabo — FULLSTACK WEB AND MOBILE">
   <meta property="og:locale" content="en_US">
@@ -23,7 +23,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://kylho1231.github.io/portfolio/">
   <meta name="twitter:title" content="Jhon Kylho Estrabo — FULLSTACK WEB AND MOBILE">
-  <meta name="twitter:description" content="Interactive 3D developer portfolio featuring 10 production systems: SAC QueueFlow, Pak na Pak, WE GOT YOU, AntiqueRide, AquaFlow, AntiqueSupply, San Jose TODA.">
+  <meta name="twitter:description" content="Fullstack developer portfolio featuring 10 production systems: SAC QueueFlow, Pak na Pak, WE GOT YOU, AntiqueRide, AquaFlow, AntiqueSupply, San Jose TODA.">
   <meta name="twitter:image" content="https://kylho1231.github.io/portfolio/picture/newpic.jpg">
   <meta name="twitter:creator" content="@kylho1231">
 
@@ -175,8 +175,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700;750;800&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="portfolio.css">
-<link rel="stylesheet" href="css/spatial-ui.css">
-  <link rel="stylesheet" href="css/council.css">
   <link rel="stylesheet" href="css/hero-refinement.css">
   <script src="portfolio.js" defer></script>
 </head>
@@ -314,7 +312,7 @@
                       <span class="spec-pill">Tailwind CSS v4</span>
                       <span class="spec-pill">Radix UI</span>
                       <span class="spec-pill">PWA / Service Workers</span>
-                      <span class="spec-pill">HTML5 Canvas / Three.js</span>
+                      <span class="spec-pill">HTML5 / Web APIs</span>
                     </div>
                   </div>
                   <div class="spec-stack-group">
@@ -1717,7 +1715,6 @@
     <button type="button" data-command="scholarship"><span>03</span> SAC ISPSO ScholarLink (Next.js 14) <span>↗</span></button>
     <button type="button" data-command="toda"><span>02</span> San Jose TODA (Android App) <span>↗</span></button>
     <button type="button" data-command="aquaflow"><span>01</span> AquaFlow (Water Refill PWA) <span>↗</span></button>
-    <button type="button" data-command="council"><span>AI</span> Ask the AI Council Concierge <span>↗</span></button>
     <button type="button" data-command="github"><span>⌘</span> Open GitHub Profile (@kylho1231) <span>↗</span></button>
     <button type="button" data-command="sound"><span>FX</span> Toggle Sound Effects <span>↗</span></button>
     <button type="button" data-command="theme"><span>◐</span> Switch Dark / Light Theme <span>↗</span></button>
@@ -1725,146 +1722,11 @@
   </div><p class="sr-only" id="command-status" role="status" aria-live="polite"></p><p class="command-empty" hidden>No matches. Try “AquaFlow”, “TODA”, “ISPSO”, or “theme”.</p><p class="command-hint mono">↑ ↓ TO NAVIGATE <span>ESC TO CLOSE</span></p></dialog>
   <div class="toast" role="status" aria-live="polite"></div>
 
-  <!-- Persistent Floating AI Council Dock -->
-  <div class="council-dock" id="council-floating-dock">
-    <button type="button" class="dock-toggle-btn" id="dock-toggle-btn" aria-label="Open AI Council Concierge" aria-haspopup="dialog" aria-expanded="false">
-      <div class="dock-avatar-cluster" aria-hidden="true">
-        <span class="dock-avatar-dot code"></span>
-        <span class="dock-avatar-dot claude"></span>
-        <span class="dock-avatar-dot grok"></span>
-        <span class="dock-avatar-dot gemini"></span>
-      </div>
-      <span>Ask AI Council</span>
-      <span class="dock-status-pulse" aria-hidden="true"></span>
-    </button>
-  </div>
+  
 
-  <!-- Interactive Concierge Drawer Backdrop -->
-  <div class="concierge-backdrop" id="concierge-backdrop" aria-hidden="true"></div>
-
-  <!-- Interactive Concierge Drawer -->
-  <aside class="concierge-drawer" id="concierge-drawer" role="dialog" aria-modal="true" aria-labelledby="concierge-drawer-title" aria-hidden="true">
-    <div class="concierge-header">
-      <div class="concierge-title-wrap">
-        <h2 class="concierge-title" id="concierge-drawer-title">
-          <span>AI Council Concierge</span>
-          <span class="concierge-badge">Live</span>
-        </h2>
-        <span class="concierge-subtitle">Interactive guides for Jhon Kylho Estrabo's portfolio</span>
-      </div>
-      <div class="concierge-controls">
-        <button type="button" class="concierge-btn-icon" id="open-planner-btn" title="Launch Guided Project Inquiry Planner" aria-label="Open Guided Project Inquiry Planner"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></button>
-        <button type="button" class="concierge-btn-icon" id="concierge-voice-btn" title="Enable AI Voice (Opt-in Web Speech)" aria-label="Enable voice audio" aria-pressed="false"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
-        <button type="button" class="concierge-btn-icon" id="concierge-close-btn" title="Close Concierge" aria-label="Close Concierge">×</button>
-      </div>
-    </div>
-
-    <!-- Character Quick Switcher Bar -->
-    <div class="concierge-char-bar" role="tablist" aria-label="Select active companion">
-      <button type="button" class="concierge-char-btn active" data-char="gemini" role="tab" aria-selected="true"><span>●</span> GEMINI</button>
-      <button type="button" class="concierge-char-btn" data-char="codex" role="tab" aria-selected="false"><span>●</span> CODEX</button>
-      <button type="button" class="concierge-char-btn" data-char="claude" role="tab" aria-selected="false"><span>●</span> CLAUDE</button>
-      <button type="button" class="concierge-char-btn" data-char="grok" role="tab" aria-selected="false"><span>●</span> GROK</button>
-      <button type="button" class="concierge-char-btn" data-char="council" role="tab" aria-selected="false"><span>●</span> ALL</button>
-    </div>
-
-    <!-- Messages List -->
-    <div class="concierge-messages" id="concierge-messages" role="log" aria-live="polite">
-      <!-- Bubbles added dynamically -->
-    </div>
-
-    <!-- Mandatory Ethical AI Disclosure -->
-    <div class="concierge-disclosure">
-      Unofficial portfolio companions created by Jhon Kylho Estrabo. Not affiliated with Anthropic, Google, or xAI.
-    </div>
-
-    <!-- Quick Chips Area -->
-    <div class="concierge-quick-chips" id="concierge-quick-chips" role="group" aria-label="Suggested questions">
-      <!-- Chips added dynamically -->
-    </div>
-
-    <!-- Chat Input Form -->
-    <form class="concierge-input-form" id="concierge-form">
-      <input type="text" class="concierge-input" id="concierge-input" placeholder="Ask about AquaFlow, skills, background, or hiring…" autocomplete="off" aria-label="Message the AI Council">
-      <button type="submit" class="concierge-send-btn" aria-label="Send message">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
-    </form>
-
-    <!-- Guided Inquiry Planner Modal (Nested inside drawer for full context) -->
-    <div class="inquiry-planner-modal" id="inquiry-planner-modal" role="dialog" aria-modal="true" aria-labelledby="planner-modal-title" aria-hidden="true">
-      <div class="planner-header">
-        <h3 class="planner-title" id="planner-modal-title">Guided Project Planner</h3>
-        <button type="button" class="concierge-btn-icon" id="planner-cancel-btn" aria-label="Close planner">×</button>
-      </div>
-
-      <div class="planner-step-group">
-        <span class="planner-label">1. Project Category</span>
-        <div class="planner-options-grid">
-          <button type="button" class="planner-option-btn selected" data-inquiry-type="Full-Stack Web App">Full-Stack Web Application</button>
-          <button type="button" class="planner-option-btn" data-inquiry-type="Native Android App">Native Android App (Kotlin)</button>
-          <button type="button" class="planner-option-btn" data-inquiry-type="Spatial / 3D UI">Spatial / 3D Web Experience</button>
-          <button type="button" class="planner-option-btn" data-inquiry-type="Civic / Utility Platform">Civic / Operations Platform</button>
-        </div>
-      </div>
-
-      <div class="planner-step-group">
-        <span class="planner-label">2. Preferred Technology</span>
-        <div class="planner-options-grid">
-          <button type="button" class="planner-option-btn selected" data-inquiry-tech="React / Next.js">React &amp; Next.js 14/15</button>
-          <button type="button" class="planner-option-btn" data-inquiry-tech="Kotlin / Android Studio">Kotlin &amp; Jetpack</button>
-          <button type="button" class="planner-option-btn" data-inquiry-tech="Firebase / Supabase">Firebase / Supabase Cloud</button>
-          <button type="button" class="planner-option-btn" data-inquiry-tech="Full Recommendation">Architect's Choice</button>
-        </div>
-      </div>
-
-      <div class="planner-step-group">
-        <span class="planner-label">3. Target Timeline</span>
-        <div class="planner-options-grid">
-          <button type="button" class="planner-option-btn" data-inquiry-timeline="Under 1 Month">Under 1 Month (Urgent)</button>
-          <button type="button" class="planner-option-btn selected" data-inquiry-timeline="1-2 Months">1–2 Months</button>
-          <button type="button" class="planner-option-btn" data-inquiry-timeline="Flexible">Flexible Schedule</button>
-          <button type="button" class="planner-option-btn" data-inquiry-timeline="Consultation">Consultation First</button>
-        </div>
-      </div>
-
-      <div class="planner-step-group">
-        <span class="planner-label">4. Project Notes &amp; Objectives</span>
-        <textarea id="planner-notes-input" class="planner-textarea" placeholder="Briefly describe what you're building, key users, and primary goals…"></textarea>
-      </div>
-
-      <div class="planner-footer-actions">
-        <button type="button" class="planner-submit-btn" id="planner-submit-btn">Generate Inquiry Email ↗</button>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Three.js r128 CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-  <!-- GSAP 3.12.5 & ScrollTrigger CDNs -->
+  <!-- GSAP 3.12.5 & ScrollTrigger CDNs for smooth section reveals -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- 3D Mascot & Studio Stage Modules -->
-  <script src="js/three/ThreeSceneManager.js"></script>
-  <script src="js/three/CharacterBase.js"></script>
-  <script src="js/three/CodeCharacter.js"></script>
-  <script src="js/three/ClaudeCharacter.js"></script>
-  <script src="js/three/GrokCharacter.js"></script>
-  <script src="js/three/GeminiCharacter.js"></script>
-  <script src="js/three/CouncilStage.js"></script>
-
-  <!-- Concierge & Interaction Modules -->
-  <script src="js/concierge/KnowledgeBase.js"></script>
-  <script src="js/concierge/IntentRouter.js"></script>
-  <script src="js/concierge/DialogueEngine.js"></script>
-  <script src="js/concierge/InquiryBuilder.js"></script>
-  <script src="js/concierge/VoiceManager.js"></script>
-  <script src="js/interaction/PointerController.js"></script>
-  <script src="js/interaction/MotionLabController.js"></script>
-  <script src="js/interaction/ScrollDirector.js"></script>
   <script src="js/interaction/GsapScrollJourney.js"></script>
-  <script src="js/council-init.js"></script>
 </body>
 </html>

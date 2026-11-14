@@ -111,25 +111,7 @@
       }
     });
 
-    // 2. Mascot Friendly Wave on Contact Section Entrance
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      let hasWaved = false;
-      ST.create({
-        trigger: contactSection,
-        start: 'top 78%',
-        onEnter: () => {
-          if (!hasWaved) {
-            hasWaved = true;
-            if (window.councilStage && typeof window.councilStage.triggerWave === 'function') {
-              window.councilStage.triggerWave(window.councilStage.activeCharacterKey, 2600);
-            }
-          }
-        }
-      });
-    }
-
-    // 3. Subtle Perspective Tilt on Project Previews (Hover devices only)
+    // 2. Subtle Perspective Tilt on Project Previews (Hover devices only)
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       const projectFigures = document.querySelectorAll('.project-panel-preview, .project-panel figure, .project-panel [data-tilt]');
       projectFigures.forEach((fig) => {
