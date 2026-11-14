@@ -475,6 +475,7 @@ const ispsoGrantsData = {
     amount: "₱7,500.00 / sem",
     color: "#780000"
   },
+  caritas: { title: "Caritas Manila Youth Servant Leadership (YSLLP)", amount: "₱15,000.00 / sem", color: "#991b1b" },
   cas: {
     title: "College of Arts & Sciences Working Scholar",
     amount: "100% Tuition Waiver",
@@ -533,7 +534,8 @@ const mrRecordsData = {
     overallClass: "pending",
     orcrHtml: "LTO Processing (Day 8/14) ⏳",
     plateHtml: "Production Queue ⏳"
-  }
+  },
+  rec4: { model: "Yamaha Sniper 155R", owner: "Owner: A*** G****** · Engine: G3N•••••12 · Acquired: Oct 2026", overallText: "Metal Plate Ready ✓", overallClass: "ready", orcrHtml: "Verified Available ✓", plateHtml: "Metal Plate Ready ✓" }
 };
 
 if (mrRecordSelect) {
@@ -875,18 +877,35 @@ const qfStatusDisplay = $("#qf-status-display");
 const qfBtnCall = $("#qf-btn-call");
 const qfBtnDefer = $("#qf-btn-defer");
 
+const qfOfficeDetails = {
+  R: { name: "Registrar's Office (Room 102)", officer: "Mrs. M. Tondo", windowAvg: "4.2 mins", prefix: "R" },
+  A: { name: "Cashier's Office (Room 105)", officer: "Mr. A. Villavert", windowAvg: "3.0 mins", prefix: "C" },
+  D: { name: "Dean of Students / DSA (Room 201)", officer: "Dean R. Pe", windowAvg: "6.5 mins", prefix: "D" }
+};
+
 function updateQfOffice() {
   if (!qfOfficeSelect || !qfServingDisplay) return;
-  const prefix = qfOfficeSelect.value || "R";
+  const offKey = qfOfficeSelect.value || "R";
+  const off = qfOfficeDetails[offKey] || qfOfficeDetails.R;
+  const prefix = off.prefix;
   qfServingDisplay.textContent = prefix + "-" + String(qfCurrentServing).padStart(3, "0");
   const upNext1 = $("#qf-upnext-1");
   const upNext2 = $("#qf-upnext-2");
   if (upNext1) upNext1.textContent = prefix + "-" + String(qfCurrentServing + 1).padStart(3, "0");
   if (upNext2) upNext2.textContent = prefix + "-" + String(qfCurrentServing + 2).padStart(3, "0");
+  const officerElem = $("#qf-officer-name");
+  if (officerElem) officerElem.textContent = off.officer;
+  const myTicketElem = $("#qf-my-ticket");
+  if (myTicketElem) myTicketElem.textContent = `Your Ticket: ${prefix}-${String(qfCurrentServing + qfAheadCount).padStart(3, "0")}`;
+  const avgWindowElem = $("#qf-avg-window");
+  if (avgWindowElem) avgWindowElem.textContent = `Average Window: ${off.windowAvg}`;
 }
 
 if (qfOfficeSelect) {
-  qfOfficeSelect.addEventListener("change", updateQfOffice);
+  qfOfficeSelect.addEventListener("change", () => {
+    playSound("click");
+    updateQfOffice();
+  });
 }
 
 if (qfBtnCall) {
@@ -924,8 +943,8 @@ let pnpPrice = 99.00;
 let pnpMealName = "Pak Meal (3 pcs + Rice)";
 let pnpGlaze = "Garlic Parmesan";
 
-const pnpTierBtns = $(".pnp-tier-btn");
-const pnpGlazeBtns = $(".pnp-glaze-btn");
+const pnpTierBtns = $$(".pnp-tier-btn");
+const pnpGlazeBtns = $$(".pnp-glaze-btn");
 const pnpOrderMeal = $("#pnp-order-meal");
 const pnpOrderGlaze = $("#pnp-order-glaze");
 const pnpOrderTotal = $("#pnp-order-total");
@@ -955,29 +974,92 @@ pnpGlazeBtns.forEach(btn => {
 
 if (pnpBtnMessenger) {
   pnpBtnMessenger.addEventListener("click", () => {
-    pnpBtnMessenger.innerHTML = "<span>✓ Summary Formatted for Messenger!</span>";
-    setTimeout(() => {
-      pnpBtnMessenger.innerHTML = '<span>Bridge to Messenger Order 💬</span>';
-    }, 2500);
+    const orderText = encodeURIComponent(`Hello Pak na Pak! I would like to order: ${pnpMealName} (${pnpGlaze} Glaze) - Total: ₱${pnpPrice.toFixed(2)}. Delivery via SUGO Express / Mr. Cartman.`);
+    pnpBtnMessenger.innerHTML = '<span>✓ Opening Messenger Bridge...</span>';
     playSound("click");
+    setTimeout(() => {
+      window.open(`https://m.me/pork.ever?text=${orderText}`, "_blank", "noopener,noreferrer");
+      pnpBtnMessenger.innerHTML = '<span>Bridge to Messenger Order <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;margin-left:4px;" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>';
+    }, 600);
   });
 }
 
 /* --- WE GOT YOU Simulator --- */
 let wgyDispatching = false;
+let wgyCurrentIssue = "tire";
 const wgyIssueBtns = $(".wgy-issue-btn");
+const wgyLocationSelect = $("#wgy-location-select");
 const wgyBtnDispatch = $("#wgy-btn-dispatch");
 const wgySteps = [$("#wgy-step-1"), $("#wgy-step-2"), $("#wgy-step-3")];
 const wgyMatchedShop = $("#wgy-matched-shop");
 const wgyEtaBadge = $("#wgy-eta-badge");
+const wgyProximity = $("#wgy-proximity");
+
+const wgyProviders = {
+  tire: {
+    shop: "ARS Welding & Vulcanizing",
+    rates: {
+      dalipe: { dist: "0.7 km", eta: "5 MINS" },
+      poblacion: { dist: "1.4 km", eta: "8 MINS" },
+      sanpedro: { dist: "2.8 km", eta: "14 MINS" },
+      atabay: { dist: "2.1 km", eta: "11 MINS" }
+    }
+  },
+  battery: {
+    shop: "Rapidé San Jose Fast-Rescue",
+    rates: {
+      dalipe: { dist: "1.2 km", eta: "7 MINS" },
+      poblacion: { dist: "0.6 km", eta: "4 MINS" },
+      sanpedro: { dist: "3.1 km", eta: "15 MINS" },
+      atabay: { dist: "1.9 km", eta: "10 MINS" }
+    }
+  },
+  engine: {
+    shop: "Yamaha 3S Des Marketing & Diagnostics",
+    rates: {
+      dalipe: { dist: "1.1 km", eta: "6 MINS" },
+      poblacion: { dist: "0.9 km", eta: "5 MINS" },
+      sanpedro: { dist: "2.9 km", eta: "13 MINS" },
+      atabay: { dist: "2.4 km", eta: "12 MINS" }
+    }
+  },
+  tow: {
+    shop: "Antique Central Heavy Flatbed Towing",
+    rates: {
+      dalipe: { dist: "2.4 km", eta: "12 MINS" },
+      poblacion: { dist: "1.8 km", eta: "9 MINS" },
+      sanpedro: { dist: "4.2 km", eta: "19 MINS" },
+      atabay: { dist: "3.5 km", eta: "16 MINS" }
+    }
+  }
+};
+
+function updateWgySimulation() {
+  const loc = wgyLocationSelect ? (wgyLocationSelect.value || "dalipe") : "dalipe";
+  const provider = wgyProviders[wgyCurrentIssue] || wgyProviders.tire;
+  const metrics = provider.rates[loc] || { dist: "0.8 km", eta: "7 MINS" };
+  
+  if (wgyMatchedShop) wgyMatchedShop.textContent = `Nearest: ${provider.shop}`;
+  if (wgyEtaBadge) wgyEtaBadge.textContent = `ETA: ${metrics.eta}`;
+  if (wgyProximity) wgyProximity.textContent = `Proximity: ${metrics.dist} (Haversine PostGIS)`;
+}
 
 wgyIssueBtns.forEach(btn => {
   btn.addEventListener("click", () => {
     wgyIssueBtns.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
+    wgyCurrentIssue = btn.dataset.issue || "tire";
+    updateWgySimulation();
     playSound("click");
   });
 });
+
+if (wgyLocationSelect) {
+  wgyLocationSelect.addEventListener("change", () => {
+    updateWgySimulation();
+    playSound("click");
+  });
+}
 
 if (wgyBtnDispatch) {
   wgyBtnDispatch.addEventListener("click", () => {
@@ -991,19 +1073,23 @@ if (wgyBtnDispatch) {
     setTimeout(() => {
       if (wgySteps[0]) { wgySteps[0].classList.remove("current"); wgySteps[0].classList.add("done"); }
       if (wgySteps[1]) wgySteps[1].classList.add("current");
-      if (wgyMatchedShop) wgyMatchedShop.textContent = "Bong's Moto & Vulcanizing (0.8 km)";
-      if (wgyEtaBadge) wgyEtaBadge.textContent = "ETA: 7 MINS";
+      
+      const provider = wgyProviders[wgyCurrentIssue] || wgyProviders.tire;
+      const loc = wgyLocationSelect ? (wgyLocationSelect.value || "dalipe") : "dalipe";
+      const metrics = provider.rates[loc] || { dist: "0.8 km", eta: "7 MINS" };
+      if (wgyMatchedShop) wgyMatchedShop.textContent = `${provider.shop} (${metrics.dist})`;
+      if (wgyEtaBadge) wgyEtaBadge.textContent = `ETA: ${metrics.eta}`;
 
       setTimeout(() => {
         if (wgySteps[1]) { wgySteps[1].classList.remove("current"); wgySteps[1].classList.add("done"); }
         if (wgySteps[2]) wgySteps[2].classList.add("current");
-        wgyBtnDispatch.textContent = "✓ Tech En Route · Live Radar Active";
+        wgyBtnDispatch.innerHTML = '<span>✓ Tech En Route · Live Radar Active <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;margin-left:4px;" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>';
         playSound("click");
         setTimeout(() => {
           wgyDispatching = false;
           wgyBtnDispatch.disabled = false;
-          wgyBtnDispatch.textContent = "Request Roadside Rescue ⚡";
-        }, 3000);
+          wgyBtnDispatch.innerHTML = '<span>Request Roadside Rescue <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;margin-left:4px;" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>';
+        }, 3500);
       }, 900);
     }, 800);
   });

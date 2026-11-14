@@ -744,7 +744,7 @@ dialog::backdrop { background: #07110cd4; backdrop-filter: blur(8px); }
 .pnp-branding strong { font-size: 13px; color: #fbbf24; }
 .pnp-branding small { font-size: 10px; color: #fde68a; display: block; opacity: 0.85; }
 .pnp-pill { font: 9px var(--mono); background: #78350f; color: #fde68a; border: 1px solid #f59e0b; padding: 2px 7px; border-radius: 10px; font-weight: 700; }
-.pnp-tier-chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 10px; }
+.pnp-tier-chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 10px; }
 .pnp-tier-btn { padding: 6px 4px; font-size: 9px; font-weight: 700; border-radius: 4px; border: 1px solid #3f3f46; background: #27272a; color: #d4d4d8; cursor: pointer; text-align: center; transition: all .15s; }
 .pnp-tier-btn.active { background: #b45309; color: #fff; border-color: #fbbf24; box-shadow: 0 0 8px #d9770644; }
 .pnp-glazes-label { font-size: 10px; font-weight: 700; color: #fbbf24; margin-bottom: 6px; text-transform: uppercase; }

@@ -748,6 +748,7 @@
                 <option value="badiang" data-km="3.2" data-reg="20" data-disc="16">Poblacion → Badiang (3.2 km)</option>
                 <option value="madrangca" data-km="4.0" data-reg="25" data-disc="20">Poblacion → Madrangca (4.0 km)</option>
                 <option value="maybato" data-km="2.0" data-reg="15" data-disc="12">Poblacion → Maybato (2.0 km)</option>
+                <option value="igbonglo" data-km="7.5" data-reg="30" data-disc="24">Poblacion → Barangay Igbonglo (7.5 km)</option>
               </select>
 
               <label>Passenger Category:</label>
@@ -824,6 +825,7 @@
             <div class="ispso-grants" role="radiogroup" aria-label="Select scholarship grant">
               <button type="button" class="ispso-grant-btn active" data-grant="tes">UniFAST TES (₱20k)</button>
               <button type="button" class="ispso-grant-btn" data-grant="tdp">TDP-TES (₱7.5k)</button>
+              <button type="button" class="ispso-grant-btn" data-grant="caritas">Caritas YSLLP (₱15k)</button>
               <button type="button" class="ispso-grant-btn" data-grant="cas">CAS Scholar</button>
             </div>
 
@@ -895,6 +897,7 @@
               <option value="rec1">TRK-YAM-2026-0001 · Yamaha NMAX 155 (Juan D.)</option>
               <option value="rec2">TRK-YAM-2026-0002 · Yamaha Aerox 155 (Maria S.)</option>
               <option value="rec3">TRK-YAM-2026-0003 · Yamaha Mio Fazzio (Pedro R.)</option>
+              <option value="rec4">TRK-YAM-2026-0004 · Yamaha Sniper 155R (Alex G.)</option>
             </select>
 
             <div class="mr-status-card">
@@ -1283,18 +1286,18 @@
                 </div>
                 <div style="text-align: right;">
                   <span style="font-size: 9px; color: #a7f3d0;">Assigned Officer</span>
-                  <div style="font-size: 11px; color: #fff; font-weight: 600;">Mrs. M. Tondo</div>
+                  <div style="font-size: 11px; color: #fff; font-weight: 600;" id="qf-officer-name">Mrs. M. Tondo</div>
                 </div>
               </div>
               <div class="qf-up-next">
                 <span>UP NEXT: <strong id="qf-upnext-1" style="color: #f0fdfa;">R-037</strong> · <strong id="qf-upnext-2" style="color: #f0fdfa;">R-038</strong></span>
-                <span>Average Window: 4.2 mins</span>
+                <span id="qf-avg-window">Average Window: 4.2 mins</span>
               </div>
             </div>
 
             <div class="qf-pass-card">
               <div class="qf-pass-left">
-                <strong>Your Ticket: R-040</strong>
+                <strong id="qf-my-ticket">Your Ticket: R-040</strong>
                 <small id="qf-ahead-display">~12 mins (3 ahead)</small>
                 <div id="qf-status-display" style="font-size: 9px; font-weight: 700; color: #5eead4; margin-top: 2px;">STATUS: QUEUED IN LINE</div>
               </div>
@@ -1303,7 +1306,7 @@
 
             <div class="qf-actions-grid">
               <button type="button" class="qf-btn qf-btn-defer" id="qf-btn-defer">
-                <span>Defer 45m (In Class)</span> <span aria-hidden="true">⏱️</span>
+                <span>Defer 45m (In Class)</span> <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;margin-left:4px;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </button>
               <button type="button" class="qf-btn qf-btn-call" id="qf-btn-call">
                 <span>Call Next <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
@@ -1364,7 +1367,8 @@
             <div style="font-size: 10px; font-weight: 700; color: #fbbf24; margin-bottom: 6px; text-transform: uppercase;">Select Meal Tier:</div>
             <div class="pnp-tier-chips" role="radiogroup" aria-label="Select meal tier">
               <button type="button" class="pnp-tier-btn active" data-price="99" data-name="Pak Meal (3 pcs + Rice)">Pak Meal ₱99</button>
-              <button type="button" class="pnp-tier-btn" data-price="139" data-name="Full Pak (2 pcs + Pasta)">Full Pak ₱139</button>
+              <button type="button" class="pnp-tier-btn" data-price="99" data-name="Full Pak (2 pcs + Pasta + Rice)">Full Pak ₱99</button>
+              <button type="button" class="pnp-tier-btn" data-price="269" data-name="10-pc Takeout Bucket">10pc Bucket ₱269</button>
               <button type="button" class="pnp-tier-btn" data-price="299" data-name="Samgyup Unli Set B">Unli Grill ₱299</button>
             </div>
 
@@ -1394,7 +1398,7 @@
             </button>
 
             <div class="pnp-footer">
-              <span>🟡 #FFC700 Fast-Casual Palette</span>
+              <span><span class="status-indicator-dot" style="background:#fbbf24;box-shadow:0 0 0 3px rgba(251,191,36,0.25);" aria-hidden="true"></span> #FFC700 Fast-Casual Palette</span>
               <span>100% Commission-Free Ordering ✓</span>
             </div>
 
@@ -1466,7 +1470,7 @@
                 <span class="wgy-eta-badge" id="wgy-eta-badge">ETA: 7 MINS</span>
               </div>
               <div class="wgy-dispatch-row">
-                <span style="color: #94a3b8; font-size: 10px;">Proximity: 0.8 km (Haversine PostGIS)</span>
+                <span id="wgy-proximity" style="color: #94a3b8; font-size: 10px;">Proximity: 0.8 km (Haversine PostGIS)</span>
                 <span style="color: #34d399; font-size: 10px; font-weight: 600;">Dispatch Available ✓</span>
               </div>
             </div>
