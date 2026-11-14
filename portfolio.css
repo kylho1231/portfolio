@@ -1,22 +1,24 @@
 /* A personal digital studio — foundations and color preferences. */
 :root {
   color-scheme: dark;
-  --paper: #111915; --surface: #19231d; --soft: #202e25;
-  --ink: #f3f1e8; --body-ink: #bec8bf; --muted: #a4b1a6; --line: #344238;
-  --accent: #d2f86d; --accent-ink: #19250d; --forest: var(--accent); --focus: var(--accent);
-  --header: rgb(17 25 21 / 94%); --display: "DM Sans", "Segoe UI", sans-serif;
+  --paper: #0a0e17; --surface: #111827; --soft: #1e293b;
+  --ink: #f8fafc; --body-ink: #cbd5e1; --muted: #94a3b8; --line: #1e293b;
+  --accent: #38bdf8; --accent-ink: #031326; --forest: var(--accent); --focus: var(--accent);
+  --header: rgb(10 14 23 / 94%); --display: "DM Sans", "Segoe UI", sans-serif;
   --body: "DM Sans", "Segoe UI", sans-serif; --mono: "IBM Plex Mono", Consolas, monospace;
 }
-html[data-accent="coral"] { --accent: #ffad91; --accent-ink: #35180d; }
-html[data-accent="sky"] { --accent: #a1d6ff; --accent-ink: #102b40; }
+html[data-accent="sky"] { --accent: #38bdf8; --accent-ink: #031326; }
+html[data-accent="indigo"] { --accent: #818cf8; --accent-ink: #1e1b4b; }
+html[data-accent="coral"] { --accent: #fb923c; --accent-ink: #431407; }
 html[data-theme="light"] {
   color-scheme: light;
-  --paper: #f2f1e9; --surface: #faf9f3; --soft: #e7e9de; --ink: #17271d;
-  --body-ink: #48584c; --muted: #59675b; --line: #cbd2c4; --accent: #466a0b;
-  --accent-ink: #fff; --header: rgb(242 241 233 / 95%);
+  --paper: #f8fafc; --surface: #ffffff; --soft: #f1f5f9; --ink: #0f172a;
+  --body-ink: #334155; --muted: #64748b; --line: #e2e8f0; --accent: #0284c7;
+  --accent-ink: #fff; --header: rgb(248 250 252 / 95%);
 }
-html[data-theme="light"][data-accent="coral"] { --accent: #a34226; }
-html[data-theme="light"][data-accent="sky"] { --accent: #14609b; }
+html[data-theme="light"][data-accent="sky"] { --accent: #0284c7; }
+html[data-theme="light"][data-accent="indigo"] { --accent: #4f46e5; }
+html[data-theme="light"][data-accent="coral"] { --accent: #ea580c; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.65 var(--body); -webkit-font-smoothing: antialiased; }

@@ -137,8 +137,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  background: var(--accent, #38bdf8);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
   display: inline-block;
   animation: pulse-dot 2s infinite ease-in-out;
 }

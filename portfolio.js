@@ -96,7 +96,7 @@ function setTheme(theme, persist = false) {
   themeButton.setAttribute("aria-label", `Switch to ${dark ? "light" : "dark"} mode`);
   themeButton.title = `Switch to ${dark ? "light" : "dark"} mode`;
   const metaTheme = $("meta[name='theme-color']");
-  if (metaTheme) metaTheme.content = dark ? "#111915" : "#f2f1e9";
+  if (metaTheme) metaTheme.content = dark ? "#0a0e17" : "#f8fafc";
   window.dispatchEvent(new CustomEvent("themechange", { detail: { theme } }));
   if (window.ScrollTrigger) window.ScrollTrigger.refresh();
   if (persist) {
@@ -109,9 +109,9 @@ setTheme(["light", "dark"].includes(chosenTheme) ? chosenTheme : "dark");
 themeButton.addEventListener("click", () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark", true));
 
 const accentButtons = $$("[data-accent]").filter(element => element.matches("button"));
-const accents = ["lime", "coral", "sky"];
+const accents = ["sky", "indigo", "coral"];
 function setAccent(accent, persist = false) {
-  if (!accents.includes(accent)) return;
+  if (!accents.includes(accent)) accent = "sky";
   document.documentElement.dataset.accent = accent;
   accentButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.accent === accent)));
   if (persist) {
@@ -121,7 +121,7 @@ function setAccent(accent, persist = false) {
 }
 let savedAccent;
 try { savedAccent = localStorage.getItem("portfolio-accent"); } catch {}
-setAccent(accents.includes(savedAccent) ? savedAccent : "lime");
+setAccent(accents.includes(savedAccent) ? savedAccent : "sky");
 accentButtons.forEach(button => button.addEventListener("click", () => setAccent(button.dataset.accent, true)));
 
 function randomAccent() {
